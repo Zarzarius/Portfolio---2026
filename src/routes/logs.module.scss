@@ -1,0 +1,110 @@
+@use '../styles/theme' as *;
+
+.container {
+  padding: $spacing-7 $spacing-6;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: $spacing-8;
+}
+
+.titlePrefix {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-2;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  letter-spacing: $letter-spacing-normal;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-4;
+}
+
+.commandLine {
+  font-size: $font-size-base;
+  color: $color-text-command;
+  font-family: $font-family-primary;
+  margin-top: $spacing-4;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.logsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.logEntry {
+  background-color: $color-bg-secondary;
+  border: $border-width-thin solid $color-border-secondary;
+  border-left: $border-width-thick solid rgba(0, 255, 136, 0.5);
+  border-radius: $border-radius-sm;
+  padding: $spacing-5;
+  font-family: $font-family-primary;
+  transition: $transition-all;
+
+  &:hover {
+    border-left-color: $color-primary;
+    background-color: $color-bg-tertiary;
+  }
+}
+
+.logHeader {
+  display: flex;
+  gap: $spacing-4;
+  margin-bottom: $spacing-3;
+  flex-wrap: wrap;
+}
+
+.logDate {
+  color: $color-text-muted;
+  font-size: $font-size-base;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.logType {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-normal;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-sm;
+}
+
+.logType.info {
+  color: $color-status-info;
+  background-color: $color-bg-hover;
+}
+
+.logType.deploy {
+  color: $color-status-deploy;
+  background-color: rgba(0, 170, 255, 0.1);
+}
+
+.logType.build {
+  color: $color-status-build;
+  background-color: rgba(255, 170, 0, 0.1);
+}
+
+.logType.update {
+  color: $color-status-update;
+  background-color: rgba(170, 0, 255, 0.1);
+}
+
+.logType.security {
+  color: $color-status-security;
+  background-color: rgba(255, 0, 102, 0.1);
+}
+
+.logMessage {
+  color: $color-text-secondary;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  letter-spacing: $letter-spacing-tight;
+}

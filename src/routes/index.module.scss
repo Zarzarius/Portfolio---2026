@@ -1,0 +1,245 @@
+@use '../styles/theme' as *;
+
+.container {
+  padding: $spacing-7 $spacing-6;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-7;
+  gap: $spacing-6;
+  flex-wrap: wrap;
+}
+
+.titleSection {
+  flex: 1;
+}
+
+.titlePrefix {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-2;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  letter-spacing: $letter-spacing-normal;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-4;
+}
+
+.commandLine {
+  font-size: $font-size-base;
+  color: $color-text-command;
+  font-family: $font-family-primary;
+  margin-top: $spacing-4;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.filters {
+  display: flex;
+  gap: $spacing-2;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.filterButton {
+  padding: $spacing-2 $spacing-4;
+  background-color: $color-bg-tertiary;
+  border: $border-width-thin solid $color-border-secondary;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-normal;
+  transition: $transition-all;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &.active {
+    border-color: $color-primary;
+    color: $color-primary;
+    background-color: $color-bg-hover;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: $spacing-6;
+  margin-bottom: $spacing-8;
+}
+
+.projectCard {
+  background-color: $color-bg-secondary;
+  border: $border-width-thin solid $color-border-secondary;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  transition: $transition-slow $ease-in-out;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    border-color: $color-primary;
+    transform: translateY(-4px);
+    box-shadow: $shadow-primary;
+  }
+}
+
+.projectImage {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(135deg, $color-bg-hover 0%, rgba(0, 0, 0, 0.3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.projectImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, $color-bg-primary 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 255, 136, 0.3);
+  font-size: $font-size-3xl;
+}
+
+.priorityTag {
+  position: absolute;
+  top: $spacing-4;
+  left: $spacing-4;
+  padding: $spacing-1 $spacing-3;
+  background-color: $color-bg-active;
+  border: $border-width-thin solid $color-primary;
+  color: $color-primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.projectContent {
+  padding: $spacing-5;
+}
+
+.projectTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-3;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.projectDescription {
+  font-size: $font-size-base;
+  color: $color-text-muted;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+}
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+}
+
+.techTag {
+  padding: $spacing-1 $spacing-3;
+  background-color: $color-bg-tertiary;
+  border: $border-width-thin solid $color-border-secondary;
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+  letter-spacing: $letter-spacing-normal;
+  border-radius: $border-radius-sm;
+}
+
+.ctaSection {
+  margin-top: $spacing-8;
+  padding: $spacing-7 $spacing-6;
+  border: $border-width-medium solid $color-primary;
+  border-radius: $border-radius-lg;
+  background-color: $color-bg-tertiary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-6;
+  flex-wrap: wrap;
+}
+
+.ctaContent {
+  flex: 1;
+}
+
+.ctaTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-4;
+  letter-spacing: $letter-spacing-normal;
+  line-height: $line-height-tight;
+
+  .highlight {
+    color: $color-primary;
+  }
+}
+
+.ctaDescription {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  line-height: $line-height-relaxed;
+  max-width: 500px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: $spacing-4;
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  padding: $spacing-3 $spacing-5;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-normal;
+  border-radius: $border-radius-sm;
+  transition: $transition-all;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.ctaButtonPrimary {
+  background-color: $color-primary;
+  color: $color-bg-primary;
+
+  &:hover {
+    background-color: $color-primary-dark;
+    transform: translateY(-2px);
+  }
+}
+
+.ctaButtonSecondary {
+  background-color: transparent;
+  border: $border-width-thin solid $color-border-tertiary;
+  color: $color-text-primary;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}

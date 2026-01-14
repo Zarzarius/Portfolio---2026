@@ -1,0 +1,117 @@
+@use '../styles/theme' as *;
+
+.pageTransition {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+// Idle state - fully visible
+.pageTransition.idle {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+// Exiting state - fade out and slide up
+.pageTransition.exiting {
+  animation: pageExit $transition-fast $ease-in forwards;
+}
+
+// Entering state - fade in and slide down
+.pageTransition.entering {
+  animation: pageEnter $transition-slow $ease-out forwards;
+}
+
+@keyframes pageExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-15px);
+    filter: blur(3px);
+  }
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+// Terminal-style scanline effect on enter
+.pageTransition.entering::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    $color-primary 50%,
+    transparent 100%
+  );
+  animation: scanline $transition-slow;
+  pointer-events: none;
+  z-index: $z-index-tooltip;
+  box-shadow: 0 0 10px $color-primary;
+}
+
+@keyframes scanline {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+// Subtle glitch effect on fast navigation
+.pageTransition.exiting::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 136, 0.03) 50%,
+    transparent 100%
+  );
+  animation: glitch $transition-fast;
+  pointer-events: none;
+  z-index: $z-index-tooltip;
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1px);
+  }
+  75% {
+    transform: translateX(1px);
+  }
+}

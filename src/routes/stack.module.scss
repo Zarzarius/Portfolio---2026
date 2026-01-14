@@ -1,0 +1,83 @@
+@use '../styles/theme' as *;
+
+.container {
+  padding: $spacing-7 $spacing-6;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: $spacing-8;
+}
+
+.titlePrefix {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-2;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  letter-spacing: $letter-spacing-normal;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-4;
+}
+
+.commandLine {
+  font-size: $font-size-base;
+  color: $color-text-command;
+  font-family: $font-family-primary;
+  margin-top: $spacing-4;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-7;
+}
+
+.category {
+  border: $border-width-thin solid $color-border-secondary;
+  border-radius: $border-radius-lg;
+  padding: $spacing-6;
+  background-color: $color-bg-secondary;
+}
+
+.categoryTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin-bottom: $spacing-5;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-4;
+}
+
+.techCard {
+  padding: $spacing-4;
+  background-color: $color-bg-tertiary;
+  border: $border-width-thin solid $color-border-secondary;
+  border-radius: $border-radius-md;
+  text-align: center;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-normal;
+  color: $color-text-secondary;
+  transition: $transition-all;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+    background-color: $color-bg-hover;
+    transform: translateY(-2px);
+  }
+}
