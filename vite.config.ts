@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { tanstackRouter } from '@tanstack/router-plugin/vite';
+import { tanstackStart } from '@tanstack/react-start/plugin/vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -9,11 +10,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    // TanStack Router plugin must be before React plugin
-    tanstackRouter({
-      target: 'react',
-      autoCodeSplitting: true, // Enable automatic code splitting for better performance
-    }),
+    // Start plugin must be before React plugin
+    tsconfigPaths(),
+    tanstackStart(),
     react(),
   ],
   resolve: {

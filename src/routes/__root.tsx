@@ -1,10 +1,23 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
+import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router';
+import type { ReactNode } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import styles from './__root.module.scss';
+import '../index.scss';
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
+  head: () => ({
+    meta: [
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { title: 'DEV_ARCH // V2.0' },
+    ],
+  }),
+  component: RootComponent,
+});
+
+function RootComponent() {
+  return (
+    <RootDocument>
       <header className={styles.header}>
         <div className={styles.headerTop}>
           <div className={styles.logoSection}>
@@ -102,6 +115,20 @@ export const Route = createRootRoute({
           | 74.000^
         </div>
       </footer>
-    </>
-  ),
-});
+    </RootDocument>
+  );
+}
+
+function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
