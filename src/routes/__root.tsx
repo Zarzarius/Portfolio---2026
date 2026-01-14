@@ -1,4 +1,10 @@
-import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router';
+import {
+  HeadContent,
+  Link,
+  Outlet,
+  Scripts,
+  createRootRoute,
+} from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import styles from './__root.module.scss';
@@ -90,14 +96,6 @@ function RootComponent() {
             className={styles.footerLink}
           >
             LINKEDIN
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.footerLink}
-          >
-            TWITTER_X
           </a>
         </div>
         <div className={styles.footerRight}>
