@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import clsx from 'clsx';
 import styles from './stack.module.scss';
 
 export const Route = createFileRoute('/stack')({
@@ -52,22 +53,22 @@ const techCategories = [
 
 function Stack() {
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.titlePrefix}>02//</div>
-        <h1 className={styles.title}>TECH_STACK</h1>
-        <div className={styles.commandLine}>
+    <div className={clsx(styles.container)}>
+      <div className={clsx(styles.header)}>
+        <div className={clsx(styles.titlePrefix)}>02//</div>
+        <h1 className={clsx(styles.title)}>TECH_STACK</h1>
+        <div className={clsx(styles.commandLine)}>
           &gt; cat tech_stack.txt --format=terminal
         </div>
       </div>
 
-      <div className={styles.categories}>
+      <div className={clsx(styles.categories)}>
         {techCategories.map((cat, idx) => (
-          <div key={idx} className={styles.category}>
-            <h2 className={styles.categoryTitle}>{cat.category}</h2>
-            <div className={styles.techGrid}>
+          <div key={idx} className={clsx(styles.category)}>
+            <h2 className={clsx(styles.categoryTitle)}>{cat.category}</h2>
+            <div className={clsx(styles.techGrid)}>
               {cat.technologies.map((tech, techIdx) => (
-                <div key={techIdx} className={styles.techCard}>
+                <div key={techIdx} className={clsx(styles.techCard)}>
                   {tech}
                 </div>
               ))}

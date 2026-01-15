@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import clsx from 'clsx'
 import styles from './projects.module.scss'
 
 export const Route = createFileRoute('/projects')({
@@ -30,16 +31,18 @@ function Projects() {
   ]
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Projects</h1>
-      <div className={styles.grid}>
+    <div className={clsx(styles.container)}>
+      <h1 className={clsx(styles.title)}>Projects</h1>
+      <div className={clsx(styles.grid)}>
         {projects.map((project) => (
-          <div key={project.id} className={styles.card}>
-            <h2 className={styles.cardTitle}>{project.title}</h2>
-            <p className={styles.cardDescription}>{project.description}</p>
-            <div className={styles.techList}>
+          <div key={project.id} className={clsx(styles.card)}>
+            <h2 className={clsx(styles.cardTitle)}>{project.title}</h2>
+            <p className={clsx(styles.cardDescription)}>
+              {project.description}
+            </p>
+            <div className={clsx(styles.techList)}>
               {project.technologies.map((tech, idx) => (
-                <span key={idx} className={styles.techTag}>
+                <span key={idx} className={clsx(styles.techTag)}>
                   {tech}
                 </span>
               ))}

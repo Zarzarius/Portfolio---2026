@@ -6,6 +6,7 @@ import {
   createRootRoute,
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+import clsx from 'clsx';
 import { PageTransition } from '../components/PageTransition';
 import styles from './__root.module.scss';
 import '../index.scss';
@@ -24,68 +25,68 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
-      <header className={styles.header}>
-        <div className={styles.headerTop}>
-          <div className={styles.logoSection}>
-            <span className={styles.logoIcon}></span>
-            <Link to="/" className={styles.logo}>
+      <header className={clsx(styles.header)}>
+        <div className={clsx(styles.headerTop)}>
+          <div className={clsx(styles.logoSection)}>
+            <span className={clsx(styles.logoIcon)}></span>
+            <Link to="/" className={clsx(styles.logo)}>
               DEV_ARCH // V2.0
             </Link>
           </div>
-          <nav className={styles.navLinks}>
+          <nav className={clsx(styles.navLinks)}>
             <Link
               to="/"
-              className={styles.navLink}
-              activeProps={{ className: `${styles.navLink} ${styles.active}` }}
+              className={clsx(styles.navLink)}
+              activeProps={{ className: clsx(styles.navLink, styles.active) }}
             >
               01. WORKS
             </Link>
             <Link
               to="/stack"
-              className={styles.navLink}
-              activeProps={{ className: `${styles.navLink} ${styles.active}` }}
+              className={clsx(styles.navLink)}
+              activeProps={{ className: clsx(styles.navLink, styles.active) }}
             >
               02. STACK
             </Link>
             <Link
               to="/logs"
-              className={styles.navLink}
-              activeProps={{ className: `${styles.navLink} ${styles.active}` }}
+              className={clsx(styles.navLink)}
+              activeProps={{ className: clsx(styles.navLink, styles.active) }}
             >
               03. LOGS
             </Link>
             <Link
               to="/signal"
-              className={styles.navLink}
-              activeProps={{ className: `${styles.navLink} ${styles.active}` }}
+              className={clsx(styles.navLink)}
+              activeProps={{ className: clsx(styles.navLink, styles.active) }}
             >
               04. SIGNAL
             </Link>
           </nav>
-          <div className={styles.headerRight}>
-            <button className={styles.resumeButton}>
+          <div className={clsx(styles.headerRight)}>
+            <button className={clsx(styles.resumeButton)}>
               <span>INITIALIZE RESUME</span>
             </button>
-            <div className={styles.profileImage}>AAC</div>
+            <div className={clsx(styles.profileImage)}>AAC</div>
           </div>
         </div>
-        <div className={styles.statusBar}>* SYSTEM_STATUS: ONLINE</div>
+        <div className={clsx(styles.statusBar)}>* SYSTEM_STATUS: ONLINE</div>
       </header>
-      <main className={styles.main}>
+      <main className={clsx(styles.main)}>
         <PageTransition>
           <Outlet />
         </PageTransition>
       </main>
-      <footer className={styles.footer}>
-        <div className={styles.footerLeft}>
+      <footer className={clsx(styles.footer)}>
+        <div className={clsx(styles.footerLeft)}>
           © 2026 ACADEMY_ARCH. ALL_RIGHTS_RESERVED.
         </div>
-        <div className={styles.footerCenter}>
+        <div className={clsx(styles.footerCenter)}>
           <a
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.footerLink}
+            className={clsx(styles.footerLink)}
           >
             GITHUB
           </a>
@@ -93,12 +94,12 @@ function RootComponent() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.footerLink}
+            className={clsx(styles.footerLink)}
           >
             LINKEDIN
           </a>
         </div>
-        <div className={styles.footerRight}>
+        <div className={clsx(styles.footerRight)}>
           * AT:{' '}
           {new Date().toLocaleDateString('en-US', {
             month: '2-digit',

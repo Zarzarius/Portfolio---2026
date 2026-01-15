@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from '@tanstack/react-router';
+import clsx from 'clsx';
 import styles from './PageTransition.module.scss';
 
 interface PageTransitionProps {
@@ -21,9 +22,10 @@ export function PageTransition({ children }: PageTransitionProps) {
 
   return (
     <div
-      className={`${styles.pageTransition} ${
-        isAnimating ? styles.entering : styles.idle
-      }`}
+      className={clsx(
+        styles.pageTransition,
+        isAnimating ? styles.entering : styles.idle,
+      )}
     >
       {children}
     </div>

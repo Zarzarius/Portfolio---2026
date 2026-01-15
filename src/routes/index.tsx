@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
+import clsx from 'clsx';
 import styles from './index.module.scss';
 
 export const Route = createFileRoute('/')({
@@ -78,23 +79,24 @@ function Home() {
         });
 
   return (
-    <div className={styles.container}>
-      <div className={styles.sectionHeader}>
-        <div className={styles.titleSection}>
-          <div className={styles.titlePrefix}>01//</div>
-          <h1 className={styles.title}>FEATURED_WORKS</h1>
-          <div className={styles.commandLine}>
+    <div className={clsx(styles.container)}>
+      <div className={clsx(styles.sectionHeader)}>
+        <div className={clsx(styles.titleSection)}>
+          <div className={clsx(styles.titlePrefix)}>01//</div>
+          <h1 className={clsx(styles.title)}>FEATURED_WORKS</h1>
+          <div className={clsx(styles.commandLine)}>
             &gt; sudo run showcase.sh --filter=high performance
             --status=production
           </div>
         </div>
-        <div className={styles.filters}>
+        <div className={clsx(styles.filters)}>
           {categories.map((category) => (
             <button
               key={category}
-              className={`${styles.filterButton} ${
-                activeFilter === category ? styles.active : ''
-              }`}
+              className={clsx(
+                styles.filterButton,
+                activeFilter === category && styles.active,
+              )}
               onClick={() => setActiveFilter(category)}
             >
               {category}
@@ -103,23 +105,25 @@ function Home() {
         </div>
       </div>
 
-      <div className={styles.projectsGrid}>
+      <div className={clsx(styles.projectsGrid)}>
         {filteredProjects.map((project) => (
-          <div key={project.id} className={styles.projectCard}>
-            <div className={styles.projectImage}>
-              <div className={styles.projectImagePlaceholder}>◼</div>
+          <div key={project.id} className={clsx(styles.projectCard)}>
+            <div className={clsx(styles.projectImage)}>
+              <div className={clsx(styles.projectImagePlaceholder)}>◼</div>
               {project.priority && (
-                <div className={styles.priorityTag}>
+                <div className={clsx(styles.priorityTag)}>
                   PRIORITY {project.priority}
                 </div>
               )}
             </div>
-            <div className={styles.projectContent}>
-              <h2 className={styles.projectTitle}>{project.title}</h2>
-              <p className={styles.projectDescription}>{project.description}</p>
-              <div className={styles.projectTech}>
+            <div className={clsx(styles.projectContent)}>
+              <h2 className={clsx(styles.projectTitle)}>{project.title}</h2>
+              <p className={clsx(styles.projectDescription)}>
+                {project.description}
+              </p>
+              <div className={clsx(styles.projectTech)}>
                 {project.technologies.map((tech, idx) => (
-                  <span key={idx} className={styles.techTag}>
+                  <span key={idx} className={clsx(styles.techTag)}>
                     {tech}
                   </span>
                 ))}
@@ -129,22 +133,23 @@ function Home() {
         ))}
       </div>
 
-      <div className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2 className={styles.ctaTitle}>
-            READY TO BUILD <span className={styles.highlight}>THE FUTURE?</span>
+      <div className={clsx(styles.ctaSection)}>
+        <div className={clsx(styles.ctaContent)}>
+          <h2 className={clsx(styles.ctaTitle)}>
+            READY TO BUILD{' '}
+            <span className={clsx(styles.highlight)}>THE FUTURE?</span>
           </h2>
-          <p className={styles.ctaDescription}>
+          <p className={clsx(styles.ctaDescription)}>
             Let's collaborate on your next high-tech project. Open for new
             architectural challenges and complex system integrations.
           </p>
         </div>
-        <div className={styles.ctaButtons}>
-          <button className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`}>
+        <div className={clsx(styles.ctaButtons)}>
+          <button className={clsx(styles.ctaButton, styles.ctaButtonPrimary)}>
             INITIALIZE_CONTACT &gt;
           </button>
           <button
-            className={`${styles.ctaButton} ${styles.ctaButtonSecondary}`}
+            className={clsx(styles.ctaButton, styles.ctaButtonSecondary)}
           >
             VIEW_ARCHIVES
           </button>
