@@ -1,7 +1,7 @@
 export default {
   server: {
     // preset: 'static',
-    preset: 'vercel',
+    preset: 'node-server',
     prerender: {
       routes: [
         '/',
