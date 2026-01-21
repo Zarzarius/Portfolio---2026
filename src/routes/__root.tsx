@@ -119,6 +119,18 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  // For static/client-side builds, just return children
+  // The HTML structure is already in the document
+  if (typeof window !== 'undefined') {
+    return (
+      <>
+        {children}
+        <Scripts />
+      </>
+    );
+  }
+  
+  // For SSR, return full HTML structure
   return (
     <html lang="en">
       <head>
