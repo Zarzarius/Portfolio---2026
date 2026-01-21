@@ -1,9 +1,9 @@
 import { StartClient } from '@tanstack/react-start/client';
 import { StrictMode } from 'react';
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 
-hydrateRoot(
-  document,
+// Render into body - StartClient with RootDocument will handle the document structure
+createRoot(document.body).render(
   <StrictMode>
     <StartClient />
   </StrictMode>

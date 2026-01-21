@@ -29,7 +29,6 @@ const html = `<!doctype html>
 ${cssFiles.map(css => `    <link rel="stylesheet" crossorigin href="/assets/${css}">`).join('\n')}
   </head>
   <body>
-    <div id="root"></div>
 ${jsFiles.map(js => `    <script type="module" crossorigin src="/assets/${js}"></script>`).join('\n')}
   </body>
 </html>
