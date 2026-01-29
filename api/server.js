@@ -1,8 +1,7 @@
 export default async function handler(req, res) {
   try {
-    // Dynamic import to handle potential loading issues at startup
-    // Vercel routes /api/server to this file, and we need to point to the built server
-    const { server } = await import('../dist/server/server.js');
+    // Correctly import the default export from the built server
+    const { default: server } = await import('../dist/server/server.js');
     
     const url = new URL(req.url, `http://${req.headers.host}`);
     const response = await server.fetch(new Request(url, {
