@@ -1,12 +1,9 @@
-import { StartClient } from '@tanstack/react-start/client';
+import { StartClient } from '@tanstack/react-start';
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 
-// For static builds, render into body
-// RootDocument will only render children (not full HTML structure)
-const rootElement = document.body;
-
-createRoot(rootElement).render(
+hydrateRoot(
+  document,
   <StrictMode>
     <StartClient />
   </StrictMode>

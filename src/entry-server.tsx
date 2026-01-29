@@ -1,7 +1,6 @@
-import handler, { createServerEntry } from '@tanstack/react-start/server-entry';
+import { createServerEntry } from '@tanstack/react-start/server';
+import { getRouter } from './router';
 
 export default createServerEntry({
-  fetch(request: Request) {
-    return handler.fetch(request);
-  },
+  getRouter,
 });
