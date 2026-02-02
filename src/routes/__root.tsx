@@ -8,6 +8,7 @@ import {
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { PageTransition } from '../components/PageTransition';
+import { SystemTime } from '../components/SystemTime';
 import styles from './__root.module.scss';
 import '../index.scss';
 
@@ -100,18 +101,7 @@ function RootComponent() {
           </a>
         </div>
         <div className={clsx(styles.footerRight)}>
-          * AT:{' '}
-          {new Date().toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: '2-digit',
-          })}{' '}
-          |{' '}
-          {new Date().toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}{' '}
-          | 74.000^
+          <SystemTime />
         </div>
       </footer>
     </RootDocument>
