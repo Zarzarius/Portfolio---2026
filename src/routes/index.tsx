@@ -16,6 +16,15 @@ export const Route = createFileRoute('/')({
   component: Home,
 });
 
+interface Project {
+  id: string;
+  category: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  priority?: string;
+}
+
 function Home() {
   const { projects, categories } = Route.useLoaderData();
   const [activeFilter, setActiveFilter] = useState('ALL_SYSTEMS');
@@ -23,7 +32,7 @@ function Home() {
   const filteredProjects =
     activeFilter === 'ALL_SYSTEMS'
       ? projects
-      : projects.filter((p: any) => {
+      : projects.filter((p: Project) => {
           const filterMap: Record<string, string> = {
             INTERFACE: 'interface',
             BACK_END: 'backend',

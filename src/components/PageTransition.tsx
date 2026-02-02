@@ -15,13 +15,14 @@ export function PageTransition({ children }: PageTransitionProps) {
     setIsAnimating(true);
     const timer = setTimeout(() => {
       setIsAnimating(false);
-    }, 300); // Match animation duration
+    }, 400); // Match animation duration
 
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
   return (
     <div
+      key={location.pathname}
       className={clsx(
         styles.pageTransition,
         isAnimating ? styles.entering : styles.idle,

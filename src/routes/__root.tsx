@@ -30,7 +30,7 @@ function RootComponent() {
         <div className={clsx(styles.headerTop)}>
           <div className={clsx(styles.logoSection)}>
             <span className={clsx(styles.logoIcon)}></span>
-            <Link to="/" className={clsx(styles.logo)}>
+            <Link to="/" className={clsx(styles.logo)} preload="intent">
               AZAEL AC // DEV
             </Link>
           </div>
@@ -39,6 +39,7 @@ function RootComponent() {
               to="/"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
+              preload="intent"
             >
               01. WORKS
             </Link>
@@ -46,6 +47,7 @@ function RootComponent() {
               to="/stack"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
+              preload="intent"
             >
               02. STACK
             </Link>
@@ -53,6 +55,7 @@ function RootComponent() {
               to="/logs"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
+              preload="intent"
             >
               03. LOGS
             </Link>
@@ -60,6 +63,7 @@ function RootComponent() {
               to="/signal"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
+              preload="intent"
             >
               04. SIGNAL
             </Link>
