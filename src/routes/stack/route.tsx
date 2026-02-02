@@ -2,56 +2,15 @@ import { createFileRoute } from '@tanstack/react-router';
 import clsx from 'clsx';
 import styles from './stack.module.scss';
 
+import { getStack } from '../../server/functions';
+
 export const Route = createFileRoute('/stack')({
+  loader: async () => await getStack(),
   component: Stack,
 });
 
-const techCategories = [
-  {
-    category: 'FRONTEND',
-    technologies: [
-      'REACT',
-      'TYPESCRIPT',
-      'TANSTACK ROUTER',
-      'VITE',
-      'SASS',
-      'REACT THREE FIBER',
-      'ZUSTAND',
-      'NEXT.JS',
-    ],
-  },
-  {
-    category: 'BACKEND',
-    technologies: [
-      'NODE.JS',
-      'STRAPI',
-      'EXPRESS',
-      'MONGODB',
-      'GRAPHQL',
-      'REST API',
-      'SOAP API',
-      'WEBSOCKETS',
-    ],
-  },
-  {
-    category: 'DEVOPS',
-    technologies: ['DOCKER', 'KUBERNETES', 'AWS', 'GITLAB', 'GITHUB'],
-  },
-  {
-    category: 'TOOLS',
-    technologies: [
-      'GIT',
-      'VS CODE',
-      'CURSOR',
-      'ANTIGRAVITY',
-      'FIGMA',
-      'LINUX',
-      'MAC OS',
-    ],
-  },
-];
-
 function Stack() {
+  const techCategories = Route.useLoaderData();
   return (
     <div className={clsx(styles.container)}>
       <div className={clsx(styles.header)}>

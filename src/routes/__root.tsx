@@ -16,8 +16,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'DEV_ARCH // V2.0' },
-    ],
+      { title: 'AZAEL AC // DEV' },
+    ],    
   }),
   component: RootComponent,
 });
@@ -30,7 +30,7 @@ function RootComponent() {
           <div className={clsx(styles.logoSection)}>
             <span className={clsx(styles.logoIcon)}></span>
             <Link to="/" className={clsx(styles.logo)}>
-              DEV_ARCH // V2.0
+              AZAEL AC // DEV
             </Link>
           </div>
           <nav className={clsx(styles.navLinks)}>

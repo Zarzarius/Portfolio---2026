@@ -2,12 +2,15 @@ import { createFileRoute } from '@tanstack/react-router'
 import clsx from 'clsx'
 import styles from './about.module.scss'
 
+import { getSkills } from '../../server/functions';
+
 export const Route = createFileRoute('/about')({
+  loader: async () => await getSkills(),
   component: About,
-})
+});
 
 function About() {
-  const skills = ['React', 'TypeScript', 'TanStack Router', 'Vite']
+  const skills = Route.useLoaderData();
 
   return (
     <div className={clsx(styles.container)}>
