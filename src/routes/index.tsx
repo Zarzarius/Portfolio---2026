@@ -104,11 +104,22 @@ function Home() {
           </div>
         </div>
         <div className={clsx(styles.heroMedia)}>
-          <div className={clsx(styles.heroImageWrap)}>
+          <div
+            className={clsx(styles.heroImageWrap)}
+            style={{
+              width: '100%',
+              aspectRatio: '4 / 3',
+              maxHeight: 380,
+              overflow: 'hidden',
+            }}
+          >
             <img
               src="/hero-aza.png"
               alt="Azael Alonso — developer at desk with laptop and workspace"
               className={clsx(styles.heroImage)}
+              width={800}
+              height={600}
+              fetchPriority="high"
             />
           </div>
         </div>
