@@ -16,10 +16,16 @@ function Contact() {
       </p>
 
       <div className={clsx(styles.contactDetails)}>
-        <a href={`mailto:${profile.email}`} className={clsx(styles.contactLink)}>
+        <a
+          href={`mailto:${profile.email}`}
+          className={clsx(styles.contactLink)}
+        >
           {profile.email}
         </a>
-        <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className={clsx(styles.contactLink)}>
+        <a
+          href={`tel:${profile.phone.replace(/\s/g, '')}`}
+          className={clsx(styles.contactLink)}
+        >
           {profile.phone}
         </a>
         <p className={clsx(styles.contactLine)}>{profile.address}</p>
