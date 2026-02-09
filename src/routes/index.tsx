@@ -1,9 +1,18 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { ScrollReveal } from '../components/ScrollReveal';
+import { profile } from '../data/profile';
 import styles from './index.module.scss';
 
 import { getProjects, getCategories } from '../server/functions';
+
+const CATEGORY_LABELS: Record<string, string> = {
+  ALL_SYSTEMS: 'All',
+  FRONT_END: 'Frontend',
+  BACK_END: 'Backend',
+  '3D_GRAPHICS': '3D / Graphics',
+};
 
 export const Route = createFileRoute('/')({
   loader: async () => {
@@ -17,12 +26,37 @@ export const Route = createFileRoute('/')({
 });
 
 interface Project {
-  id: string;
+  id: string | number;
   category: string;
   title: string;
   description: string;
   technologies: string[];
   priority?: string;
+  type?: 'professional' | 'hobby';
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className={styles.card}>
+      <div className={styles.cardMedia}>
+        <div className={styles.cardMediaPlaceholder} />
+        {project.priority && (
+          <span className={styles.badge}>{project.priority}</span>
+        )}
+      </div>
+      <div className={styles.cardBody}>
+        <h2 className={styles.cardTitle}>{project.title}</h2>
+        <p className={styles.cardDescription}>{project.description}</p>
+        <div className={styles.tech}>
+          {project.technologies.map((tech, idx) => (
+            <span key={idx} className={styles.techTag}>
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
 }
 
 function Home() {
@@ -34,91 +68,112 @@ function Home() {
       ? projects
       : projects.filter((p: Project) => {
           const filterMap: Record<string, string> = {
-            INTERFACE: 'interface',
+            FRONT_END: 'interface',
             BACK_END: 'backend',
-            GRAPHICS: 'graphics',
-            CLOUD_OPS: 'cloud',
+            '3D_GRAPHICS': 'graphics',
           };
           return p.category === filterMap[activeFilter];
         });
 
+  const professionalProjects = filteredProjects.filter(
+    (p: Project) => (p.type ?? 'professional') === 'professional',
+  );
+  const hobbyProjects = filteredProjects.filter(
+    (p: Project) => (p.type ?? 'professional') === 'hobby',
+  );
+
   return (
-    <div className={clsx(styles.container)}>
-      <div className={clsx(styles.sectionHeader)}>
-        <div className={clsx(styles.titleSection)}>
-          <div className={clsx(styles.titlePrefix)}>01//</div>
-          <h1 className={clsx(styles.title)}>FEATURED_WORKS</h1>
-          <div className={clsx(styles.commandLine)}>
-            &gt; sudo run showcase.sh --filter=high performance
-            --status=production
+    <div className={clsx(styles.page)}>
+      <section className={clsx(styles.hero)}>
+        <div className={clsx(styles.heroContent)}>
+          <p className={clsx(styles.eyebrow)}>{profile.tagline}</p>
+          <h1 className={clsx(styles.title)}>
+            {profile.headline}
+          </h1>
+          <p className={clsx(styles.subtitle)}>
+            React, Next.js, 3D experiences, and headless CMS. Selected work from
+            D’Art Design, Demodern, and side projects.
+          </p>
+          <div className={clsx(styles.heroActions)}>
+            <Link to="/projects" className={clsx(styles.heroBtnPrimary)}>
+              View work
+            </Link>
+            <Link to="/contact" className={clsx(styles.heroBtnSecondary)}>
+              Get in touch
+            </Link>
           </div>
         </div>
+        <div className={clsx(styles.heroMedia)}>
+          <div className={clsx(styles.heroImageWrap)}>
+            <img
+              src="/hero-aza.png"
+              alt="Azael Alonso — developer at desk with laptop and workspace"
+              className={clsx(styles.heroImage)}
+            />
+          </div>
+        </div>
+      </section>
+
+      <ScrollReveal
+        className={clsx(styles.revealBlock)}
+        visibleClass={styles.revealBlockVisible}
+      >
+        <h2 className={clsx(styles.sectionHead)}>Selected work</h2>
         <div className={clsx(styles.filters)}>
-          {categories.map((category) => (
+          {categories.map((category: string) => (
             <button
               key={category}
+              type="button"
               className={clsx(
-                styles.filterButton,
-                activeFilter === category && styles.active,
+                styles.filterBtn,
+                activeFilter === category && styles.filterBtnActive,
               )}
               onClick={() => setActiveFilter(category)}
             >
-              {category}
+              {CATEGORY_LABELS[category] ?? category}
             </button>
           ))}
         </div>
-      </div>
 
-      <div className={clsx(styles.projectsGrid)}>
-        {filteredProjects.map((project) => (
-          <div key={project.id} className={clsx(styles.projectCard)}>
-            <div className={clsx(styles.projectImage)}>
-              <div className={clsx(styles.projectImagePlaceholder)}>◼</div>
-              {project.priority && (
-                <div className={clsx(styles.priorityTag)}>
-                  PRIORITY {project.priority}
-                </div>
-              )}
+        {professionalProjects.length > 0 && (
+          <section className={clsx(styles.projectGroup)}>
+            <h3 className={clsx(styles.groupTitle)}>Professional</h3>
+            <div className={clsx(styles.grid)}>
+              {professionalProjects.map((project: Project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
             </div>
-            <div className={clsx(styles.projectContent)}>
-              <h2 className={clsx(styles.projectTitle)}>{project.title}</h2>
-              <p className={clsx(styles.projectDescription)}>
-                {project.description}
-              </p>
-              <div className={clsx(styles.projectTech)}>
-                {project.technologies.map((tech, idx) => (
-                  <span key={idx} className={clsx(styles.techTag)}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+          </section>
+        )}
 
-      <div className={clsx(styles.ctaSection)}>
+        {hobbyProjects.length > 0 && (
+          <section className={clsx(styles.projectGroup)}>
+            <h3 className={clsx(styles.groupTitle)}>Hobby</h3>
+            <div className={clsx(styles.grid)}>
+              {hobbyProjects.map((project: Project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </section>
+        )}
+      </ScrollReveal>
+
+      <section className={clsx(styles.cta)}>
         <div className={clsx(styles.ctaContent)}>
-          <h2 className={clsx(styles.ctaTitle)}>
-            READY TO BUILD{' '}
-            <span className={clsx(styles.highlight)}>THE FUTURE?</span>
-          </h2>
-          <p className={clsx(styles.ctaDescription)}>
-            Let's collaborate on your next high-tech project. Open for new
-            architectural challenges and complex system integrations.
+          <h2 className={clsx(styles.ctaTitle)}>Let’s work together</h2>
+          <p className={clsx(styles.ctaText)}>
+            Based in {profile.location}. Open to new projects and collaborations — get in touch.
           </p>
         </div>
-        <div className={clsx(styles.ctaButtons)}>
-          <button className={clsx(styles.ctaButton, styles.ctaButtonPrimary)}>
-            INITIALIZE_CONTACT &gt;
-          </button>
-          <button
-            className={clsx(styles.ctaButton, styles.ctaButtonSecondary)}
-          >
-            VIEW_ARCHIVES
-          </button>
+        <div className={clsx(styles.ctaActions)}>
+          <Link to="/contact" className={clsx(styles.ctaPrimary)}>
+            Get in touch
+          </Link>
+          <Link to="/projects" className={clsx(styles.ctaSecondary)}>
+            View all projects
+          </Link>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

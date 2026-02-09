@@ -1,157 +1,179 @@
 @use '../styles/theme' as *;
 
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .header {
   position: sticky;
   top: 0;
   z-index: $z-index-sticky;
-  background-color: $color-bg-primary;
+  background: $color-bg-primary;
   border-bottom: $border-width-thin solid $color-border-primary;
+  backdrop-filter: blur(12px);
 }
 
-.headerTop {
+.headerInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: $header-padding-y $header-padding-x;
+  max-width: $container-max-width;
+  margin: 0 auto;
   gap: $spacing-6;
 }
 
-.logoSection {
-  display: flex;
-  align-items: center;
-  gap: $spacing-3;
-}
-
-.logoIcon {
-  width: 12px;
-  height: 12px;
-  background-color: $color-primary;
-  display: block;
-}
-
 .logo {
+  font-family: $font-family-heading;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   color: $color-text-primary;
-  text-decoration: none;
-  letter-spacing: $letter-spacing-normal;
+  letter-spacing: $letter-spacing-tight;
+  transition: $transition-color;
 
   &:hover {
     color: $color-primary;
   }
 }
 
-.navLinks {
+.nav {
   display: flex;
-  gap: $spacing-6;
+  gap: $spacing-8;
   align-items: center;
-  flex: 1;
-  justify-content: center;
 }
 
 .navLink {
-  font-size: $font-size-base;
+  position: relative;
+  font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   color: $color-text-tertiary;
-  text-decoration: none;
-  transition: $transition-color;
-  letter-spacing: $letter-spacing-normal;
+  transition: color $motion-duration-normal $motion-ease-in-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: $color-primary;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform $motion-duration-normal $motion-ease-out;
+  }
 
   &:hover {
-    color: $color-primary;
+    color: $color-text-primary;
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
   }
 
   &.active {
     color: $color-primary;
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
   }
 }
 
-.headerRight {
-  display: flex;
-  align-items: center;
-  gap: $spacing-4;
-}
-
-.resumeButton {
+.headerActions {
   display: flex;
   align-items: center;
   gap: $spacing-2;
-  padding: $spacing-2 $spacing-4;
-  background-color: $color-primary;
-  color: $color-bg-primary;
+}
+
+.resumeButton {
   font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  border-radius: $border-radius-sm;
-  transition: $transition-all;
-  letter-spacing: $letter-spacing-normal;
+  font-weight: $font-weight-medium;
+  padding: $spacing-2 $spacing-4;
+  background: $color-primary;
+  color: #fff;
+  border-radius: $border-radius-md;
+  transition: transform $motion-duration-normal $motion-ease-out,
+    box-shadow $motion-duration-normal $motion-ease-out,
+    background $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
-    background-color: $color-primary-dark;
-    transform: translateY(-1px);
+    background: $color-primary-dark;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: $shadow-primary;
   }
-}
-
-.profileImage {
-  width: 40px;
-  height: 40px;
-  border-radius: $border-radius-full;
-  background-color: $color-bg-active;
-  border: $border-width-medium solid $color-primary;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $color-primary;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-}
-
-.statusBar {
-  padding: $spacing-2 $spacing-6;
-  background-color: $color-bg-tertiary;
-  border-top: $border-width-thin solid $color-border-primary;
-  font-size: $font-size-sm;
-  color: $color-primary;
-  letter-spacing: $letter-spacing-normal;
 }
 
 .main {
   min-height: calc(100vh - #{$header-height});
+  flex: 1;
 }
 
 .footer {
-  margin-top: $spacing-8;
-  padding: $spacing-6;
+  padding: $spacing-6 $spacing-6;
   border-top: $border-width-thin solid $color-border-primary;
+  margin-top: auto;
+}
+
+.footerInner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: $spacing-4;
+  max-width: $container-max-width;
+  margin: 0 auto;
   font-size: $font-size-sm;
   color: $color-text-muted;
 }
 
-.footerLeft {
-  letter-spacing: $letter-spacing-normal;
+.footerCopy {
+  font-weight: $font-weight-medium;
 }
 
-.footerCenter {
+.footerLinks {
   display: flex;
-  gap: $spacing-5;
+  gap: $spacing-6;
 }
 
 .footerLink {
+  position: relative;
   color: $color-text-muted;
-  transition: $transition-color;
-  letter-spacing: $letter-spacing-normal;
+  transition: color $motion-duration-normal $motion-ease-in-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
+    background: $color-primary;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform $motion-duration-normal $motion-ease-out;
+  }
 
   &:hover {
     color: $color-primary;
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
   }
 }
 
-.footerRight {
-  color: $color-text-disabled;
-  letter-spacing: $letter-spacing-normal;
-  font-size: $font-size-xs;
+@media (max-width: $breakpoint-md) {
+  .nav {
+    gap: $spacing-5;
+  }
+
+  .headerInner {
+    padding: $header-padding-y $spacing-4;
+  }
 }

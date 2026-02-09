@@ -8,7 +8,8 @@ import {
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { PageTransition } from '../components/PageTransition';
-import { SystemTime } from '../components/SystemTime';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { profile } from '../data/profile';
 import styles from './__root.module.scss';
 import '../index.scss';
 
@@ -17,8 +18,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'AZAEL AC // DEV' },
-    ],    
+      { title: `${profile.shortName} — ${profile.tagline}` },
+    ],
   }),
   component: RootComponent,
 });
@@ -27,21 +28,18 @@ function RootComponent() {
   return (
     <RootDocument>
       <header className={clsx(styles.header)}>
-        <div className={clsx(styles.headerTop)}>
-          <div className={clsx(styles.logoSection)}>
-            <span className={clsx(styles.logoIcon)}></span>
-            <Link to="/" className={clsx(styles.logo)} preload="intent">
-              AZAEL AC // DEV
-            </Link>
-          </div>
-          <nav className={clsx(styles.navLinks)}>
+        <div className={clsx(styles.headerInner)}>
+          <Link to="/" className={clsx(styles.logo)} preload="intent">
+            {profile.shortName}
+          </Link>
+          <nav className={clsx(styles.nav)}>
             <Link
               to="/"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
               preload="intent"
             >
-              01. WORKS
+              Work
             </Link>
             <Link
               to="/stack"
@@ -49,33 +47,37 @@ function RootComponent() {
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
               preload="intent"
             >
-              02. STACK
+              Stack
             </Link>
             <Link
-              to="/logs"
+              to="/about"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
               preload="intent"
             >
-              03. LOGS
+              About
             </Link>
             <Link
-              to="/signal"
+              to="/contact"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
               preload="intent"
             >
-              04. SIGNAL
+              Contact
             </Link>
           </nav>
-          <div className={clsx(styles.headerRight)}>
-            <button className={clsx(styles.resumeButton)}>
-              <span>INITIALIZE RESUME</span>
-            </button>
-            <div className={clsx(styles.profileImage)}>AAC</div>
+          <div className={clsx(styles.headerActions)}>
+            <ThemeToggle />
+            <a
+              href={profile.resumeUrl}
+              className={clsx(styles.resumeButton)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
           </div>
         </div>
-        <div className={clsx(styles.statusBar)}>* SYSTEM_STATUS: ONLINE</div>
       </header>
       <main className={clsx(styles.main)}>
         <PageTransition>
@@ -83,29 +85,26 @@ function RootComponent() {
         </PageTransition>
       </main>
       <footer className={clsx(styles.footer)}>
-        <div className={clsx(styles.footerLeft)}>
-          © 2026 ACADEMY_ARCH. ALL_RIGHTS_RESERVED.
-        </div>
-        <div className={clsx(styles.footerCenter)}>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={clsx(styles.footerLink)}
-          >
-            GITHUB
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={clsx(styles.footerLink)}
-          >
-            LINKEDIN
-          </a>
-        </div>
-        <div className={clsx(styles.footerRight)}>
-          <SystemTime />
+        <div className={clsx(styles.footerInner)}>
+          <span className={clsx(styles.footerCopy)}>© 2026 {profile.fullName}</span>
+          <div className={clsx(styles.footerLinks)}>
+            <a
+              href={profile.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={clsx(styles.footerLink)}
+            >
+              GitHub
+            </a>
+            <a
+              href={profile.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={clsx(styles.footerLink)}
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       </footer>
     </RootDocument>
@@ -118,9 +117,31 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var d=document;var s=localStorage.getItem('theme');var p=typeof window!=='undefined'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;var t=s==='dark'||s==='light'?s:(p?'dark':'light');d.documentElement.setAttribute('data-theme',t);})();`,
+          }}
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Sora:wght@400;500;600;700&display=swap"
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `:root{font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.5;font-weight:400;font-synthesis:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{margin:0;min-width:320px;min-height:100vh}[data-theme="dark"]{color-scheme:dark}`,
+          }}
+        />
         <HeadContent />
       </head>
-      <body>
+      <body className={styles.body}>
         {children}
         <Scripts />
       </body>

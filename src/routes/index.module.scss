@@ -1,157 +1,454 @@
 @use '../styles/theme' as *;
 
-.container {
-  padding: $spacing-7 $spacing-6;
+.page {
   max-width: $container-max-width;
   margin: 0 auto;
+  padding: $spacing-8 $container-padding;
 }
 
-.sectionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: $spacing-7;
-  gap: $spacing-6;
-  flex-wrap: wrap;
+// ---- Hero ----
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-8;
+  align-items: center;
+  margin-bottom: $spacing-8;
+  min-height: min(70vh, 560px);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: $spacing-7;
+    min-height: auto;
+  }
 }
 
-.titleSection {
-  flex: 1;
+.heroContent {
+  animation: heroContentIn 0.8s ease-out backwards;
 }
 
-.titlePrefix {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+.eyebrow {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-primary;
+  text-transform: uppercase;
   letter-spacing: $letter-spacing-wide;
-  margin-bottom: $spacing-2;
+  margin-bottom: $spacing-3;
+  animation: heroItemIn 0.6s ease-out 0.1s backwards;
 }
 
 .title {
-  font-size: $font-size-4xl;
+  font-family: $font-family-heading;
+  font-size: clamp($font-size-2xl, 4.5vw, $font-size-4xl);
   font-weight: $font-weight-bold;
-  color: $color-primary;
-  letter-spacing: $letter-spacing-normal;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
   line-height: $line-height-tight;
+  margin-bottom: $spacing-4;
+  animation: heroItemIn 0.6s ease-out 0.2s backwards;
+}
+
+.subtitle {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-6;
+  animation: heroItemIn 0.6s ease-out 0.35s backwards;
+}
+
+.heroActions {
+  display: flex;
+  gap: $spacing-4;
+  flex-wrap: wrap;
+  animation: heroItemIn 0.6s ease-out 0.5s backwards;
+}
+
+.heroBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-3 $spacing-5;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: #fff;
+  background: $color-primary;
+  border-radius: $border-radius-md;
+  transition: transform $motion-duration-normal $motion-ease-out,
+    box-shadow $motion-duration-normal $motion-ease-out;
+
+  &:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: $shadow-primary;
+  }
+}
+
+.heroBtnSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-3 $spacing-5;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  border: $border-width-thin solid $color-border-secondary;
+  border-radius: $border-radius-md;
+  transition: border-color $motion-duration-normal $motion-ease-in-out,
+    color $motion-duration-normal $motion-ease-in-out;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.heroMedia {
+  position: relative;
+  animation: heroMediaIn 0.9s ease-out 0.25s backwards;
+}
+
+.heroImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 380px;
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-lg,
+    0 24px 48px -12px rgba(4, 120, 87, 0.12),
+    0 0 0 1px rgba(4, 120, 87, 0.06);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 50%,
+        rgba(4, 120, 87, 0.06) 100%
+      ),
+      radial-gradient(
+        ellipse 80% 70% at 50% 30%,
+        rgba(4, 120, 87, 0.04) 0%,
+        transparent 60%
+      );
+    opacity: 0.95;
+  }
+
+  @media (max-width: 900px) {
+    max-height: 280px;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: contrast(1.02) saturate(1.05);
+  transition: filter 0.6s $motion-ease-out;
+}
+
+.heroImageWrap:hover .heroImage {
+  filter: contrast(1) saturate(1.08);
+}
+
+.heroPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    $color-bg-secondary 0%,
+    $color-bg-tertiary 40%,
+    rgba(67, 56, 202, 0.12) 70%,
+    rgba(99, 102, 241, 0.08) 100%
+  );
+  background-size: 200% 200%;
+  animation: heroGradientShift 12s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 70% 60% at 60% 40%,
+      rgba(67, 56, 202, 0.15) 0%,
+      transparent 55%
+    );
+    animation: heroGlowPulse 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
+    animation: heroGrainMove 20s linear infinite;
+    pointer-events: none;
+  }
+}
+
+.heroPlaceholderLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+  letter-spacing: $letter-spacing-wide;
+  position: relative;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+@keyframes heroItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroContentIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroMediaIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes heroGradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes heroGlowPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes heroGrainMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-5%, -5%);
+  }
+}
+
+.sectionHead {
+  font-family: $font-family-heading;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
   margin-bottom: $spacing-4;
 }
 
-.commandLine {
+.projectGroup {
+  margin-bottom: $spacing-8;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.groupTitle {
+  font-family: $font-family-heading;
   font-size: $font-size-base;
-  color: $color-text-command;
-  font-family: $font-family-primary;
-  margin-top: $spacing-4;
-  letter-spacing: $letter-spacing-normal;
+  font-weight: $font-weight-semibold;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-4;
 }
 
 .filters {
   display: flex;
   gap: $spacing-2;
   flex-wrap: wrap;
-  align-items: flex-start;
+  margin-bottom: $spacing-7;
 }
 
-.filterButton {
+// ---- Scroll reveal (Selected work) ----
+.revealBlock {
+  .sectionHead,
+  .filters,
+  .grid .card {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  &.revealBlockVisible {
+    .sectionHead {
+      animation: revealIn $motion-duration-entrance $motion-ease-out forwards;
+    }
+
+    .filters {
+      animation: revealIn $motion-duration-entrance $motion-ease-out
+        $motion-stagger-step forwards;
+    }
+
+    .grid .card {
+      animation: revealIn $motion-duration-slow $motion-ease-out forwards;
+    }
+
+    @for $i from 1 through 24 {
+      .grid .card:nth-child(#{$i}) {
+        animation-delay: #{0.18 + ($i - 1) * 0.04}s;
+      }
+    }
+  }
+}
+
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filterBtn {
   padding: $spacing-2 $spacing-4;
-  background-color: $color-bg-tertiary;
-  border: $border-width-thin solid $color-border-secondary;
-  color: $color-text-tertiary;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  letter-spacing: $letter-spacing-normal;
-  transition: $transition-all;
+  color: $color-text-tertiary;
+  background: transparent;
+  border: $border-width-thin solid $color-border-primary;
+  border-radius: $border-radius-md;
+  transition: color $motion-duration-normal $motion-ease-in-out,
+    border-color $motion-duration-normal $motion-ease-in-out,
+    background $motion-duration-normal $motion-ease-in-out,
+    transform $motion-duration-fast $motion-ease-out;
   cursor: pointer;
 
   &:hover {
-    border-color: $color-primary;
-    color: $color-primary;
+    color: $color-text-primary;
+    border-color: $color-border-secondary;
+    transform: translateY(-1px);
   }
 
-  &.active {
-    border-color: $color-primary;
+  &.filterBtnActive {
     color: $color-primary;
-    background-color: $color-bg-hover;
+    border-color: $color-primary;
+    background: $color-bg-hover;
   }
 }
 
-.projectsGrid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: $spacing-6;
-  margin-bottom: $spacing-8;
 }
 
-.projectCard {
-  background-color: $color-bg-secondary;
-  border: $border-width-thin solid $color-border-secondary;
+.card {
+  background: $color-bg-primary;
+  border: $border-width-thin solid $color-border-primary;
   border-radius: $border-radius-lg;
   overflow: hidden;
-  transition: $transition-slow $ease-in-out;
-  cursor: pointer;
-  position: relative;
+  transition: transform $motion-duration-normal $motion-ease-out,
+    border-color $motion-duration-normal $motion-ease-in-out,
+    box-shadow $motion-duration-normal $motion-ease-out;
 
   &:hover {
-    border-color: $color-primary;
-    transform: translateY(-4px);
-    box-shadow: $shadow-primary;
+    transform: translateY(-3px);
+    border-color: $color-border-secondary;
+    box-shadow: $shadow-lg;
   }
 }
 
-.projectImage {
-  width: 100%;
-  height: 240px;
-  background: linear-gradient(135deg, $color-bg-hover 0%, rgba(0, 0, 0, 0.3) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cardMedia {
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  height: 220px;
+  background: $color-bg-secondary;
 }
 
-.projectImagePlaceholder {
+.cardMediaPlaceholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1a1a1a 0%, $color-bg-primary 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(0, 255, 136, 0.3);
-  font-size: $font-size-3xl;
+  background: linear-gradient(
+    145deg,
+    $color-bg-tertiary 0%,
+    $color-bg-secondary 100%
+  );
 }
 
-.priorityTag {
+.badge {
   position: absolute;
   top: $spacing-4;
   left: $spacing-4;
   padding: $spacing-1 $spacing-3;
-  background-color: $color-bg-active;
-  border: $border-width-thin solid $color-primary;
-  color: $color-primary;
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
-  letter-spacing: $letter-spacing-normal;
+  color: $color-primary;
+  background: $color-bg-hover;
+  border-radius: $border-radius-sm;
 }
 
-.projectContent {
+.cardBody {
   padding: $spacing-5;
 }
 
-.projectTitle {
+.cardTitle {
+  font-family: $font-family-heading;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   color: $color-text-primary;
-  margin-bottom: $spacing-3;
-  letter-spacing: $letter-spacing-normal;
+  margin-bottom: $spacing-2;
+  letter-spacing: $letter-spacing-tight;
 }
 
-.projectDescription {
+.cardDescription {
   font-size: $font-size-base;
-  color: $color-text-muted;
+  color: $color-text-secondary;
   line-height: $line-height-relaxed;
   margin-bottom: $spacing-4;
 }
 
-.projectTech {
+.tech {
   display: flex;
   flex-wrap: wrap;
   gap: $spacing-2;
@@ -159,20 +456,19 @@
 
 .techTag {
   padding: $spacing-1 $spacing-3;
-  background-color: $color-bg-tertiary;
-  border: $border-width-thin solid $color-border-secondary;
-  color: $color-text-tertiary;
   font-size: $font-size-xs;
-  letter-spacing: $letter-spacing-normal;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  background: $color-bg-secondary;
   border-radius: $border-radius-sm;
 }
 
-.ctaSection {
+.cta {
   margin-top: $spacing-8;
   padding: $spacing-7 $spacing-6;
-  border: $border-width-medium solid $color-primary;
+  background: $color-bg-secondary;
+  border: $border-width-thin solid $color-border-primary;
   border-radius: $border-radius-lg;
-  background-color: $color-bg-tertiary;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -182,64 +478,67 @@
 
 .ctaContent {
   flex: 1;
+  min-width: 280px;
 }
 
 .ctaTitle {
-  font-size: $font-size-2xl;
-  font-weight: $font-weight-bold;
+  font-family: $font-family-heading;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
   color: $color-text-primary;
-  margin-bottom: $spacing-4;
-  letter-spacing: $letter-spacing-normal;
-  line-height: $line-height-tight;
-
-  .highlight {
-    color: $color-primary;
-  }
+  margin-bottom: $spacing-2;
+  letter-spacing: $letter-spacing-tight;
 }
 
-.ctaDescription {
-  font-size: $font-size-md;
-  color: $color-text-tertiary;
+.ctaText {
+  font-size: $font-size-base;
+  color: $color-text-secondary;
   line-height: $line-height-relaxed;
-  max-width: 500px;
 }
 
-.ctaButtons {
+.ctaActions {
   display: flex;
   gap: $spacing-4;
   flex-wrap: wrap;
 }
 
-.ctaButton {
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
   padding: $spacing-3 $spacing-5;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
-  letter-spacing: $letter-spacing-normal;
-  border-radius: $border-radius-sm;
-  transition: $transition-all;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: $spacing-2;
-}
-
-.ctaButtonPrimary {
-  background-color: $color-primary;
-  color: $color-bg-primary;
+  color: #fff;
+  background: $color-primary;
+  border-radius: $border-radius-md;
+  transition: transform $motion-duration-normal $motion-ease-out,
+    box-shadow $motion-duration-normal $motion-ease-out,
+    background $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
-    background-color: $color-primary-dark;
+    background: $color-primary-dark;
+    color: #fff;
     transform: translateY(-2px);
+    box-shadow: $shadow-primary;
   }
 }
 
-.ctaButtonSecondary {
-  background-color: transparent;
-  border: $border-width-thin solid $color-border-tertiary;
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-3 $spacing-5;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
   color: $color-text-primary;
+  border: $border-width-thin solid $color-border-secondary;
+  border-radius: $border-radius-md;
+  transition: border-color $motion-duration-normal $motion-ease-in-out,
+    color $motion-duration-normal $motion-ease-in-out,
+    transform $motion-duration-normal $motion-ease-out;
 
   &:hover {
     border-color: $color-primary;
     color: $color-primary;
+    transform: translateY(-1px);
   }
 }

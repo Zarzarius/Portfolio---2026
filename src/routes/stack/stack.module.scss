@@ -1,83 +1,247 @@
 @use '../../styles/theme' as *;
 
-.container {
-  padding: $spacing-7 $spacing-6;
+// -----------------------------------------
+// Layout
+// -----------------------------------------
+
+.page {
   max-width: $container-max-width;
   margin: 0 auto;
+  padding: $spacing-8 $container-padding;
 }
+
+// -----------------------------------------
+// Header
+// -----------------------------------------
 
 .header {
   margin-bottom: $spacing-8;
+  max-width: 42rem;
+  animation: stackFadeIn 0.6s ease-out backwards;
 }
 
-.titlePrefix {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+.eyebrow {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-primary;
+  text-transform: uppercase;
   letter-spacing: $letter-spacing-wide;
-  margin-bottom: $spacing-2;
+  margin-bottom: $spacing-3;
 }
 
 .title {
-  font-size: $font-size-4xl;
+  font-family: $font-family-heading;
+  font-size: clamp($font-size-2xl, 5vw, $font-size-4xl);
   font-weight: $font-weight-bold;
-  color: $color-primary;
-  letter-spacing: $letter-spacing-normal;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
   line-height: $line-height-tight;
+  margin-bottom: $spacing-3;
+}
+
+.subtitle {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+}
+
+// -----------------------------------------
+// Daily drivers strip
+// -----------------------------------------
+
+.dailyDrivers {
+  margin-bottom: $spacing-8;
+  padding: $spacing-6;
+  background: linear-gradient(135deg, rgba($color-primary, 0.06) 0%, rgba($color-primary-light, 0.04) 100%);
+  border: $border-width-thin solid rgba($color-primary, 0.15);
+  border-radius: $border-radius-lg;
+  animation: stackFadeIn 0.6s ease-out 0.1s backwards;
+}
+
+.dailyDriversTitle {
+  font-family: $font-family-heading;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
+  margin-bottom: $spacing-1;
+}
+
+.dailyDriversDesc {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
   margin-bottom: $spacing-4;
 }
 
-.commandLine {
-  font-size: $font-size-base;
-  color: $color-text-command;
-  font-family: $font-family-primary;
-  margin-top: $spacing-4;
-  letter-spacing: $letter-spacing-normal;
+.dailyDriversList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
 }
 
-.categories {
+.driverPill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-1;
+  padding: $spacing-2 $spacing-4;
+  background: $color-bg-primary;
+  border: $border-width-thin solid $color-border-primary;
+  border-radius: $border-radius-md;
+  transition: $transition-all;
+  animation: stackFadeIn 0.5s ease-out backwards;
+  max-width: 220px;
+
+  &:hover {
+    border-color: $color-primary;
+    background: $color-bg-hover;
+    box-shadow: $shadow-sm;
+
+    .driverPillDesc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.driverPillName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-primary-dark;
+}
+
+.driverPillDesc {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity $transition-normal $ease-out, transform $transition-normal $ease-out;
+}
+
+// -----------------------------------------
+// Category sections
+// -----------------------------------------
+
+.sections {
   display: flex;
   flex-direction: column;
   gap: $spacing-7;
 }
 
-.category {
-  border: $border-width-thin solid $color-border-secondary;
-  border-radius: $border-radius-lg;
+.section {
   padding: $spacing-6;
-  background-color: $color-bg-secondary;
-}
-
-.categoryTitle {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-semibold;
-  color: $color-primary;
-  margin-bottom: $spacing-5;
-  letter-spacing: $letter-spacing-normal;
-}
-
-.techGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: $spacing-4;
-}
-
-.techCard {
-  padding: $spacing-4;
-  background-color: $color-bg-tertiary;
-  border: $border-width-thin solid $color-border-secondary;
-  border-radius: $border-radius-md;
-  text-align: center;
-  font-size: $font-size-base;
-  font-weight: $font-weight-medium;
-  letter-spacing: $letter-spacing-normal;
-  color: $color-text-secondary;
+  background: $color-bg-primary;
+  border: $border-width-thin solid $color-border-primary;
+  border-radius: $border-radius-lg;
   transition: $transition-all;
+  animation: stackFadeIn 0.5s ease-out backwards;
 
   &:hover {
-    border-color: $color-primary;
-    color: $color-primary;
-    background-color: $color-bg-hover;
-    transform: translateY(-2px);
+    border-color: $color-border-secondary;
+  }
+}
+
+.sectionTitle {
+  font-family: $font-family-heading;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-5;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-3;
+
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+// -----------------------------------------
+// Tech cards (hover-reveal description)
+// -----------------------------------------
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  padding: $spacing-3 $spacing-4;
+  min-height: 3.5rem;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  background: $color-bg-secondary;
+  border-radius: $border-radius-md;
+  border: $border-width-thin solid transparent;
+  transition: color $transition-normal $ease-in-out,
+    background $transition-normal $ease-in-out,
+    border-color $transition-normal $ease-in-out,
+    box-shadow $transition-normal $ease-in-out;
+  animation: stackFadeIn 0.4s ease-out backwards;
+
+  &:hover {
+    color: $color-text-primary;
+    background: $color-bg-hover;
+    border-color: rgba($color-primary, 0.2);
+    box-shadow: $shadow-sm;
+
+    .itemDesc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &:focus-within {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+
+    .itemDesc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.itemHighlight {
+  background: rgba($color-primary, 0.06);
+  border-color: rgba($color-primary, 0.12);
+
+  .itemName {
+    color: $color-primary-dark;
+  }
+}
+
+.itemName {
+  font-weight: $font-weight-semibold;
+  color: inherit;
+}
+
+.itemDesc {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  color: $color-text-muted;
+  line-height: $line-height-normal;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity $transition-normal $ease-out, transform $transition-normal $ease-out;
+}
+
+// -----------------------------------------
+// Animations
+// -----------------------------------------
+
+@keyframes stackFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

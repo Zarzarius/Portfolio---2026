@@ -1,77 +1,91 @@
+export type ProjectType = 'professional' | 'hobby';
+
 export const projects = [
   {
     id: 1,
-    title: 'NEURAL_INTERFACE_V4',
+    title: 'React & Next.js web applications',
     description:
-      'Advanced neural networking visualization tool with real-time data processing and WebGL layers.',
-    technologies: ['REACT', 'THREE.JS', 'WEBGL', 'D3'],
+      'Architected and built responsive web apps with React 18+ and Next.js 14: App Router, server components, and optimized data fetching. Improved Core Web Vitals through code splitting and lazy loading.',
+    technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND'],
     priority: 'A',
     category: 'interface',
+    type: 'professional' as ProjectType,
   },
   {
     id: 2,
-    title: 'VOX_COIN_DASH',
+    title: '3D product visualizations & virtual showrooms',
     description:
-      'Next-gen crypto asset management platform with D3-driven analytics and real-time market data.',
-    technologies: ['REACT', 'D3', 'NODE.JS', 'MONGO'],
+      'Created immersive 3D web experiences with React Three Fiber and Three.js — interactive product configurators and virtual showrooms with real-time rendering.',
+    technologies: ['REACT', 'THREE.JS', 'R3F', 'WEBGL'],
     priority: 'A',
-    category: 'interface',
+    category: 'graphics',
+    type: 'professional' as ProjectType,
   },
   {
     id: 3,
-    title: 'CYBER_GRID_UI',
+    title: 'Headless CMS & content platforms',
     description:
-      'Open-source modular design system for high-performance web applications with 3D rendering capabilities.',
-    technologies: ['REACT', 'THREE.JS', 'TYPESCRIPT'],
+      'Integrated Strapi and Craft CMS with GraphQL APIs for marketing and e-commerce, enabling flexible content management and structured data flows.',
+    technologies: ['STRAPI', 'CRAFT CMS', 'GRAPHQL', 'NODE.JS'],
     category: 'interface',
+    type: 'professional' as ProjectType,
   },
   {
     id: 4,
-    title: 'QUANTUM_COMPUTE',
+    title: 'Interactive digital experiences',
     description:
-      'Predictive analytics engine using hybrid quantum-classical algorithms for complex data processing.',
-    technologies: ['PYTHON', 'QUANTUM', 'ML', 'CLOUD'],
-    category: 'backend',
+      'Built high-profile client projects at Demodern: custom UI components, design systems, and complex animations with GSAP and CSS. Mobile-first, responsive layouts.',
+    technologies: ['REACT', 'GSAP', 'TYPESCRIPT', 'FIGMA'],
+    category: 'interface',
+    type: 'professional' as ProjectType,
   },
   {
     id: 5,
-    title: 'GHOST_PROTOCOL',
+    title: 'WebGL & 3D experiences',
     description:
-      'End-to-end encrypted messaging terminal with zero-knowledge architecture and secure channels.',
-    technologies: ['REACT', 'NODE.JS', 'ENCRYPTION', 'WEBSOCKET'],
-    category: 'backend',
+      'Developed interactive 3D visualizations and WebGL experiences with Three.js, balancing performance and browser capabilities for creative campaigns.',
+    technologies: ['THREE.JS', 'WEBGL', 'JAVASCRIPT', 'CSS'],
+    category: 'graphics',
+    type: 'professional' as ProjectType,
   },
   {
     id: 6,
-    title: 'CLOUD_OPS_MONITOR',
+    title: 'Full-stack MERN applications',
     description:
-      'Real-time infrastructure monitoring system with automated scaling and performance optimization.',
-    technologies: ['KUBERNETES', 'DOCKER', 'PROMETHEUS', 'GRAFANA'],
-    category: 'cloud',
+      'Hands-on full-stack projects from bootcamp and side work: REST APIs, async data flows, and deployment. MongoDB, Express, React, Node.js.',
+    technologies: ['REACT', 'NODE.JS', 'EXPRESS', 'MONGODB'],
+    category: 'backend',
+    type: 'hobby' as ProjectType,
   },
 ];
 
-export const categories = ['ALL_SYSTEMS', 'FRONT_END', 'BACK_END', '3D_GRAPHICS'];
+export const categories = [
+  'ALL_SYSTEMS',
+  'FRONT_END',
+  'BACK_END',
+  '3D_GRAPHICS',
+];
 
 export const showcaseProjects = [
   {
     id: 1,
-    title: 'Project One',
+    title: 'React & Next.js applications',
     description:
-      'A description of your first project. Showcase what technologies you used and what problems it solved.',
-    technologies: ['React', 'TypeScript', 'Vite'],
+      'Responsive web applications with React 18+, Next.js 14 (App Router, server components), and optimized data fetching. Focus on Core Web Vitals and maintainable architecture.',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Zustand'],
   },
   {
     id: 2,
-    title: 'Project Two',
+    title: '3D product experiences',
     description:
-      'Another project description. Highlight key features and your role in the project.',
-    technologies: ['React', 'Node.js', 'MongoDB'],
+      'Immersive 3D web experiences with React Three Fiber and Three.js: interactive product visualizations and virtual showrooms with real-time rendering.',
+    technologies: ['React Three Fiber', 'Three.js', 'WebGL', 'TypeScript'],
   },
   {
     id: 3,
-    title: 'Project Three',
-    description: 'A third project to showcase your versatility and range of skills.',
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL'],
+    title: 'Headless CMS integrations',
+    description:
+      'Content platforms powered by Strapi and Craft CMS with GraphQL APIs, supporting marketing sites and e-commerce with flexible content workflows.',
+    technologies: ['Strapi', 'Craft CMS', 'GraphQL', 'Node.js'],
   },
 ];

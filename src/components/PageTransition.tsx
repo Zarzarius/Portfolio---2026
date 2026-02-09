@@ -15,7 +15,7 @@ export function PageTransition({ children }: PageTransitionProps) {
     setIsAnimating(true);
     const timer = setTimeout(() => {
       setIsAnimating(false);
-    }, 400); // Match animation duration
+    }, 450); // Match motion-duration-entrance
 
     return () => clearTimeout(timer);
   }, [location.pathname]);

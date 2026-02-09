@@ -1,43 +1,56 @@
 @use '../../styles/theme' as *;
 
 .container {
-  // Container styles
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-8 $container-padding;
 }
 
 .title {
-  font-size: $font-size-2xl;
+  font-family: $font-family-heading;
+  font-size: clamp($font-size-2xl, 5vw, $font-size-4xl);
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
   margin-bottom: $spacing-6;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: $spacing-6;
-  margin-top: $spacing-6;
 }
 
 .card {
   padding: $spacing-5;
-  border: $border-width-thin solid $color-border-secondary;
-  border-radius: $border-radius-xl;
-  transition: $transition-transform, box-shadow $transition-normal;
-  cursor: pointer;
+  background: $color-bg-primary;
+  border: $border-width-thin solid $color-border-primary;
+  border-radius: $border-radius-lg;
+  transition: transform $motion-duration-normal $motion-ease-out,
+    border-color $motion-duration-normal $motion-ease-in-out,
+    box-shadow $motion-duration-normal $motion-ease-out;
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
+    border-color: $color-border-secondary;
     box-shadow: $shadow-lg;
   }
 }
 
 .cardTitle {
-  font-size: $font-size-xl;
-  margin-bottom: $spacing-4;
+  font-family: $font-family-heading;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-3;
+  letter-spacing: $letter-spacing-tight;
 }
 
 .cardDescription {
-  margin-bottom: $spacing-4;
-  opacity: $opacity-tertiary;
+  font-size: $font-size-base;
+  color: $color-text-secondary;
   line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
 }
 
 .techList {
@@ -48,7 +61,9 @@
 
 .techTag {
   padding: $spacing-1 $spacing-3;
-  font-size: $font-size-base;
-  background-color: $color-bg-active;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  background: $color-bg-secondary;
   border-radius: $border-radius-sm;
 }

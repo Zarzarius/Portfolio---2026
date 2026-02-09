@@ -16,12 +16,11 @@ function Signal() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log('Form submitted:', formData);
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -30,46 +29,38 @@ function Signal() {
   };
 
   return (
-    <div className={clsx(styles.container)}>
-      <div className={clsx(styles.header)}>
-        <div className={clsx(styles.titlePrefix)}>04//</div>
-        <h1 className={clsx(styles.title)}>SIGNAL_TRANSMISSION</h1>
-        <div className={clsx(styles.commandLine)}>
-          &gt; open_secure_channel --protocol=encrypted --mode=contact
-        </div>
-      </div>
+    <div className={clsx(styles.page)}>
+      <header className={clsx(styles.header)}>
+        <p className={clsx(styles.eyebrow)}>Get in touch</p>
+        <h1 className={clsx(styles.title)}>Contact</h1>
+        <p className={clsx(styles.subtitle)}>
+          Have a project in mind or want to collaborate? Send a message and I’ll
+          get back to you.
+        </p>
+      </header>
 
-      <div className={clsx(styles.content)}>
-        <div className={clsx(styles.infoSection)}>
-          <h2 className={clsx(styles.infoTitle)}>ESTABLISH_CONNECTION</h2>
-          <p className={clsx(styles.infoDescription)}>
-            Ready to collaborate on your next high-tech project. Open for new
-            architectural challenges and complex system integrations. Let's
-            build the future together.
+      <div className={clsx(styles.layout)}>
+        <div className={clsx(styles.info)}>
+          <h2 className={clsx(styles.infoTitle)}>Reach out</h2>
+          <p className={clsx(styles.infoText)}>
+            Open to new projects and long-term collaborations. I typically reply
+            within 24 hours.
           </p>
-          <div className={clsx(styles.contactInfo)}>
-            <div className={clsx(styles.contactItem)}>
-              <span className={clsx(styles.contactLabel)}>EMAIL:</span>
-              <span className={clsx(styles.contactValue)}>
-                azaelalonsocampana@gmail.com
-              </span>
+          <dl className={clsx(styles.details)}>
+            <div className={clsx(styles.detail)}>
+              <dt>Email</dt>
+              <dd>azaelalonsocampana@gmail.com</dd>
             </div>
-            <div className={clsx(styles.contactItem)}>
-              <span className={clsx(styles.contactLabel)}>STATUS:</span>
-              <span className={clsx(styles.contactValue)}>AVAILABLE</span>
+            <div className={clsx(styles.detail)}>
+              <dt>Availability</dt>
+              <dd>Available for new work</dd>
             </div>
-            <div className={clsx(styles.contactItem)}>
-              <span className={clsx(styles.contactLabel)}>RESPONSE_TIME:</span>
-              <span className={clsx(styles.contactValue)}>&lt; 24 HOURS</span>
-            </div>
-          </div>
+          </dl>
         </div>
 
         <form className={clsx(styles.form)} onSubmit={handleSubmit}>
-          <div className={clsx(styles.formGroup)}>
-            <label htmlFor="name" className={clsx(styles.label)}>
-              &gt; NAME:
-            </label>
+          <div className={clsx(styles.field)}>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
@@ -77,13 +68,11 @@ function Signal() {
               className={clsx(styles.input)}
               value={formData.name}
               onChange={handleChange}
-              placeholder="Enter your name"
+              placeholder="Your name"
             />
           </div>
-          <div className={clsx(styles.formGroup)}>
-            <label htmlFor="email" className={clsx(styles.label)}>
-              &gt; EMAIL:
-            </label>
+          <div className={clsx(styles.field)}>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -91,25 +80,23 @@ function Signal() {
               className={clsx(styles.input)}
               value={formData.email}
               onChange={handleChange}
-              placeholder="your.email@example.com"
+              placeholder="you@example.com"
             />
           </div>
-          <div className={clsx(styles.formGroup)}>
-            <label htmlFor="message" className={clsx(styles.label)}>
-              &gt; MESSAGE:
-            </label>
+          <div className={clsx(styles.field)}>
+            <label htmlFor="message">Message</label>
             <textarea
               id="message"
               name="message"
-              rows={8}
+              rows={6}
               className={clsx(styles.textarea)}
               value={formData.message}
               onChange={handleChange}
-              placeholder="Describe your project or inquiry..."
+              placeholder="Tell me about your project..."
             />
           </div>
-          <button type="submit" className={clsx(styles.submitButton)}>
-            SEND_TRANSMISSION &gt;
+          <button type="submit" className={clsx(styles.submit)}>
+            Send message
           </button>
         </form>
       </div>

@@ -1,169 +1,153 @@
 @use '../../styles/theme' as *;
 
-.container {
-  padding: $spacing-7 $spacing-6;
+.page {
   max-width: $container-max-width;
   margin: 0 auto;
+  padding: $spacing-8 $container-padding;
 }
 
 .header {
   margin-bottom: $spacing-8;
+  max-width: 42rem;
 }
 
-.titlePrefix {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+.eyebrow {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-primary;
+  text-transform: uppercase;
   letter-spacing: $letter-spacing-wide;
-  margin-bottom: $spacing-2;
+  margin-bottom: $spacing-3;
 }
 
 .title {
-  font-size: $font-size-4xl;
+  font-family: $font-family-heading;
+  font-size: clamp($font-size-2xl, 5vw, $font-size-4xl);
   font-weight: $font-weight-bold;
-  color: $color-primary;
-  letter-spacing: $letter-spacing-normal;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
   line-height: $line-height-tight;
-  margin-bottom: $spacing-4;
+  margin-bottom: $spacing-3;
 }
 
-.commandLine {
-  font-size: $font-size-base;
-  color: $color-text-command;
-  font-family: $font-family-primary;
-  margin-top: $spacing-4;
-  letter-spacing: $letter-spacing-normal;
+.subtitle {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
 }
 
-.content {
+.layout {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: $spacing-8;
   align-items: start;
 
-  @media (max-width: 968px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 }
 
-.infoSection {
-  border: $border-width-thin solid $color-border-secondary;
-  border-radius: $border-radius-lg;
+.info {
   padding: $spacing-6;
-  background-color: $color-bg-secondary;
+  background: $color-bg-secondary;
+  border: $border-width-thin solid $color-border-primary;
+  border-radius: $border-radius-lg;
 }
 
 .infoTitle {
-  font-size: $font-size-xl;
+  font-family: $font-family-heading;
+  font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-primary;
-  margin-bottom: $spacing-4;
-  letter-spacing: $letter-spacing-normal;
+  color: $color-text-primary;
+  margin-bottom: $spacing-3;
 }
 
-.infoDescription {
+.infoText {
   font-size: $font-size-base;
-  color: $color-text-tertiary;
+  color: $color-text-secondary;
   line-height: $line-height-relaxed;
-  margin-bottom: $spacing-6;
+  margin-bottom: $spacing-5;
 }
 
-.contactInfo {
+.details {
   display: flex;
   flex-direction: column;
   gap: $spacing-4;
 }
 
-.contactItem {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-2;
-  padding-bottom: $spacing-4;
-  border-bottom: $border-width-thin solid $color-border-secondary;
-
-  &:last-child {
-    border-bottom: none;
+.detail {
+  dt {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+    margin-bottom: $spacing-1;
   }
-}
-
-.contactLabel {
-  font-size: $font-size-sm;
-  color: $color-text-command;
-  letter-spacing: $letter-spacing-wide;
-}
-
-.contactValue {
-  font-size: $font-size-base;
-  color: $color-primary;
-  font-weight: $font-weight-medium;
-  letter-spacing: $letter-spacing-normal;
+  dd {
+    font-size: $font-size-base;
+    color: $color-text-primary;
+    font-weight: $font-weight-medium;
+  }
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: $spacing-6;
+  gap: $spacing-5;
 }
 
-.formGroup {
+.field {
   display: flex;
   flex-direction: column;
-  gap: $spacing-3;
-}
+  gap: $spacing-2;
 
-.label {
-  font-size: $font-size-base;
-  color: $color-primary;
-  font-weight: $font-weight-medium;
-  letter-spacing: $letter-spacing-normal;
+  label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+  }
 }
 
 .input,
 .textarea {
-  padding: $spacing-4;
-  background-color: $color-bg-tertiary;
-  border: $border-width-thin solid $color-border-secondary;
-  border-radius: $border-radius-md;
-  color: $color-text-primary;
+  padding: $spacing-3 $spacing-4;
   font-size: $font-size-base;
-  font-family: $font-family-primary;
+  color: $color-text-primary;
+  background: $color-bg-primary;
+  border: $border-width-thin solid $color-border-primary;
+  border-radius: $border-radius-md;
   transition: $transition-all;
 
   &:focus {
     outline: none;
     border-color: $color-primary;
-    background-color: $color-bg-hover;
+    box-shadow: 0 0 0 3px $color-bg-hover;
   }
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: $color-text-muted;
   }
 }
 
 .textarea {
   resize: vertical;
-  min-height: 200px;
-  font-family: $font-family-primary;
+  min-height: 160px;
 }
 
-.submitButton {
-  padding: $spacing-4 $spacing-6;
-  background-color: $color-primary;
-  color: $color-bg-primary;
+.submit {
+  padding: $spacing-3 $spacing-6;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
-  letter-spacing: $letter-spacing-normal;
+  color: #fff;
+  background: $color-primary;
+  border: none;
   border-radius: $border-radius-md;
   cursor: pointer;
-  transition: $transition-all;
   align-self: flex-start;
+  transition: $transition-all;
 
   &:hover {
-    background-color: $color-primary-dark;
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
+    background: $color-primary-dark;
   }
 }

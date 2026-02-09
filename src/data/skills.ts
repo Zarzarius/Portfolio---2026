@@ -1,1 +1,29 @@
-export const skills = ['React', 'TypeScript', 'TanStack Router', 'Vite'];
+/**
+ * Skills list — aligned with CV technical skills.
+ */
+export const skills = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'JavaScript (ES6+)',
+  'HTML5 & CSS3',
+  'Node.js',
+  'Express.js',
+  'Strapi',
+  'Craft CMS',
+  'GraphQL',
+  'REST APIs',
+  'Zustand',
+  'Redux',
+  'React Three Fiber',
+  'Three.js',
+  'GSAP',
+  'Framer Motion',
+  'Material UI',
+  'Tailwind CSS',
+  'Styled Components',
+  'Figma',
+  'Git',
+  'Docker',
+  'Agile / SCRUM',
+];

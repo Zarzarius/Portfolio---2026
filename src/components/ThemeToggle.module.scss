@@ -1,0 +1,29 @@
+@use '../styles/theme' as *;
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-md;
+  color: $color-text-tertiary;
+  transition: color $motion-duration-normal $motion-ease-in-out,
+    background $motion-duration-normal $motion-ease-in-out;
+
+  &:hover {
+    color: $color-text-primary;
+    background: $color-bg-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

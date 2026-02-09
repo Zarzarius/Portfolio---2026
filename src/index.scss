@@ -1,5 +1,49 @@
 @use './styles/theme' as *;
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+// ============================================
+// Theme — CSS custom properties (light default)
+// ============================================
+:root {
+  --color-bg-primary: #fafaf9;
+  --color-bg-secondary: #f5f5f4;
+  --color-bg-tertiary: #e7e5e4;
+  --color-bg-hover: rgba(4, 120, 87, 0.08);
+  --color-bg-active: rgba(4, 120, 87, 0.14);
+  --color-text-primary: #1c1917;
+  --color-text-secondary: #44403c;
+  --color-text-tertiary: #57534e;
+  --color-text-muted: #78716c;
+  --color-text-disabled: #a8a29e;
+  --color-border-primary: #e7e5e4;
+  --color-border-secondary: #d6d3d1;
+  --color-border-tertiary: #a8a29e;
+  --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.06);
+  --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.08);
+  --shadow-lg: 0 8px 24px rgba(28, 25, 23, 0.1);
+  --shadow-xl: 0 16px 48px rgba(28, 25, 23, 0.12);
+  --shadow-primary: 0 4px 16px rgba(4, 120, 87, 0.24);
+}
+
+[data-theme='dark'] {
+  --color-bg-primary: #0c0a09;
+  --color-bg-secondary: #1c1917;
+  --color-bg-tertiary: #292524;
+  --color-bg-hover: rgba(52, 211, 153, 0.12);
+  --color-bg-active: rgba(52, 211, 153, 0.18);
+  --color-text-primary: #fafaf9;
+  --color-text-secondary: #e7e5e4;
+  --color-text-tertiary: #d6d3d1;
+  --color-text-muted: #a8a29e;
+  --color-text-disabled: #78716c;
+  --color-border-primary: #292524;
+  --color-border-secondary: #44403c;
+  --color-border-tertiary: #57534e;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --shadow-primary: 0 4px 20px rgba(52, 211, 153, 0.28);
+}
 
 * {
   margin: 0;
@@ -8,14 +52,11 @@
 }
 
 :root {
-  font-family: $font-family-primary;
+  font-family: $font-family-body;
   line-height: $line-height-normal;
   font-weight: $font-weight-normal;
-
-  color-scheme: dark;
-  color: $color-text-primary;
-  background-color: $color-bg-primary;
-
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,14 +67,18 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: $color-bg-primary;
-  color: $color-text-primary;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
-  background-color: $color-bg-primary;
+  background-color: var(--color-bg-primary);
 }
 
 a {
@@ -49,7 +94,7 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
-  transition: $transition-all;
+  transition: $transition-interactive;
   border: none;
   background: transparent;
 }
