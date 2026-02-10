@@ -1,8 +1,8 @@
 /**
  * Portfolio profile data — sourced from CV (Azael Alonso Campana, 2026).
- * Resume and image URLs use CDN_URL in production (e.g. https://cdn.azaelac.dev).
+ * Resume and image URLs use VITE_CDN_URL in production (e.g. https://cdn.azaelac.dev).
  */
-const cdnUrl = import.meta.env.CDN_URL ?? '';
+const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 export const profile = {
   fullName: 'Azael Alonso Campana',
   shortName: 'Azael AC',

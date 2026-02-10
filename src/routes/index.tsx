@@ -6,7 +6,7 @@ import { profile } from '../data/profile';
 import styles from './index.module.scss';
 
 import { getProjects, getCategories } from '../server/functions';
-const cdnUrl = import.meta.env.CDN_URL ?? '';
+const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 const CATEGORY_LABELS: Record<string, string> = {
   ALL_SYSTEMS: 'All',
   FRONT_END: 'Frontend',
