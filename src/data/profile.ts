@@ -1,8 +1,14 @@
 /**
  * Portfolio profile data — sourced from CV (Azael Alonso Campana, 2026).
  * Resume and image URLs use VITE_CDN_URL in production (e.g. https://cdn.azaelac.dev).
+ * @see https://tanstack.com/start/latest/docs/framework/react/guide/environment-variables#build-errors-in-production
  */
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
+if (import.meta.env.PROD && !cdnUrl) {
+  throw new Error(
+    'Missing VITE_CDN_URL in production. Set it in .env.production or in your hosting platform (e.g. Vercel/Netlify) so the build has the CDN URL.',
+  );
+}
 export const profile = {
   fullName: 'Azael Alonso Campana',
   shortName: 'Azael AC',
