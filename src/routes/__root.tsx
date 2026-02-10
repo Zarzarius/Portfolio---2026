@@ -12,16 +12,21 @@ import { BurgerMenu } from '../components/BurgerMenu';
 import { PageTransition } from '../components/PageTransition';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { profile } from '../data/profile';
+import { getDefaultSeoMeta } from '../data/seo';
 import styles from './__root.module.scss';
 import '../index.scss';
+
+const defaultSeo = getDefaultSeoMeta();
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: `${profile.shortName} — ${profile.tagline}` },
+      ...defaultSeo.meta,
     ],
+    links: defaultSeo.links,
+    scripts: defaultSeo.scripts,
   }),
   component: RootComponent,
 });
