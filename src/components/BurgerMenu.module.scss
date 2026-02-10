@@ -1,0 +1,102 @@
+@use '../styles/theme' as *;
+
+// Burger button — three lines that animate to X (centered in 44×44 tap area)
+.burger {
+  display: none; // shown only on mobile via media query below
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: $color-text-primary;
+  cursor: pointer;
+  border-radius: $border-radius-md;
+  transition: background $motion-duration-fast $motion-ease-out,
+    color $motion-duration-normal $motion-ease-in-out;
+
+  &:hover {
+    background: $color-bg-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: flex;
+  }
+}
+
+.burgerLine {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transform-origin: 50% 50%;
+  transition: transform $motion-duration-normal $motion-ease-out,
+    opacity $motion-duration-fast $motion-ease-out;
+}
+
+// Animate to X: top and bottom lines meet at visual center (6px gap + 2px line = 8px)
+.burgerOpen .burgerLine {
+  &:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  &:nth-child(2) {
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+// Overlay (backdrop) — portaled to body so it always stacks above main content
+.overlay {
+  position: fixed;
+  inset: 0;
+  top: $header-height;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $motion-duration-normal $motion-ease-out,
+    visibility $motion-duration-normal $motion-ease-out;
+  pointer-events: none;
+
+  @media (max-width: $breakpoint-md) {
+    &.overlayOpen {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+}
+
+// Drawer (slide-in panel)
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(280px, 85vw);
+  height: 100%;
+  background: $color-bg-primary;
+  border-left: $border-width-thin solid $color-border-primary;
+  box-shadow: $shadow-xl;
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  transform: translateX(100%);
+  transition: transform $motion-duration-slow $motion-ease-out;
+  z-index: 1;
+
+  &.drawerOpen {
+    transform: translateX(0);
+  }
+}

@@ -168,12 +168,68 @@
   }
 }
 
+// Mobile: hide desktop nav and actions; burger is shown by BurgerMenu.module.scss
 @media (max-width: $breakpoint-md) {
   .nav {
-    gap: $spacing-5;
+    display: none;
+  }
+
+  .headerActions {
+    display: none;
   }
 
   .headerInner {
     padding: $header-padding-y $spacing-4;
+  }
+}
+
+// Drawer content (mobile menu)
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: $spacing-3 $spacing-2;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  transition: color $motion-duration-normal $motion-ease-in-out,
+    background $motion-duration-fast $motion-ease-out;
+
+  &:hover {
+    color: $color-text-primary;
+    background: $color-bg-hover;
+  }
+
+  &.mobileNavLinkActive {
+    color: $color-primary;
+  }
+}
+
+.mobileActions {
+  margin-top: auto;
+  padding-top: $spacing-4;
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  border-top: $border-width-thin solid $color-border-primary;
+}
+
+.mobileResumeButton {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  padding: $spacing-2 $spacing-4;
+  background: $color-primary;
+  color: #fff;
+  border-radius: $border-radius-md;
+  transition: background $motion-duration-normal $motion-ease-in-out,
+    transform $motion-duration-normal $motion-ease-out;
+
+  &:hover {
+    background: $color-primary-dark;
+    color: #fff;
   }
 }

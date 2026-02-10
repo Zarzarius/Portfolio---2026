@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   HeadContent,
   Link,
@@ -7,6 +8,7 @@ import {
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
+import { BurgerMenu } from '../components/BurgerMenu';
 import { PageTransition } from '../components/PageTransition';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { profile } from '../data/profile';
@@ -25,6 +27,9 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <RootDocument>
       <header className={clsx(styles.header)}>
@@ -32,7 +37,7 @@ function RootComponent() {
           <Link to="/" className={clsx(styles.logo)} preload="intent">
             {profile.shortName}
           </Link>
-          <nav className={clsx(styles.nav)}>
+          <nav className={clsx(styles.nav)} aria-label="Main">
             <Link
               to="/"
               className={clsx(styles.navLink)}
@@ -77,6 +82,62 @@ function RootComponent() {
               Resume
             </a>
           </div>
+          <BurgerMenu
+            open={menuOpen}
+            onToggle={() => setMenuOpen((o) => !o)}
+            onClose={closeMenu}
+          >
+            <div className={styles.mobileNav}>
+              <Link
+                to="/"
+                className={styles.mobileNavLink}
+                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                preload="intent"
+                onClick={closeMenu}
+              >
+                Work
+              </Link>
+              <Link
+                to="/stack"
+                className={styles.mobileNavLink}
+                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                preload="intent"
+                onClick={closeMenu}
+              >
+                Stack
+              </Link>
+              <Link
+                to="/about"
+                className={styles.mobileNavLink}
+                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                preload="intent"
+                onClick={closeMenu}
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className={styles.mobileNavLink}
+                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                preload="intent"
+                onClick={closeMenu}
+              >
+                Contact
+              </Link>
+            </div>
+            <div className={styles.mobileActions}>
+              <ThemeToggle />
+              <a
+                href={profile.resumeUrl}
+                className={styles.mobileResumeButton}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+              >
+                Resume
+              </a>
+            </div>
+          </BurgerMenu>
         </div>
       </header>
       <main className={clsx(styles.main)}>
