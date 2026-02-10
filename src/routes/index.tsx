@@ -6,7 +6,7 @@ import { profile } from '../data/profile';
 import styles from './index.module.scss';
 
 import { getProjects, getCategories } from '../server/functions';
-
+const cdnUrl = import.meta.env.CDN_URL ?? '';
 const CATEGORY_LABELS: Record<string, string> = {
   ALL_SYSTEMS: 'All',
   FRONT_END: 'Frontend',
@@ -87,9 +87,7 @@ function Home() {
       <section className={clsx(styles.hero)}>
         <div className={clsx(styles.heroContent)}>
           <p className={clsx(styles.eyebrow)}>{profile.tagline}</p>
-          <h1 className={clsx(styles.title)}>
-            {profile.headline}
-          </h1>
+          <h1 className={clsx(styles.title)}>{profile.headline}</h1>
           <p className={clsx(styles.subtitle)}>
             React, Next.js, 3D experiences, and headless CMS. Selected work from
             D’Art Design, Demodern, and side projects.
@@ -114,7 +112,7 @@ function Home() {
             }}
           >
             <img
-              src="/hero-aza.png"
+              src={`${cdnUrl}/Images/hero-aza.png`}
               alt="Azael Alonso — developer at desk with laptop and workspace"
               className={clsx(styles.heroImage)}
               width={800}
@@ -173,7 +171,8 @@ function Home() {
         <div className={clsx(styles.ctaContent)}>
           <h2 className={clsx(styles.ctaTitle)}>Let’s work together</h2>
           <p className={clsx(styles.ctaText)}>
-            Based in {profile.location}. Open to new projects and collaborations — get in touch.
+            Based in {profile.location}. Open to new projects and collaborations
+            — get in touch.
           </p>
         </div>
         <div className={clsx(styles.ctaActions)}>
