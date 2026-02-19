@@ -60,14 +60,6 @@ function RootComponent() {
           </Link>
           <nav className={clsx(styles.nav)} aria-label="Main">
             <Link
-              to="/"
-              className={clsx(styles.navLink)}
-              activeProps={{ className: clsx(styles.navLink, styles.active) }}
-              preload="intent"
-            >
-              Portfolio
-            </Link>
-            <Link
               to="/projects"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
