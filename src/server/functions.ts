@@ -1,6 +1,6 @@
 import { createServerFn } from '@tanstack/react-start';
 import { Resend } from 'resend';
-import { projects, categories, showcaseProjects } from '../data/projects';
+import { projects, projectGroups, categories } from '../data/projects';
 import { techCategories } from '../data/stack';
 import { skills } from '../data/skills';
 import { contactSchema } from '../schemas/contact';
@@ -21,17 +21,24 @@ export const getCategories = createServerFn({ method: 'GET' }).handler(
   },
 );
 
-export const getShowcaseProjects = createServerFn({ method: 'GET' }).handler(
-  async () => {
-    return showcaseProjects;
-  },
-);
-
 export const getProjectById = createServerFn({ method: 'GET' })
   .inputValidator((data: { id: number }) => data)
   .handler(async ({ data }) => {
     const project = projects.find((p) => p.id === data.id) ?? null;
     return project;
+  });
+
+export const getProjectGroups = createServerFn({ method: 'GET' }).handler(
+  async () => {
+    return projectGroups;
+  },
+);
+
+export const getProjectGroupById = createServerFn({ method: 'GET' })
+  .inputValidator((data: { id: number }) => data)
+  .handler(async ({ data }) => {
+    const group = projectGroups.find((g) => g.id === data.id) ?? null;
+    return group;
   });
 
 export const getStack = createServerFn({ method: 'GET' }).handler(async () => {
@@ -63,10 +70,9 @@ export const sendContactEmail = createServerFn({ method: 'POST' })
       text: `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`,
     });
     if (error) {
-      const msg =
-        error.message?.toLowerCase().includes('invalid')
-          ? `${error.message} Check the key at https://resend.com/api-keys and set RESEND_API_KEY in your environment.`
-          : error.message;
+      const msg = error.message?.toLowerCase().includes('invalid')
+        ? `${error.message} Check the key at https://resend.com/api-keys and set RESEND_API_KEY in your environment.`
+        : error.message;
       throw new Error(msg);
     }
     return { ok: true, id: emailData?.id };

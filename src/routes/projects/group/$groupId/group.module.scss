@@ -1,0 +1,155 @@
+@use '../../../../styles/theme' as *;
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-8 $container-padding;
+}
+
+.backLink {
+  display: inline-block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  margin-bottom: $spacing-6;
+  transition: color $motion-duration-normal $motion-ease-in-out;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.notFound {
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-4;
+}
+
+.article {
+  padding: $spacing-6 0;
+}
+
+.header {
+  margin-bottom: $spacing-5;
+}
+
+.meta {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-2;
+}
+
+.title {
+  font-family: $font-family-heading;
+  font-size: clamp($font-size-xl, 4vw, $font-size-3xl);
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
+  line-height: $line-height-tight;
+}
+
+.description {
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-6;
+}
+
+.techSection {
+  padding-top: $spacing-5;
+  border-top: $border-width-thin solid $color-border-primary;
+}
+
+.techHeading {
+  font-family: $font-family-heading;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-3;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.techTag {
+  padding: $spacing-1 $spacing-3;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  background: $color-bg-secondary;
+  border-radius: $border-radius-sm;
+}
+
+.itemsSection {
+  padding-top: $spacing-5;
+  border-top: $border-width-thin solid $color-border-primary;
+  margin-top: $spacing-5;
+}
+
+.itemsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  margin-bottom: $spacing-4;
+  padding-bottom: $spacing-4;
+  border-bottom: $border-width-thin solid $color-border-primary;
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.itemLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: color $motion-duration-normal $motion-ease-in-out;
+
+  &:hover {
+    color: $color-primary;
+
+    .itemArrow {
+      opacity: 1;
+    }
+  }
+}
+
+.itemTitle {
+  display: block;
+  font-family: $font-family-heading;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.itemDescription {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+  margin-top: $spacing-1;
+}
+
+.itemArrow {
+  display: inline-block;
+  margin-left: $spacing-2;
+  color: $color-primary;
+  opacity: 0.7;
+  transition: opacity $motion-duration-normal $motion-ease-in-out;
+}

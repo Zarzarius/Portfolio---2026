@@ -1,28 +1,44 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
 import { ProjectCard } from '../components/ProjectCard';
+import { ProjectGroupCard } from '../components/ProjectGroupCard';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { profile } from '../data/profile';
 import styles from './index.module.scss';
 
-import { getProjects } from '../server/functions';
-import type { Project } from '../data/projects';
+import { getProjects, getProjectGroups } from '../server/functions';
+import type { Project, ProjectGroup } from '../data/projects';
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 
 export const Route = createFileRoute('/')({
-  loader: async () => ({ projects: await getProjects() }),
+  loader: async () => {
+    const [projects, projectGroups] = await Promise.all([
+      getProjects(),
+      getProjectGroups(),
+    ]);
+    return { projects, projectGroups };
+  },
   component: Home,
 });
 
 function Home() {
-  const { projects } = Route.useLoaderData();
+  const { projects, projectGroups } = Route.useLoaderData();
   const highlightedProjects = projects.filter((p: Project) => p.highlighted);
+  const highlightedGroups = projectGroups.filter(
+    (g: ProjectGroup) => g.highlighted,
+  );
 
   const professionalProjects = highlightedProjects.filter(
     (p: Project) => p.type === 'professional',
   );
   const personalProjects = highlightedProjects.filter(
     (p: Project) => p.type === 'personal',
+  );
+  const professionalGroups = highlightedGroups.filter(
+    (g: ProjectGroup) => g.type === 'professional',
+  );
+  const personalGroups = highlightedGroups.filter(
+    (g: ProjectGroup) => g.type === 'personal',
   );
 
   return (
@@ -72,23 +88,35 @@ function Home() {
       >
         <h2 className={clsx(styles.sectionHead)}>Selected work</h2>
 
-        {professionalProjects.length > 0 && (
+        {(professionalProjects.length > 0 || professionalGroups.length > 0) && (
           <section className={clsx(styles.projectGroup)}>
             <h3 className={clsx(styles.groupTitle)}>Professional</h3>
             <div className={clsx(styles.grid)}>
               {professionalProjects.map((project: Project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
+              {professionalGroups.map((group: ProjectGroup) => (
+                <ProjectGroupCard
+                  key={`group-${group.id}`}
+                  group={group}
+                />
+              ))}
             </div>
           </section>
         )}
 
-        {personalProjects.length > 0 && (
+        {(personalProjects.length > 0 || personalGroups.length > 0) && (
           <section className={clsx(styles.projectGroup)}>
             <h3 className={clsx(styles.groupTitle)}>Personal</h3>
             <div className={clsx(styles.grid)}>
               {personalProjects.map((project: Project) => (
                 <ProjectCard key={project.id} project={project} />
+              ))}
+              {personalGroups.map((group: ProjectGroup) => (
+                <ProjectGroupCard
+                  key={`group-${group.id}`}
+                  group={group}
+                />
               ))}
             </div>
           </section>

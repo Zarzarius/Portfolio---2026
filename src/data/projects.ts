@@ -20,6 +20,28 @@ export interface Project {
   /** When true, project is shown on the home page "Selected work" section */
   highlighted?: boolean;
 }
+
+/** Minor project shown inline inside a ProjectGroup (no dedicated detail page). */
+export interface ProjectGroupItem {
+  id: string | number;
+  title: string;
+  description?: string;
+  link?: string;
+}
+
+/** Collection of minor projects that share common technologies. */
+export interface ProjectGroup {
+  id: number;
+  title: string;
+  description?: string;
+  technologies: string[];
+  items: ProjectGroupItem[];
+  category: Category;
+  type: ProjectType;
+  /** When true, group is shown on the home page "Selected work" section */
+  highlighted?: boolean;
+}
+
 export const projects: Project[] = [
   {
     id: 1,
@@ -30,10 +52,10 @@ export const projects: Project[] = [
       'REACT',
       'TYPESCRIPT',
       'ZUSTAND',
-      'Material UI',
-      'model-viewer',
-      'WebAR',
-      'GIS / data visualisation',
+      'MATERIAL UI',
+      'MODEL-VIEWER',
+      'WEBAR',
+      'GIS / DATA VISUALISATION',
     ],
     priority: 'A',
     award: 'Lovie Awards Bronze for “Best use of Augmented Reality”',
@@ -51,16 +73,16 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'SAP AR Hybrid Event Showcase',
+    title: 'SAP S/4HANA Cloud AR Hybrid Event Showcase',
     description:
       'A global hybrid event solution that uses AR to visualize SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
     technologies: [
       'REACT',
       'TYPESCRIPT',
-      'React Three Fiber',
-      'WebGL',
-      '8th Wall',
-      'Lottie Files',
+      'REACT THREE FIBER',
+      'WEBGL',
+      '8TH WALL',
+      'LOTTIE FILES',
       'GSAP',
     ],
     priority: 'A',
@@ -77,9 +99,9 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'Snipes Soundbooth - Landingpage & On site installation',
+    title: 'Snipes Soundbooth - Landing page & on-site installation',
     description:
-      'Snipes Soundbooth is a platform that allows users to create and share audio clips with their friends. A landingpage was also developed to showcase the Soundbooth and the features it offers.',
+      'Snipes Soundbooth is a platform that allows users to create and share audio clips with their friends. A landing page was also developed to showcase the Soundbooth and the features it offers.',
     technologies: ['REACT', 'TYPESCRIPT', 'ZUSTAND', 'STRAPI'],
     achievements: [
       'Developed a responsive web application for Snipes Soundbooth using React and TypeScript.',
@@ -96,19 +118,19 @@ export const projects: Project[] = [
     id: 4,
     title: 'Miniverse - Digital Metaverse Gamified Platform',
     description:
-      'Miniverse is a digital metaverse gamified platform for Mini that allows users to explore a virtual world and interact with other users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users. Live server networking with Websokets',
+      'Miniverse is a digital metaverse gamified platform for Mini that allows users to explore a virtual world and interact with other users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users. Live server networking with WebSockets.',
     technologies: [
       'REACT',
       'TYPESCRIPT',
       'ZUSTAND',
       'GSAP',
-      'React Three Fiber',
-      'Websockets',
+      'REACT THREE FIBER',
+      'WEBSOCKETS',
     ],
     type: 'professional',
     achievements: [
       'Shipped digital metaverse gamified platform for Mini that allows users to explore a virtual world and interact with other users.',
-      'Networking with Websockets to create a real-time multiplayer experience for the users.',
+      'Networking with WebSockets to create a real-time multiplayer experience for the users.',
       'Implemented a responsive design for the platform.',
       'Implementing new features and improvements to the platform.',
     ],
@@ -117,21 +139,21 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: 'Virtual exeprience metaverse - Metaverse Platform for brands',
+    title: 'Virtual experience metaverse - Metaverse platform for brands',
     description:
-      'Virtual experience metaverse is a platform that allows brands to create a virtual experience for their users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users and showcase their products. Live server networking with Websokets and live chat with social features',
+      'Virtual experience metaverse is a platform that allows brands to create a virtual experience for their users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users and showcase their products. Live server networking with WebSockets and live chat with social features.',
     technologies: [
       'REACT',
       'TYPESCRIPT',
       'ZUSTAND',
       'GSAP',
-      'React Three Fiber',
-      'Websockets',
+      'REACT THREE FIBER',
+      'WEBSOCKETS',
     ],
     type: 'professional',
     achievements: [
       'Shipped metaverse platform for brands that allows users to explore a virtual experience and interact with other users and showcase their products.',
-      'Networking with Websockets to create a real-time experience for the users.',
+      'Networking with WebSockets to create a real-time experience for the users.',
       'Implementing new features like sound effects, and improvements to the platform.',
     ],
     link: 'https://demodern.de/services/corporate-metaverse-cases-ve',
@@ -139,11 +161,11 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    title: 'Migros Escape Game landingpage',
-    description: 'Migros escape game landingpage to promote the escape game.',
+    title: 'Migros Digital Escape Game landing page',
+    description: 'Migros escape game landing page to promote the escape game.',
     technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND', 'MOTION'],
     achievements: [
-      'Shipped landingpage for Migros 2025 escape game.',
+      'Shipped landing page for Migros 2025 escape game.',
       'Implemented a responsive design for the platform.',
     ],
     link: 'https://demodern.de/projekte/migros-digital-escape-game',
@@ -177,26 +199,103 @@ export const projects: Project[] = [
   },
 ];
 
-export const showcaseProjects = [
+export const projectGroups: ProjectGroup[] = [
   {
     id: 1,
-    title: 'React & Next.js applications',
+    title: 'Campaign landing pages',
     description:
-      'Responsive web applications with React 18+, Next.js 14 (App Router, server components), and optimized data fetching. Focus on Core Web Vitals and maintainable architecture.',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Zustand'],
+      'High-quality marketing and campaign landing pages built with React and shared tooling. Each page is designed for clear conversion goals, strong visual hierarchy, and fast load times. Focus on brand storytelling, campaign messaging, and measurable outcomes for clients.',
+    technologies: [
+      'REACT',
+      'TYPESCRIPT',
+      'NEXT.JS',
+      'MOTION',
+      'GSAP',
+      'LOTTIE FILES',
+      'ZUSTAND',
+      'REACT THREE FIBER',
+    ],
+    items: [
+      {
+        id: 'lp-1',
+        title: 'Migros Escape Game',
+        description:
+          'Landing page for Migros 2025 escape game campaign for the supermarket chain Migros.',
+        link: 'https://demodern.de/projekte/migros-digital-escape-game',
+      },
+      {
+        id: 'lp-2',
+        title: 'Snipes 25th Anniversary',
+        description:
+          'Landing page for Snipes 25th Anniversary campaign with exclusive 3D models and showcase of the products.',
+        link: 'https://demodern.de/projekte/snipes-25th-anniversary',
+      },
+      {
+        id: 'lp-3',
+        title: 'Snipes Soundbooth',
+        description: 'Landing page for Snipes Soundbooth.',
+        link: 'https://demodern.de/projekte/snipes-soundbooth',
+      },
+    ],
+    category: 'Demodern',
+    type: 'professional',
   },
   {
     id: 2,
-    title: '3D product experiences',
+    title: "D'Art Design Group corporative landing pages",
     description:
-      'Immersive 3D web experiences with React Three Fiber and Three.js: interactive product visualizations and virtual showrooms with real-time rendering.',
-    technologies: ['React Three Fiber', 'Three.js', 'WebGL', 'TypeScript'],
+      "Landing pages for clients of D'Art Design Group. The landing pages are built with Next.js and the technologies mentioned above.",
+    technologies: [
+      'NEXT.JS',
+      'TYPESCRIPT',
+      'ZUSTAND',
+      'MOTION',
+      'GSAP',
+      'LOTTIE FILES',
+      'CRAFT CMS',
+      'GRAPHQL',
+      'ZOD',
+      'SASS',
+    ],
+    items: [
+      {
+        id: 'corporative-lp-1',
+        title: "D'Art Digital Agency landing page",
+        description:
+          "Landing page for D'Art Digital Agency to show their services and portfolio.",
+        link: 'https://d-art-digital.de/de',
+      },
+      {
+        id: 'corporative-lp-2',
+        title: 'Stiftung Paulinenhilfe corporative landing page',
+        description:
+          'Landing page for Stiftung Paulinenhilfe to show their services',
+        link: 'https://d-art-digital.de/de/projects/stiftung-paulinenhilfe',
+      },
+      {
+        id: 'corporative-lp-3',
+        title: 'Medienvorsorge.de landing page',
+        description:
+          'Landing page for Medienvorsorge.de to show their services',
+        link: 'https://d-art-digital.de/de/projects/medienvorsorge',
+      },
+      {
+        id: 'corporative-lp-4',
+        title: 'Hanselmann & Compagnie corporative landing page',
+        description:
+          'Landing page for Hanselmann & Compagnie to show their services',
+        link: 'https://d-art-digital.de/de/projects/hanselmann-compagnie',
+      },
+    ],
+    category: 'Dart Design',
+    type: 'professional',
   },
   {
     id: 3,
-    title: 'Headless CMS integrations',
-    description:
-      'Content platforms powered by Strapi and Craft CMS with GraphQL APIs, supporting marketing sites and e-commerce with flexible content workflows.',
-    technologies: ['Strapi', 'Craft CMS', 'GraphQL', 'Node.js'],
+    title: 'Personal projects',
+    technologies: ['ASTRO', 'TYPESCRIPT', 'ZOD', 'SASS'],
+    items: [],
+    category: 'Personal',
+    type: 'personal',
   },
 ];
