@@ -301,17 +301,9 @@
   margin-bottom: $spacing-4;
 }
 
-.filters {
-  display: flex;
-  gap: $spacing-2;
-  flex-wrap: wrap;
-  margin-bottom: $spacing-7;
-}
-
 // ---- Scroll reveal (Selected work) ----
 .revealBlock {
   .sectionHead,
-  .filters,
   .grid [data-project-card] {
     opacity: 0;
     transform: translateY(14px);
@@ -320,11 +312,6 @@
   &.revealBlockVisible {
     .sectionHead {
       animation: revealIn $motion-duration-entrance $motion-ease-out forwards;
-    }
-
-    .filters {
-      animation: revealIn $motion-duration-entrance $motion-ease-out
-        $motion-stagger-step forwards;
     }
 
     .grid [data-project-card] {
@@ -347,33 +334,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-.filterBtn {
-  padding: $spacing-2 $spacing-4;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  color: $color-text-tertiary;
-  background: transparent;
-  border: $border-width-thin solid $color-border-primary;
-  border-radius: $border-radius-md;
-  transition: color $motion-duration-normal $motion-ease-in-out,
-    border-color $motion-duration-normal $motion-ease-in-out,
-    background $motion-duration-normal $motion-ease-in-out,
-    transform $motion-duration-fast $motion-ease-out;
-  cursor: pointer;
-
-  &:hover {
-    color: $color-text-primary;
-    border-color: $color-border-secondary;
-    transform: translateY(-1px);
-  }
-
-  &.filterBtnActive {
-    color: $color-primary;
-    border-color: $color-primary;
-    background: $color-bg-hover;
   }
 }
 

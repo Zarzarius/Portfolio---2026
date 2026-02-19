@@ -17,6 +17,8 @@ export interface Project {
   award?: string;
   achievements?: string[];
   type: ProjectType;
+  /** When true, project is shown on the home page "Selected work" section */
+  highlighted?: boolean;
 }
 export const projects: Project[] = [
   {
@@ -45,6 +47,7 @@ export const projects: Project[] = [
     link: 'https://www.wwf.de/aktiv-werden/augmented-reality/',
     category: 'Demodern',
     type: 'professional',
+    highlighted: true,
   },
   {
     id: 2,
@@ -70,6 +73,7 @@ export const projects: Project[] = [
     link: 'https://demodern.de/projekte/sap-ar-hybrid-event-showcase',
     category: 'Demodern',
     type: 'professional',
+    highlighted: true,
   },
   {
     id: 3,
@@ -86,6 +90,7 @@ export const projects: Project[] = [
     link: 'https://demodern.com/projects/snipes-soundbooth',
     category: 'Demodern',
     type: 'professional',
+    highlighted: true,
   },
   {
     id: 4,
@@ -148,15 +153,27 @@ export const projects: Project[] = [
   {
     id: 7,
     title: 'Portfolio website',
-    description: 'Migros escape game landingpage to promote the escape game.',
-    technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND', 'MOTION'],
-    achievements: [
-      'Shipped landingpage for Migros 2025 escape game.',
-      'Implemented a responsive design for the platform.',
+    description:
+      'Personal portfolio and contact hub built with a modern, type-safe stack. Features a project showcase with server-driven data, a contact form with validated submissions and Resend-powered email delivery, and responsive layout with SCSS. Designed for fast loads and clear information hierarchy.',
+    technologies: [
+      'REACT',
+      'TYPESCRIPT',
+      'VITE',
+      'TANSTACK ROUTER',
+      'TANSTACK START',
+      'RESEND',
+      'ZOD',
+      'SASS',
     ],
-    link: 'https://demodern.de/projekte/migros-digital-escape-game',
+    achievements: [
+      'Built full-stack portfolio with TanStack Start: file-based routing, server loaders, and type-safe data fetching for the project list.',
+      'Implemented contact form with Zod validation and Resend integration for reliable email delivery.',
+      'Structured project data and filtering (professional vs personal, highlighted work) for the home and projects pages.',
+      'Responsive design and SCSS modules for maintainable styling across hero, projects, and contact sections.',
+    ],
     category: 'Personal',
     type: 'personal',
+    highlighted: true,
   },
 ];
 

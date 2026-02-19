@@ -1,50 +1,27 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useState } from 'react';
 import clsx from 'clsx';
 import { ProjectCard } from '../components/ProjectCard';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { profile } from '../data/profile';
 import styles from './index.module.scss';
 
-import { getProjects, getCategories } from '../server/functions';
+import { getProjects } from '../server/functions';
 import type { Project } from '../data/projects';
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 
-const ALL_CATEGORIES_KEY = 'ALL';
-
-const CATEGORY_LABELS: Record<string, string> = {
-  [ALL_CATEGORIES_KEY]: 'All',
-  Demodern: 'Demodern',
-  'Dart Design': "D'Art Design",
-  Personal: 'Personal',
-};
-
 export const Route = createFileRoute('/')({
-  loader: async () => {
-    const [projects, categories] = await Promise.all([
-      getProjects(),
-      getCategories(),
-    ]);
-    return { projects, categories };
-  },
+  loader: async () => ({ projects: await getProjects() }),
   component: Home,
 });
 
 function Home() {
-  const { projects, categories } = Route.useLoaderData();
-  const [activeFilter, setActiveFilter] = useState(ALL_CATEGORIES_KEY);
+  const { projects } = Route.useLoaderData();
+  const highlightedProjects = projects.filter((p: Project) => p.highlighted);
 
-  const filterOptions = [ALL_CATEGORIES_KEY, ...categories];
-
-  const filteredProjects =
-    activeFilter === ALL_CATEGORIES_KEY
-      ? projects
-      : projects.filter((p: Project) => p.category === activeFilter);
-
-  const professionalProjects = filteredProjects.filter(
+  const professionalProjects = highlightedProjects.filter(
     (p: Project) => p.type === 'professional',
   );
-  const personalProjects = filteredProjects.filter(
+  const personalProjects = highlightedProjects.filter(
     (p: Project) => p.type === 'personal',
   );
 
@@ -94,21 +71,6 @@ function Home() {
         visibleClass={styles.revealBlockVisible}
       >
         <h2 className={clsx(styles.sectionHead)}>Selected work</h2>
-        <div className={clsx(styles.filters)}>
-          {filterOptions.map((category: string) => (
-            <button
-              key={category}
-              type="button"
-              className={clsx(
-                styles.filterBtn,
-                activeFilter === category && styles.filterBtnActive,
-              )}
-              onClick={() => setActiveFilter(category)}
-            >
-              {CATEGORY_LABELS[category] ?? category}
-            </button>
-          ))}
-        </div>
 
         {professionalProjects.length > 0 && (
           <section className={clsx(styles.projectGroup)}>
