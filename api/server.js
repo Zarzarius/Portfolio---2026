@@ -4,10 +4,12 @@ export default async function handler(req, res) {
     const { default: server } = await import('../dist/server/server.js');
     
     const url = new URL(req.url, `http://${req.headers.host}`);
+    const hasBody = req.method !== 'GET' && req.method !== 'HEAD';
     const response = await server.fetch(new Request(url, {
       method: req.method,
       headers: req.headers,
-      body: req.method !== 'GET' && req.method !== 'HEAD' ? req : undefined,
+      body: hasBody ? req : undefined,
+      ...(hasBody && { duplex: 'half' }),
     }));
 
     res.statusCode = response.status;
