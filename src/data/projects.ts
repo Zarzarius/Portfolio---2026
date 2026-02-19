@@ -1,69 +1,163 @@
-export type ProjectType = 'professional' | 'hobby';
+export type ProjectType = 'professional' | 'personal';
 
-export const projects = [
+export type Category = 'Demodern' | 'Dart Design' | 'Personal';
+
+export const categories: Category[] = ['Demodern', 'Dart Design', 'Personal'];
+
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  priority?: string;
+  link?: string;
+  category: Category;
+  image?: string;
+  imageAlt?: string;
+  award?: string;
+  achievements?: string[];
+  type: ProjectType;
+}
+export const projects: Project[] = [
   {
     id: 1,
-    title: 'React & Next.js web applications',
+    title: 'WWF Germany - Augmented Reality & GIS data visualisation',
     description:
-      'Architected and built responsive web apps with React 18+ and Next.js 14: App Router, server components, and optimized data fetching. Improved Core Web Vitals through code splitting and lazy loading.',
-    technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND'],
+      'WebAR experience for WWF Germany: no native app—users access AR directly from the mobile browser, maximising reach and accessibility. Built with Google’s open-source model-viewer for high-quality 3D and AR on the web, and React for a fluid, intuitive UI. Includes a GIS-based data-visualisation module showing real animal habitats, high-fidelity animated 3D animals (lynx, wolf, European bison, elk) optimised for mobile, and interactive hotspots that trigger educational content.',
+    technologies: [
+      'REACT',
+      'TYPESCRIPT',
+      'ZUSTAND',
+      'Material UI',
+      'model-viewer',
+      'WebAR',
+      'GIS / data visualisation',
+    ],
     priority: 'A',
-    category: 'interface',
-    type: 'professional' as ProjectType,
+    award: 'Lovie Awards Bronze for “Best use of Augmented Reality”',
+    achievements: [
+      'Shipped WebAR experience with no native app; users access AR from the mobile browser, increasing reach and avoiding app-store friction.',
+      'Delivered multiplatform experience: AR on mobile and 3D viewer on desktop using a single codebase with model-viewer.',
+      'Integrated GIS-based data visualisation to show real animal habitats within the experience.',
+      'Shipped high-fidelity, animated 3D animals (lynx, wolf, European bison, elk) optimised for real-time rendering on mobile browsers.',
+      'Implemented interactive hotspots on 3D models to surface educational content and scientific data at 1:1 scale.',
+    ],
+    link: 'https://www.wwf.de/aktiv-werden/augmented-reality/',
+    category: 'Demodern',
+    type: 'professional',
   },
   {
     id: 2,
-    title: '3D product visualizations & virtual showrooms',
+    title: 'SAP AR Hybrid Event Showcase',
     description:
-      'Created immersive 3D web experiences with React Three Fiber and Three.js — interactive product configurators and virtual showrooms with real-time rendering.',
-    technologies: ['REACT', 'THREE.JS', 'R3F', 'WEBGL'],
+      'A global hybrid event solution that uses AR to visualize SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
+    technologies: [
+      'REACT',
+      'TYPESCRIPT',
+      'React Three Fiber',
+      'WebGL',
+      '8th Wall',
+      'Lottie Files',
+      'GSAP',
+    ],
     priority: 'A',
-    category: 'graphics',
-    type: 'professional' as ProjectType,
+    achievements: [
+      'Delivered hybrid event solution that uses AR to visualize SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
+      'Shipped high-fidelity, animated 3D business processes (SAP’s S/4HANA Cloud business processes) optimised for real-time rendering on mobile browsers.',
+      'Delivered multiplatform experience: AR on mobile and 3D viewer on desktop using a single codebase with React Three Fiber and 8th Wall',
+      'Implemented complex UI interactions with React Three Fiber and Three.js to create an immersive and interactive experience.',
+    ],
+    link: 'https://demodern.de/projekte/sap-ar-hybrid-event-showcase',
+    category: 'Demodern',
+    type: 'professional',
   },
   {
     id: 3,
-    title: 'Headless CMS & content platforms',
+    title: 'Snipes Soundbooth - Landingpage & On site installation',
     description:
-      'Integrated Strapi and Craft CMS with GraphQL APIs for marketing and e-commerce, enabling flexible content management and structured data flows.',
-    technologies: ['STRAPI', 'CRAFT CMS', 'GRAPHQL', 'NODE.JS'],
-    category: 'interface',
-    type: 'professional' as ProjectType,
+      'Snipes Soundbooth is a platform that allows users to create and share audio clips with their friends. A landingpage was also developed to showcase the Soundbooth and the features it offers.',
+    technologies: ['REACT', 'TYPESCRIPT', 'ZUSTAND', 'STRAPI'],
+    achievements: [
+      'Developed a responsive web application for Snipes Soundbooth using React and TypeScript.',
+      'Integrated the Snipes API to fetch the audio clips.',
+      'Implemented a responsive design for the Soundbooth.',
+      'On site installation and maintenance of the Soundbooth.',
+    ],
+    link: 'https://demodern.com/projects/snipes-soundbooth',
+    category: 'Demodern',
+    type: 'professional',
   },
   {
     id: 4,
-    title: 'Interactive digital experiences',
+    title: 'Miniverse - Digital Metaverse Gamified Platform',
     description:
-      'Built high-profile client projects at Demodern: custom UI components, design systems, and complex animations with GSAP and CSS. Mobile-first, responsive layouts.',
-    technologies: ['REACT', 'GSAP', 'TYPESCRIPT', 'FIGMA'],
-    category: 'interface',
-    type: 'professional' as ProjectType,
+      'Miniverse is a digital metaverse gamified platform for Mini that allows users to explore a virtual world and interact with other users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users. Live server networking with Websokets',
+    technologies: [
+      'REACT',
+      'TYPESCRIPT',
+      'ZUSTAND',
+      'GSAP',
+      'React Three Fiber',
+      'Websockets',
+    ],
+    type: 'professional',
+    achievements: [
+      'Shipped digital metaverse gamified platform for Mini that allows users to explore a virtual world and interact with other users.',
+      'Networking with Websockets to create a real-time multiplayer experience for the users.',
+      'Implemented a responsive design for the platform.',
+      'Implementing new features and improvements to the platform.',
+    ],
+    link: 'https://demodern.com/projects/miniverse',
+    category: 'Demodern',
   },
   {
     id: 5,
-    title: 'WebGL & 3D experiences',
+    title: 'Virtual exeprience metaverse - Metaverse Platform for brands',
     description:
-      'Developed interactive 3D visualizations and WebGL experiences with Three.js, balancing performance and browser capabilities for creative campaigns.',
-    technologies: ['THREE.JS', 'WEBGL', 'JAVASCRIPT', 'CSS'],
-    category: 'graphics',
-    type: 'professional' as ProjectType,
+      'Virtual experience metaverse is a platform that allows brands to create a virtual experience for their users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users and showcase their products. Live server networking with Websokets and live chat with social features',
+    technologies: [
+      'REACT',
+      'TYPESCRIPT',
+      'ZUSTAND',
+      'GSAP',
+      'React Three Fiber',
+      'Websockets',
+    ],
+    type: 'professional',
+    achievements: [
+      'Shipped metaverse platform for brands that allows users to explore a virtual experience and interact with other users and showcase their products.',
+      'Networking with Websockets to create a real-time experience for the users.',
+      'Implementing new features like sound effects, and improvements to the platform.',
+    ],
+    link: 'https://demodern.de/services/corporate-metaverse-cases-ve',
+    category: 'Demodern',
   },
   {
     id: 6,
-    title: 'Full-stack MERN applications',
-    description:
-      'Hands-on full-stack projects from bootcamp and side work: REST APIs, async data flows, and deployment. MongoDB, Express, React, Node.js.',
-    technologies: ['REACT', 'NODE.JS', 'EXPRESS', 'MONGODB'],
-    category: 'backend',
-    type: 'hobby' as ProjectType,
+    title: 'Migros Escape Game landingpage',
+    description: 'Migros escape game landingpage to promote the escape game.',
+    technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND', 'MOTION'],
+    achievements: [
+      'Shipped landingpage for Migros 2025 escape game.',
+      'Implemented a responsive design for the platform.',
+    ],
+    link: 'https://demodern.de/projekte/migros-digital-escape-game',
+    category: 'Demodern',
+    type: 'professional',
   },
-];
-
-export const categories = [
-  'ALL_SYSTEMS',
-  'FRONT_END',
-  'BACK_END',
-  '3D_GRAPHICS',
+  {
+    id: 7,
+    title: 'Portfolio website',
+    description: 'Migros escape game landingpage to promote the escape game.',
+    technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND', 'MOTION'],
+    achievements: [
+      'Shipped landingpage for Migros 2025 escape game.',
+      'Implemented a responsive design for the platform.',
+    ],
+    link: 'https://demodern.de/projekte/migros-digital-escape-game',
+    category: 'Personal',
+    type: 'personal',
+  },
 ];
 
 export const showcaseProjects = [

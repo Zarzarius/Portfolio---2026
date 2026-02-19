@@ -18,6 +18,21 @@ import '../index.scss';
 
 const defaultSeo = getDefaultSeoMeta();
 
+function NotFoundComponent() {
+  return (
+    <div className={clsx(styles.notFound)}>
+      <p className={clsx(styles.notFoundCode)}>404</p>
+      <h1 className={clsx(styles.notFoundTitle)}>Page not found</h1>
+      <p className={clsx(styles.notFoundText)}>
+        The page you’re looking for doesn’t exist or has been moved.
+      </p>
+      <Link to="/" className={clsx(styles.notFoundLink)} preload="intent">
+        Back to home
+      </Link>
+    </div>
+  );
+}
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -29,6 +44,7 @@ export const Route = createRootRoute({
     scripts: defaultSeo.scripts,
   }),
   component: RootComponent,
+  notFoundComponent: NotFoundComponent,
 });
 
 function RootComponent() {
@@ -49,7 +65,15 @@ function RootComponent() {
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
               preload="intent"
             >
-              Work
+              Portfolio
+            </Link>
+            <Link
+              to="/projects"
+              className={clsx(styles.navLink)}
+              activeProps={{ className: clsx(styles.navLink, styles.active) }}
+              preload="intent"
+            >
+              Projects
             </Link>
             <Link
               to="/stack"
@@ -96,16 +120,40 @@ function RootComponent() {
               <Link
                 to="/"
                 className={styles.mobileNavLink}
-                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                activeProps={{
+                  className: clsx(
+                    styles.mobileNavLink,
+                    styles.mobileNavLinkActive,
+                  ),
+                }}
                 preload="intent"
                 onClick={closeMenu}
               >
                 Work
               </Link>
               <Link
+                to="/projects"
+                className={styles.mobileNavLink}
+                activeProps={{
+                  className: clsx(
+                    styles.mobileNavLink,
+                    styles.mobileNavLinkActive,
+                  ),
+                }}
+                preload="intent"
+                onClick={closeMenu}
+              >
+                Projects
+              </Link>
+              <Link
                 to="/stack"
                 className={styles.mobileNavLink}
-                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                activeProps={{
+                  className: clsx(
+                    styles.mobileNavLink,
+                    styles.mobileNavLinkActive,
+                  ),
+                }}
                 preload="intent"
                 onClick={closeMenu}
               >
@@ -114,7 +162,12 @@ function RootComponent() {
               <Link
                 to="/about"
                 className={styles.mobileNavLink}
-                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                activeProps={{
+                  className: clsx(
+                    styles.mobileNavLink,
+                    styles.mobileNavLinkActive,
+                  ),
+                }}
                 preload="intent"
                 onClick={closeMenu}
               >
@@ -123,7 +176,12 @@ function RootComponent() {
               <Link
                 to="/contact"
                 className={styles.mobileNavLink}
-                activeProps={{ className: clsx(styles.mobileNavLink, styles.mobileNavLinkActive) }}
+                activeProps={{
+                  className: clsx(
+                    styles.mobileNavLink,
+                    styles.mobileNavLinkActive,
+                  ),
+                }}
                 preload="intent"
                 onClick={closeMenu}
               >
@@ -152,7 +210,9 @@ function RootComponent() {
       </main>
       <footer className={clsx(styles.footer)}>
         <div className={clsx(styles.footerInner)}>
-          <span className={clsx(styles.footerCopy)}>© 2026 {profile.fullName}</span>
+          <span className={clsx(styles.footerCopy)}>
+            © 2026 {profile.fullName}
+          </span>
           <div className={clsx(styles.footerLinks)}>
             <a
               href={profile.social.github}

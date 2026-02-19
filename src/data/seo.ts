@@ -1,8 +1,9 @@
 import { profile } from './profile';
 
 const siteUrl = import.meta.env.VITE_SITE_URL ?? '';
-// Prefer og-image.png (1200×630) in public/ for best cards; hero works until then
-const defaultOgImage = `${siteUrl}/hero-aza.png`;
+const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
+// OG image from CDN (e.g. https://cdn.azaelac.dev/og-image.png — 1200×630 recommended)
+const defaultOgImage = cdnUrl ? `${cdnUrl}/og-image.png` : `${siteUrl}/hero-aza.png`;
 
 /** Short description for meta and social (≈155 chars). */
 const defaultDescription =

@@ -1,9 +1,23 @@
 @use '../../styles/theme' as *;
 
-.container {
+.page {
   max-width: $container-max-width;
   margin: 0 auto;
   padding: $spacing-8 $container-padding;
+}
+
+.header {
+  margin-bottom: $spacing-8;
+  max-width: 42rem;
+}
+
+.eyebrow {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-primary;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-3;
 }
 
 .title {
@@ -12,58 +26,19 @@
   font-weight: $font-weight-bold;
   color: $color-text-primary;
   letter-spacing: $letter-spacing-tight;
-  margin-bottom: $spacing-6;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-3;
+}
+
+.subtitle {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: $spacing-6;
-}
-
-.card {
-  padding: $spacing-5;
-  background: $color-bg-primary;
-  border: $border-width-thin solid $color-border-primary;
-  border-radius: $border-radius-lg;
-  transition: transform $motion-duration-normal $motion-ease-out,
-    border-color $motion-duration-normal $motion-ease-in-out,
-    box-shadow $motion-duration-normal $motion-ease-out;
-
-  &:hover {
-    transform: translateY(-3px);
-    border-color: $color-border-secondary;
-    box-shadow: $shadow-lg;
-  }
-}
-
-.cardTitle {
-  font-family: $font-family-heading;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
-  color: $color-text-primary;
-  margin-bottom: $spacing-3;
-  letter-spacing: $letter-spacing-tight;
-}
-
-.cardDescription {
-  font-size: $font-size-base;
-  color: $color-text-secondary;
-  line-height: $line-height-relaxed;
-  margin-bottom: $spacing-4;
-}
-
-.techList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-2;
-}
-
-.techTag {
-  padding: $spacing-1 $spacing-3;
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  color: $color-text-tertiary;
-  background: $color-bg-secondary;
-  border-radius: $border-radius-sm;
+  align-items: stretch;
 }

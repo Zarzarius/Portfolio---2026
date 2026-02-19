@@ -86,6 +86,15 @@
   }
 }
 
+.inputError {
+  border-color: $color-status-security;
+}
+
+.fieldError {
+  font-size: $font-size-sm;
+  color: $color-status-security;
+}
+
 .textarea {
   padding: $spacing-3 $spacing-4;
   font-size: $font-size-base;
@@ -109,6 +118,19 @@
   }
 }
 
+.formFeedback {
+  font-size: $font-size-sm;
+  margin: 0;
+}
+
+.formSuccess {
+  color: $color-status-online;
+}
+
+.formError {
+  color: $color-status-security;
+}
+
 .submitButton {
   padding: $spacing-3 $spacing-6;
   font-size: $font-size-base;
@@ -123,10 +145,15 @@
     box-shadow $motion-duration-normal $motion-ease-out,
     background $motion-duration-normal $motion-ease-in-out;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: $color-primary-dark;
     transform: translateY(-2px);
     box-shadow: $shadow-primary;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 }
 

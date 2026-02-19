@@ -1,17 +1,22 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { ProjectCard } from '../components/ProjectCard';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { profile } from '../data/profile';
 import styles from './index.module.scss';
 
 import { getProjects, getCategories } from '../server/functions';
+import type { Project } from '../data/projects';
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
+
+const ALL_CATEGORIES_KEY = 'ALL';
+
 const CATEGORY_LABELS: Record<string, string> = {
-  ALL_SYSTEMS: 'All',
-  FRONT_END: 'Frontend',
-  BACK_END: 'Backend',
-  '3D_GRAPHICS': '3D / Graphics',
+  [ALL_CATEGORIES_KEY]: 'All',
+  Demodern: 'Demodern',
+  'Dart Design': "D'Art Design",
+  Personal: 'Personal',
 };
 
 export const Route = createFileRoute('/')({
@@ -25,61 +30,22 @@ export const Route = createFileRoute('/')({
   component: Home,
 });
 
-interface Project {
-  id: string | number;
-  category: string;
-  title: string;
-  description: string;
-  technologies: string[];
-  priority?: string;
-  type?: 'professional' | 'hobby';
-}
-
-function ProjectCard({ project }: { project: Project }) {
-  return (
-    <article className={styles.card}>
-      <div className={styles.cardMedia}>
-        <div className={styles.cardMediaPlaceholder} />
-        {project.priority && (
-          <span className={styles.badge}>{project.priority}</span>
-        )}
-      </div>
-      <div className={styles.cardBody}>
-        <h2 className={styles.cardTitle}>{project.title}</h2>
-        <p className={styles.cardDescription}>{project.description}</p>
-        <div className={styles.tech}>
-          {project.technologies.map((tech, idx) => (
-            <span key={idx} className={styles.techTag}>
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </article>
-  );
-}
-
 function Home() {
   const { projects, categories } = Route.useLoaderData();
-  const [activeFilter, setActiveFilter] = useState('ALL_SYSTEMS');
+  const [activeFilter, setActiveFilter] = useState(ALL_CATEGORIES_KEY);
+
+  const filterOptions = [ALL_CATEGORIES_KEY, ...categories];
 
   const filteredProjects =
-    activeFilter === 'ALL_SYSTEMS'
+    activeFilter === ALL_CATEGORIES_KEY
       ? projects
-      : projects.filter((p: Project) => {
-          const filterMap: Record<string, string> = {
-            FRONT_END: 'interface',
-            BACK_END: 'backend',
-            '3D_GRAPHICS': 'graphics',
-          };
-          return p.category === filterMap[activeFilter];
-        });
+      : projects.filter((p: Project) => p.category === activeFilter);
 
   const professionalProjects = filteredProjects.filter(
-    (p: Project) => (p.type ?? 'professional') === 'professional',
+    (p: Project) => p.type === 'professional',
   );
-  const hobbyProjects = filteredProjects.filter(
-    (p: Project) => (p.type ?? 'professional') === 'hobby',
+  const personalProjects = filteredProjects.filter(
+    (p: Project) => p.type === 'personal',
   );
 
   return (
@@ -129,7 +95,7 @@ function Home() {
       >
         <h2 className={clsx(styles.sectionHead)}>Selected work</h2>
         <div className={clsx(styles.filters)}>
-          {categories.map((category: string) => (
+          {filterOptions.map((category: string) => (
             <button
               key={category}
               type="button"
@@ -155,11 +121,11 @@ function Home() {
           </section>
         )}
 
-        {hobbyProjects.length > 0 && (
+        {personalProjects.length > 0 && (
           <section className={clsx(styles.projectGroup)}>
-            <h3 className={clsx(styles.groupTitle)}>Hobby</h3>
+            <h3 className={clsx(styles.groupTitle)}>Personal</h3>
             <div className={clsx(styles.grid)}>
-              {hobbyProjects.map((project: Project) => (
+              {personalProjects.map((project: Project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>

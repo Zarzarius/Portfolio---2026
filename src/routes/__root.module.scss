@@ -96,7 +96,8 @@
   background: $color-primary;
   color: #fff;
   border-radius: $border-radius-md;
-  transition: transform $motion-duration-normal $motion-ease-out,
+  transition:
+    transform $motion-duration-normal $motion-ease-out,
     box-shadow $motion-duration-normal $motion-ease-out,
     background $motion-duration-normal $motion-ease-in-out;
 
@@ -111,6 +112,59 @@
 .main {
   min-height: calc(100vh - #{$header-height});
   flex: 1;
+}
+
+// 404 not found (root notFoundComponent)
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - #{$header-height});
+  padding: $spacing-8;
+  text-align: center;
+}
+
+.notFoundCode {
+  font-family: $font-family-heading;
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  color: $color-primary;
+  margin: 0 0 $spacing-4;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.notFoundTitle {
+  font-family: $font-family-heading;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-2;
+}
+
+.notFoundText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-6;
+  max-width: 28rem;
+}
+
+.notFoundLink {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  padding: $spacing-2 $spacing-4;
+  background: $color-primary;
+  color: #fff;
+  border-radius: $border-radius-md;
+  transition:
+    background $motion-duration-normal $motion-ease-in-out,
+    transform $motion-duration-normal $motion-ease-out;
+
+  &:hover {
+    background: $color-primary-dark;
+    color: #fff;
+  }
 }
 
 .footer {
@@ -196,7 +250,8 @@
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
   color: $color-text-tertiary;
-  transition: color $motion-duration-normal $motion-ease-in-out,
+  transition:
+    color $motion-duration-normal $motion-ease-in-out,
     background $motion-duration-fast $motion-ease-out;
 
   &:hover {
@@ -225,7 +280,8 @@
   background: $color-primary;
   color: #fff;
   border-radius: $border-radius-md;
-  transition: background $motion-duration-normal $motion-ease-in-out,
+  transition:
+    background $motion-duration-normal $motion-ease-in-out,
     transform $motion-duration-normal $motion-ease-out;
 
   &:hover {
