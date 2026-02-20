@@ -60,6 +60,18 @@ function ProjectGroupDetailPage() {
         {group.description && (
           <p className={clsx(styles.description)}>{group.description}</p>
         )}
+        {group.achievements && group.achievements.length > 0 && (
+          <div className={clsx(styles.achievementsSection)}>
+            <h2 className={clsx(styles.techHeading)}>Key achievements</h2>
+            <ul className={clsx(styles.achievementsList)}>
+              {group.achievements.map((achievement, idx) => (
+                <li key={idx} className={clsx(styles.achievementItem)}>
+                  {achievement}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className={clsx(styles.techSection)}>
           <h2 className={clsx(styles.techHeading)}>Technologies</h2>
           <ul className={clsx(styles.techList)}>
@@ -75,27 +87,47 @@ function ProjectGroupDetailPage() {
           <ul className={clsx(styles.itemsList)}>
             {group.items.map((item) => (
               <li key={item.id} className={clsx(styles.item)}>
-                {item.link ? (
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={clsx(styles.itemLink)}
-                  >
-                    <span className={clsx(styles.itemTitle)}>{item.title}</span>
-                    {item.description && (
-                      <span className={clsx(styles.itemDescription)}>
-                        {item.description}
-                      </span>
-                    )}
-                    <span className={clsx(styles.itemArrow)}>→</span>
-                  </a>
-                ) : (
-                  <span className={clsx(styles.itemTitle)}>{item.title}</span>
-                )}
-                {item.description && !item.link && (
-                  <p className={clsx(styles.itemDescription)}>{item.description}</p>
-                )}
+                <div className={clsx(styles.itemMedia)}>
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt ?? item.title}
+                      className={clsx(styles.itemThumbnail)}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span className={clsx(styles.itemIcon)} aria-hidden>
+                      {item.icon ?? '◆'}
+                    </span>
+                  )}
+                </div>
+                <div className={clsx(styles.itemContent)}>
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={clsx(styles.itemLink)}
+                    >
+                      <span className={clsx(styles.itemTitle)}>{item.title}</span>
+                      {item.description && (
+                        <span className={clsx(styles.itemDescription)}>
+                          {item.description}
+                        </span>
+                      )}
+                      <span className={clsx(styles.itemArrow)}>→</span>
+                    </a>
+                  ) : (
+                    <>
+                      <span className={clsx(styles.itemTitle)}>{item.title}</span>
+                      {item.description && (
+                        <p className={clsx(styles.itemDescription)}>
+                          {item.description}
+                        </p>
+                      )}
+                    </>
+                  )}
+                </div>
               </li>
             ))}
           </ul>

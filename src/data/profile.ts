@@ -14,7 +14,7 @@ export const profile = {
   shortName: 'Azael AC',
   tagline: 'Full-stack web developer',
   headline:
-    '4+ years in React & Next.js — modern web apps, 3D experiences, and clean code.',
+    '4+ years building web applications in React & Next.js — modern web apps, 3D experiences, and clean code.',
   location: 'Köln, Germany',
   address: 'Schützenhofstraße 22, 51063 Köln',
   email: 'job@azaelac.dev',

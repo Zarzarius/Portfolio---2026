@@ -20,10 +20,11 @@ export const skills = [
   'GSAP',
   'Framer Motion',
   'Material UI',
-  'Tailwind CSS',
   'Styled Components',
   'Figma',
   'Git',
+  'GitLab',
+  'GitHub',
   'Docker',
   'Agile / SCRUM',
 ];

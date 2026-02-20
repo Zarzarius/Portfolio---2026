@@ -27,6 +27,11 @@ export interface ProjectGroupItem {
   title: string;
   description?: string;
   link?: string;
+  /** Optional small thumbnail image URL (displayed small, icon-sized). */
+  image?: string;
+  imageAlt?: string;
+  /** Optional icon (emoji or character) when no image—shown in small media cell. */
+  icon?: string;
 }
 
 /** Collection of minor projects that share common technologies. */
@@ -38,6 +43,7 @@ export interface ProjectGroup {
   items: ProjectGroupItem[];
   category: Category;
   type: ProjectType;
+  achievements?: string[];
   /** When true, group is shown on the home page "Selected work" section */
   highlighted?: boolean;
 }
@@ -202,7 +208,7 @@ export const projects: Project[] = [
 export const projectGroups: ProjectGroup[] = [
   {
     id: 1,
-    title: 'Campaign landing pages',
+    title: 'Demodern Campaign landing pages',
     description:
       'High-quality marketing and campaign landing pages built with React and shared tooling. Each page is designed for clear conversion goals, strong visual hierarchy, and fast load times. Focus on brand storytelling, campaign messaging, and measurable outcomes for clients.',
     technologies: [
@@ -214,6 +220,13 @@ export const projectGroups: ProjectGroup[] = [
       'LOTTIE FILES',
       'ZUSTAND',
       'REACT THREE FIBER',
+      'STRAPI',
+      'STYLED COMPONENTS',
+    ],
+    achievements: [
+      'Delivered multiple campaign landing pages with React and shared tooling for clear conversion goals and fast load times.',
+      'Implemented strong visual hierarchy, brand storytelling, and campaign messaging aligned with client outcomes.',
+      'Used Motion, GSAP, and Lottie for engaging animations; React Three Fiber and Strapi where required.',
     ],
     items: [
       {
@@ -244,7 +257,7 @@ export const projectGroups: ProjectGroup[] = [
     id: 2,
     title: "D'Art Design Group corporative landing pages",
     description:
-      "Landing pages for clients of D'Art Design Group. The landing pages are built with Next.js and the technologies mentioned above.",
+      "Landing pages for clients of D'Art Design Group. The landing pages are built with Next.js and the technologies mentioned.",
     technologies: [
       'NEXT.JS',
       'TYPESCRIPT',
@@ -256,6 +269,11 @@ export const projectGroups: ProjectGroup[] = [
       'GRAPHQL',
       'ZOD',
       'SASS',
+    ],
+    achievements: [
+      "Built and shipped multiple corporative landing pages for D'Art Design Group clients using Next.js and shared stack.",
+      'Integrated Craft CMS and GraphQL for content-driven pages with type-safe data and Zod validation.',
+      'Delivered responsive, animated experiences with Motion, GSAP, and Lottie; SASS for consistent styling.',
     ],
     items: [
       {
@@ -286,6 +304,13 @@ export const projectGroups: ProjectGroup[] = [
           'Landing page for Hanselmann & Compagnie to show their services',
         link: 'https://d-art-digital.de/de/projects/hanselmann-compagnie',
       },
+      {
+        id: 'corporative-lp-5',
+        title: 'Düsseldorf Airport Quiz game',
+        description:
+          'Quiz game for Düsseldorf Airport to show their services and the city of Düsseldorf in a gamified way.',
+        link: 'https://d-art-digital.de/de/projects/dus-quiz',
+      },
     ],
     category: 'Dart Design',
     type: 'professional',
@@ -294,8 +319,97 @@ export const projectGroups: ProjectGroup[] = [
     id: 3,
     title: 'Personal projects',
     technologies: ['ASTRO', 'TYPESCRIPT', 'ZOD', 'SASS'],
-    items: [],
+    description:
+      'Personal projects built to practice Astro, an interesting static site builder framework.',
+    achievements: [
+      'Shipped several static sites with Astro for fast builds and minimal JS where appropriate.',
+      'Used TypeScript and Zod for type-safe content and validation across projects.',
+      'Delivered client-focused sites: food truck menu and location hub, restaurant info, and tradesperson portfolio with contact flows.',
+    ],
+    items: [
+      {
+        id: 'personal-1',
+        title: 'El Maizter - Foodtruck website',
+        description:
+          'Online menu and location hub for a street food truck—helps customers find the truck and browse offerings before they order.',
+        link: 'https://el-maizter.vercel.app/menu',
+      },
+      {
+        id: 'personal-2',
+        title: 'La Cabana - Restaurant website',
+        description:
+          'Restaurant site with atmosphere, opening hours, and contact details so diners can plan visits and get in touch.',
+        link: 'https://la-cabana-web.vercel.app/',
+      },
+      {
+        id: 'personal-3',
+        title: 'ASP - Freelance craftsman website',
+        description:
+          'Portfolio and contact site for a tradesperson—showcases past work and makes it easy for clients to request quotes.',
+        link: 'https://asp-woad.vercel.app/',
+      },
+    ],
     category: 'Personal',
     type: 'personal',
+  },
+  {
+    id: 4,
+    title: 'Dart Design – 3D product showcase & concept cases',
+    description:
+      "3D applications for D'Art Design clients:3D worlds that visualise a company’s products and flows, interactive 3D hubs for exploring services, photorealistic product showcases for pitches, and internal tools such as a model configurator for artists to test shaders and assets in the browser. Used in trade shows, events, and as concept presentations.",
+    technologies: [
+      'NEXT.JS',
+      'TYPESCRIPT',
+      'REACT THREE FIBER',
+      'THREE.JS',
+      'WEBGL',
+      'MOTION',
+      'GSAP',
+      'LOTTIE FILES',
+      'ZUSTAND',
+      'CRAFT CMS',
+      'GRAPHQL',
+      'ZOD',
+      'SASS',
+    ],
+    achievements: [
+      "Delivered 3D applications for D'Art Design clients: isometric product worlds, interactive service hubs, and photorealistic product showcases for trade shows, events, and pitches.",
+      'Worked closely with 3D artists—testing implementations, shaders, and materials in the browser so rendering matches the 3D editor and artists can align with devs across projects.',
+      'Built internal tools such as a model 3D configurator so artists can validate assets and lighting in WebGL before integration.',
+    ],
+    items: [
+      {
+        id: 'dart-3d-1',
+        title: 'SMA. – 3D green energy experience',
+        description:
+          'Isometric, simplified 3D world for SMA with product showcase and interactive 3D models. (green energy brand) showing their product range, showing how energy is accumulated in one green-energy network. Used in Trade Shows and Events.',
+        icon: '☀️',
+        link: 'https://d-art-digital.de/de/projects/sma-grid-stability',
+      },
+      {
+        id: 'dart-3d-2',
+        title: 'Düsseldorf Airport 3D experience',
+        description:
+          '3D experience with a simplified 3D model of the airport for Düsseldorf Airport to show their services and a Hub for the users to explore the airport and the services it offers. Used in Trade Shows and Events.',
+        icon: '✈️',
+        link: 'https://d-art-digital.de/de/projects/düsseldorf-airport-3d-experience',
+      },
+      {
+        id: 'dart-3d-3',
+        title: 'GROHE – 3D product showcase (pitch)',
+        description:
+          'Concept for GROHE: 3D product model with high-resolution, realistic textures—Kronos materials and advanced shaders for photorealistic renders in the browser.',
+        icon: '🚿',
+      },
+      {
+        id: 'dart-3d-4',
+        title: 'Model 3D configurator',
+        description:
+          'Concept for 3D artists to test shaders and 3D assets in the browser, so rendering matches the 3D editor in WebGL with a panel to configure the 3D model, lighting maps. Gives artists a straightforward way to test and align with devs across different projects.',
+        icon: '⚙️',
+      },
+    ],
+    category: 'Dart Design',
+    type: 'professional',
   },
 ];
