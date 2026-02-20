@@ -201,28 +201,40 @@ function RootComponent() {
         </PageTransition>
       </main>
       <footer className={clsx(styles.footer)}>
+        <div className={clsx(styles.footerAccent)} aria-hidden />
         <div className={clsx(styles.footerInner)}>
-          <span className={clsx(styles.footerCopy)}>
-            © 2026 {profile.fullName}
-          </span>
-          <div className={clsx(styles.footerLinks)}>
-            <a
-              href={profile.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={clsx(styles.footerLink)}
-            >
-              GitHub
-            </a>
-            <a
-              href={profile.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={clsx(styles.footerLink)}
-            >
-              LinkedIn
-            </a>
+          <div className={clsx(styles.footerBrand)}>
+            <span className={clsx(styles.footerCopy)}>© 2026</span>
+            <span className={clsx(styles.footerName)}>{profile.fullName}</span>
+            <span className={clsx(styles.footerTagline)}>
+              {profile.tagline}
+            </span>
           </div>
+          <nav className={clsx(styles.footerConnect)} aria-label="Connect">
+            <span className={clsx(styles.footerConnectLabel)}>Connect</span>
+            <div className={clsx(styles.footerLinks)}>
+              <a
+                href={profile.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={clsx(styles.footerLink)}
+              >
+                GitHub
+              </a>
+              <a
+                href={
+                  profile.social.linkedin.startsWith('http')
+                    ? profile.social.linkedin
+                    : `https://${profile.social.linkedin}`
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className={clsx(styles.footerLink)}
+              >
+                LinkedIn
+              </a>
+            </div>
+          </nav>
         </div>
       </footer>
     </RootDocument>

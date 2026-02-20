@@ -450,9 +450,11 @@
 .cta {
   margin-top: $spacing-8;
   padding: $spacing-7 $spacing-6;
-  background: $color-bg-secondary;
+  background: color-mix(in srgb, $color-bg-primary 88%, transparent);
   border: $border-width-thin solid $color-border-primary;
   border-radius: $border-radius-lg;
+  backdrop-filter: blur(16px) saturate(1.1);
+  box-shadow: 0 1px 0 0 color-mix(in srgb, $color-border-primary 60%, transparent);
   display: flex;
   justify-content: space-between;
   align-items: center;
