@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { Button } from '../../components/Button';
 import { profile } from '../../data/profile';
 import { sendContactEmail } from '../../server/functions';
 import { contactSchema, type ContactFormData } from '../../schemas/contact';
@@ -153,13 +154,14 @@ function Contact() {
             {formError}
           </p>
         )}
-        <button
+        <Button
           type="submit"
-          className={clsx(styles.submitButton)}
+          variant="primary"
           disabled={status === 'submitting'}
+          loading={status === 'submitting'}
         >
-          {status === 'submitting' ? 'Sending…' : 'Send message'}
-        </button>
+          Send message
+        </Button>
       </form>
 
       <div className={clsx(styles.socialSection)}>

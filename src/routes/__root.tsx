@@ -9,6 +9,7 @@ import {
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { BurgerMenu } from '../components/BurgerMenu';
+import { Button } from '../components/Button';
 import { PageTransition } from '../components/PageTransition';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { profile } from '../data/profile';
@@ -26,9 +27,9 @@ function NotFoundComponent() {
       <p className={clsx(styles.notFoundText)}>
         The page you’re looking for doesn’t exist or has been moved.
       </p>
-      <Link to="/" className={clsx(styles.notFoundLink)} preload="intent">
+      <Button to="/" variant="primary" preload="intent">
         Back to home
-      </Link>
+      </Button>
     </div>
   );
 }
@@ -94,14 +95,15 @@ function RootComponent() {
           </nav>
           <div className={clsx(styles.headerActions)}>
             <ThemeToggle />
-            <a
+            <Button
               href={profile.resumeUrl}
-              className={clsx(styles.resumeButton)}
+              variant="primary"
+              size="compact"
               target="_blank"
               rel="noopener noreferrer"
             >
               Resume
-            </a>
+            </Button>
           </div>
           <BurgerMenu
             open={menuOpen}
@@ -182,15 +184,16 @@ function RootComponent() {
             </div>
             <div className={styles.mobileActions}>
               <ThemeToggle />
-              <a
+              <Button
                 href={profile.resumeUrl}
-                className={styles.mobileResumeButton}
+                variant="primary"
+                size="default"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
               >
                 Resume
-              </a>
+              </Button>
             </div>
           </BurgerMenu>
         </div>

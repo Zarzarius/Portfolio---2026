@@ -131,32 +131,6 @@
   color: $color-status-security;
 }
 
-.submitButton {
-  padding: $spacing-3 $spacing-6;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  color: #fff;
-  background: $color-primary;
-  border: none;
-  border-radius: $border-radius-md;
-  cursor: pointer;
-  align-self: flex-start;
-  transition: transform $motion-duration-normal $motion-ease-out,
-    box-shadow $motion-duration-normal $motion-ease-out,
-    background $motion-duration-normal $motion-ease-in-out;
-
-  &:hover:not(:disabled) {
-    background: $color-primary-dark;
-    transform: translateY(-2px);
-    box-shadow: $shadow-primary;
-  }
-
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-}
-
 .socialSection {
   margin-top: $spacing-8;
   padding-top: $spacing-6;

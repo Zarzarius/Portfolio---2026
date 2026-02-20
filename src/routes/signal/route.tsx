@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { Button } from '../../components/Button';
 import styles from './signal.module.scss';
 
 export const Route = createFileRoute('/signal')({
@@ -95,9 +96,9 @@ function Signal() {
               placeholder="Tell me about your project..."
             />
           </div>
-          <button type="submit" className={clsx(styles.submit)}>
+          <Button type="submit" variant="primary">
             Send message
-          </button>
+          </Button>
         </form>
       </div>
     </div>

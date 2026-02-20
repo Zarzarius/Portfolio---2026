@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { Button } from '../../components/Button';
 import {
   ProjectCard,
   projectToCardItem,
@@ -82,17 +83,14 @@ function ProjectsLayout() {
       </header>
       <div className={clsx(styles.filters)}>
         {filterOptions.map((category: string) => (
-          <button
+          <Button
             key={category}
-            type="button"
-            className={clsx(
-              styles.filterBtn,
-              activeFilter === category && styles.filterBtnActive,
-            )}
+            variant="outline"
+            active={activeFilter === category}
             onClick={() => setActiveFilter(category)}
           >
             {CATEGORY_LABELS[category] ?? category}
-          </button>
+          </Button>
         ))}
       </div>
       {(professionalProjects.length > 0 || professionalGroups.length > 0) && (

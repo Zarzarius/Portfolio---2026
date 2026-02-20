@@ -76,45 +76,6 @@
   gap: $spacing-3;
 }
 
-.resumeButton {
-  display: inline-flex;
-  align-items: center;
-  gap: $spacing-2;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  padding: $spacing-2 $spacing-5;
-  background: $color-primary;
-  color: #fff;
-  border-radius: $border-radius-md;
-  transition:
-    transform $motion-duration-normal $motion-ease-out,
-    box-shadow $motion-duration-normal $motion-ease-out,
-    background $motion-duration-normal $motion-ease-in-out;
-
-  &::after {
-    content: '→';
-    font-size: 1em;
-    opacity: 0.9;
-    transition: transform $motion-duration-normal $motion-ease-out;
-  }
-
-  &:hover {
-    background: $color-primary-dark;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: $shadow-primary;
-
-    &::after {
-      transform: translateX(2px);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
-  }
-}
-
 .main {
   min-height: calc(100vh - #{$header-height});
   flex: 1;
@@ -154,23 +115,6 @@
   color: $color-text-secondary;
   margin: 0 0 $spacing-6;
   max-width: 28rem;
-}
-
-.notFoundLink {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  padding: $spacing-2 $spacing-4;
-  background: $color-primary;
-  color: #fff;
-  border-radius: $border-radius-md;
-  transition:
-    background $motion-duration-normal $motion-ease-in-out,
-    transform $motion-duration-normal $motion-ease-out;
-
-  &:hover {
-    background: $color-primary-dark;
-    color: #fff;
-  }
 }
 
 // ---- Footer: refined editorial close ----
@@ -379,38 +323,4 @@
   align-items: center;
   gap: $spacing-3;
   border-top: $border-width-thin solid $color-border-primary;
-}
-
-.mobileResumeButton {
-  display: inline-flex;
-  align-items: center;
-  gap: $spacing-2;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  padding: $spacing-3 $spacing-5;
-  background: $color-primary;
-  color: #fff;
-  border-radius: $border-radius-md;
-  transition:
-    background $motion-duration-normal $motion-ease-in-out,
-    transform $motion-duration-normal $motion-ease-out,
-    box-shadow $motion-duration-normal $motion-ease-out;
-
-  &::after {
-    content: '→';
-    font-size: 1em;
-    opacity: 0.9;
-  }
-
-  &:hover {
-    background: $color-primary-dark;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: $shadow-primary;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
-  }
 }

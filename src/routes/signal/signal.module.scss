@@ -135,19 +135,3 @@
   min-height: 160px;
 }
 
-.submit {
-  padding: $spacing-3 $spacing-6;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  color: #fff;
-  background: $color-primary;
-  border: none;
-  border-radius: $border-radius-md;
-  cursor: pointer;
-  align-self: flex-start;
-  transition: $transition-all;
-
-  &:hover {
-    background: $color-primary-dark;
-  }
-}

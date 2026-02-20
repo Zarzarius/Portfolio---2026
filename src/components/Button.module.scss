@@ -1,0 +1,113 @@
+@use '../styles/theme' as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  font-family: inherit;
+  font-weight: $font-weight-semibold;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition:
+    transform $motion-duration-normal $motion-ease-out,
+    box-shadow $motion-duration-normal $motion-ease-out,
+    background $motion-duration-normal $motion-ease-in-out,
+    color $motion-duration-normal $motion-ease-in-out,
+    border-color $motion-duration-normal $motion-ease-in-out;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+// ---- Primary ----
+.primary {
+  background: $color-primary;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: $color-primary-dark;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: $shadow-primary;
+
+    .icon {
+      transform: translateY(2px);
+    }
+  }
+}
+
+.primaryCompact {
+  font-size: $font-size-sm;
+  padding: $spacing-2 $spacing-5;
+}
+
+.primaryDefault {
+  font-size: $font-size-base;
+  padding: $spacing-3 $spacing-6;
+  align-self: flex-start;
+}
+
+// ---- Outline (filter chips) ----
+.outline {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  padding: $spacing-2 $spacing-4;
+  color: $color-text-tertiary;
+  background: transparent;
+  border: $border-width-thin solid $color-border-primary;
+
+  &:hover:not(:disabled) {
+    color: $color-text-primary;
+    border-color: $color-border-secondary;
+    transform: translateY(-1px);
+  }
+}
+
+.outlineActive {
+  color: $color-primary;
+  border-color: $color-primary;
+  background: $color-bg-hover;
+}
+
+// ---- Ghost (icon buttons) ----
+.ghost {
+  padding: $spacing-2;
+  color: $color-text-tertiary;
+  background: transparent;
+
+  &:hover:not(:disabled) {
+    color: $color-text-primary;
+    background: $color-bg-hover;
+  }
+}
+
+.ghostSquare {
+  width: 40px;
+  height: 40px;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 1.125em;
+  height: 1.125em;
+  opacity: 0.95;
+  transition: transform $motion-duration-normal $motion-ease-out;
+}
+
+.primary .icon {
+  width: 1.125em;
+  height: 1.125em;
+}
+
+.loading {
+  pointer-events: none;
+}
