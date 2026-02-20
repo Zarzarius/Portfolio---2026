@@ -1,8 +1,11 @@
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
-import { ProjectCard } from '../../components/ProjectCard';
-import { ProjectGroupCard } from '../../components/ProjectGroupCard';
+import {
+  ProjectCard,
+  projectToCardItem,
+  groupToCardItem,
+} from '../../components/ProjectCard';
 import styles from './projects.module.scss';
 import {
   getProjects,
@@ -97,12 +100,19 @@ function ProjectsLayout() {
           <h2 className={clsx(styles.groupTitle)}>Professional</h2>
           <div className={clsx(styles.grid)}>
             {professionalProjects.map((project: Project) => (
-              <ProjectCard key={project.id} project={project} />
+              <ProjectCard
+                key={project.id}
+                item={projectToCardItem(project)}
+                to="/projects/$projectId"
+                params={{ projectId: String(project.id) }}
+              />
             ))}
             {professionalGroups.map((group: ProjectGroup) => (
-              <ProjectGroupCard
+              <ProjectCard
                 key={`group-${group.id}`}
-                group={group}
+                item={groupToCardItem(group)}
+                to="/projects/group/$groupId"
+                params={{ groupId: String(group.id) }}
               />
             ))}
           </div>
@@ -113,12 +123,19 @@ function ProjectsLayout() {
           <h2 className={clsx(styles.groupTitle)}>Personal</h2>
           <div className={clsx(styles.grid)}>
             {personalProjects.map((project: Project) => (
-              <ProjectCard key={project.id} project={project} />
+              <ProjectCard
+                key={project.id}
+                item={projectToCardItem(project)}
+                to="/projects/$projectId"
+                params={{ projectId: String(project.id) }}
+              />
             ))}
             {personalGroups.map((group: ProjectGroup) => (
-              <ProjectGroupCard
+              <ProjectCard
                 key={`group-${group.id}`}
-                group={group}
+                item={groupToCardItem(group)}
+                to="/projects/group/$groupId"
+                params={{ groupId: String(group.id) }}
               />
             ))}
           </div>

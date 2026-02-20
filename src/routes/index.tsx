@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { ProjectCard } from '../components/ProjectCard';
-import { ProjectGroupCard } from '../components/ProjectGroupCard';
+import {
+  ProjectCard,
+  projectToCardItem,
+  groupToCardItem,
+} from '../components/ProjectCard';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { profile } from '../data/profile';
 import styles from './index.module.scss';
@@ -93,12 +96,19 @@ function Home() {
             <h3 className={clsx(styles.groupTitle)}>Professional</h3>
             <div className={clsx(styles.grid)}>
               {professionalProjects.map((project: Project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard
+                  key={project.id}
+                  item={projectToCardItem(project)}
+                  to="/projects/$projectId"
+                  params={{ projectId: String(project.id) }}
+                />
               ))}
               {professionalGroups.map((group: ProjectGroup) => (
-                <ProjectGroupCard
+                <ProjectCard
                   key={`group-${group.id}`}
-                  group={group}
+                  item={groupToCardItem(group)}
+                  to="/projects/group/$groupId"
+                  params={{ groupId: String(group.id) }}
                 />
               ))}
             </div>
@@ -110,12 +120,19 @@ function Home() {
             <h3 className={clsx(styles.groupTitle)}>Personal</h3>
             <div className={clsx(styles.grid)}>
               {personalProjects.map((project: Project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard
+                  key={project.id}
+                  item={projectToCardItem(project)}
+                  to="/projects/$projectId"
+                  params={{ projectId: String(project.id) }}
+                />
               ))}
               {personalGroups.map((group: ProjectGroup) => (
-                <ProjectGroupCard
+                <ProjectCard
                   key={`group-${group.id}`}
-                  group={group}
+                  item={groupToCardItem(group)}
+                  to="/projects/group/$groupId"
+                  params={{ groupId: String(group.id) }}
                 />
               ))}
             </div>
