@@ -51,8 +51,8 @@ function Home() {
           <p className={clsx(styles.eyebrow)}>{profile.tagline}</p>
           <h1 className={clsx(styles.title)}>{profile.headline}</h1>
           <p className={clsx(styles.subtitle)}>
-            React, Next.js, 3D experiences, and headless CMS. Selected work from
-            D’Art Design, Demodern, and side projects.
+            Exploring the space between design and technology to craft engaging,
+            intuitive digital experiences.
           </p>
           <div className={clsx(styles.heroActions)}>
             <Link to="/projects" className={clsx(styles.heroBtnPrimary)}>

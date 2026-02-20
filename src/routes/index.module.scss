@@ -4,6 +4,10 @@
   max-width: $container-max-width;
   margin: 0 auto;
   padding: $spacing-8 $container-padding;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-6 $spacing-4;
+  }
 }
 
 // ---- Hero ----
@@ -15,7 +19,7 @@
   margin-bottom: $spacing-8;
   min-height: min(70vh, 560px);
 
-  @media (max-width: 900px) {
+  @media (max-width: $breakpoint-md) {
     grid-template-columns: 1fr;
     gap: $spacing-7;
     min-height: auto;
@@ -136,7 +140,7 @@
     opacity: 0.95;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: $breakpoint-md) {
     max-height: 280px;
   }
 }
