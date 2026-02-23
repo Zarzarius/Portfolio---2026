@@ -4,20 +4,27 @@
   width: 100%;
   min-height: 100%;
   position: relative;
+  view-transition-name: main-content;
 }
 
-.pageTransition.pending {
-  opacity: 0;
-  pointer-events: none;
+// View Transitions API: slide up + fade for new page
+::view-transition-old(main-content) {
+  animation: pageOut $motion-duration-entrance $motion-ease-out forwards;
 }
 
-.pageTransition.idle {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.pageTransition.entering {
+::view-transition-new(main-content) {
   animation: pageEnter $motion-duration-entrance $motion-ease-out forwards;
+}
+
+@keyframes pageOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.99);
+  }
 }
 
 @keyframes pageEnter {
