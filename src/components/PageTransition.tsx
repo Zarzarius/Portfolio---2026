@@ -24,6 +24,7 @@ export function PageTransition({ children }: PageTransitionProps) {
 
   useEffect(() => {
     if (isPending) return;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     setIsAnimating(true);
     const timer = setTimeout(() => {
       setIsAnimating(false);
@@ -37,7 +38,6 @@ export function PageTransition({ children }: PageTransitionProps) {
       key={resolvedPath}
       className={clsx(
         styles.pageTransition,
-        isPending && styles.pending,
         !isPending && (isAnimating ? styles.entering : styles.idle),
       )}
     >
