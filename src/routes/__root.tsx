@@ -34,6 +34,18 @@ function NotFoundComponent() {
   );
 }
 
+function RootPendingComponent() {
+  return (
+    <div
+      className={clsx(styles.pendingWrap)}
+      aria-live="polite"
+      aria-busy="true"
+    >
+      <span className={clsx(styles.pendingLabel)}>Loading…</span>
+    </div>
+  );
+}
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -46,6 +58,7 @@ export const Route = createRootRoute({
   }),
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
+  pendingComponent: RootPendingComponent,
 });
 
 function RootComponent() {

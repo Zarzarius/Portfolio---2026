@@ -81,6 +81,19 @@
   flex: 1;
 }
 
+// Root pending (navigation loading fallback)
+.pendingWrap {
+  min-height: calc(100vh - #{$header-height});
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pendingLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
 // 404 not found (root notFoundComponent)
 .notFound {
   display: flex;

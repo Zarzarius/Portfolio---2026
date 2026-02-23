@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from '@tanstack/react-router';
+import { useLocation, useRouterState } from '@tanstack/react-router';
 import clsx from 'clsx';
 import styles from './PageTransition.module.scss';
 
@@ -9,23 +9,36 @@ interface PageTransitionProps {
 
 export function PageTransition({ children }: PageTransitionProps) {
   const location = useLocation();
+  const { status, resolvedPathname, isLoading } = useRouterState({
+    select: (s) => ({
+      status: s.status,
+      resolvedPathname: s.resolvedLocation?.pathname,
+      isLoading: s.isLoading,
+    }),
+    structuralSharing: true,
+  });
+
+  const resolvedPath = resolvedPathname ?? location.pathname;
+  const isPending = status === 'pending' || isLoading;
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
+    if (isPending) return;
     setIsAnimating(true);
     const timer = setTimeout(() => {
       setIsAnimating(false);
     }, 450); // Match motion-duration-entrance
 
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, [resolvedPath, isPending]);
 
   return (
     <div
-      key={location.pathname}
+      key={resolvedPath}
       className={clsx(
         styles.pageTransition,
-        isAnimating ? styles.entering : styles.idle,
+        isPending && styles.pending,
+        !isPending && (isAnimating ? styles.entering : styles.idle),
       )}
     >
       {children}

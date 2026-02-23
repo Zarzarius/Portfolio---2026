@@ -6,6 +6,11 @@
   position: relative;
 }
 
+.pageTransition.pending {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .pageTransition.idle {
   opacity: 1;
   transform: translateY(0) scale(1);

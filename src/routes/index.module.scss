@@ -75,7 +75,8 @@
   color: #fff;
   background: $color-primary;
   border-radius: $border-radius-md;
-  transition: transform $motion-duration-normal $motion-ease-out,
+  transition:
+    transform $motion-duration-normal $motion-ease-out,
     box-shadow $motion-duration-normal $motion-ease-out;
 
   &:hover {
@@ -94,7 +95,8 @@
   color: $color-text-primary;
   border: $border-width-thin solid $color-border-secondary;
   border-radius: $border-radius-md;
-  transition: border-color $motion-duration-normal $motion-ease-in-out,
+  transition:
+    border-color $motion-duration-normal $motion-ease-in-out,
     color $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
@@ -115,7 +117,8 @@
   max-height: 380px;
   border-radius: $border-radius-xl;
   overflow: hidden;
-  box-shadow: $shadow-lg,
+  box-shadow:
+    $shadow-lg,
     0 24px 48px -12px rgba(4, 120, 87, 0.12),
     0 0 0 1px rgba(4, 120, 87, 0.06);
 
@@ -358,7 +361,8 @@
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: transform $motion-duration-normal $motion-ease-out,
+  transition:
+    transform $motion-duration-normal $motion-ease-out,
     border-color $motion-duration-normal $motion-ease-in-out,
     box-shadow $motion-duration-normal $motion-ease-out;
 
@@ -458,7 +462,8 @@
   border: $border-width-thin solid $color-border-primary;
   border-radius: $border-radius-lg;
   backdrop-filter: blur(16px) saturate(1.1);
-  box-shadow: 0 1px 0 0 color-mix(in srgb, $color-border-primary 60%, transparent);
+  box-shadow: 0 1px 0 0
+    color-mix(in srgb, $color-border-primary 60%, transparent);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -501,7 +506,8 @@
   color: #fff;
   background: $color-primary;
   border-radius: $border-radius-md;
-  transition: transform $motion-duration-normal $motion-ease-out,
+  transition:
+    transform $motion-duration-normal $motion-ease-out,
     box-shadow $motion-duration-normal $motion-ease-out,
     background $motion-duration-normal $motion-ease-in-out;
 
@@ -522,7 +528,8 @@
   color: $color-text-primary;
   border: $border-width-thin solid $color-border-secondary;
   border-radius: $border-radius-md;
-  transition: border-color $motion-duration-normal $motion-ease-in-out,
+  transition:
+    border-color $motion-duration-normal $motion-ease-in-out,
     color $motion-duration-normal $motion-ease-in-out,
     transform $motion-duration-normal $motion-ease-out;
 
