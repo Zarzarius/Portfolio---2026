@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
+import { getDefaultSeoMeta } from '../../../../data/seo';
 import { getProjectGroupBySlug } from '../../../../server/functions';
 import styles from './group.module.scss';
 
@@ -10,22 +11,16 @@ export const Route = createFileRoute('/projects/group/$groupSlug')({
     const group = await getProjectGroupBySlug({ data: { slug } });
     return { group };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData?.group) return { meta: [{ title: 'Group not found' }] };
     const { group } = loaderData;
     const title = `${group.title} — Azael AC`;
     const description = group.description
       ? group.description.slice(0, 155) + (group.description.length > 155 ? '…' : '')
       : `Collection: ${group.title}`;
-    return {
-      meta: [
-        { title },
-        { name: 'description', content: description },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: 'og:type', content: 'article' as const },
-      ],
-    };
+    const path = `/projects/group/${params.groupSlug ?? ''}`;
+    const seo = getDefaultSeoMeta({ title, description, path, ogType: 'article' });
+    return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },
   component: ProjectGroupDetailPage,
 });

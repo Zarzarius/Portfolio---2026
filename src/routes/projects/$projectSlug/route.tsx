@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
+import { getDefaultSeoMeta } from '../../../data/seo';
 import { getProjectBySlug } from '../../../server/functions';
 import styles from './project.module.scss';
 
@@ -10,21 +11,15 @@ export const Route = createFileRoute('/projects/$projectSlug')({
     const project = await getProjectBySlug({ data: { slug } });
     return { project };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData?.project) return { meta: [{ title: 'Project not found' }] };
     const { project } = loaderData;
     const title = `${project.title} — Azael AC`;
     const description =
       project.description.slice(0, 155) + (project.description.length > 155 ? '…' : '');
-    return {
-      meta: [
-        { title },
-        { name: 'description', content: description },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: 'og:type', content: 'article' as const },
-      ],
-    };
+    const path = `/projects/${params.projectSlug ?? ''}`;
+    const seo = getDefaultSeoMeta({ title, description, path, ogType: 'article' });
+    return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },
   component: ProjectDetailPage,
 });
