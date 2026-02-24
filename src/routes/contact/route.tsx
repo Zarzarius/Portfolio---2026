@@ -158,6 +158,7 @@ function Contact() {
       </div>
 
       <form className={clsx(styles.form)} onSubmit={handleSubmit}>
+        <h2 className={clsx(styles.formHeadline)}>Send a message</h2>
         <div className={clsx(styles.formGroup)}>
           <label htmlFor="name" className={clsx(styles.label)}>
             Name

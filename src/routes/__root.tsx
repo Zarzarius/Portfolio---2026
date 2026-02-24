@@ -10,6 +10,7 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { BurgerMenu } from '../components/BurgerMenu';
 import { Button } from '../components/Button';
+import { Nav } from '../components/Nav';
 import { PageTransition } from '../components/PageTransition';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { profile } from '../data/profile';
@@ -73,30 +74,10 @@ function RootComponent() {
             {profile.shortName}
           </Link>
           <nav className={clsx(styles.nav)} aria-label="Main">
-            <Link
-              to="/projects"
-              className={clsx(styles.navLink)}
-              activeProps={{ className: clsx(styles.navLink, styles.active) }}
-              preload="intent"
-            >
-              Projects
-            </Link>
-            <Link
-              to="/about"
-              className={clsx(styles.navLink)}
-              activeProps={{ className: clsx(styles.navLink, styles.active) }}
-              preload="intent"
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className={clsx(styles.navLink)}
-              activeProps={{ className: clsx(styles.navLink, styles.active) }}
-              preload="intent"
-            >
-              Contact
-            </Link>
+            <Nav
+              linkClassName={clsx(styles.navLink)}
+              activeClassName={styles.active}
+            />
           </nav>
           <div className={clsx(styles.headerActions)}>
             <ThemeToggle />
@@ -116,48 +97,11 @@ function RootComponent() {
             onClose={closeMenu}
           >
             <div className={styles.mobileNav}>
-              <Link
-                to="/projects"
-                className={styles.mobileNavLink}
-                activeProps={{
-                  className: clsx(
-                    styles.mobileNavLink,
-                    styles.mobileNavLinkActive,
-                  ),
-                }}
-                preload="intent"
-                onClick={closeMenu}
-              >
-                Projects
-              </Link>
-              <Link
-                to="/about"
-                className={styles.mobileNavLink}
-                activeProps={{
-                  className: clsx(
-                    styles.mobileNavLink,
-                    styles.mobileNavLinkActive,
-                  ),
-                }}
-                preload="intent"
-                onClick={closeMenu}
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                className={styles.mobileNavLink}
-                activeProps={{
-                  className: clsx(
-                    styles.mobileNavLink,
-                    styles.mobileNavLinkActive,
-                  ),
-                }}
-                preload="intent"
-                onClick={closeMenu}
-              >
-                Contact
-              </Link>
+              <Nav
+                linkClassName={styles.mobileNavLink}
+                activeClassName={styles.mobileNavLinkActive}
+                onNavigate={closeMenu}
+              />
             </div>
             <div className={styles.mobileActions}>
               <ThemeToggle />

@@ -100,6 +100,15 @@
   max-width: 32rem;
 }
 
+.formHeadline {
+  font-family: $font-family-heading;
+  font-size: clamp($font-size-xl, 3vw, $font-size-2xl);
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight;
+  margin: 0 0 $spacing-1 0;
+}
+
 .formGroup {
   display: flex;
   flex-direction: column;
