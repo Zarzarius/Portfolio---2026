@@ -101,16 +101,16 @@ function ProjectsLayout() {
               <ProjectCard
                 key={project.id}
                 item={projectToCardItem(project)}
-                to="/projects/$projectId"
-                params={{ projectId: String(project.id) }}
+                to="/projects/$projectSlug"
+                params={{ projectSlug: project.slug }}
               />
             ))}
             {professionalGroups.map((group: ProjectGroup) => (
               <ProjectCard
                 key={`group-${group.id}`}
                 item={groupToCardItem(group)}
-                to="/projects/group/$groupId"
-                params={{ groupId: String(group.id) }}
+                to="/projects/group/$groupSlug"
+                params={{ groupSlug: group.slug }}
               />
             ))}
           </div>
@@ -124,16 +124,16 @@ function ProjectsLayout() {
               <ProjectCard
                 key={project.id}
                 item={projectToCardItem(project)}
-                to="/projects/$projectId"
-                params={{ projectId: String(project.id) }}
+                to="/projects/$projectSlug"
+                params={{ projectSlug: project.slug }}
               />
             ))}
             {personalGroups.map((group: ProjectGroup) => (
               <ProjectCard
                 key={`group-${group.id}`}
                 item={groupToCardItem(group)}
-                to="/projects/group/$groupId"
-                params={{ groupId: String(group.id) }}
+                to="/projects/group/$groupSlug"
+                params={{ groupSlug: group.slug }}
               />
             ))}
           </div>

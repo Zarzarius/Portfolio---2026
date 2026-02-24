@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { getProjectById } from '../../../server/functions';
+import { getProjectBySlug } from '../../../server/functions';
 import styles from './project.module.scss';
 
-export const Route = createFileRoute('/projects/$projectId')({
+export const Route = createFileRoute('/projects/$projectSlug')({
   loader: async ({ params }) => {
-    const id = Number(params.projectId);
-    if (!Number.isInteger(id) || id < 1) return { project: null };
-    const project = await getProjectById({ data: { id } });
+    const slug = params.projectSlug?.trim();
+    if (!slug) return { project: null };
+    const project = await getProjectBySlug({ data: { slug } });
     return { project };
   },
   head: ({ loaderData }) => {

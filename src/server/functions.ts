@@ -28,6 +28,13 @@ export const getProjectById = createServerFn({ method: 'GET' })
     return project;
   });
 
+export const getProjectBySlug = createServerFn({ method: 'GET' })
+  .inputValidator((data: { slug: string }) => data)
+  .handler(async ({ data }) => {
+    const project = projects.find((p) => p.slug === data.slug) ?? null;
+    return project;
+  });
+
 export const getProjectGroups = createServerFn({ method: 'GET' }).handler(
   async () => {
     return projectGroups;
@@ -38,6 +45,13 @@ export const getProjectGroupById = createServerFn({ method: 'GET' })
   .inputValidator((data: { id: number }) => data)
   .handler(async ({ data }) => {
     const group = projectGroups.find((g) => g.id === data.id) ?? null;
+    return group;
+  });
+
+export const getProjectGroupBySlug = createServerFn({ method: 'GET' })
+  .inputValidator((data: { slug: string }) => data)
+  .handler(async ({ data }) => {
+    const group = projectGroups.find((g) => g.slug === data.slug) ?? null;
     return group;
   });
 

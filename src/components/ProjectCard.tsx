@@ -6,8 +6,13 @@ import styles from './ProjectCard.module.scss';
 /** Placeholder image service: stable image per id when no project image is set */
 const PLACEHOLDER_IMAGE_BASE = 'https://picsum.photos/seed';
 
+const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
+
 function getCardImageUrl(item: { id: string | number; image?: string }): string {
-  if (item.image) return item.image;
+  if (item.image) {
+    if (item.image.startsWith('http')) return item.image;
+    return cdnUrl ? `${cdnUrl}/${item.image}` : `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
+  }
   return `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
 }
 
@@ -43,6 +48,8 @@ export function groupToCardItem(group: ProjectGroup): ProjectCardItem {
     description: group.description ?? `${group.items.length} projects`,
     technologies: group.technologies,
     badge: 'Collection',
+    image: group.image,
+    imageAlt: group.imageAlt,
   };
 }
 
