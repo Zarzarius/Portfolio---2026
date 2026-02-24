@@ -125,7 +125,7 @@ export const projects: Project[] = [
       'Developed a responsive web application for Snipes Soundbooth using React and TypeScript.',
       'Integrated the Snipes API to fetch the audio clips.',
       'Implemented a responsive design for the Soundbooth.',
-      'On-site installation and maintenance of the Soundbooth.',
+      'Delivered on-site installation and maintenance of the Soundbooth.',
     ],
     link: 'https://demodern.com/projects/snipes-soundbooth',
     image: 'Projects/soundbooth.png',
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     id: 6,
     slug: 'migros-escape',
     title: 'Migros Digital Escape Game landing page',
-    description: 'Migros escape game landing page to promote the escape game.',
+    description: 'Migros Digital Escape Game landing page to promote the escape game.',
     technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND', 'MOTION'],
     achievements: [
       'Shipped landing page for Migros 2025 escape game.',
@@ -218,7 +218,7 @@ export const projects: Project[] = [
       'Built full-stack portfolio with TanStack Start: file-based routing, server loaders, and type-safe data fetching for the project list.',
       'Implemented contact form with Zod validation and Resend integration for reliable email delivery.',
       'Structured project data and filtering (professional vs personal, highlighted work) for the home and projects pages.',
-      'Responsive design and SCSS modules for maintainable styling across hero, projects, and contact sections.',
+      'Implemented responsive design and SCSS modules for maintainable styling across hero, projects, and contact sections.',
     ],
     image: 'Projects/portfolio.png',
     category: 'Personal',
@@ -281,7 +281,7 @@ export const projectGroups: ProjectGroup[] = [
     slug: 'dart-corporate',
     title: "D'Art Design Group corporate landing pages",
     description:
-      "Landing pages for clients of D'Art Design Group. The landing pages are built with Next.js and the technologies mentioned.",
+      "Corporate landing pages for D'Art Design Group clients, built with Next.js, Craft CMS, GraphQL, and shared front-end tooling (Motion, GSAP, Lottie, SASS).",
     technologies: [
       'NEXT.JS',
       'TYPESCRIPT',
@@ -411,7 +411,7 @@ export const projectGroups: ProjectGroup[] = [
         id: 'dart-3d-1',
         title: 'SMA. – 3D green energy experience',
         description:
-          'Isometric, simplified 3D world for SMA with product showcase and interactive 3D models. (green energy brand) showing their product range, showing how energy is accumulated in one green-energy network. Used in Trade Shows and Events.',
+          'Isometric, simplified 3D world for SMA (green energy brand) with product showcase and interactive 3D models, showing their product range and how energy is accumulated in one green-energy network. Used in trade shows and events.',
         icon: '☀️',
         link: 'https://d-art-digital.de/de/projects/sma-grid-stability',
       },
@@ -419,7 +419,7 @@ export const projectGroups: ProjectGroup[] = [
         id: 'dart-3d-2',
         title: 'Düsseldorf Airport 3D experience',
         description:
-          '3D experience with a simplified 3D model of the airport for Düsseldorf Airport to show their services and a Hub for the users to explore the airport and the services it offers. Used in Trade Shows and Events.',
+          '3D experience with a simplified 3D model of the airport for Düsseldorf Airport to show their services and a hub for users to explore the airport and its offerings. Used in trade shows and events.',
         icon: '✈️',
         link: 'https://d-art-digital.de/de/projects/düsseldorf-airport-3d-experience',
       },
