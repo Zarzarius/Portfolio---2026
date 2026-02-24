@@ -19,7 +19,8 @@
   color: inherit;
   backdrop-filter: blur(16px) saturate(1.1);
   -webkit-backdrop-filter: blur(16px) saturate(1.1);
-  box-shadow: 0 1px 0 0 color-mix(in srgb, $color-border-primary 60%, transparent);
+  box-shadow: 0 1px 0 0
+    color-mix(in srgb, $color-border-primary 60%, transparent);
   transition:
     border-color $motion-duration-normal $motion-ease-in-out,
     box-shadow $motion-duration-normal $motion-ease-out,
@@ -179,7 +180,7 @@
     gap: $spacing-1 $spacing-2;
 
     &::before {
-      content: 'Skills';
+      content: 'TECH';
       display: block;
       width: 100%;
       font-size: $font-size-xs;
