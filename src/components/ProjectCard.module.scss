@@ -151,3 +151,43 @@
   border: $border-width-thin solid $color-border-secondary;
   border-radius: $border-radius-sm;
 }
+
+// Mobile / tablet (and touch): show description + skills stacked, no hover required
+@media (max-width: $breakpoint-lg), (hover: none) {
+  .cardContentSlot {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+    min-height: auto;
+  }
+
+  .cardDescription {
+    opacity: 1;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .card:hover .cardDescription {
+    opacity: 1;
+  }
+
+  .tech {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    flex-wrap: wrap;
+    gap: $spacing-1 $spacing-2;
+
+    &::before {
+      content: 'Skills';
+      display: block;
+      width: 100%;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-semibold;
+      color: $color-text-muted;
+      letter-spacing: $letter-spacing-wide;
+      text-transform: uppercase;
+      margin-bottom: $spacing-1;
+    }
+  }
+}
