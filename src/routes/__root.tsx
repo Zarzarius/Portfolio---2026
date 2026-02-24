@@ -107,7 +107,7 @@ function RootComponent() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              CV
+              Resume
             </Button>
           </div>
           <BurgerMenu
