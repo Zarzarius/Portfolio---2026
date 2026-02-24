@@ -14,8 +14,9 @@
 .hero {
   position: relative;
   width: 100%;
+  /* Fallback for browsers without svh; svh = small viewport height = no jump when mobile URL bar shows/hides */
   min-height: calc(100vh - #{$header-height});
-  min-height: calc(100dvh - #{$header-height});
+  min-height: calc(100svh - #{$header-height});
   display: flex;
   align-items: flex-end;
   justify-content: center;
