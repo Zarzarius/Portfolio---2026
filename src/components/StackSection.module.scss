@@ -1,30 +1,17 @@
-@use '../../styles/theme' as *;
+@use '../styles/theme' as *;
 
-// -----------------------------------------
-// Layout
-// -----------------------------------------
-
-.page {
-  max-width: $container-max-width;
-  margin: 0 auto;
-  padding: $spacing-8 $container-padding;
-
-  @media (max-width: $breakpoint-md) {
-    padding: $spacing-6 $spacing-4;
-  }
+// Wrapper: lives inside page layout, no max-width here
+.stackSection {
+  margin-bottom: $spacing-8;
 }
 
-// -----------------------------------------
-// Header
-// -----------------------------------------
-
-.header {
+.stackHeader {
   margin-bottom: $spacing-8;
   max-width: 42rem;
   animation: stackFadeIn 0.6s ease-out backwards;
 }
 
-.eyebrow {
+.stackEyebrow {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   color: $color-primary;
@@ -33,7 +20,7 @@
   margin-bottom: $spacing-3;
 }
 
-.title {
+.stackTitle {
   font-family: $font-family-heading;
   font-size: clamp($font-size-2xl, 5vw, $font-size-4xl);
   font-weight: $font-weight-bold;
@@ -43,15 +30,11 @@
   margin-bottom: $spacing-3;
 }
 
-.subtitle {
+.stackSubtitle {
   font-size: $font-size-md;
   color: $color-text-secondary;
   line-height: $line-height-relaxed;
 }
-
-// -----------------------------------------
-// Daily drivers strip
-// -----------------------------------------
 
 .dailyDrivers {
   margin-bottom: $spacing-8;
@@ -123,10 +106,6 @@
   transition: opacity $transition-normal $ease-out, transform $transition-normal $ease-out;
 }
 
-// -----------------------------------------
-// Category sections
-// -----------------------------------------
-
 .sections {
   display: flex;
   flex-direction: column;
@@ -157,17 +136,13 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: $spacing-3;
 
-  @media (min-width: $breakpoint-lg) {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
   }
 }
-
-// -----------------------------------------
-// Tech cards (hover-reveal description)
-// -----------------------------------------
 
 .item {
   position: relative;
@@ -234,10 +209,6 @@
   transform: translateY(-2px);
   transition: opacity $transition-normal $ease-out, transform $transition-normal $ease-out;
 }
-
-// -----------------------------------------
-// Animations
-// -----------------------------------------
 
 @keyframes stackFadeIn {
   from {

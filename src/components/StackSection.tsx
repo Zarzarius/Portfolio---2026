@@ -1,19 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import styles from './stack.module.scss';
+import type { StackCategory, StackTech } from '../data/stack';
+import styles from './StackSection.module.scss';
 
-import type { StackCategory, StackTech } from '../../data/stack';
-import { getStack } from '../../server/functions';
+interface StackSectionProps {
+  techCategories: StackCategory[];
+}
 
-export const Route = createFileRoute('/stack')({
-  loader: async () => await getStack(),
-  component: Stack,
-});
-
-function Stack() {
-  const techCategories = Route.useLoaderData() as StackCategory[];
-
+export function StackSection({ techCategories }: StackSectionProps) {
   const dailyDrivers = useMemo(() => {
     const out: StackTech[] = [];
     for (const cat of techCategories) {
@@ -25,18 +19,21 @@ function Stack() {
   }, [techCategories]);
 
   return (
-    <div className={clsx(styles.page)}>
-      <header className={clsx(styles.header)}>
-        <p className={clsx(styles.eyebrow)}>Tools & technologies</p>
-        <h1 className={clsx(styles.title)}>Tech stack</h1>
-        <p className={clsx(styles.subtitle)}>
-          What I reach for when building products—languages, frameworks, and tools that ship.
+    <section className={clsx(styles.stackSection)} aria-labelledby="stack-heading">
+      <header className={clsx(styles.stackHeader)}>
+        <p className={clsx(styles.stackEyebrow)}>Tools & technologies</p>
+        <h2 id="stack-heading" className={clsx(styles.stackTitle)}>
+          Tech stack
+        </h2>
+        <p className={clsx(styles.stackSubtitle)}>
+          What I reach for when building products—languages, frameworks, and
+          tools that ship.
         </p>
       </header>
 
       {dailyDrivers.length > 0 && (
-        <section className={clsx(styles.dailyDrivers)} aria-label="Daily drivers">
-          <h2 className={clsx(styles.dailyDriversTitle)}>Daily drivers</h2>
+        <div className={clsx(styles.dailyDrivers)} aria-label="Daily drivers">
+          <h3 className={clsx(styles.dailyDriversTitle)}>Daily drivers</h3>
           <p className={clsx(styles.dailyDriversDesc)}>
             The core set I use most often.
           </p>
@@ -49,12 +46,14 @@ function Stack() {
               >
                 <span className={clsx(styles.driverPillName)}>{tech.name}</span>
                 {tech.description && (
-                  <span className={clsx(styles.driverPillDesc)}>{tech.description}</span>
+                  <span className={clsx(styles.driverPillDesc)}>
+                    {tech.description}
+                  </span>
                 )}
               </div>
             ))}
           </div>
-        </section>
+        </div>
       )}
 
       <div className={clsx(styles.sections)}>
@@ -62,22 +61,33 @@ function Stack() {
           <section
             key={cat.category}
             className={clsx(styles.section)}
-            style={{ animationDelay: `${(dailyDrivers.length ? 0.2 : 0) + idx * 0.08}s` }}
+            style={{
+              animationDelay: `${(dailyDrivers.length ? 0.2 : 0) + idx * 0.08}s`,
+            }}
           >
-            <h2 className={clsx(styles.sectionTitle)}>{cat.category}</h2>
+            <h3 className={clsx(styles.sectionTitle)}>{cat.category}</h3>
             <div className={clsx(styles.grid)}>
               {cat.technologies.map((tech, techIdx) => (
                 <div
                   key={tech.name}
-                  className={clsx(styles.item, tech.highlight && styles.itemHighlight)}
+                  className={clsx(
+                    styles.item,
+                    tech.highlight && styles.itemHighlight,
+                  )}
                   style={{ animationDelay: `${techIdx * 0.03}s` }}
                   tabIndex={0}
                   role="article"
-                  aria-label={tech.description ? `${tech.name}: ${tech.description}` : tech.name}
+                  aria-label={
+                    tech.description
+                      ? `${tech.name}: ${tech.description}`
+                      : tech.name
+                  }
                 >
                   <span className={clsx(styles.itemName)}>{tech.name}</span>
                   {tech.description && (
-                    <span className={clsx(styles.itemDesc)}>{tech.description}</span>
+                    <span className={clsx(styles.itemDesc)}>
+                      {tech.description}
+                    </span>
                   )}
                 </div>
               ))}
@@ -85,6 +95,6 @@ function Stack() {
           </section>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -82,14 +82,6 @@ function RootComponent() {
               Projects
             </Link>
             <Link
-              to="/stack"
-              className={clsx(styles.navLink)}
-              activeProps={{ className: clsx(styles.navLink, styles.active) }}
-              preload="intent"
-            >
-              Stack
-            </Link>
-            <Link
               to="/about"
               className={clsx(styles.navLink)}
               activeProps={{ className: clsx(styles.navLink, styles.active) }}
@@ -137,20 +129,6 @@ function RootComponent() {
                 onClick={closeMenu}
               >
                 Projects
-              </Link>
-              <Link
-                to="/stack"
-                className={styles.mobileNavLink}
-                activeProps={{
-                  className: clsx(
-                    styles.mobileNavLink,
-                    styles.mobileNavLinkActive,
-                  ),
-                }}
-                preload="intent"
-                onClick={closeMenu}
-              >
-                Stack
               </Link>
               <Link
                 to="/about"

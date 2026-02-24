@@ -6,26 +6,28 @@ import {
   groupToCardItem,
 } from '../components/ProjectCard';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { StackSection } from '../components/StackSection';
 import { profile } from '../data/profile';
 import styles from './index.module.scss';
 
-import { getProjects, getProjectGroups } from '../server/functions';
+import { getProjects, getProjectGroups, getStack } from '../server/functions';
 import type { Project, ProjectGroup } from '../data/projects';
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 
 export const Route = createFileRoute('/')({
   loader: async () => {
-    const [projects, projectGroups] = await Promise.all([
+    const [projects, projectGroups, techCategories] = await Promise.all([
       getProjects(),
       getProjectGroups(),
+      getStack(),
     ]);
-    return { projects, projectGroups };
+    return { projects, projectGroups, techCategories };
   },
   component: Home,
 });
 
 function Home() {
-  const { projects, projectGroups } = Route.useLoaderData();
+  const { projects, projectGroups, techCategories } = Route.useLoaderData();
   const highlightedProjects = projects.filter((p: Project) => p.highlighted);
   const highlightedGroups = projectGroups.filter(
     (g: ProjectGroup) => g.highlighted,
@@ -77,13 +79,25 @@ function Home() {
       </section>
 
       <div className={clsx(styles.page)}>
+        <StackSection techCategories={techCategories} />
+
         <ScrollReveal
           className={clsx(styles.revealBlock)}
           visibleClass={styles.revealBlockVisible}
         >
-        <h2 className={clsx(styles.sectionHead)}>Selected work</h2>
+        <section aria-labelledby="work-heading">
+          <header className={clsx(styles.workHeader)}>
+            <p className={clsx(styles.workEyebrow)}>Portfolio</p>
+            <h2 id="work-heading" className={clsx(styles.workTitle)}>
+              Selected work
+            </h2>
+            <p className={clsx(styles.workSubtitle)}>
+              A mix of client projects and personal builds—from product
+              interfaces to full-stack applications.
+            </p>
+          </header>
 
-        {(professionalProjects.length > 0 || professionalGroups.length > 0) && (
+          {(professionalProjects.length > 0 || professionalGroups.length > 0) && (
           <section className={clsx(styles.projectGroup)}>
             <h3 className={clsx(styles.groupTitle)}>Professional</h3>
             <div className={clsx(styles.grid)}>
@@ -130,6 +144,7 @@ function Home() {
             </div>
           </section>
         )}
+        </section>
       </ScrollReveal>
 
       <section className={clsx(styles.cta)}>
