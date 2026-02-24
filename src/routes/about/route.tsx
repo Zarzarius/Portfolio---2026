@@ -3,16 +3,11 @@ import clsx from 'clsx';
 import { profile } from '../../data/profile';
 import styles from './about.module.scss';
 
-import { getSkills } from '../../server/functions';
-
 export const Route = createFileRoute('/about')({
-  loader: async () => await getSkills(),
   component: About,
 });
 
 function About() {
-  const skills = Route.useLoaderData();
-
   return (
     <div className={clsx(styles.page)}>
       <header className={clsx(styles.header)}>
@@ -33,15 +28,6 @@ function About() {
           exploring international cuisines. Avid traveler interested in diverse
           cultures and perspectives.
         </p>
-
-        <h2 className={clsx(styles.sectionTitle)}>Skills</h2>
-        <ul className={clsx(styles.skills)}>
-          {skills.map((skill: string) => (
-            <li key={skill} className={clsx(styles.skill)}>
-              {skill}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

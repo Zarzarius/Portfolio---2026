@@ -25,6 +25,11 @@ export const techCategories: StackCategory[] = [
         highlight: true,
       },
       {
+        name: 'Next.js',
+        description: 'SSR, static export, and Vercel when the project fits.',
+        highlight: true,
+      },
+      {
         name: 'TanStack Router',
         description: 'Type-safe routing with loaders and search params.',
       },
@@ -46,8 +51,16 @@ export const techCategories: StackCategory[] = [
         description: 'Lightweight state. No boilerplate, scales well.',
       },
       {
-        name: 'Next.js',
-        description: 'SSR, static export, and Vercel when the project fits.',
+        name: 'Zod',
+        description: 'Schema validation and type inference for forms and APIs.',
+      },
+      {
+        name: 'GSAP',
+        description: 'Complex animations and timeline-based motion.',
+      },
+      {
+        name: 'Motion',
+        description: 'Declarative animations and gestures for React.',
       },
     ],
   },
@@ -99,14 +112,18 @@ export const techCategories: StackCategory[] = [
         highlight: true,
       },
       {
-        name: 'AWS',
-        description: 'Compute, storage, and services when we need scale.',
-      },
-      {
         name: 'GitLab',
         description: 'CI/CD, repos, and issue tracking in one place.',
       },
       { name: 'GitHub', description: 'Repos, Actions, and collaboration.' },
+      {
+        name: 'Vercel',
+        description: 'Frontend hosting, serverless, and edge deployment.',
+      },
+      {
+        name: 'Cloudflare',
+        description: 'CDN, DNS, DDoS protection, and edge workers.',
+      },
     ],
   },
   {
@@ -121,10 +138,6 @@ export const techCategories: StackCategory[] = [
       {
         name: 'VS Code',
         description: 'Editor and extensions when not in Cursor.',
-      },
-      {
-        name: 'GSAP',
-        description: 'Complex animations and timeline-based motion.',
       },
       { name: 'Figma', description: 'Design handoff and UI specs.' },
       {

@@ -1,222 +1,107 @@
 @use '../styles/theme' as *;
 
-// Wrapper: lives inside page layout, no max-width here
+// Minimal, compact stack block
 .stackSection {
-  margin-bottom: $spacing-8;
+  margin-bottom: $spacing-7;
 }
 
 .stackHeader {
-  margin-bottom: $spacing-8;
-  max-width: 42rem;
-  animation: stackFadeIn 0.6s ease-out backwards;
+  margin-bottom: $spacing-4;
+  max-width: 38rem;
 }
 
 .stackEyebrow {
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: $color-primary;
   text-transform: uppercase;
   letter-spacing: $letter-spacing-wide;
-  margin-bottom: $spacing-3;
+  margin-bottom: $spacing-1;
 }
 
 .stackTitle {
   font-family: $font-family-heading;
-  font-size: clamp($font-size-2xl, 5vw, $font-size-4xl);
+  font-size: clamp($font-size-xl, 3.5vw, $font-size-2xl);
   font-weight: $font-weight-bold;
   color: $color-text-primary;
   letter-spacing: $letter-spacing-tight;
   line-height: $line-height-tight;
-  margin-bottom: $spacing-3;
+  margin-bottom: $spacing-2;
 }
 
 .stackSubtitle {
-  font-size: $font-size-md;
-  color: $color-text-secondary;
-  line-height: $line-height-relaxed;
-}
-
-.dailyDrivers {
-  margin-bottom: $spacing-8;
-  padding: $spacing-6;
-  background: linear-gradient(135deg, rgba($color-primary, 0.06) 0%, rgba($color-primary-light, 0.04) 100%);
-  border: $border-width-thin solid rgba($color-primary, 0.15);
-  border-radius: $border-radius-lg;
-  animation: stackFadeIn 0.6s ease-out 0.1s backwards;
-}
-
-.dailyDriversTitle {
-  font-family: $font-family-heading;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
-  color: $color-text-primary;
-  letter-spacing: $letter-spacing-tight;
-  margin-bottom: $spacing-1;
-}
-
-.dailyDriversDesc {
   font-size: $font-size-sm;
   color: $color-text-muted;
-  margin-bottom: $spacing-4;
+  line-height: $line-height-normal;
 }
 
-.dailyDriversList {
+// Category rows: label + inline tags (no cards, no descriptions)
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+}
+
+.categoryRow {
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-2;
-}
+  align-items: center;
+  gap: $spacing-2 $spacing-4;
+  padding: $spacing-2 0;
+  border-bottom: $border-width-thin solid $color-border-primary;
 
-.driverPill {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: $spacing-1;
-  padding: $spacing-2 $spacing-4;
-  background: $color-bg-primary;
-  border: $border-width-thin solid $color-border-primary;
-  border-radius: $border-radius-md;
-  transition: $transition-all;
-  animation: stackFadeIn 0.5s ease-out backwards;
-  max-width: 220px;
-
-  &:hover {
-    border-color: $color-primary;
-    background: $color-bg-hover;
-    box-shadow: $shadow-sm;
-
-    .driverPillDesc {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  &:last-child {
+    border-bottom: 0;
   }
 }
 
-.driverPillName {
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  color: $color-primary-dark;
-}
-
-.driverPillDesc {
+.categoryLabel {
+  flex-shrink: 0;
+  min-width: 5.5rem;
   font-size: $font-size-xs;
-  color: $color-text-secondary;
-  line-height: $line-height-normal;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity $transition-normal $ease-out, transform $transition-normal $ease-out;
-}
-
-.sections {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-7;
-}
-
-.section {
-  padding: $spacing-6;
-  background: $color-bg-primary;
-  border: $border-width-thin solid $color-border-primary;
-  border-radius: $border-radius-lg;
-  transition: $transition-all;
-  animation: stackFadeIn 0.5s ease-out backwards;
-
-  &:hover {
-    border-color: $color-border-secondary;
-  }
-}
-
-.sectionTitle {
-  font-family: $font-family-heading;
-  font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
-  margin-bottom: $spacing-5;
-  letter-spacing: $letter-spacing-tight;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $spacing-3;
-
-  @media (max-width: $breakpoint-sm) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.item {
-  position: relative;
+.tagList {
   display: flex;
-  flex-direction: column;
-  gap: $spacing-2;
-  padding: $spacing-3 $spacing-4;
-  min-height: 3.5rem;
-  font-size: $font-size-base;
+  flex-wrap: wrap;
+  gap: $spacing-1 $spacing-2;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: $spacing-1 $spacing-2;
+  font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: $color-text-secondary;
   background: $color-bg-secondary;
-  border-radius: $border-radius-md;
   border: $border-width-thin solid transparent;
-  transition: color $transition-normal $ease-in-out,
-    background $transition-normal $ease-in-out,
-    border-color $transition-normal $ease-in-out,
-    box-shadow $transition-normal $ease-in-out;
-  animation: stackFadeIn 0.4s ease-out backwards;
+  border-radius: $border-radius-sm;
+  transition: color $motion-duration-fast $motion-ease-out,
+    background $motion-duration-fast $motion-ease-out,
+    border-color $motion-duration-fast $motion-ease-out;
 
   &:hover {
     color: $color-text-primary;
     background: $color-bg-hover;
     border-color: rgba($color-primary, 0.2);
-    box-shadow: $shadow-sm;
-
-    .itemDesc {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  &:focus-within {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
-
-    .itemDesc {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 }
 
-.itemHighlight {
-  background: rgba($color-primary, 0.06);
+.tagHighlight {
+  color: $color-primary-dark;
+  background: rgba($color-primary, 0.08);
   border-color: rgba($color-primary, 0.12);
 
-  .itemName {
+  &:hover {
     color: $color-primary-dark;
-  }
-}
-
-.itemName {
-  font-weight: $font-weight-semibold;
-  color: inherit;
-}
-
-.itemDesc {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-normal;
-  color: $color-text-muted;
-  line-height: $line-height-normal;
-  opacity: 0;
-  transform: translateY(-2px);
-  transition: opacity $transition-normal $ease-out, transform $transition-normal $ease-out;
-}
-
-@keyframes stackFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    background: rgba($color-primary, 0.12);
+    border-color: rgba($color-primary, 0.2);
   }
 }

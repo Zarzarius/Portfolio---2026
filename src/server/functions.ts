@@ -2,7 +2,6 @@ import { createServerFn } from '@tanstack/react-start';
 import { Resend } from 'resend';
 import { projects, projectGroups, categories } from '../data/projects';
 import { techCategories } from '../data/stack';
-import { skills } from '../data/skills';
 import { contactSchema } from '../schemas/contact';
 
 const contactTo = process.env.CONTACT_TO_EMAIL ?? 'job@azaelac.dev';
@@ -57,10 +56,6 @@ export const getProjectGroupBySlug = createServerFn({ method: 'GET' })
 
 export const getStack = createServerFn({ method: 'GET' }).handler(async () => {
   return techCategories;
-});
-
-export const getSkills = createServerFn({ method: 'GET' }).handler(async () => {
-  return skills;
 });
 
 export const sendContactEmail = createServerFn({ method: 'POST' })
