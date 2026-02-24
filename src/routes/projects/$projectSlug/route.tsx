@@ -46,7 +46,7 @@ function ProjectDetailPage() {
       <article className={clsx(styles.article)}>
         <header className={clsx(styles.header)}>
           <span className={clsx(styles.meta)}>
-            {project.type === 'professional' ? 'Professional' : 'Side project'}
+            {project.type === 'professional' ? 'Professional' : 'Personal project'}
             {project.category && ` · ${project.category}`}
           </span>
           <h1 className={clsx(styles.title)}>{project.title}</h1>

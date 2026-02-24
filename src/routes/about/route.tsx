@@ -17,7 +17,7 @@ function About() {
     <div className={clsx(styles.page)}>
       <header className={clsx(styles.header)}>
         <p className={clsx(styles.eyebrow)}>About</p>
-        <h1 className={clsx(styles.title)}>A bit about me</h1>
+        <h1 className={clsx(styles.title)}>Who I am</h1>
         <p className={clsx(styles.subtitle)}>{profile.summary}</p>
       </header>
 

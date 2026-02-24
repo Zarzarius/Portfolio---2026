@@ -220,7 +220,7 @@ function Contact() {
               styles.textarea,
               errors.message && styles.inputError,
             )}
-            placeholder="Your message..."
+            placeholder="Your message…"
             value={formData.message}
             onChange={handleChange}
             aria-invalid={!!errors.message}

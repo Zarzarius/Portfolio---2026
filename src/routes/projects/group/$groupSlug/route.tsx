@@ -47,7 +47,7 @@ function ProjectGroupDetailPage() {
       <article className={clsx(styles.article)}>
         <header className={clsx(styles.header)}>
           <span className={clsx(styles.meta)}>
-            {group.type === 'professional' ? 'Professional' : 'Side project'}
+            {group.type === 'professional' ? 'Professional' : 'Personal project'}
             {group.category && ` · ${group.category}`}
           </span>
           <h1 className={clsx(styles.title)}>{group.title}</h1>

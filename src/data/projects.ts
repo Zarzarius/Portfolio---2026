@@ -91,7 +91,7 @@ export const projects: Project[] = [
     slug: 'sap-ar',
     title: 'SAP S/4HANA Cloud AR Hybrid Event Showcase',
     description:
-      'A global hybrid event solution that uses AR to visualize SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
+      'A global hybrid event solution that uses AR to visualise SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
     technologies: [
       'REACT',
       'TYPESCRIPT',
@@ -103,9 +103,9 @@ export const projects: Project[] = [
     ],
     priority: 'A',
     achievements: [
-      'Delivered hybrid event solution that uses AR to visualize SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
+      'Delivered hybrid event solution that uses AR to visualise SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
       'Shipped high-fidelity, animated 3D business processes (SAP’s S/4HANA Cloud business processes) optimised for real-time rendering on mobile browsers.',
-      'Delivered multiplatform experience: AR on mobile and 3D viewer on desktop using a single codebase with React Three Fiber and 8th Wall',
+      'Delivered multiplatform experience: AR on mobile and 3D viewer on desktop using a single codebase with React Three Fiber and 8th Wall.',
       'Implemented complex UI interactions with React Three Fiber and Three.js to create an immersive and interactive experience.',
     ],
     link: 'https://demodern.de/projekte/sap-ar-hybrid-event-showcase',
@@ -119,13 +119,13 @@ export const projects: Project[] = [
     slug: 'soundbooth',
     title: 'Snipes Soundbooth - Landing page & on-site installation',
     description:
-      'Snipes Soundbooth is a platform that allows users to create and share audio clips with their friends. A landing page was also developed to showcase the Soundbooth and the features it offers.',
+      'Web app and landing page for Snipes Soundbooth: users create and share audio clips. Built with React and Strapi; includes on-site installation support for the physical Soundbooth.',
     technologies: ['REACT', 'TYPESCRIPT', 'ZUSTAND', 'STRAPI'],
     achievements: [
       'Developed a responsive web application for Snipes Soundbooth using React and TypeScript.',
       'Integrated the Snipes API to fetch the audio clips.',
       'Implemented a responsive design for the Soundbooth.',
-      'On site installation and maintenance of the Soundbooth.',
+      'On-site installation and maintenance of the Soundbooth.',
     ],
     link: 'https://demodern.com/projects/snipes-soundbooth',
     image: 'Projects/soundbooth.png',
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     slug: 'miniverse',
     title: 'Miniverse - Digital Metaverse Gamified Platform',
     description:
-      'Miniverse is a digital metaverse gamified platform for Mini that allows users to explore a virtual world and interact with other users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users. Live server networking with WebSockets.',
+      'Digital metaverse for Mini: gamified 3D world where users explore and interact in real time. Built with React Three Fiber and WebSockets for live multiplayer.',
     technologies: [
       'REACT',
       'TYPESCRIPT',
@@ -151,9 +151,9 @@ export const projects: Project[] = [
     type: 'professional',
     achievements: [
       'Shipped digital metaverse gamified platform for Mini that allows users to explore a virtual world and interact with other users.',
-      'Networking with WebSockets to create a real-time multiplayer experience for the users.',
+      'Implemented WebSocket networking for real-time multiplayer.',
       'Implemented a responsive design for the platform.',
-      'Implementing new features and improvements to the platform.',
+      'Shipped ongoing features and improvements for the platform.',
     ],
     link: 'https://demodern.com/projects/miniverse',
     image: 'Projects/miniverse.png',
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     slug: 'metaverse',
     title: 'Virtual experience metaverse - Metaverse platform for brands',
     description:
-      'Virtual experience metaverse is a platform that allows brands to create a virtual experience for their users. It is built with React and React Three Fiber. The platform is designed to be a fun and engaging experience for users to explore the virtual world and interact with other users and showcase their products. Live server networking with WebSockets and live chat with social features.',
+      'Brand-focused metaverse platform: virtual spaces for product showcase and user interaction. React Three Fiber for 3D; WebSockets and live chat for real-time social features.',
     technologies: [
       'REACT',
       'TYPESCRIPT',
@@ -176,8 +176,8 @@ export const projects: Project[] = [
     type: 'professional',
     achievements: [
       'Shipped metaverse platform for brands that allows users to explore a virtual experience and interact with other users and showcase their products.',
-      'Networking with WebSockets to create a real-time experience for the users.',
-      'Implementing new features like sound effects, and improvements to the platform.',
+      'Implemented WebSocket networking for real-time experience.',
+      'Shipped new features including sound effects and platform improvements.',
     ],
     link: 'https://demodern.de/services/corporate-metaverse-cases-ve',
     image: 'Projects/metaverse.png',
@@ -279,7 +279,7 @@ export const projectGroups: ProjectGroup[] = [
   {
     id: 2,
     slug: 'dart-corporate',
-    title: "D'Art Design Group corporative landing pages",
+    title: "D'Art Design Group corporate landing pages",
     description:
       "Landing pages for clients of D'Art Design Group. The landing pages are built with Next.js and the technologies mentioned.",
     technologies: [
@@ -295,7 +295,7 @@ export const projectGroups: ProjectGroup[] = [
       'SASS',
     ],
     achievements: [
-      "Built and shipped multiple corporative landing pages for D'Art Design Group clients using Next.js and shared stack.",
+      "Built and shipped multiple corporate landing pages for D'Art Design Group clients using Next.js and shared stack.",
       'Integrated Craft CMS and GraphQL for content-driven pages with type-safe data and Zod validation.',
       'Delivered responsive, animated experiences with Motion, GSAP, and Lottie; SASS for consistent styling.',
     ],
@@ -310,23 +310,23 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'corporative-lp-2',
-        title: 'Stiftung Paulinenhilfe corporative landing page',
+        title: 'Stiftung Paulinenhilfe corporate landing page',
         description:
-          'Landing page for Stiftung Paulinenhilfe to show their services',
+          'Landing page for Stiftung Paulinenhilfe to show their services.',
         link: 'https://d-art-digital.de/de/projects/stiftung-paulinenhilfe',
       },
       {
         id: 'corporative-lp-3',
         title: 'Medienvorsorge.de landing page',
         description:
-          'Landing page for Medienvorsorge.de to show their services',
+          'Landing page for Medienvorsorge.de to show their services.',
         link: 'https://d-art-digital.de/de/projects/medienvorsorge',
       },
       {
         id: 'corporative-lp-4',
-        title: 'Hanselmann & Compagnie corporative landing page',
+        title: 'Hanselmann & Compagnie corporate landing page',
         description:
-          'Landing page for Hanselmann & Compagnie to show their services',
+          'Landing page for Hanselmann & Compagnie to show their services.',
         link: 'https://d-art-digital.de/de/projects/hanselmann-compagnie',
       },
       {
@@ -385,7 +385,7 @@ export const projectGroups: ProjectGroup[] = [
     slug: 'dart-3d',
     title: 'Dart Design – 3D product showcase & concept cases',
     description:
-      "3D applications for D'Art Design clients:3D worlds that visualise a company’s products and flows, interactive 3D hubs for exploring services, photorealistic product showcases for pitches, and internal tools such as a model configurator for artists to test shaders and assets in the browser. Used in trade shows, events, and as concept presentations.",
+      "3D applications for D'Art Design clients: 3D worlds that visualise a company’s products and flows, interactive 3D hubs for exploring services, photorealistic product showcases for pitches, and internal tools such as a model configurator for artists to test shaders and assets in the browser. Used in trade shows, events, and as concept presentations.",
     technologies: [
       'NEXT.JS',
       'TYPESCRIPT',
