@@ -223,7 +223,6 @@ export const projects: Project[] = [
     image: 'Projects/portfolio.png',
     category: 'Personal',
     type: 'personal',
-    highlighted: true,
   },
 ];
 
@@ -346,6 +345,7 @@ export const projectGroups: ProjectGroup[] = [
     slug: 'personal',
     title: 'Personal projects',
     technologies: ['ASTRO', 'TYPESCRIPT', 'ZOD', 'SASS'],
+    highlighted: true,
     description:
       'Personal projects built to practice Astro, an interesting static site builder framework.',
     achievements: [
@@ -359,7 +359,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'El Maizter - Foodtruck website',
         description:
           'Online menu and location hub for a street food truck—helps customers find the truck and browse offerings before they order.',
-        link: 'https://el-maizter.vercel.app/menu',
+        link: 'https://el-maizter.vercel.app',
       },
       {
         id: 'personal-2',

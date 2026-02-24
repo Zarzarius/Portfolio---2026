@@ -125,20 +125,6 @@ function RootComponent() {
           >
             <div className={styles.mobileNav}>
               <Link
-                to="/"
-                className={styles.mobileNavLink}
-                activeProps={{
-                  className: clsx(
-                    styles.mobileNavLink,
-                    styles.mobileNavLinkActive,
-                  ),
-                }}
-                preload="intent"
-                onClick={closeMenu}
-              >
-                Work
-              </Link>
-              <Link
                 to="/projects"
                 className={styles.mobileNavLink}
                 activeProps={{

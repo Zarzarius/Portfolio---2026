@@ -1,5 +1,9 @@
 @use '../styles/theme' as *;
 
+// Slightly longer, smoother feel for page transitions
+$page-transition-duration: 0.55s;
+$page-transition-ease: cubic-bezier(0.32, 0.72, 0, 1);
+
 .pageTransition {
   width: 100%;
   min-height: 100%;
@@ -7,13 +11,18 @@
   view-transition-name: main-content;
 }
 
-// View Transitions API: slide up + fade for new page
+// Fallback when View Transitions API is not supported (e.g. Firefox, older Safari)
+.pageTransition.entering {
+  animation: pageEnter $page-transition-duration $page-transition-ease forwards;
+}
+
+// View Transitions API: smooth slide + fade (Chrome, Edge, Safari 18+)
 ::view-transition-old(main-content) {
-  animation: pageOut $motion-duration-entrance $motion-ease-out forwards;
+  animation: pageOut $page-transition-duration $page-transition-ease forwards;
 }
 
 ::view-transition-new(main-content) {
-  animation: pageEnter $motion-duration-entrance $motion-ease-out forwards;
+  animation: pageEnter $page-transition-duration $page-transition-ease forwards;
 }
 
 @keyframes pageOut {
@@ -23,14 +32,14 @@
   }
   to {
     opacity: 0;
-    transform: translateY(-14px) scale(0.99);
+    transform: translateY(-12px) scale(0.98);
   }
 }
 
 @keyframes pageEnter {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.99);
+    transform: translateY(12px) scale(0.98);
   }
   to {
     opacity: 1;
