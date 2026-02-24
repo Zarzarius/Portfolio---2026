@@ -25,6 +25,17 @@ $page-transition-ease: cubic-bezier(0.32, 0.72, 0, 1);
   animation: pageEnter $page-transition-duration $page-transition-ease forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .pageTransition.entering {
+    animation: none;
+  }
+
+  ::view-transition-old(main-content),
+  ::view-transition-new(main-content) {
+    animation: none;
+  }
+}
+
 @keyframes pageOut {
   from {
     opacity: 1;

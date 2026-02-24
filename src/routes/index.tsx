@@ -45,8 +45,19 @@ function Home() {
   );
 
   return (
-    <div className={clsx(styles.page)}>
-      <section className={clsx(styles.hero)}>
+    <>
+      <section className={clsx(styles.hero)} aria-label="Introduction">
+        <div className={clsx(styles.heroBackground)} aria-hidden>
+          <img
+            src={`${cdnUrl}/Images/hero-aza.png`}
+            alt=""
+            className={clsx(styles.heroImage)}
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+          />
+        </div>
+        <div className={clsx(styles.heroOverlay)} aria-hidden />
         <div className={clsx(styles.heroContent)}>
           <p className={clsx(styles.eyebrow)}>{profile.tagline}</p>
           <h1 className={clsx(styles.title)}>{profile.headline}</h1>
@@ -63,32 +74,13 @@ function Home() {
             </Link>
           </div>
         </div>
-        <div className={clsx(styles.heroMedia)}>
-          <div
-            className={clsx(styles.heroImageWrap)}
-            style={{
-              width: '100%',
-              aspectRatio: '4 / 3',
-              maxHeight: 380,
-              overflow: 'hidden',
-            }}
-          >
-            <img
-              src={`${cdnUrl}/Images/hero-aza.png`}
-              alt="Azael Alonso — developer at desk with laptop and workspace"
-              className={clsx(styles.heroImage)}
-              width={800}
-              height={600}
-              fetchPriority="high"
-            />
-          </div>
-        </div>
       </section>
 
-      <ScrollReveal
-        className={clsx(styles.revealBlock)}
-        visibleClass={styles.revealBlockVisible}
-      >
+      <div className={clsx(styles.page)}>
+        <ScrollReveal
+          className={clsx(styles.revealBlock)}
+          visibleClass={styles.revealBlockVisible}
+        >
         <h2 className={clsx(styles.sectionHead)}>Selected work</h2>
 
         {(professionalProjects.length > 0 || professionalGroups.length > 0) && (
@@ -157,6 +149,7 @@ function Home() {
           </Link>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

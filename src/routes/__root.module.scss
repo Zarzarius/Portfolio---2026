@@ -6,6 +6,28 @@
   min-height: 100vh;
 }
 
+// Skip link: visually hidden until focused (keyboard/screen reader)
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: $spacing-2;
+  z-index: $z-index-modal;
+  padding: $spacing-2 $spacing-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  background: $color-bg-primary;
+  border: $border-width-thin solid $color-border-primary;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+
+  &:focus-visible {
+    left: $spacing-4;
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -37,6 +59,12 @@
   &:hover {
     color: $color-primary;
   }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: $border-radius-sm;
+  }
 }
 
 .nav {
@@ -62,6 +90,11 @@
   &:hover {
     color: $color-text-primary;
     background: $color-bg-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 
   &.active {
@@ -302,6 +335,11 @@
   &:hover {
     color: $color-text-primary;
     background: $color-bg-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 
   &.mobileNavLinkActive {

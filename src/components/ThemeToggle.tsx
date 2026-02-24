@@ -28,6 +28,19 @@ export function ThemeToggle() {
     applyTheme(initial);
   }, []);
 
+  // Re-sync theme when page is restored from back/forward cache (bfcache)
+  useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        const next = getTheme();
+        setTheme(next);
+        applyTheme(next);
+      }
+    };
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
+
   const toggle = () => {
     const next = theme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
     setTheme(next);

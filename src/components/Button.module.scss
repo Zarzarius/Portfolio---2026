@@ -37,11 +37,6 @@
     background: $color-primary-dark;
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: $shadow-primary;
-
-    .icon {
-      transform: translateY(2px);
-    }
   }
 }
 
@@ -100,12 +95,22 @@
   width: 1.125em;
   height: 1.125em;
   opacity: 0.95;
-  transition: transform $motion-duration-normal $motion-ease-out;
+  transition:
+    transform $motion-duration-normal $motion-ease-out,
+    opacity $motion-duration-fast $motion-ease-out;
 }
 
 .primary .icon {
   width: 1.125em;
   height: 1.125em;
+  transition:
+    transform $motion-duration-normal $motion-ease-out 0.08s,
+    opacity $motion-duration-fast $motion-ease-out;
+}
+
+// Download arrow: light “drop” on hover so the SVG has motion (not static)
+.primary:hover:not(:disabled) .icon {
+  transform: translateY(2px);
 }
 
 .loading {

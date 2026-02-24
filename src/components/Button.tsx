@@ -80,7 +80,10 @@ function getVariantClass(variant: ButtonVariant): string {
   }
 }
 
-function getSizeClass(variant: ButtonVariant, size?: ButtonSize): string | null {
+function getSizeClass(
+  variant: ButtonVariant,
+  size?: ButtonSize,
+): string | null {
   if (variant === 'primary') {
     return size === 'compact' ? styles.primaryCompact : styles.primaryDefault;
   }
@@ -106,7 +109,8 @@ export function Button(props: ButtonProps) {
   const isDisabled = disabled === true || loading === true;
   const variantClass = getVariantClass(variant);
   const sizeClass = getSizeClass(variant, size);
-  const resolvedIcon = icon ?? (variant === 'primary' && props.href ? RESUME_ICON : null);
+  const resolvedIcon =
+    icon ?? (variant === 'primary' && props.href ? RESUME_ICON : null);
 
   const classNames = clsx(
     styles.root,
@@ -125,7 +129,7 @@ export function Button(props: ButtonProps) {
   );
 
   if (props.href != null) {
-    const { href, target, rel, type: _t, ...anchorRest } = rest as ButtonAsAnchor;
+    const { href, target, rel, ...anchorRest } = rest as ButtonAsAnchor;
     return (
       <a
         href={href}
@@ -142,8 +146,9 @@ export function Button(props: ButtonProps) {
 
   if (props.to != null) {
     const { to, preload, ...linkRest } = rest as ButtonAsLink;
+    const linkPreload = preload === 'none' ? false : preload;
     return (
-      <Link to={to} preload={preload} className={classNames} {...linkRest}>
+      <Link to={to} preload={linkPreload} className={classNames} {...linkRest}>
         {content}
       </Link>
     );

@@ -20,10 +20,6 @@ export function PageTransition({ children }: PageTransitionProps) {
   const [isEntering, setIsEntering] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [resolvedPath]);
-
-  useEffect(() => {
     setIsEntering(true);
     const t = setTimeout(() => setIsEntering(false), ENTER_DURATION_MS);
     return () => clearTimeout(t);

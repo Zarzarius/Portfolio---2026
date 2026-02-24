@@ -115,7 +115,7 @@ function RootComponent() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Resume
+              CV
             </Button>
           </div>
           <BurgerMenu
@@ -197,7 +197,7 @@ function RootComponent() {
           </BurgerMenu>
         </div>
       </header>
-      <main className={clsx(styles.main)}>
+      <main id="main" className={clsx(styles.main)}>
         <PageTransition>
           <Outlet />
         </PageTransition>
@@ -265,6 +265,7 @@ function RootComponent() {
   );
 }
 
+// Avoid beforeunload/unload listeners and Cache-Control: no-store so back/forward cache (bfcache) can speed up return navigations.
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
@@ -296,6 +297,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body className={styles.body}>
+        <a href="#main" className={styles.skipLink}>
+          Skip to main content
+        </a>
         {children}
         <Scripts />
       </body>

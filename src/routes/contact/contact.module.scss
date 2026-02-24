@@ -122,7 +122,7 @@
   transition: border-color $motion-duration-normal $motion-ease-in-out,
     box-shadow $motion-duration-normal $motion-ease-out;
 
-  &:focus {
+  &:focus-visible {
     outline: none;
     border-color: $color-primary;
     box-shadow: 0 0 0 3px $color-bg-hover;
@@ -154,7 +154,7 @@
   transition: border-color $motion-duration-normal $motion-ease-in-out,
     box-shadow $motion-duration-normal $motion-ease-out;
 
-  &:focus {
+  &:focus-visible {
     outline: none;
     border-color: $color-primary;
     box-shadow: 0 0 0 3px $color-bg-hover;
