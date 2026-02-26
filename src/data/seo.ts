@@ -5,7 +5,9 @@ const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 // Fallback so og:image and canonical are always absolute (required for WhatsApp/share crawlers)
 const baseUrl = siteUrl || cdnUrl || 'https://azaelac.dev';
 // OG image from CDN or site (1200×630 recommended; must be absolute URL)
-const defaultOgImage = cdnUrl ? `${cdnUrl}/og-image.png` : `${baseUrl}/hero-aza.png`;
+const defaultOgImage = cdnUrl
+  ? `${cdnUrl}/og-image.png`
+  : `${baseUrl}/aza-hero.png`;
 
 /** Short description for meta and social (≈155 chars). */
 const defaultDescription =
@@ -26,7 +28,10 @@ export function getDefaultSeoMeta(options?: {
   const description = options?.description ?? defaultDescription;
   const image = options?.image ?? defaultOgImage;
   const path = options?.path ?? '/';
-  const url = path === '/' ? baseUrl : `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
+  const url =
+    path === '/'
+      ? baseUrl
+      : `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
   const ogType = options?.ogType ?? 'website';
   const imageWidth = options?.imageWidth ?? 1200;
   const imageHeight = options?.imageHeight ?? 630;
@@ -64,8 +69,12 @@ export function getDefaultSeoMeta(options?: {
           url: baseUrl,
           image: defaultOgImage,
           sameAs: [
-            profile.social.github.startsWith('http') ? profile.social.github : `https://${profile.social.github}`,
-            profile.social.linkedin.startsWith('http') ? profile.social.linkedin : `https://${profile.social.linkedin}`,
+            profile.social.github.startsWith('http')
+              ? profile.social.github
+              : `https://${profile.social.github}`,
+            profile.social.linkedin.startsWith('http')
+              ? profile.social.linkedin
+              : `https://${profile.social.linkedin}`,
           ],
         }),
       },
