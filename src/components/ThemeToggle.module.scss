@@ -6,8 +6,11 @@
   justify-content: center;
   width: 40px;
   height: 40px;
+  border: none;
   border-radius: $border-radius-md;
+  background: transparent;
   color: $color-text-tertiary;
+  cursor: pointer;
   transition: color $motion-duration-normal $motion-ease-in-out,
     background $motion-duration-normal $motion-ease-in-out;
 

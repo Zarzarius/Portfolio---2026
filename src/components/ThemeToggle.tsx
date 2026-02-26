@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useMessages } from '../i18n/useMessages';
 import styles from './ThemeToggle.module.scss';
 
 const STORAGE_KEY = 'theme';
@@ -21,6 +22,7 @@ function applyTheme(theme: 'dark' | 'light') {
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>(THEME_LIGHT);
+  const t = useMessages();
 
   useEffect(() => {
     const initial = getTheme();
@@ -53,7 +55,11 @@ export function ThemeToggle() {
       type="button"
       className={styles.toggle}
       onClick={toggle}
-      aria-label={theme === THEME_DARK ? 'Switch to light theme' : 'Switch to dark theme'}
+      aria-label={
+        theme === THEME_DARK
+          ? `${t.common.language}: light`
+          : `${t.common.language}: dark`
+      }
       title={theme === THEME_DARK ? 'Light mode' : 'Dark mode'}
     >
       <span className={styles.icon} aria-hidden>

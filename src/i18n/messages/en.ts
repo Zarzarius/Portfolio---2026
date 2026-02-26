@@ -1,0 +1,102 @@
+import type { Messages } from '../types';
+
+export const enMessages: Messages = {
+  nav: {
+    home: 'Home',
+    projects: 'Projects',
+    about: 'About',
+    contact: 'Contact',
+    mainAriaLabel: 'Main',
+  },
+  common: {
+    resume: 'Resume',
+    connect: 'Connect',
+    loading: 'Loading…',
+    skipToMain: 'Skip to main content',
+    language: 'Language',
+    languageLabel: 'Website language',
+    notFoundTitle: 'Page not found',
+    notFoundText: 'The page you’re looking for doesn’t exist or has been moved.',
+    backToHome: 'Back to home',
+  },
+  home: {
+    subtitle:
+      'Exploring the space between design and technology to craft engaging, intuitive digital experiences.',
+    viewWork: 'View work',
+    getInTouch: 'Get in touch',
+    portfolioEyebrow: 'Portfolio',
+    selectedWork: 'Selected work',
+    workSubtitle:
+      'A mix of client projects and personal builds—from product interfaces to full-stack applications.',
+    professional: 'Professional',
+    personal: 'Personal',
+    ctaTitle: 'Let’s work together',
+    ctaText: 'Open to new projects and collaborations — get in touch.',
+    viewAllProjects: 'View all projects',
+  },
+  stack: {
+    eyebrow: 'Tools & technologies',
+    title: 'Tech stack',
+    subtitle: 'Languages, frameworks, and tools I ship with.',
+  },
+  about: {
+    eyebrow: 'About',
+    title: 'Who I am',
+    languagesTitle: 'Languages',
+    languagesText:
+      'Spanish (native) · English (B2+) · German (B2) · Portuguese (B2)',
+    beyondWorkTitle: 'Beyond work',
+    beyondWorkText:
+      'Mountain biking and fitness enthusiast. Passionate about cooking and exploring international cuisines. Avid traveler interested in diverse cultures and perspectives.',
+  },
+  projects: {
+    eyebrow: 'Projects',
+    title: 'Selected work',
+    subtitle:
+      'Professional and side projects from D’Art Design, Demodern, and more.',
+    all: 'All',
+    professional: 'Professional',
+    personal: 'Personal',
+    personalProject: 'Personal project',
+    collection: 'Collection',
+    backToProjects: 'Back to projects',
+    projectNotFound: 'Project not found.',
+    groupNotFound: 'Group not found.',
+    keyAchievements: 'Key achievements',
+    technologies: 'Technologies',
+    viewProject: 'View project',
+    projectsList: 'Projects',
+    award: 'Award',
+  },
+  contact: {
+    title: 'Get in touch',
+    intro: 'Open to new projects and collaborations.',
+    email: 'Email',
+    social: 'Social',
+    phone: 'Phone',
+    location: 'Location',
+    sendMessage: 'Send a message',
+    name: 'Name',
+    yourName: 'Your name',
+    emailField: 'Email',
+    message: 'Message',
+    yourMessage: 'Your message…',
+    sendButton: 'Send message',
+    success: 'Thanks! Your message has been sent.',
+    defaultError: 'Something went wrong. Please try again or email directly.',
+    validation: {
+      nameRequired: 'Name is required',
+      nameTooLong: 'Name is too long',
+      emailRequired: 'Email is required',
+      emailInvalid: 'Invalid email address',
+      messageMin: 'Message must be at least 10 characters',
+      messageTooLong: 'Message is too long',
+    },
+  },
+  seo: {
+    defaultDescription:
+      'React, Next.js, 3D experiences, headless CMS. Portfolio — Azael Alonso Campana.',
+    localeMeta: 'en_US',
+  },
+};
+

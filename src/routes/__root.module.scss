@@ -349,10 +349,18 @@
 }
 
 .mobileActions {
-  margin-top: auto;
+  margin-top: $spacing-4;
   padding-top: $spacing-4;
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   gap: $spacing-3;
   border-top: $border-width-thin solid $color-border-primary;
+}
+
+.mobileIconActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
 }

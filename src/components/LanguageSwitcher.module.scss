@@ -1,0 +1,105 @@
+.switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.localeLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.flag {
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.code {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  height: 40px;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--color-text-tertiary, inherit);
+  font-size: 1.05rem;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    color 220ms ease-in-out,
+    background 220ms ease-in-out;
+}
+
+.trigger:hover {
+  color: var(--color-text-primary, inherit);
+  background: var(--color-bg-hover, rgba(255, 255, 255, 0.08));
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-primary, currentColor);
+  outline-offset: 2px;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  min-width: 3rem;
+  background: var(--color-bg-primary, #111);
+  border: 1px solid color-mix(in oklab, currentColor 20%, transparent);
+  border-radius: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  display: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.menuOpen {
+  display: block;
+}
+
+.option {
+  min-width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 48rem) {
+  .menu {
+    padding: 0.25rem;
+  }
+
+  .option {
+    min-height: 2.5rem;
+    padding: 0.55rem 0.65rem;
+  }
+}
+
+.option:hover {
+  background: color-mix(in oklab, currentColor 10%, transparent);
+}
+
+.optionActive {
+  font-weight: 600;
+}
+

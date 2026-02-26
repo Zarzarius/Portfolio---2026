@@ -1,12 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-
-const NAV_LINKS = [
-  { to: '/', label: 'Home' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' },
-] as const;
+import { useCurrentLocale } from '../i18n/useLocale';
+import { useMessages } from '../i18n/useMessages';
 
 export interface NavProps {
   linkClassName: string;
@@ -19,12 +14,23 @@ export function Nav({
   activeClassName,
   onNavigate,
 }: NavProps) {
+  const locale = useCurrentLocale();
+  const t = useMessages();
+
+  const navLinks = [
+    { to: '/$locale', label: t.nav.home },
+    { to: '/$locale/projects', label: t.nav.projects },
+    { to: '/$locale/about', label: t.nav.about },
+    { to: '/$locale/contact', label: t.nav.contact },
+  ] as const;
+
   return (
     <>
-      {NAV_LINKS.map(({ to, label }) => (
+      {navLinks.map(({ to, label }) => (
         <Link
           key={to}
-          to={to}
+          to={to as '/$locale' | '/$locale/projects' | '/$locale/about' | '/$locale/contact'}
+          params={{ locale }}
           className={linkClassName}
           activeProps={{
             className: clsx(linkClassName, activeClassName),

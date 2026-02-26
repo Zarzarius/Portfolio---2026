@@ -33,6 +33,7 @@ export interface ButtonBaseProps {
   active?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  loadingText?: string;
   children: ReactNode;
   icon?: ReactNode;
   className?: string;
@@ -62,6 +63,7 @@ export interface ButtonAsLink extends ButtonBaseProps {
   href?: never;
   type?: never;
   preload?: 'intent' | 'viewport' | 'none';
+  params?: Record<string, string>;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
@@ -100,6 +102,7 @@ export function Button(props: ButtonProps) {
     active,
     disabled,
     loading,
+    loadingText,
     children,
     icon,
     className,
@@ -123,7 +126,7 @@ export function Button(props: ButtonProps) {
 
   const content = (
     <>
-      {loading === true ? 'Sending…' : children}
+      {loading === true ? (loadingText ?? 'Sending…') : children}
       {loading === true ? null : resolvedIcon}
     </>
   );
@@ -145,10 +148,16 @@ export function Button(props: ButtonProps) {
   }
 
   if (props.to != null) {
-    const { to, preload, ...linkRest } = rest as ButtonAsLink;
+    const { to, preload, params, ...linkRest } = rest as ButtonAsLink;
     const linkPreload = preload === 'none' ? false : preload;
     return (
-      <Link to={to} preload={linkPreload} className={classNames} {...linkRest}>
+      <Link
+        to={to}
+        params={params}
+        preload={linkPreload}
+        className={classNames}
+        {...linkRest}
+      >
         {content}
       </Link>
     );

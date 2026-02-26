@@ -1,4 +1,10 @@
-import { profile } from './profile';
+import { getProfile } from './profile';
+import {
+  DEFAULT_LOCALE,
+  getAlternateLocalePaths,
+  getMessages,
+  normalizeLocale,
+} from '../i18n';
 
 const siteUrl = import.meta.env.VITE_SITE_URL ?? '';
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
@@ -9,25 +15,27 @@ const defaultOgImage = cdnUrl
   ? `${cdnUrl}/og-image.png`
   : `${baseUrl}/aza-hero.png`;
 
-/** Short description for meta and social (≈155 chars). */
-const defaultDescription =
-  profile.headline +
-  ' React, Next.js, 3D experiences, headless CMS. Portfolio — Azael Alonso Campana.';
-
 /** Default SEO meta and links for the site (root). Child routes can override title/description. */
 export function getDefaultSeoMeta(options?: {
   title?: string;
   description?: string;
   image?: string;
   path?: string;
+  pathnameWithoutLocale?: string;
+  locale?: string;
   ogType?: 'website' | 'article';
   imageWidth?: number;
   imageHeight?: number;
 }) {
+  const locale = normalizeLocale(options?.locale);
+  const t = getMessages(locale);
+  const profile = getProfile(locale);
   const title = options?.title ?? `${profile.shortName} — ${profile.tagline}`;
-  const description = options?.description ?? defaultDescription;
+  const description =
+    options?.description ?? `${profile.headline} ${t.seo.defaultDescription}`;
   const image = options?.image ?? defaultOgImage;
   const path = options?.path ?? '/';
+  const pathnameWithoutLocale = options?.pathnameWithoutLocale ?? '/';
   const url =
     path === '/'
       ? baseUrl
@@ -35,6 +43,14 @@ export function getDefaultSeoMeta(options?: {
   const ogType = options?.ogType ?? 'website';
   const imageWidth = options?.imageWidth ?? 1200;
   const imageHeight = options?.imageHeight ?? 630;
+  const alternates = getAlternateLocalePaths(pathnameWithoutLocale).map((entry) => ({
+    rel: 'alternate',
+    hrefLang: entry.locale,
+    href: `${baseUrl}${entry.path}`,
+  }));
+  const xDefaultHref = `${baseUrl}/${DEFAULT_LOCALE}${
+    pathnameWithoutLocale === '/' ? '' : pathnameWithoutLocale
+  }`;
 
   return {
     meta: [
@@ -49,14 +65,18 @@ export function getDefaultSeoMeta(options?: {
       { property: 'og:image:width', content: String(imageWidth) },
       { property: 'og:image:height', content: String(imageHeight) },
       { property: 'og:url', content: url },
-      { property: 'og:locale', content: 'en_US' },
+      { property: 'og:locale', content: t.seo.localeMeta },
       // Twitter Card
       { name: 'twitter:card', content: 'summary_large_image' as const },
       { name: 'twitter:title', content: title },
       { name: 'twitter:description', content: description },
       { name: 'twitter:image', content: image },
     ],
-    links: [{ rel: 'canonical', href: url }],
+    links: [
+      { rel: 'canonical', href: url },
+      ...alternates,
+      { rel: 'alternate', hrefLang: 'x-default', href: xDefaultHref },
+    ],
     scripts: [
       {
         type: 'application/ld+json',

@@ -96,6 +96,7 @@
   transition: transform $motion-duration-slow $motion-ease-out;
   z-index: 1;
   overscroll-behavior: contain;
+  overflow-y: auto;
 
   &.drawerOpen {
     transform: translateX(0);

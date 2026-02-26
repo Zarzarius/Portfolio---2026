@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { StackCategory, StackTech } from '../data/stack';
+import { useMessages } from '../i18n/useMessages';
 import styles from './StackSection.module.scss';
 
 interface StackSectionProps {
@@ -7,15 +8,17 @@ interface StackSectionProps {
 }
 
 export function StackSection({ techCategories }: StackSectionProps) {
+  const t = useMessages();
+
   return (
     <section className={clsx(styles.stackSection)} aria-labelledby="stack-heading">
       <header className={clsx(styles.stackHeader)}>
-        <p className={clsx(styles.stackEyebrow)}>Tools & technologies</p>
+        <p className={clsx(styles.stackEyebrow)}>{t.stack.eyebrow}</p>
         <h2 id="stack-heading" className={clsx(styles.stackTitle)}>
-          Tech stack
+          {t.stack.title}
         </h2>
         <p className={clsx(styles.stackSubtitle)}>
-          Languages, frameworks, and tools I ship with.
+          {t.stack.subtitle}
         </p>
       </header>
 

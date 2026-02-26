@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-import type { Project, ProjectGroup } from '../data/projects';
+import type { ProjectCardItem } from './projectCardItems';
 import styles from './ProjectCard.module.scss';
 
 /** Placeholder image service: stable image per id when no project image is set */
@@ -14,43 +14,6 @@ function getCardImageUrl(item: { id: string | number; image?: string }): string 
     return cdnUrl ? `${cdnUrl}/${item.image}` : `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
   }
   return `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
-}
-
-/** Unified item shape for a single project or a project group (collection). */
-export interface ProjectCardItem {
-  id: string | number;
-  title: string;
-  description: string;
-  technologies: string[];
-  /** Optional badge, e.g. priority "A" for projects or "Collection" for groups */
-  badge?: string;
-  /** Optional image URL; when missing, a placeholder is used */
-  image?: string;
-  imageAlt?: string;
-}
-
-export function projectToCardItem(project: Project): ProjectCardItem {
-  return {
-    id: project.id,
-    title: project.title,
-    description: project.description,
-    technologies: project.technologies,
-    badge: project.priority,
-    image: project.image,
-    imageAlt: project.imageAlt,
-  };
-}
-
-export function groupToCardItem(group: ProjectGroup): ProjectCardItem {
-  return {
-    id: group.id,
-    title: group.title,
-    description: group.description ?? `${group.items.length} projects`,
-    technologies: group.technologies,
-    badge: 'Collection',
-    image: group.image,
-    imageAlt: group.imageAlt,
-  };
 }
 
 type ProjectCardProps = {
