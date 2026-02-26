@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '../../../components/Button';
-import { getProfile } from '../../../data/profile';
+import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '../../../data/seo';
 import { useMessages } from '../../../i18n/useMessages';
 import { sendContactEmail } from '../../../server/functions';

@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { getProfile } from '../../../data/profile';
+import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '../../../data/seo';
 import { normalizeLocale } from '../../../i18n';
 import { useMessages } from '../../../i18n/useMessages';

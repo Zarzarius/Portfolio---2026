@@ -6,7 +6,7 @@ import {
 import { groupToCardItem, projectToCardItem } from '../../components/projectCardItems';
 import { ScrollReveal } from '../../components/ScrollReveal';
 import { StackSection } from '../../components/StackSection';
-import { getProfile } from '../../data/profile';
+import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '../../data/seo';
 import { getLocalizedProject, getLocalizedProjectGroup } from '../../data/projects.i18n';
 import { getLocalizedStack } from '../../data/stack.i18n';
