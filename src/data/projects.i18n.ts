@@ -200,6 +200,10 @@ const localizedGroupFields: Record<
       es: 'Demodern Campaign - Landing pages',
       de: 'Demodern Campaign - Landingpages',
     },
+    description: {
+      es: 'Landing pages de marketing y campana de alta calidad construidas con React y tooling compartido. Cada pagina esta disenada para objetivos claros de conversion, jerarquia visual fuerte y tiempos de carga rapidos. Enfoque en storytelling de marca, mensajes de campana y resultados medibles para clientes.',
+      de: 'Hochwertige Marketing- und Kampagnen-Landingpages auf Basis von React und gemeinsamem Tooling. Jede Seite ist auf klare Conversion-Ziele, starke visuelle Hierarchie und schnelle Ladezeiten ausgelegt. Fokus auf Brand-Storytelling, Kampagnenbotschaften und messbare Ergebnisse fur Kunden.',
+    },
     achievements: {
       es: [
         'Se entregaron multiples landing pages de campana con React y tooling compartido para objetivos claros de conversion y carga rapida.',
@@ -217,6 +221,10 @@ const localizedGroupFields: Record<
     title: {
       es: "D'Art Design Group - Landing pages corporativas",
       de: "D'Art Design Group - Corporate Landingpages",
+    },
+    description: {
+      es: "Landing pages corporativas para clientes de D'Art Design Group, construidas con Next.js, Craft CMS, GraphQL y tooling front-end compartido (Motion, GSAP, Lottie, SASS).",
+      de: "Corporate-Landingpages fur Kunden der D'Art Design Group, gebaut mit Next.js, Craft CMS, GraphQL und gemeinsamem Frontend-Tooling (Motion, GSAP, Lottie, SASS).",
     },
     achievements: {
       es: [
@@ -258,6 +266,10 @@ const localizedGroupFields: Record<
       es: 'Dart Design - Showcase de producto 3D y casos conceptuales',
       de: 'Dart Design - 3D-Produktshowcase und Konzept-Cases',
     },
+    description: {
+      es: "Aplicaciones 3D para clientes de D'Art Design: mundos 3D para visualizar productos y flujos de empresa, hubs 3D interactivos para explorar servicios, showcases de producto fotorrealistas para pitches y herramientas internas como configurador de modelos para que artistas prueben shaders y assets en navegador. Usado en ferias, eventos y presentaciones de concepto.",
+      de: "3D-Anwendungen fur Kunden von D'Art Design: 3D-Welten zur Visualisierung von Produkten und Prozessen, interaktive 3D-Hubs zur Service-Exploration, fotorealistische Produktshowcases fur Pitches sowie interne Tools wie ein Modellkonfigurator, mit dem Artists Shader und Assets im Browser testen konnen. Eingesetzt auf Messen, Events und in Konzeptprasentationen.",
+    },
     achievements: {
       es: [
         'Se entregaron aplicaciones 3D para clientes de D’Art Design: mundos isometricos de producto, hubs de servicios interactivos y showcases fotorrealistas para ferias y presentaciones.',
@@ -280,16 +292,148 @@ const localizedItemFields: Record<
     description?: LocalizedText;
   }
 > = {
+  'lp-1': {
+    title: {
+      es: 'Migros Escape Game',
+      de: 'Migros Escape Game',
+    },
+    description: {
+      es: 'Landing page para la campana Migros Escape Game 2025 de la cadena de supermercados Migros.',
+      de: 'Landingpage fur die Migros-Escape-Game-Kampagne 2025 der Supermarktkette Migros.',
+    },
+  },
+  'lp-2': {
+    title: {
+      es: 'Snipes 25th Anniversary',
+      de: 'Snipes 25th Anniversary',
+    },
+    description: {
+      es: 'Landing page para la campana de 25 aniversario de Snipes con modelos 3D exclusivos y showcase de productos.',
+      de: 'Landingpage fur die 25-Jahre-Kampagne von Snipes mit exklusiven 3D-Modellen und Produktshowcase.',
+    },
+  },
+  'lp-3': {
+    title: {
+      es: 'Snipes Soundbooth',
+      de: 'Snipes Soundbooth',
+    },
+    description: {
+      es: 'Landing page para Snipes Soundbooth.',
+      de: 'Landingpage fur Snipes Soundbooth.',
+    },
+  },
+  'corporative-lp-1': {
+    title: {
+      es: "D'Art Digital Agency - Landing page",
+      de: "D'Art Digital Agency - Landingpage",
+    },
+    description: {
+      es: "Landing page de D'Art Digital Agency para mostrar servicios y portfolio.",
+      de: "Landingpage fur D'Art Digital Agency zur Darstellung von Services und Portfolio.",
+    },
+  },
+  'corporative-lp-2': {
+    title: {
+      es: 'Stiftung Paulinenhilfe - Landing page corporativa',
+      de: 'Stiftung Paulinenhilfe - Corporate Landingpage',
+    },
+    description: {
+      es: 'Landing page para Stiftung Paulinenhilfe para mostrar sus servicios.',
+      de: 'Landingpage fur Stiftung Paulinenhilfe zur Darstellung der Leistungen.',
+    },
+  },
+  'corporative-lp-3': {
+    title: {
+      es: 'Medienvorsorge.de - Landing page',
+      de: 'Medienvorsorge.de - Landingpage',
+    },
+    description: {
+      es: 'Landing page para Medienvorsorge.de para mostrar sus servicios.',
+      de: 'Landingpage fur Medienvorsorge.de zur Darstellung der Leistungen.',
+    },
+  },
+  'corporative-lp-4': {
+    title: {
+      es: 'Hanselmann & Compagnie - Landing page corporativa',
+      de: 'Hanselmann & Compagnie - Corporate Landingpage',
+    },
+    description: {
+      es: 'Landing page para Hanselmann & Compagnie para mostrar sus servicios.',
+      de: 'Landingpage fur Hanselmann & Compagnie zur Darstellung der Leistungen.',
+    },
+  },
+  'corporative-lp-5': {
+    title: {
+      es: 'Düsseldorf Airport Quiz game',
+      de: 'Düsseldorf Airport Quiz-Spiel',
+    },
+    description: {
+      es: 'Juego quiz para Düsseldorf Airport para mostrar sus servicios y la ciudad de Düsseldorf de forma gamificada.',
+      de: 'Quiz-Spiel fur den Düsseldorf Airport, das Leistungen und die Stadt Düsseldorf spielerisch prasentiert.',
+    },
+  },
   'personal-1': {
     title: { es: 'El Maizter - Sitio web foodtruck', de: 'El Maizter - Foodtruck-Website' },
+    description: {
+      es: 'Menu online y hub de ubicacion para un food truck; ayuda a clientes a encontrarlo y revisar la oferta antes de pedir.',
+      de: 'Online-Menuseite und Standort-Hub fur einen Foodtruck; hilft Kunden, den Truck zu finden und das Angebot vorab zu sehen.',
+    },
   },
   'personal-2': {
     title: { es: 'La Cabana - Sitio web de restaurante', de: 'La Cabana - Restaurant-Website' },
+    description: {
+      es: 'Sitio de restaurante con ambiente, horarios y datos de contacto para planear visitas y ponerse en contacto.',
+      de: 'Restaurantseite mit Atmosphare, Offnungszeiten und Kontaktdaten, damit Gaste ihren Besuch planen konnen.',
+    },
   },
   'personal-3': {
     title: {
       es: 'ASP - Sitio web de artesano freelance',
       de: 'ASP - Website fur freiberuflichen Handwerker',
+    },
+    description: {
+      es: 'Portfolio y web de contacto para un profesional de oficios; muestra trabajos previos y facilita solicitar presupuestos.',
+      de: 'Portfolio- und Kontaktseite fur einen Handwerker; zeigt Referenzen und erleichtert Angebotsanfragen.',
+    },
+  },
+  'dart-3d-1': {
+    title: {
+      es: 'SMA. - Experiencia 3D de energia verde',
+      de: 'SMA. - 3D-Erlebnis fur grune Energie',
+    },
+    description: {
+      es: 'Mundo 3D isometrico y simplificado para SMA (marca de energia verde) con showcase de producto y modelos 3D interactivos para explicar su red energetica integrada. Usado en ferias y eventos.',
+      de: 'Isometrische, vereinfachte 3D-Welt fur SMA (Green-Energy-Marke) mit Produktshowcase und interaktiven 3D-Modellen zur Darstellung ihres integrierten Energienetzwerks. Eingesetzt auf Messen und Events.',
+    },
+  },
+  'dart-3d-2': {
+    title: {
+      es: 'Düsseldorf Airport - Experiencia 3D',
+      de: 'Düsseldorf Airport - 3D-Erlebnis',
+    },
+    description: {
+      es: 'Experiencia 3D con modelo simplificado del aeropuerto para mostrar servicios y ofrecer un hub interactivo para explorar el aeropuerto. Usado en ferias y eventos.',
+      de: '3D-Erlebnis mit vereinfachtem Flughafenmodell zur Darstellung von Services und als interaktiver Hub zur Erkundung des Flughafens. Eingesetzt auf Messen und Events.',
+    },
+  },
+  'dart-3d-3': {
+    title: {
+      es: 'GROHE - Showcase de producto 3D (pitch)',
+      de: 'GROHE - 3D-Produktshowcase (Pitch)',
+    },
+    description: {
+      es: 'Concepto para GROHE: modelo de producto 3D con texturas realistas de alta resolucion, materiales Kronos y shaders avanzados para renders fotorrealistas en navegador.',
+      de: 'Konzept fur GROHE: 3D-Produktmodell mit hochauflosenden, realistischen Texturen, Kronos-Materialien und fortgeschrittenen Shadern fur fotorealistische Browser-Renderings.',
+    },
+  },
+  'dart-3d-4': {
+    title: {
+      es: 'Configurador de modelo 3D',
+      de: '3D-Modellkonfigurator',
+    },
+    description: {
+      es: 'Concepto para artistas 3D para probar shaders y assets en navegador, igualando el render del editor 3D en WebGL con panel para configurar modelo y mapas de luz. Facilita alinear artistas y desarrolladores entre proyectos.',
+      de: 'Konzept fur 3D-Artists zum Testen von Shadern und Assets im Browser, damit das Rendering dem 3D-Editor in WebGL entspricht; inklusive Panel fur Modell- und Lightmap-Konfiguration. Vereinfacht die Abstimmung zwischen Art und Dev uber mehrere Projekte.',
     },
   },
 };

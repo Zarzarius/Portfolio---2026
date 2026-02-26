@@ -9,6 +9,7 @@ import { StackSection } from '../../components/StackSection';
 import { getProfile } from '../../data/profile';
 import { getDefaultSeoMeta } from '../../data/seo';
 import { getLocalizedProject, getLocalizedProjectGroup } from '../../data/projects.i18n';
+import { getLocalizedStack } from '../../data/stack.i18n';
 import { normalizeLocale } from '../../i18n';
 import { useMessages } from '../../i18n/useMessages';
 import styles from '../index.module.scss';
@@ -43,6 +44,10 @@ function Home() {
   const currentLocale = normalizeLocale(locale);
   const t = useMessages();
   const profile = getProfile(currentLocale);
+  const localizedTechCategories = getLocalizedStack(
+    techCategories,
+    currentLocale,
+  );
   const highlightedProjects = projects
     .filter((p: Project) => p.highlighted)
     .map((p: Project) => getLocalizedProject(p, currentLocale));
@@ -105,7 +110,7 @@ function Home() {
       </section>
 
       <div className={clsx(styles.page)}>
-        <StackSection techCategories={techCategories} />
+        <StackSection techCategories={localizedTechCategories} />
 
         <ScrollReveal
           className={clsx(styles.revealBlock)}
