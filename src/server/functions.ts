@@ -1,8 +1,8 @@
 import { createServerFn } from '@tanstack/react-start';
 import { Resend } from 'resend';
-import { projects, projectGroups, categories } from '../data/projects';
-import { techCategories } from '../data/stack';
-import { contactSchema } from '../schemas/contact';
+import { projects, projectGroups, categories } from '@/data/projects';
+import { techCategories } from '@/data/stack';
+import { contactSchema } from '@/schemas/contact';
 
 const contactTo = process.env.CONTACT_TO_EMAIL ?? 'job@azaelac.dev';
 const contactFrom =

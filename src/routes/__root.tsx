@@ -8,17 +8,17 @@ import {
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import { BurgerMenu } from '../components/BurgerMenu';
-import { Button } from '../components/Button';
-import { LanguageSwitcher } from '../components/LanguageSwitcher';
-import { Nav } from '../components/Nav';
-import { PageTransition } from '../components/PageTransition';
-import { ThemeToggle } from '../components/ThemeToggle';
+import { BurgerMenu } from '@/components/BurgerMenu';
+import { Button } from '@/components/Button';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { Nav } from '@/components/Nav';
+import { PageTransition } from '@/components/PageTransition';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { getProfile } from '@/data/profile';
-import { getDefaultSeoMeta } from '../data/seo';
-import { DEFAULT_LOCALE } from '../i18n';
-import { useCurrentLocale } from '../i18n/useLocale';
-import { useMessages } from '../i18n/useMessages';
+import { getDefaultSeoMeta } from '@/data/seo';
+import { DEFAULT_LOCALE } from '@/i18n';
+import { useCurrentLocale } from '@/i18n/useLocale';
+import { useMessages } from '@/i18n/useMessages';
 import styles from './__root.module.scss';
 import '../index.scss';
 

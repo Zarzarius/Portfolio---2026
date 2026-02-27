@@ -1,4 +1,4 @@
-import { localizeValue, type Locale } from '../i18n';
+import { localizeValue, type Locale } from '@/i18n';
 import type { Project, ProjectGroup, ProjectGroupItem } from './projects';
 
 type LocalizedText = Partial<Record<Locale, string>>;

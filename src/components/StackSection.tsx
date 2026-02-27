@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import type { StackCategory, StackTech } from '../data/stack';
-import { useMessages } from '../i18n/useMessages';
+import type { StackCategory, StackTech } from '@/data/stack';
+import { useMessages } from '@/i18n/useMessages';
 import styles from './StackSection.module.scss';
 
 interface StackSectionProps {

@@ -4,7 +4,7 @@ import {
   redirect,
   useLocation,
 } from '@tanstack/react-router';
-import { DEFAULT_LOCALE, isLocale, type Locale } from '../../i18n/locales';
+import { DEFAULT_LOCALE, isLocale, type Locale } from '@/i18n/locales';
 
 function normalizeToDefaultLocale(pathname: string) {
   const parts = pathname.split('/').filter(Boolean);

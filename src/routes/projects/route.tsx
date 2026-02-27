@@ -1,5 +1,5 @@
 import { createFileRoute, redirect } from '@tanstack/react-router';
-import { DEFAULT_LOCALE } from '../../i18n';
+import { DEFAULT_LOCALE } from '@/i18n';
 
 export const Route = createFileRoute('/projects')({
   beforeLoad: () => {

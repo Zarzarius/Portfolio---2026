@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { useCurrentLocale } from '../i18n/useLocale';
-import { useMessages } from '../i18n/useMessages';
+import { useCurrentLocale } from '@/i18n/useLocale';
+import { useMessages } from '@/i18n/useMessages';
 
 type NavLinkItem = {
   to: '/$locale' | '/$locale/projects' | '/$locale/about' | '/$locale/contact';

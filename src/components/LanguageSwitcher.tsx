@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { SUPPORTED_LOCALES, getLanguageName, type Locale } from '../i18n';
-import { useCurrentLocale, usePathWithoutLocale } from '../i18n/useLocale';
-import { useMessages } from '../i18n/useMessages';
+import { SUPPORTED_LOCALES, getLanguageName, type Locale } from '@/i18n';
+import { useCurrentLocale, usePathWithoutLocale } from '@/i18n/useLocale';
+import { useMessages } from '@/i18n/useMessages';
 import styles from './LanguageSwitcher.module.scss';
 
 const LOCALE_FLAGS: Record<Locale, string> = {

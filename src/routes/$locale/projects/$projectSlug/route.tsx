@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { getDefaultSeoMeta } from '../../../../data/seo';
-import { getLocalizedProject } from '../../../../data/projects.i18n';
-import { getMessages } from '../../../../i18n';
-import { useMessages } from '../../../../i18n/useMessages';
-import { getProjectBySlug } from '../../../../server/functions';
+import { getDefaultSeoMeta } from '@/data/seo';
+import { getLocalizedProject } from '@/data/projects.i18n';
+import { getMessages } from '@/i18n';
+import { useMessages } from '@/i18n/useMessages';
+import { getProjectBySlug } from '@/server/functions';
 import styles from '../../../projects/$projectSlug/project.module.scss';
 
 export const Route = createFileRoute('/$locale/projects/$projectSlug')({

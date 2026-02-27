@@ -4,7 +4,7 @@ import {
   getAlternateLocalePaths,
   getMessages,
   normalizeLocale,
-} from '../i18n';
+} from '@/i18n';
 
 const siteUrl = import.meta.env.VITE_SITE_URL ?? '';
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';

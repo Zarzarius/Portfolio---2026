@@ -1,4 +1,4 @@
-import type { Project, ProjectGroup } from '../data/projects';
+import type { Project, ProjectGroup } from '@/data/projects';
 
 /** Unified item shape for a single project or a project group (collection). */
 export interface ProjectCardItem {

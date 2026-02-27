@@ -1,13 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
-import { Button } from '../../../components/Button';
+import { Button } from '@/components/Button';
 import { getProfile } from '@/data/profile';
-import { getDefaultSeoMeta } from '../../../data/seo';
-import { normalizeLocale } from '../../../i18n';
-import { useMessages } from '../../../i18n/useMessages';
-import { sendContactEmail } from '../../../server/functions';
-import { createContactSchema, type ContactFormData } from '../../../schemas/contact';
+import { getDefaultSeoMeta } from '@/data/seo';
+import { normalizeLocale } from '@/i18n';
+import { useMessages } from '@/i18n/useMessages';
+import { sendContactEmail } from '@/server/functions';
+import { createContactSchema, type ContactFormData } from '@/schemas/contact';
 import styles from '../../contact/contact.module.scss';
 
 export const Route = createFileRoute('/$locale/contact')({

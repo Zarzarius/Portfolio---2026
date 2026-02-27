@@ -1,4 +1,4 @@
-import { localizeValue, type Locale } from '../i18n';
+import { localizeValue, type Locale } from '@/i18n';
 import type { StackCategory } from './stack';
 
 type LocalizedText = Partial<Record<Locale, string>>;

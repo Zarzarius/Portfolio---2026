@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useMessages } from '../i18n/useMessages';
+import { useMessages } from '@/i18n/useMessages';
 import styles from './ThemeToggle.module.scss';
 
 const STORAGE_KEY = 'theme';

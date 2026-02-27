@@ -1,24 +1,25 @@
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
 import clsx from 'clsx';
-import { Button } from '../../../components/Button';
+import { Button } from '@/components/Button';
 import {
   ProjectCard,
-} from '../../../components/ProjectCard';
+} from '@/components/ProjectCard';
 import {
   groupToCardItem,
   projectToCardItem,
-} from '../../../components/projectCardItems';
+} from '@/components/projectCardItems';
 import styles from '../../projects/projects.module.scss';
 import {
   getProjects,
   getProjectGroups,
   getCategories,
-} from '../../../server/functions';
-import { getDefaultSeoMeta } from '../../../data/seo';
-import type { Project, ProjectGroup } from '../../../data/projects';
-import { getLocalizedProject, getLocalizedProjectGroup } from '../../../data/projects.i18n';
-import { useMessages } from '../../../i18n/useMessages';
+} from '@/server/functions';
+import { getDefaultSeoMeta } from '@/data/seo';
+import type { Project, ProjectGroup } from '@/data/projects';
+import { getLocalizedProject, getLocalizedProjectGroup } from '@/data/projects.i18n';
+import { normalizeLocale } from '@/i18n';
+import { useMessages } from '@/i18n/useMessages';
 
 const ALL_CATEGORIES_KEY = 'ALL';
 
@@ -66,23 +67,12 @@ function ProjectsLayout() {
     activeFilter === ALL_CATEGORIES_KEY
       ? projectGroups
       : projectGroups.filter((g: ProjectGroup) => g.category === activeFilter);
+  const currentLocale = normalizeLocale(locale);
   const localizedProjects = filteredProjects.map((p: Project) =>
-    getLocalizedProject(p, locale),
+    getLocalizedProject(p, currentLocale),
   );
   const localizedGroups = filteredGroups.map((g: ProjectGroup) =>
-    getLocalizedProjectGroup(g, locale),
-  );
-  const professionalProjects = filteredProjects.filter(
-    (p: Project) => p.type === 'professional',
-  );
-  const personalProjects = filteredProjects.filter(
-    (p: Project) => p.type === 'personal',
-  );
-  const professionalGroups = filteredGroups.filter(
-    (g: ProjectGroup) => g.type === 'professional',
-  );
-  const personalGroups = filteredGroups.filter(
-    (g: ProjectGroup) => g.type === 'personal',
+    getLocalizedProjectGroup(g, currentLocale),
   );
   const localizedProfessionalProjects = localizedProjects.filter(
     (p: Project) => p.type === 'professional',
@@ -128,7 +118,7 @@ function ProjectsLayout() {
           </Button>
         ))}
       </div>
-      {(professionalProjects.length > 0 || professionalGroups.length > 0) && (
+      {(localizedProfessionalProjects.length > 0 || localizedProfessionalGroups.length > 0) && (
         <section className={clsx(styles.projectGroup)}>
           <h2 className={clsx(styles.groupTitle)}>{t.projects.professional}</h2>
           <div className={clsx(styles.grid)}>
@@ -154,7 +144,7 @@ function ProjectsLayout() {
           </div>
         </section>
       )}
-      {(personalProjects.length > 0 || personalGroups.length > 0) && (
+      {(localizedPersonalProjects.length > 0 || localizedPersonalGroups.length > 0) && (
         <section className={clsx(styles.projectGroup)}>
           <h2 className={clsx(styles.groupTitle)}>{t.projects.personal}</h2>
           <div className={clsx(styles.grid)}>

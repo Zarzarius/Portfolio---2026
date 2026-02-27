@@ -2,20 +2,20 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
 import {
   ProjectCard,
-} from '../../components/ProjectCard';
-import { groupToCardItem, projectToCardItem } from '../../components/projectCardItems';
-import { ScrollReveal } from '../../components/ScrollReveal';
-import { StackSection } from '../../components/StackSection';
+} from '@/components/ProjectCard';
+import { groupToCardItem, projectToCardItem } from '@/components/projectCardItems';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { StackSection } from '@/components/StackSection';
 import { getProfile } from '@/data/profile';
-import { getDefaultSeoMeta } from '../../data/seo';
-import { getLocalizedProject, getLocalizedProjectGroup } from '../../data/projects.i18n';
-import { getLocalizedStack } from '../../data/stack.i18n';
-import { normalizeLocale } from '../../i18n';
-import { useMessages } from '../../i18n/useMessages';
+import { getDefaultSeoMeta } from '@/data/seo';
+import { getLocalizedProject, getLocalizedProjectGroup } from '@/data/projects.i18n';
+import { getLocalizedStack } from '@/data/stack.i18n';
+import { normalizeLocale } from '@/i18n';
+import { useMessages } from '@/i18n/useMessages';
 import styles from '../index.module.scss';
 
-import { getProjects, getProjectGroups, getStack } from '../../server/functions';
-import type { Project, ProjectGroup } from '../../data/projects';
+import { getProjects, getProjectGroups, getStack } from '@/server/functions';
+import type { Project, ProjectGroup } from '@/data/projects';
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 
 export const Route = createFileRoute('/$locale/')({

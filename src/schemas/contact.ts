@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { enMessages } from '../i18n/messages/en';
+import { enMessages } from '@/i18n/messages/en';
 
 export function createContactSchema(validation: {
   nameRequired: string;

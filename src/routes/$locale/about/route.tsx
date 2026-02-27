@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
 import clsx from 'clsx';
 import { getProfile } from '@/data/profile';
-import { getDefaultSeoMeta } from '../../../data/seo';
-import { normalizeLocale } from '../../../i18n';
-import { useMessages } from '../../../i18n/useMessages';
+import { getDefaultSeoMeta } from '@/data/seo';
+import { normalizeLocale } from '@/i18n';
+import { useMessages } from '@/i18n/useMessages';
 import styles from '../../about/about.module.scss';
 
 export const Route = createFileRoute('/$locale/about')({

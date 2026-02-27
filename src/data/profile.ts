@@ -3,7 +3,7 @@
  * Resume and image URLs use VITE_CDN_URL in production (e.g. https://cdn.azaelac.dev).
  * @see https://tanstack.com/start/latest/docs/framework/react/guide/environment-variables#build-errors-in-production
  */
-import { localizeValue, type Locale } from '../i18n';
+import { localizeValue, type Locale } from '@/i18n';
 
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 if (import.meta.env.PROD && !cdnUrl) {
