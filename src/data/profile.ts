@@ -54,6 +54,7 @@ const localizedProfile: Record<string, LocalizedText> = {
 export function getProfile(locale: Locale) {
   return {
     ...profile,
+    resumeUrl: `${cdnUrl}/Resume/Azael_AC_${locale.toUpperCase()}.pdf`,
     tagline: localizeValue(localizedProfile.tagline, profile.tagline, locale),
     headline: localizeValue(localizedProfile.headline, profile.headline, locale),
     summary: localizeValue(localizedProfile.summary, profile.summary, locale),
