@@ -18,6 +18,10 @@ export interface Messages {
     skipToMain: string;
     language: string;
     languageLabel: string;
+    switchToLightTheme: string;
+    switchToDarkTheme: string;
+    lightMode: string;
+    darkMode: string;
     notFoundTitle: string;
     notFoundText: string;
     backToHome: string;

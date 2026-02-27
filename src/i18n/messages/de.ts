@@ -15,6 +15,10 @@ export const deMessages: Messages = {
     skipToMain: 'Zum Hauptinhalt springen',
     language: 'Sprache',
     languageLabel: 'Webseitensprache',
+    switchToLightTheme: 'Zum hellen Design wechseln',
+    switchToDarkTheme: 'Zum dunklen Design wechseln',
+    lightMode: 'Heller Modus',
+    darkMode: 'Dunkler Modus',
     notFoundTitle: 'Seite nicht gefunden',
     notFoundText:
       'Die gesuchte Seite existiert nicht oder wurde verschoben.',
