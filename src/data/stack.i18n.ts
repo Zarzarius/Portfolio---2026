@@ -24,7 +24,7 @@ const categoryTranslations: Record<string, LocalizedText> = {
 
 const technologyDescriptionTranslations: Record<string, LocalizedText> = {
   React: {
-    es: 'Capa de UI para la mayoria de proyectos. Hooks, composicion y ecosistema.',
+    es: 'Capa de UI para la mayoría de proyectos. Hooks, composición y ecosistema.',
     de: 'UI-Schicht fur die meisten Projekte. Hooks, Komposition und Okosystem.',
   },
   TypeScript: {
@@ -32,7 +32,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Typisiertes JavaScript im ganzen Projekt. Weniger Bugs, bessere DX.',
   },
   'Next.js': {
-    es: 'SSR, export statico y Vercel cuando encaja con el proyecto.',
+    es: 'SSR, export estático y Vercel cuando encaja con el proyecto.',
     de: 'SSR, statischer Export und Vercel, wenn es zum Projekt passt.',
   },
   'TanStack Router': {
@@ -40,7 +40,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Typsicheres Routing mit Loadern und Search-Params.',
   },
   Vite: {
-    es: 'Servidor de desarrollo y builds rapidos. Opcion por defecto para nuevas apps.',
+    es: 'Servidor de desarrollo y builds rápidos. Opción por defecto para nuevas apps.',
     de: 'Schneller Dev-Server und schnelle Builds. Standardwahl fur neue Apps.',
   },
   Sass: {
@@ -56,7 +56,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Leichtgewichtiges State-Management. Ohne Boilerplate und gut skalierbar.',
   },
   Zod: {
-    es: 'Validacion de esquemas e inferencia de tipos para formularios y APIs.',
+    es: 'Validación de esquemas e inferencia de tipos para formularios y APIs.',
     de: 'Schema-Validierung und Typinferenz fur Formulare und APIs.',
   },
   GSAP: {
@@ -72,7 +72,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Runtime fur APIs, Skripte und Tooling.',
   },
   Strapi: {
-    es: 'CMS headless con GraphQL y REST. Backends de contenido rapidos.',
+    es: 'CMS headless con GraphQL y REST. Backends de contenido rápidos.',
     de: 'Headless CMS mit GraphQL und REST. Schnelle Content-Backends.',
   },
   'Craft CMS': {
@@ -84,7 +84,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Minimalistisches Server-Framework. Middleware und Routing.',
   },
   MongoDB: {
-    es: 'Base de datos documental para esquemas flexibles e iteracion rapida.',
+    es: 'Base de datos documental para esquemas flexibles e iteración rapida.',
     de: 'Dokumenten-Datenbank fur flexible Schemas und schnelle Iteration.',
   },
   GraphQL: {
@@ -108,7 +108,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'CI/CD, Repositories und Issue-Tracking an einem Ort.',
   },
   GitHub: {
-    es: 'Repositorios, Actions y colaboracion.',
+    es: 'Repositorios, Actions y colaboración.',
     de: 'Repositories, Actions und Zusammenarbeit.',
   },
   Vercel: {
@@ -116,11 +116,11 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Frontend-Hosting, Serverless und Edge-Deployment.',
   },
   Cloudflare: {
-    es: 'CDN, DNS, proteccion DDoS y edge workers.',
+    es: 'CDN, DNS, protección DDoS y edge workers.',
     de: 'CDN, DNS, DDoS-Schutz und Edge-Worker.',
   },
   Cursor: {
-    es: 'Edicion asistida por IA para el trabajo diario.',
+    es: 'Edición asistida por IA para el trabajo diario.',
     de: 'KI-unterstutzte Bearbeitung fur die tagliche Entwicklung.',
   },
   Git: {
@@ -132,7 +132,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Editor und Erweiterungen, wenn ich nicht in Cursor arbeite.',
   },
   Figma: {
-    es: 'Handoff de diseno y especificaciones de UI.',
+    es: 'Handoff de diseño y especificaciones de UI.',
     de: 'Design-Handoff und UI-Spezifikationen.',
   },
   Linux: {
@@ -140,7 +140,7 @@ const technologyDescriptionTranslations: Record<string, LocalizedText> = {
     de: 'Primare Entwicklungsumgebung. Server und Desktop.',
   },
   macOS: {
-    es: 'Entorno secundario y trabajo especifico de Apple.',
+    es: 'Entorno secundario y trabajo específico de Apple.',
     de: 'Sekundare Umgebung und Apple-spezifische Arbeit.',
   },
 };

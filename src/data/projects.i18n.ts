@@ -15,11 +15,11 @@ const localizedProjectFields: Record<
 > = {
   'wwf-ar': {
     title: {
-      es: 'WWF Alemania - Realidad aumentada y visualizacion de datos GIS',
+      es: 'WWF Alemania - Realidad aumentada y visualización de datos GIS',
       de: 'WWF Deutschland - Augmented Reality und GIS-Datenvisualisierung',
     },
     description: {
-      es: 'Experiencia WebAR para WWF Alemania: sin app nativa; los usuarios acceden al AR directamente desde el navegador movil, maximizando alcance y accesibilidad. Construido con model-viewer de Google para 3D y AR de alta calidad en web, y React para una interfaz fluida e intuitiva. Incluye un modulo de visualizacion de datos basado en GIS con habitats reales, animales 3D animados y optimizados para movil (lince, lobo, bisonte europeo y alce), y hotspots interactivos con contenido educativo.',
+      es: 'Experiencia WebAR para WWF Alemania: sin app nativa; los usuarios acceden al AR directamente desde el navegador móvil, maximizando alcance y accesibilidad. Construido con model-viewer de Google para 3D y AR de alta calidad en web, y React para una interfaz fluida e intuitiva. Incluye un módulo de visualización de datos basado en GIS con habitats reales, animales 3D animados y optimizados para móvil (lince, lobo, bisonte europeo y alce), y hotspots interactivos con contenido educativo.',
       de: 'WebAR-Erlebnis fur WWF Deutschland: ohne native App, Nutzer greifen direkt im mobilen Browser auf AR zu, was Reichweite und Zuganglichkeit erhoht. Entwickelt mit Googles model-viewer fur hochwertige 3D- und AR-Darstellung im Web sowie React fur eine flussige, intuitive UI. Enthalt ein GIS-basiertes Datenvisualisierungsmodul mit realen Lebensraumen, hochwertige animierte 3D-Tiere (Luchs, Wolf, Wisent, Elch) fur Mobile optimiert und interaktive Hotspots mit Bildungsinhalten.',
     },
     award: {
@@ -28,11 +28,11 @@ const localizedProjectFields: Record<
     },
     achievements: {
       es: [
-        'Se lanzo una experiencia WebAR sin app nativa; los usuarios acceden al AR desde el navegador movil, aumentando el alcance y evitando friccion de tiendas.',
-        'Se entrego una experiencia multiplataforma: AR en movil y visor 3D en desktop con una sola base de codigo.',
-        'Se integro visualizacion de datos basada en GIS para mostrar habitats reales dentro de la experiencia.',
-        'Se publicaron animales 3D animados de alta fidelidad (lince, lobo, bisonte europeo y alce) optimizados para navegadores moviles.',
-        'Se implementaron hotspots interactivos sobre modelos 3D para mostrar contenido educativo y datos cientificos a escala 1:1.',
+        'Se lanzó una experiencia WebAR sin app nativa; los usuarios acceden al AR desde el navegador móvil, aumentando el alcance y evitando fricción de tiendas.',
+        'Se entregó una experiencia multiplataforma: AR en móvil y visor 3D en desktop con una sola base de código.',
+        'Se integró visualización de datos basada en GIS para mostrar habitats reales dentro de la experiencia.',
+        'Se publicaron animales 3D animados de alta fidelidad (lince, lobo, bisonte europeo y alce) optimizados para navegadores móviles.',
+        'Se implementaron hotspots interactivos sobre modelos 3D para mostrar contenido educativo y datos científicos a escala 1:1.',
       ],
       de: [
         'Eine WebAR-Erfahrung ohne native App wurde ausgeliefert; Nutzer greifen direkt im mobilen Browser auf AR zu und vermeiden App-Store-Reibung.',
@@ -45,18 +45,18 @@ const localizedProjectFields: Record<
   },
   'sap-ar': {
     title: {
-      es: 'SAP S/4HANA Cloud AR - Showcase para evento hibrido',
+      es: 'SAP S/4HANA Cloud AR - Showcase para evento híbrido',
       de: 'SAP S/4HANA Cloud AR - Showcase fur Hybrid-Event',
     },
     description: {
-      es: 'Solucion global para eventos hibridos que usa AR para visualizar procesos de negocio de SAP S/4HANA Cloud, transformando datos abstractos en una metafora interactiva de "musculo empresarial".',
+      es: 'Solución global para eventos híbridos que usa AR para visualizar procesos de negocio de SAP S/4HANA Cloud, transformando datos abstractos en una metáfora interactiva de "músculo empresarial".',
       de: 'Globale Hybrid-Event-Losung, die AR nutzt, um Geschaftsprozesse der SAP S/4HANA Cloud zu visualisieren und abstrakte Daten in eine interaktive "Business-Muskel"-Metapher zu ubersetzen.',
     },
     achievements: {
       es: [
-        'Se entrego una solucion para evento hibrido que usa AR para visualizar procesos de SAP S/4HANA Cloud y convertir datos abstractos en una metafora interactiva.',
-        'Se publicaron procesos de negocio en 3D animado de alta fidelidad optimizados para render en tiempo real en navegadores moviles.',
-        'Se entrego experiencia multiplataforma: AR en movil y visor 3D en desktop con React Three Fiber y 8th Wall.',
+        'Se entregó una solución para evento híbrido que usa AR para visualizar procesos de SAP S/4HANA Cloud y convertir datos abstractos en una metáfora interactiva.',
+        'Se publicaron procesos de negocio en 3D animado de alta fidelidad optimizados para render en tiempo real en navegadores móviles.',
+        'Se entregó experiencia multiplataforma: AR en móvil y visor 3D en desktop con React Three Fiber y 8th Wall.',
         'Se implementaron interacciones complejas de interfaz con React Three Fiber y Three.js para una experiencia inmersiva.',
       ],
       de: [
@@ -69,19 +69,19 @@ const localizedProjectFields: Record<
   },
   soundbooth: {
     title: {
-      es: 'Snipes Soundbooth - Landing page e instalacion en sitio',
+      es: 'Snipes Soundbooth - Landing page e instalación en sitio',
       de: 'Snipes Soundbooth - Landingpage und Vor-Ort-Installation',
     },
     description: {
-      es: 'Aplicacion web y landing page para Snipes Soundbooth: los usuarios crean y comparten clips de audio. Construido con React y Strapi; incluye soporte para la instalacion fisica en sitio.',
+      es: 'Aplicación web y landing page para Snipes Soundbooth: los usuarios crean y comparten clips de audio. Construido con React y Strapi; incluye soporte para la instalación física en sitio.',
       de: 'Web-App und Landingpage fur Snipes Soundbooth: Nutzer erstellen und teilen Audio-Clips. Entwickelt mit React und Strapi; inklusive Support fur die physische Vor-Ort-Installation.',
     },
     achievements: {
       es: [
-        'Se desarrollo una aplicacion web responsive para Snipes Soundbooth con React y TypeScript.',
-        'Se integro la API de Snipes para obtener clips de audio.',
-        'Se implemento un diseno responsive para Soundbooth.',
-        'Se realizo instalacion y mantenimiento en sitio del Soundbooth.',
+        'Se desarrolló una aplicación web responsive para Snipes Soundbooth con React y TypeScript.',
+        'Se integró la API de Snipes para obtener clips de audio.',
+        'Se implementó un diseño responsive para Soundbooth.',
+        'Se realizó instalación y mantenimiento en sitio del Soundbooth.',
       ],
       de: [
         'Eine responsive Webanwendung fur Snipes Soundbooth wurde mit React und TypeScript entwickelt.',
@@ -97,7 +97,7 @@ const localizedProjectFields: Record<
       de: 'Miniverse - Gamifizierte Metaverse-Plattform',
     },
     description: {
-      es: 'Metaverso digital para Mini: mundo 3D gamificado donde los usuarios exploran e interactuan en tiempo real. Construido con React Three Fiber y WebSockets para multiplayer en vivo.',
+      es: 'Metaverso digital para Mini: mundo 3D gamificado donde los usuarios exploran e interactúan en tiempo real. Construido con React Three Fiber y WebSockets para multiplayer en vivo.',
       de: 'Digitales Metaverse fur Mini: gamifizierte 3D-Welt, in der Nutzer in Echtzeit erkunden und interagieren. Entwickelt mit React Three Fiber und WebSockets fur Live-Multiplayer.',
     },
     award: {
@@ -106,9 +106,9 @@ const localizedProjectFields: Record<
     },
     achievements: {
       es: [
-        'Se lanzo una plataforma metaverso gamificada para Mini que permite explorar un mundo virtual e interactuar con otros usuarios.',
-        'Se implemento red en tiempo real para multiplayer con WebSockets.',
-        'Se implemento diseno responsive para la plataforma.',
+        'Se lanzó una plataforma metaverso gamificada para Mini que permite explorar un mundo virtual e interactuar con otros usuarios.',
+        'Se implementó red en tiempo real para multiplayer con WebSockets.',
+        'Se implementó diseño responsive para la plataforma.',
         'Se entregaron nuevas funcionalidades y mejoras continuas.',
       ],
       de: [
@@ -125,13 +125,13 @@ const localizedProjectFields: Record<
       de: 'Virtuelle Metaverse-Erfahrung - Plattform fur Marken',
     },
     description: {
-      es: 'Plataforma metaverso orientada a marcas: espacios virtuales para mostrar productos e interaccion de usuarios. React Three Fiber para 3D; WebSockets y chat en vivo para funciones sociales en tiempo real.',
+      es: 'Plataforma metaverso orientada a marcas: espacios virtuales para mostrar productos e interacción de usuarios. React Three Fiber para 3D; WebSockets y chat en vivo para funciones sociales en tiempo real.',
       de: 'Markenorientierte Metaverse-Plattform: virtuelle Raume fur Produktprasentation und Nutzerinteraktion. React Three Fiber fur 3D sowie WebSockets und Live-Chat fur soziale Echtzeitfunktionen.',
     },
     achievements: {
       es: [
-        'Se lanzo una plataforma metaverso para marcas que permite explorar una experiencia virtual, interactuar con otros usuarios y mostrar productos.',
-        'Se implemento red de experiencia en tiempo real con WebSockets.',
+        'Se lanzó una plataforma metaverso para marcas que permite explorar una experiencia virtual, interactuar con otros usuarios y mostrar productos.',
+        'Se implementó red de experiencia en tiempo real con WebSockets.',
         'Se entregaron nuevas funcionalidades, incluyendo efectos de sonido y mejoras generales de plataforma.',
       ],
       de: [
@@ -152,8 +152,8 @@ const localizedProjectFields: Record<
     },
     achievements: {
       es: [
-        'Se lanzo la landing page para la campana Migros Escape Game 2025.',
-        'Se implemento un diseno responsive para la plataforma.',
+        'Se lanzó la landing page para la campaña Migros Escape Game 2025.',
+        'Se implementó un diseño responsive para la plataforma.',
       ],
       de: [
         'Die Landingpage fur die Migros-Escape-Game-Kampagne 2025 wurde ausgeliefert.',
@@ -167,15 +167,15 @@ const localizedProjectFields: Record<
       de: 'Portfolio-Website',
     },
     description: {
-      es: 'Portfolio personal y punto de contacto construido con un stack moderno y tipado. Incluye vitrina de proyectos con datos desde servidor, formulario de contacto con validacion y envio de correo con Resend, y diseno responsivo con SCSS.',
+      es: 'Portfolio personal y punto de contacto construido con un stack moderno y tipado. Incluye vitrina de proyectos con datos desde servidor, formulario de contacto con validación y envío de correo con Resend, y diseño responsivo con SCSS.',
       de: 'Persoenliches Portfolio und Kontakt-Hub auf einem modernen, typsicheren Stack. Enthalt Projektuebersicht mit serverseitigen Daten, Kontaktformular mit Validierung und Resend-Mailversand sowie responsives Layout mit SCSS.',
     },
     achievements: {
       es: [
         'Se construyo un portfolio full-stack con TanStack Start: rutas basadas en archivos, loaders server-side y consumo de datos tipado.',
-        'Se implemento formulario de contacto con validacion Zod e integracion Resend para envio confiable.',
-        'Se estructuro data de proyectos y filtrado (profesional vs personal, trabajos destacados) para home y pagina de proyectos.',
-        'Se implemento diseno responsive y modulos SCSS para estilos mantenibles en hero, proyectos y contacto.',
+        'Se implementó formulario de contacto con validación Zod e integración Resend para envío confiable.',
+        'Se estructuro data de proyectos y filtrado (profesional vs personal, trabajos destacados) para home y página de proyectos.',
+        'Se implementó diseño responsive y módulos SCSS para estilos mantenibles en hero, proyectos y contacto.',
       ],
       de: [
         'Ein Full-Stack-Portfolio mit TanStack Start wurde gebaut: dateibasierte Routen, serverseitige Loader und typsichere Datenabfragen.',
@@ -201,13 +201,13 @@ const localizedGroupFields: Record<
       de: 'Demodern Campaign - Landingpages',
     },
     description: {
-      es: 'Landing pages de marketing y campana de alta calidad construidas con React y tooling compartido. Cada pagina esta disenada para objetivos claros de conversion, jerarquia visual fuerte y tiempos de carga rapidos. Enfoque en storytelling de marca, mensajes de campana y resultados medibles para clientes.',
+      es: 'Landing pages de marketing y campaña de alta calidad construidas con React y tooling compartido. Cada página está diseñada para objetivos claros de conversión, jerarquía visual fuerte y tiempos de carga rápidos. Enfoque en storytelling de marca, mensajes de campaña y resultados medibles para clientes.',
       de: 'Hochwertige Marketing- und Kampagnen-Landingpages auf Basis von React und gemeinsamem Tooling. Jede Seite ist auf klare Conversion-Ziele, starke visuelle Hierarchie und schnelle Ladezeiten ausgelegt. Fokus auf Brand-Storytelling, Kampagnenbotschaften und messbare Ergebnisse fur Kunden.',
     },
     achievements: {
       es: [
-        'Se entregaron multiples landing pages de campana con React y tooling compartido para objetivos claros de conversion y carga rapida.',
-        'Se implemento jerarquia visual solida, storytelling de marca y mensajes de campana alineados a resultados de cliente.',
+        'Se entregaron múltiples landing pages de campaña con React y tooling compartido para objetivos claros de conversión y carga rápida.',
+        'Se implementó jerarquía visual sólida, storytelling de marca y mensajes de campaña alineados a resultados de cliente.',
         'Se usaron Motion, GSAP y Lottie para animaciones; React Three Fiber y Strapi cuando fue necesario.',
       ],
       de: [
@@ -228,8 +228,8 @@ const localizedGroupFields: Record<
     },
     achievements: {
       es: [
-        'Se construyeron y lanzaron multiples landing pages corporativas para clientes de D’Art Design Group con stack compartido en Next.js.',
-        'Se integraron Craft CMS y GraphQL para paginas orientadas a contenido con datos tipados y validacion Zod.',
+        'Se construyeron y lanzaron múltiples landing pages corporativas para clientes de D’Art Design Group con stack compartido en Next.js.',
+        'Se integraron Craft CMS y GraphQL para páginas orientadas a contenido con datos tipados y validación Zod.',
         'Se entregaron experiencias responsive y animadas con Motion, GSAP y Lottie; SASS para consistencia visual.',
       ],
       de: [
@@ -245,14 +245,14 @@ const localizedGroupFields: Record<
       de: 'Persoenliche Projekte',
     },
     description: {
-      es: 'Proyectos personales creados para practicar Astro, un framework de sitios estaticos.',
+      es: 'Proyectos personales creados para practicar Astro, un framework de sitios estáticos.',
       de: 'Persoenliche Projekte zum Vertiefen von Astro, einem interessanten Static-Site-Framework.',
     },
     achievements: {
       es: [
-        'Se lanzaron varios sitios estaticos con Astro para builds rapidos y JavaScript minimo cuando aplica.',
-        'Se uso TypeScript y Zod para contenido tipado y validacion entre proyectos.',
-        'Se entregaron sitios orientados a cliente: menu y ubicacion de food truck, info de restaurante y portfolio con contacto para profesional independiente.',
+        'Se lanzaron varios sitios estáticos con Astro para builds rápidos y JavaScript minimo cuando aplica.',
+        'Se usó TypeScript y Zod para contenido tipado y validación entre proyectos.',
+        'Se entregaron sitios orientados a cliente: menu y ubicación de food truck, info de restaurante y portfolio con contacto para profesional independiente.',
       ],
       de: [
         'Mehrere statische Websites mit Astro wurden fur schnelle Builds und minimalen JavaScript-Einsatz ausgeliefert.',
@@ -272,9 +272,9 @@ const localizedGroupFields: Record<
     },
     achievements: {
       es: [
-        'Se entregaron aplicaciones 3D para clientes de D’Art Design: mundos isometricos de producto, hubs de servicios interactivos y showcases fotorrealistas para ferias y presentaciones.',
+        'Se entregaron aplicaciones 3D para clientes de D’Art Design: mundos isométricos de producto, hubs de servicios interactivos y showcases fotorrealistas para ferias y presentaciones.',
         'Se colaboro estrechamente con artistas 3D para validar implementaciones, shaders y materiales en navegador y alinear pipeline arte-dev.',
-        'Se construyeron herramientas internas, como configurador 3D de modelos, para validar assets e iluminacion en WebGL antes de integrar.',
+        'Se construyeron herramientas internas, como configurador 3D de modelos, para validar assets e iluminación en WebGL antes de integrar.',
       ],
       de: [
         '3D-Anwendungen fur D’Art-Design-Kunden wurden ausgeliefert: isometrische Produktwelten, interaktive Service-Hubs und fotorealistische Showcases fur Messen und Pitches.',
@@ -298,7 +298,7 @@ const localizedItemFields: Record<
       de: 'Migros Escape Game',
     },
     description: {
-      es: 'Landing page para la campana Migros Escape Game 2025 de la cadena de supermercados Migros.',
+      es: 'Landing page para la campaña Migros Escape Game 2025 de la cadena de supermercados Migros.',
       de: 'Landingpage fur die Migros-Escape-Game-Kampagne 2025 der Supermarktkette Migros.',
     },
   },
@@ -308,7 +308,7 @@ const localizedItemFields: Record<
       de: 'Snipes 25th Anniversary',
     },
     description: {
-      es: 'Landing page para la campana de 25 aniversario de Snipes con modelos 3D exclusivos y showcase de productos.',
+      es: 'Landing page para la campaña de 25 aniversario de Snipes con modelos 3D exclusivos y showcase de productos.',
       de: 'Landingpage fur die 25-Jahre-Kampagne von Snipes mit exklusiven 3D-Modellen und Produktshowcase.',
     },
   },
@@ -375,7 +375,7 @@ const localizedItemFields: Record<
   'personal-1': {
     title: { es: 'El Maizter - Sitio web foodtruck', de: 'El Maizter - Foodtruck-Website' },
     description: {
-      es: 'Menu online y hub de ubicacion para un food truck; ayuda a clientes a encontrarlo y revisar la oferta antes de pedir.',
+      es: 'Menu online y hub de ubicación para un food truck; ayuda a clientes a encontrarlo y revisar la oferta antes de pedir.',
       de: 'Online-Menuseite und Standort-Hub fur einen Foodtruck; hilft Kunden, den Truck zu finden und das Angebot vorab zu sehen.',
     },
   },
@@ -398,11 +398,11 @@ const localizedItemFields: Record<
   },
   'dart-3d-1': {
     title: {
-      es: 'SMA. - Experiencia 3D de energia verde',
+      es: 'SMA. - Experiencia 3D de energía verde',
       de: 'SMA. - 3D-Erlebnis fur grune Energie',
     },
     description: {
-      es: 'Mundo 3D isometrico y simplificado para SMA (marca de energia verde) con showcase de producto y modelos 3D interactivos para explicar su red energetica integrada. Usado en ferias y eventos.',
+      es: 'Mundo 3D isométrico y simplificado para SMA (marca de energía verde) con showcase de producto y modelos 3D interactivos para explicar su red energética integrada. Usado en ferias y eventos.',
       de: 'Isometrische, vereinfachte 3D-Welt fur SMA (Green-Energy-Marke) mit Produktshowcase und interaktiven 3D-Modellen zur Darstellung ihres integrierten Energienetzwerks. Eingesetzt auf Messen und Events.',
     },
   },
@@ -422,7 +422,7 @@ const localizedItemFields: Record<
       de: 'GROHE - 3D-Produktshowcase (Pitch)',
     },
     description: {
-      es: 'Concepto para GROHE: modelo de producto 3D con texturas realistas de alta resolucion, materiales Kronos y shaders avanzados para renders fotorrealistas en navegador.',
+      es: 'Concepto para GROHE: modelo de producto 3D con texturas realistas de alta resolución, materiales Kronos y shaders avanzados para renders fotorrealistas en navegador.',
       de: 'Konzept fur GROHE: 3D-Produktmodell mit hochauflosenden, realistischen Texturen, Kronos-Materialien und fortgeschrittenen Shadern fur fotorealistische Browser-Renderings.',
     },
   },
