@@ -8,41 +8,48 @@ import {
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import { BurgerMenu } from '../components/BurgerMenu';
-import { Button } from '../components/Button';
-import { Nav } from '../components/Nav';
-import { PageTransition } from '../components/PageTransition';
-import { ThemeToggle } from '../components/ThemeToggle';
-import { profile } from '../data/profile';
-import { getDefaultSeoMeta } from '../data/seo';
+import { BurgerMenu } from '@/components/BurgerMenu';
+import { Button } from '@/components/Button';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { Nav } from '@/components/Nav';
+import { PageTransition } from '@/components/PageTransition';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { getProfile } from '@/data/profile';
+import { getDefaultSeoMeta } from '@/data/seo';
+import { DEFAULT_LOCALE } from '@/i18n';
+import { useCurrentLocale } from '@/i18n/useLocale';
+import { useMessages } from '@/i18n/useMessages';
 import styles from './__root.module.scss';
 import '../index.scss';
 
-const defaultSeo = getDefaultSeoMeta();
+const defaultSeo = getDefaultSeoMeta({ locale: DEFAULT_LOCALE, path: '/en' });
 
 function NotFoundComponent() {
+  const t = useMessages();
+  const locale = useCurrentLocale();
+
   return (
     <div className={clsx(styles.notFound)}>
       <p className={clsx(styles.notFoundCode)}>404</p>
-      <h1 className={clsx(styles.notFoundTitle)}>Page not found</h1>
-      <p className={clsx(styles.notFoundText)}>
-        The page you’re looking for doesn’t exist or has been moved.
-      </p>
-      <Button to="/" variant="primary" preload="intent">
-        Back to home
+      <h1 className={clsx(styles.notFoundTitle)}>{t.common.notFoundTitle}</h1>
+      <p className={clsx(styles.notFoundText)}>{t.common.notFoundText}</p>
+      <Button to="/$locale" params={{ locale }} variant="primary" preload="intent">
+        {t.common.backToHome}
       </Button>
     </div>
   );
 }
 
 function RootPendingComponent() {
+  const t = useMessages();
+
   return (
     <div
       className={clsx(styles.pendingWrap)}
       aria-live="polite"
       aria-busy="true"
     >
-      <span className={clsx(styles.pendingLabel)}>Loading…</span>
+      <span className={clsx(styles.pendingLabel)}>{t.common.loading}</span>
     </div>
   );
 }
@@ -65,15 +72,23 @@ export const Route = createRootRoute({
 function RootComponent() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
+  const locale = useCurrentLocale();
+  const t = useMessages();
+  const profile = getProfile(locale);
 
   return (
     <RootDocument>
       <header className={clsx(styles.header)}>
         <div className={clsx(styles.headerInner)}>
-          <Link to="/" className={clsx(styles.logo)} preload="intent">
+          <Link
+            to="/$locale"
+            params={{ locale }}
+            className={clsx(styles.logo)}
+            preload="intent"
+          >
             {profile.shortName}
           </Link>
-          <nav className={clsx(styles.nav)} aria-label="Main">
+          <nav className={clsx(styles.nav)} aria-label={t.nav.mainAriaLabel}>
             <Nav
               linkClassName={clsx(styles.navLink)}
               activeClassName={styles.active}
@@ -88,8 +103,9 @@ function RootComponent() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Resume
+              {t.common.resume}
             </Button>
+            <LanguageSwitcher />
           </div>
           <BurgerMenu
             open={menuOpen}
@@ -104,16 +120,19 @@ function RootComponent() {
               />
             </div>
             <div className={styles.mobileActions}>
-              <ThemeToggle />
+              <div className={styles.mobileIconActions}>
+                <ThemeToggle />
+                <LanguageSwitcher />
+              </div>
               <Button
                 href={profile.resumeUrl}
                 variant="primary"
-                size="default"
+                size="compact"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
               >
-                Resume
+                {t.common.resume}
               </Button>
             </div>
           </BurgerMenu>
@@ -135,7 +154,7 @@ function RootComponent() {
             </span>
           </div>
           <nav className={clsx(styles.footerConnect)} aria-label="Connect">
-            <span className={clsx(styles.footerConnectLabel)}>Connect</span>
+            <span className={clsx(styles.footerConnectLabel)}>{t.common.connect}</span>
             <div className={clsx(styles.footerLinks)}>
               <a
                 href={profile.social.github}
@@ -189,8 +208,11 @@ function RootComponent() {
 
 // Avoid beforeunload/unload listeners and Cache-Control: no-store so back/forward cache (bfcache) can speed up return navigations.
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  const locale = useCurrentLocale();
+  const t = useMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -220,7 +242,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body className={styles.body}>
         <a href="#main" className={styles.skipLink}>
-          Skip to main content
+          {t.common.skipToMain}
         </a>
         {children}
         <Scripts />

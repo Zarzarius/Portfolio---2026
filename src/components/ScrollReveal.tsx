@@ -27,7 +27,7 @@ export function ScrollReveal({
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0 }
+      { rootMargin, threshold },
     );
 
     observer.observe(el);
@@ -43,13 +43,10 @@ export function ScrollReveal({
       observer.disconnect();
       clearTimeout(t);
     };
-  }, []);
+  }, [rootMargin, threshold]);
 
   return (
-    <div
-      ref={ref}
-      className={clsx(className, isVisible && visibleClass)}
-    >
+    <div ref={ref} className={clsx(className, isVisible && visibleClass)}>
       {children}
     </div>
   );
