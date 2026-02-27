@@ -41,12 +41,12 @@ const localizedProfile: Record<string, LocalizedText> = {
   },
   headline: {
     en: profile.headline,
-    es: 'Mas de 4 anos creando aplicaciones web con React y Next.js: apps modernas, experiencias 3D y codigo limpio.',
+    es: 'Más de 4 años creando aplicaciones web con React y Next.js: apps modernas, experiencias 3D y código limpio.',
     de: 'Seit uber 4 Jahren entwickle ich Webanwendungen mit React und Next.js: moderne Apps, 3D-Erlebnisse und sauberer Code.',
   },
   summary: {
     en: profile.summary,
-    es: 'Desarrollador web full-stack con mas de 4 anos de experiencia especializada en el ecosistema React y Next.js. Construyo aplicaciones web modernas, responsivas y experiencias 3D interactivas. Tengo experiencia en entornos agiles, combinando solida capacidad tecnica con resolucion creativa de problemas. Me apasiona el codigo limpio, la optimizacion de rendimiento y mantenerme al dia con las tecnologias web emergentes.',
+    es: 'Desarrollador web full-stack con más de 4 años de experiencia especializada en el ecosistema React y Next.js. Construyo aplicaciones web modernas, responsivas y experiencias 3D interactivas. Tengo experiencia en entornos ágiles, combinando sólida capacidad técnica con resolución creativa de problemas. Me apasiona el código limpio, la optimización de rendimiento y mantenerme al día con las tecnologías web emergentes.',
     de: 'Full-Stack-Webentwickler mit uber 4 Jahren spezialisierter Erfahrung im React- und Next.js-Okosystem. Ich entwickle moderne, responsive Webanwendungen und interaktive 3D-Erlebnisse. In agilen Teams verbinde ich starke technische Expertise mit kreativer Problemlosung. Meine Schwerpunkte sind sauberer Code, Performance-Optimierung und aktuelle Webtechnologien.',
   },
 };
