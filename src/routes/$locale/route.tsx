@@ -17,7 +17,7 @@ export const Route = createFileRoute('/$locale')({
     const rawLocale = params.locale;
     if (!isLocale(rawLocale)) {
       throw redirect({
-        href: `${normalizeToDefaultLocale(location.pathname)}${location.search}${location.hash}`,
+        href: `${normalizeToDefaultLocale(location.pathname)}${location.searchStr}${location.hash}`,
       });
     }
     return { locale: rawLocale as Locale };
