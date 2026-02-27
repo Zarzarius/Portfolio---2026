@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { Button } from '../../../components/Button';
 import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '../../../data/seo';
+import { normalizeLocale } from '../../../i18n';
 import { useMessages } from '../../../i18n/useMessages';
 import { sendContactEmail } from '../../../server/functions';
 import { createContactSchema, type ContactFormData } from '../../../schemas/contact';
@@ -24,7 +25,7 @@ export const Route = createFileRoute('/$locale/contact')({
 function Contact() {
   const { locale } = Route.useParams();
   const t = useMessages();
-  const profile = getProfile(locale);
+  const profile = getProfile(normalizeLocale(locale));
   const contactSchema = createContactSchema(t.contact.validation);
 
   const [formData, setFormData] = useState<ContactFormData>({
@@ -89,7 +90,7 @@ function Contact() {
       <div className={clsx(styles.hero)}>
         <h1 className={clsx(styles.title)}>{t.contact.title}</h1>
         <p className={clsx(styles.intro)}>
-          Based in {profile.location}. {t.contact.intro}
+          {t.common.basedIn} {profile.location}. {t.contact.intro}
         </p>
 
         <div className={clsx(styles.contactBlock)}>

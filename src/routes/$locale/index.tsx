@@ -188,7 +188,7 @@ function Home() {
           <div className={clsx(styles.ctaContent)}>
             <h2 className={clsx(styles.ctaTitle)}>{t.home.ctaTitle}</h2>
             <p className={clsx(styles.ctaText)}>
-              Based in {profile.location}. {t.home.ctaText}
+              {t.common.basedIn} {profile.location}. {t.home.ctaText}
             </p>
           </div>
           <div className={clsx(styles.ctaActions)}>

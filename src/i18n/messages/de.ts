@@ -11,6 +11,7 @@ export const deMessages: Messages = {
   common: {
     resume: 'Lebenslauf',
     connect: 'Vernetzen',
+    basedIn: 'Ansassig in',
     loading: 'Wird geladen…',
     skipToMain: 'Zum Hauptinhalt springen',
     language: 'Sprache',

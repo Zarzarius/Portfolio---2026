@@ -14,6 +14,7 @@ export interface Messages {
   common: {
     resume: string;
     connect: string;
+    basedIn: string;
     loading: string;
     skipToMain: string;
     language: string;

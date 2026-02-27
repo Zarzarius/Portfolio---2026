@@ -11,6 +11,7 @@ export const enMessages: Messages = {
   common: {
     resume: 'Resume',
     connect: 'Connect',
+    basedIn: 'Based in',
     loading: 'Loading…',
     skipToMain: 'Skip to main content',
     language: 'Language',

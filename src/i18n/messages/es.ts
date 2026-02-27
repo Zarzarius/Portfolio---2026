@@ -11,6 +11,7 @@ export const esMessages: Messages = {
   common: {
     resume: 'CV',
     connect: 'Conectar',
+    basedIn: 'Con base en',
     loading: 'Cargando…',
     skipToMain: 'Saltar al contenido principal',
     language: 'Idioma',
