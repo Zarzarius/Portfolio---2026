@@ -57,10 +57,10 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label={
         theme === THEME_DARK
-          ? `${t.common.language}: light`
-          : `${t.common.language}: dark`
+          ? t.common.switchToLightTheme
+          : t.common.switchToDarkTheme
       }
-      title={theme === THEME_DARK ? 'Light mode' : 'Dark mode'}
+      title={theme === THEME_DARK ? t.common.lightMode : t.common.darkMode}
     >
       <span className={styles.icon} aria-hidden>
         {theme === THEME_DARK ? (
