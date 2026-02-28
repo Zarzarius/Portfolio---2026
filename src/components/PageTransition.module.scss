@@ -1,8 +1,8 @@
 @use '../styles/theme' as *;
 
-// Slightly longer, smoother feel for page transitions
-$page-transition-duration: 0.55s;
-$page-transition-ease: cubic-bezier(0.32, 0.72, 0, 1);
+// Standard transition duration and ease
+$page-transition-duration: 0.4s;
+$page-transition-ease: ease-in-out;
 
 .pageTransition {
   width: 100%;
@@ -11,18 +11,45 @@ $page-transition-ease: cubic-bezier(0.32, 0.72, 0, 1);
   view-transition-name: main-content;
 }
 
-// Fallback when View Transitions API is not supported (e.g. Firefox, older Safari)
+// Disable default root transitions
+:global(::view-transition-old(root)),
+:global(::view-transition-new(root)) {
+  animation: none;
+}
+
+// Configure the main-content transition group to not interpolate positions
+// This stops the ghosting/stretching layout shift
+:global(::view-transition-group(main-content)) {
+  animation-duration: $page-transition-duration;
+  animation-timing-function: $page-transition-ease;
+}
+
+:global(::view-transition-old(main-content)),
+:global(::view-transition-new(main-content)) {
+  // Pure opacity cross-fade, no scaling or vertical sliding
+  // which causes blinking if pages are different lengths
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  animation-duration: $page-transition-duration;
+  animation-timing-function: $page-transition-ease;
+  animation-fill-mode: both;
+}
+
+:global(::view-transition-old(main-content)) {
+  animation-name: customFadeOut;
+}
+
+:global(::view-transition-new(main-content)) {
+  animation-name: customFadeIn;
+}
+
+// Fallback for non-VT browsers
 .pageTransition.entering {
-  animation: pageEnter $page-transition-duration $page-transition-ease forwards;
-}
-
-// View Transitions API: smooth slide + fade (Chrome, Edge, Safari 18+)
-::view-transition-old(main-content) {
-  animation: pageOut $page-transition-duration $page-transition-ease forwards;
-}
-
-::view-transition-new(main-content) {
-  animation: pageEnter $page-transition-duration $page-transition-ease forwards;
+  animation: customFadeIn $page-transition-duration $page-transition-ease both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -30,30 +57,28 @@ $page-transition-ease: cubic-bezier(0.32, 0.72, 0, 1);
     animation: none;
   }
 
-  ::view-transition-old(main-content),
-  ::view-transition-new(main-content) {
+  :global(::view-transition-old(main-content)),
+  :global(::view-transition-new(main-content)) {
     animation: none;
   }
 }
 
-@keyframes pageOut {
+@keyframes customFadeOut {
   from {
     opacity: 1;
-    transform: translateY(0) scale(1);
   }
+
   to {
     opacity: 0;
-    transform: translateY(-12px) scale(0.98);
   }
 }
 
-@keyframes pageEnter {
+@keyframes customFadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.98);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
