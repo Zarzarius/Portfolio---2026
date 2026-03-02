@@ -1,14 +1,18 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import clsx from 'clsx';
+import { ProjectCard } from '@/components/ProjectCard';
 import {
-  ProjectCard,
-} from '@/components/ProjectCard';
-import { groupToCardItem, projectToCardItem } from '@/components/projectCardItems';
+  groupToCardItem,
+  projectToCardItem,
+} from '@/components/projectCardItems';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StackSection } from '@/components/StackSection';
 import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '@/data/seo';
-import { getLocalizedProject, getLocalizedProjectGroup } from '@/data/projects.i18n';
+import {
+  getLocalizedProject,
+  getLocalizedProjectGroup,
+} from '@/data/projects.i18n';
 import { getLocalizedStack } from '@/data/stack.i18n';
 import { normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
@@ -52,9 +56,7 @@ function Home() {
     .filter((p: Project) => p.highlighted)
     .map((p: Project) => getLocalizedProject(p, currentLocale));
   const highlightedGroups = projectGroups
-    .filter(
-    (g: ProjectGroup) => g.highlighted,
-    )
+    .filter((g: ProjectGroup) => g.highlighted)
     .map((g: ProjectGroup) => getLocalizedProjectGroup(g, currentLocale));
 
   const professionalProjects = highlightedProjects.filter(
@@ -78,8 +80,8 @@ function Home() {
             src={`${cdnUrl}/Images/aza-hero.png`}
             alt=""
             className={clsx(styles.heroImage)}
-            width={1920}
-            height={1080}
+            width={1600}
+            height={1200}
             fetchPriority="high"
           />
         </div>
@@ -87,9 +89,7 @@ function Home() {
         <div className={clsx(styles.heroContent)}>
           <p className={clsx(styles.eyebrow)}>{profile.tagline}</p>
           <h1 className={clsx(styles.title)}>{profile.headline}</h1>
-          <p className={clsx(styles.subtitle)}>
-            {t.home.subtitle}
-          </p>
+          <p className={clsx(styles.subtitle)}>{t.home.subtitle}</p>
           <div className={clsx(styles.heroActions)}>
             <Link
               to="/$locale/projects"
@@ -118,19 +118,21 @@ function Home() {
         >
           <section aria-labelledby="work-heading">
             <header className={clsx(styles.workHeader)}>
-              <p className={clsx(styles.workEyebrow)}>{t.home.portfolioEyebrow}</p>
+              <p className={clsx(styles.workEyebrow)}>
+                {t.home.portfolioEyebrow}
+              </p>
               <h2 id="work-heading" className={clsx(styles.workTitle)}>
                 {t.home.selectedWork}
               </h2>
-              <p className={clsx(styles.workSubtitle)}>
-                {t.home.workSubtitle}
-              </p>
+              <p className={clsx(styles.workSubtitle)}>{t.home.workSubtitle}</p>
             </header>
 
             {(professionalProjects.length > 0 ||
               professionalGroups.length > 0) && (
               <section className={clsx(styles.projectGroup)}>
-                <h3 className={clsx(styles.groupTitle)}>{t.home.professional}</h3>
+                <h3 className={clsx(styles.groupTitle)}>
+                  {t.home.professional}
+                </h3>
                 <div className={clsx(styles.grid)}>
                   {professionalProjects.map((project: Project) => (
                     <ProjectCard
@@ -212,4 +214,3 @@ function Home() {
     </>
   );
 }
-

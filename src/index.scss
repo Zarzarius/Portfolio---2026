@@ -30,7 +30,7 @@
   --color-bg-tertiary: #2a2a2a;
   --color-bg-hover: rgba(52, 211, 153, 0.12);
   --color-bg-active: rgba(52, 211, 153, 0.18);
-  --color-text-primary: #E0E0E0;
+  --color-text-primary: #e0e0e0;
   --color-text-secondary: #b0b0b0;
   --color-text-tertiary: #909090;
   --color-text-muted: #787878;
@@ -71,7 +71,10 @@ body {
   color: var(--color-text-primary);
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   text-wrap: balance;
 }
 
