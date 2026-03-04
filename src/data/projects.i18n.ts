@@ -185,6 +185,28 @@ const localizedProjectFields: Record<
       ],
     },
   },
+  'job-application-tracker': {
+    title: {
+      es: 'Rastreador de candidaturas',
+      de: 'Bewerbungs-Tracker',
+    },
+    description: {
+      es: 'App sencilla con Astro y React para añadir y seguir ofertas de empleo. Incluye formulario para registrar candidaturas, listado con estado y exportación a PDF. Los datos se guardan en Supabase.',
+      de: 'Einfache Astro- und React-App zum Erfassen und Verfolgen von Bewerbungen. Enthalt Formular fur Bewerbungen, Listenansicht mit Status und PDF-Export. Daten werden in Supabase gespeichert.',
+    },
+    achievements: {
+      es: [
+        'Formulario para añadir y seguir candidaturas con estado y notas.',
+        'Exportación a PDF de resúmenes de candidaturas.',
+        'Datos persistidos en Supabase para sincronización entre dispositivos.',
+      ],
+      de: [
+        'Formular zum Erfassen und Verfolgen von Bewerbungen mit Status und Notizen.',
+        'PDF-Export fur Bewerbungszusammenfassungen.',
+        'Daten in Supabase gespeichert fur Gerateubergreifende Synchronisation.',
+      ],
+    },
+  },
 };
 
 const localizedGroupFields: Record<
@@ -373,14 +395,20 @@ const localizedItemFields: Record<
     },
   },
   'personal-1': {
-    title: { es: 'El Maizter - Sitio web foodtruck', de: 'El Maizter - Foodtruck-Website' },
+    title: {
+      es: 'El Maizter - Sitio web foodtruck',
+      de: 'El Maizter - Foodtruck-Website',
+    },
     description: {
       es: 'Menu online y hub de ubicación para un food truck; ayuda a clientes a encontrarlo y revisar la oferta antes de pedir.',
       de: 'Online-Menuseite und Standort-Hub fur einen Foodtruck; hilft Kunden, den Truck zu finden und das Angebot vorab zu sehen.',
     },
   },
   'personal-2': {
-    title: { es: 'La Cabana - Sitio web de restaurante', de: 'La Cabana - Restaurant-Website' },
+    title: {
+      es: 'La Cabana - Sitio web de restaurante',
+      de: 'La Cabana - Restaurant-Website',
+    },
     description: {
       es: 'Sitio de restaurante con ambiente, horarios y datos de contacto para planear visitas y ponerse en contacto.',
       de: 'Restaurantseite mit Atmosphare, Offnungszeiten und Kontaktdaten, damit Gaste ihren Besuch planen konnen.',
@@ -457,7 +485,10 @@ export function getLocalizedProject(project: Project, locale: Locale): Project {
   };
 }
 
-function getLocalizedItem(item: ProjectGroupItem, locale: Locale): ProjectGroupItem {
+function getLocalizedItem(
+  item: ProjectGroupItem,
+  locale: Locale,
+): ProjectGroupItem {
   const translations = localizedItemFields[String(item.id)];
   return {
     ...item,
@@ -485,4 +516,3 @@ export function getLocalizedProjectGroup(
     items: group.items.map((item) => getLocalizedItem(item, locale)),
   };
 }
-

@@ -187,7 +187,8 @@ export const projects: Project[] = [
     id: 6,
     slug: 'migros-escape',
     title: 'Migros Digital Escape Game landing page',
-    description: 'Migros Digital Escape Game landing page to promote the escape game.',
+    description:
+      'Migros Digital Escape Game landing page to promote the escape game.',
     technologies: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ZUSTAND', 'MOTION'],
     achievements: [
       'Shipped landing page for Migros 2025 escape game.',
@@ -221,6 +222,22 @@ export const projects: Project[] = [
       'Implemented responsive design and SCSS modules for maintainable styling across hero, projects, and contact sections.',
     ],
     image: 'Projects/portfolio.png',
+    category: 'Personal',
+    type: 'personal',
+  },
+  {
+    id: 8,
+    slug: 'job-application-tracker',
+    title: 'Job application tracker',
+    image: 'Projects/job-application-tracker.png',
+    description:
+      'Simple Astro and React app to add and track job offers. Includes a form to capture applications, list view with status tracking, and PDF export. Data is persisted in Supabase.',
+    technologies: ['ASTRO', 'REACT', 'TYPESCRIPT', 'SUPABASE'],
+    achievements: [
+      'Built form to add and track job applications with status and notes.',
+      'Implemented PDF export for application summaries.',
+      'Persisted data in Supabase for sync across devices.',
+    ],
     category: 'Personal',
     type: 'personal',
   },
