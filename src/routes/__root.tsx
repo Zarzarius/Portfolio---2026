@@ -12,7 +12,6 @@ import { BurgerMenu } from '@/components/BurgerMenu';
 import { Button } from '@/components/Button';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Nav } from '@/components/Nav';
-import { PageTransition } from '@/components/PageTransition';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '@/data/seo';
@@ -139,9 +138,7 @@ function RootComponent() {
         </div>
       </header>
       <main id="main" className={clsx(styles.main)}>
-        <PageTransition>
-          <Outlet />
-        </PageTransition>
+        <Outlet />
       </main>
       <footer className={clsx(styles.footer)}>
         <div className={clsx(styles.footerAccent)} aria-hidden />
