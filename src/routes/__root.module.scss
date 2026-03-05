@@ -31,7 +31,9 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: $z-index-sticky;
+  z-index: $z-index-tooltip;
+  isolation: isolate;
+  view-transition-name: app-header;
   background: color-mix(in srgb, $color-bg-primary 88%, transparent);
   border-bottom: $border-width-thin solid $color-border-primary;
   backdrop-filter: blur(16px) saturate(1.1);
@@ -168,6 +170,7 @@
   position: relative;
   width: 100%;
   margin-top: auto;
+  view-transition-name: app-footer;
   padding: $spacing-8 $container-padding;
   background: linear-gradient(
     180deg,
