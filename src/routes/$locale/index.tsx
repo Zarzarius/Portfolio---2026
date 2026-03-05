@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import clsx from 'clsx';
 import { ProjectCard } from '@/components/ProjectCard';
 import {
@@ -20,7 +21,9 @@ import styles from '../index.module.scss';
 
 import { getProjects, getProjectGroups, getStack } from '@/server/functions';
 import type { Project, ProjectGroup } from '@/data/projects';
+
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
+let heroAnimationShown = false;
 
 export const Route = createFileRoute('/$locale/')({
   loader: async () => {
@@ -72,9 +75,17 @@ function Home() {
     (g: ProjectGroup) => g.type === 'personal',
   );
 
+  const shouldAnimate = !heroAnimationShown;
+  useEffect(() => {
+    if (shouldAnimate) heroAnimationShown = true;
+  }, [shouldAnimate]);
+
   return (
     <>
-      <section className={clsx(styles.hero)} aria-label="Introduction">
+      <section
+        className={clsx(styles.hero, !shouldAnimate && styles.heroNoAnimation)}
+        aria-label="Introduction"
+      >
         <div className={clsx(styles.heroBackground)} aria-hidden>
           <img
             src={`${cdnUrl}/Images/aza-hero.png`}
