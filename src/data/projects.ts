@@ -71,7 +71,6 @@ export const projects: Project[] = [
       'WEBAR',
       'GIS / DATA VISUALISATION',
     ],
-    priority: 'A',
     award: 'Lovie Awards Bronze for “Best use of Augmented Reality”',
     achievements: [
       'Shipped WebAR experience with no native app; users access AR from the mobile browser, increasing reach and avoiding app-store friction.',
@@ -101,7 +100,6 @@ export const projects: Project[] = [
       'LOTTIE FILES',
       'GSAP',
     ],
-    priority: 'A',
     achievements: [
       'Delivered hybrid event solution that uses AR to visualise SAP’s S/4HANA Cloud business processes, transforming abstract data into an interactive "business muscle" metaphor.',
       'Shipped high-fidelity, animated 3D business processes (SAP’s S/4HANA Cloud business processes) optimised for real-time rendering on mobile browsers.',
