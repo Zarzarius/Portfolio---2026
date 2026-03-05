@@ -32,7 +32,12 @@ function NotFoundComponent() {
       <p className={clsx(styles.notFoundCode)}>404</p>
       <h1 className={clsx(styles.notFoundTitle)}>{t.common.notFoundTitle}</h1>
       <p className={clsx(styles.notFoundText)}>{t.common.notFoundText}</p>
-      <Button to="/$locale" params={{ locale }} variant="primary" preload="intent">
+      <Button
+        to="/$locale"
+        params={{ locale }}
+        variant="primary"
+        preload="intent"
+      >
         {t.common.backToHome}
       </Button>
     </div>
@@ -94,7 +99,6 @@ function RootComponent() {
             />
           </nav>
           <div className={clsx(styles.headerActions)}>
-            <ThemeToggle />
             <Button
               href={profile.resumeUrl}
               variant="primary"
@@ -105,6 +109,7 @@ function RootComponent() {
               {t.common.resume}
             </Button>
             <LanguageSwitcher />
+            <ThemeToggle />
           </div>
           <BurgerMenu
             open={menuOpen}
@@ -120,8 +125,8 @@ function RootComponent() {
             </div>
             <div className={styles.mobileActions}>
               <div className={styles.mobileIconActions}>
-                <ThemeToggle />
                 <LanguageSwitcher />
+                <ThemeToggle />
               </div>
               <Button
                 href={profile.resumeUrl}
@@ -151,7 +156,9 @@ function RootComponent() {
             </span>
           </div>
           <nav className={clsx(styles.footerConnect)} aria-label="Connect">
-            <span className={clsx(styles.footerConnectLabel)}>{t.common.connect}</span>
+            <span className={clsx(styles.footerConnectLabel)}>
+              {t.common.connect}
+            </span>
             <div className={clsx(styles.footerLinks)}>
               <a
                 href={profile.social.github}
@@ -237,7 +244,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         />
         <HeadContent />
       </head>
-      <body className={styles.body}>
+      <body className={styles.body} suppressHydrationWarning>
         <a href="#main" className={styles.skipLink}>
           {t.common.skipToMain}
         </a>

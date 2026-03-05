@@ -31,6 +31,16 @@
       animation: none;
     }
   }
+
+  &.heroNoAnimation {
+    .heroContent,
+    .eyebrow,
+    .title,
+    .subtitle,
+    .heroActions {
+      animation: none;
+    }
+  }
 }
 
 .heroBackground {
