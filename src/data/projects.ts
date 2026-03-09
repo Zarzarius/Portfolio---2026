@@ -228,6 +228,7 @@ export const projects: Project[] = [
     slug: 'job-application-tracker',
     title: 'Job application tracker',
     image: 'Projects/job-application-tracker.png',
+    link: 'https://awesome-asteroid-three.vercel.app',
     highlighted: true,
     description:
       'Simple Astro and React app to add and track job offers. Includes a form to capture applications, list view with status tracking, and PDF export. Data is persisted in Supabase.',
