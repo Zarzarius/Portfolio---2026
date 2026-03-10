@@ -1,7 +1,9 @@
 import { Link } from '@tanstack/react-router';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
 import type { ProjectCardItem } from './projectCardItems';
 import styles from './ProjectCard.module.scss';
+
+const cx = classNames.bind(styles);
 
 /** Placeholder image service: stable image per id when no project image is set */
 const PLACEHOLDER_IMAGE_BASE = 'https://picsum.photos/seed';
@@ -27,29 +29,29 @@ export function ProjectCard({ item, to, params }: ProjectCardProps) {
     <Link
       to={to}
       params={params}
-      className={styles.card}
+      className={cx('card')}
       data-project-card
       preload="intent"
     >
-      <div className={styles.cardMedia}>
+      <div className={cx('cardMedia')}>
         <img
-          className={styles.cardMediaImage}
+          className={cx('cardMediaImage')}
           src={getCardImageUrl(item)}
           alt={item.imageAlt ?? item.title}
           loading="lazy"
           decoding="async"
         />
         {item.badge && (
-          <span className={clsx(styles.badge)}>{item.badge}</span>
+          <span className={cx('badge')}>{item.badge}</span>
         )}
       </div>
-      <div className={styles.cardBody}>
-        <h2 className={styles.cardTitle}>{item.title}</h2>
-        <div className={styles.cardContentSlot}>
-          <p className={styles.cardDescription}>{item.description}</p>
-          <div className={styles.tech}>
+      <div className={cx('cardBody')}>
+        <h2 className={cx('cardTitle')}>{item.title}</h2>
+        <div className={cx('cardContentSlot')}>
+          <p className={cx('cardDescription')}>{item.description}</p>
+          <div className={cx('tech')}>
             {item.technologies.map((tech, idx) => (
-              <span key={idx} className={styles.techTag}>
+              <span key={idx} className={cx('techTag')}>
                 {tech}
               </span>
             ))}

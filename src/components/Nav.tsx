@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import clsx from 'clsx';
+import classNames from 'classnames';
 import { useCurrentLocale } from '@/i18n/useLocale';
 import { useMessages } from '@/i18n/useMessages';
 
@@ -36,7 +36,7 @@ export function Nav({ linkClassName, activeClassName, onNavigate }: NavProps) {
           className={linkClassName}
           activeOptions={{ exact }}
           activeProps={{
-            className: clsx(linkClassName, activeClassName),
+            className: classNames(linkClassName, activeClassName),
           }}
           preload="intent"
           onClick={onNavigate}

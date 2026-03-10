@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
+import { ArrowIcon } from '@/components/ArrowIcon';
 import { getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProjectGroup } from '@/data/projects.i18n';
-import { getMessages } from '@/i18n';
+import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 import { getProjectGroupBySlug } from '@/server/functions';
 import styles from '../../../../projects/group/$groupSlug/group.module.scss';
+
+const cx = classNames.bind(styles);
 
 export const Route = createFileRoute('/$locale/projects/group/$groupSlug')({
   loader: async ({ params }) => {
@@ -15,22 +18,24 @@ export const Route = createFileRoute('/$locale/projects/group/$groupSlug')({
     return { group };
   },
   head: ({ loaderData, params }) => {
+    const locale = normalizeLocale(params.locale);
     if (!loaderData?.group) {
-      const t = getMessages(params.locale);
+      const t = getMessages(locale);
       return { meta: [{ title: t.projects.groupNotFound }] };
     }
-    const group = getLocalizedProjectGroup(loaderData.group, params.locale);
+    const group = getLocalizedProjectGroup(loaderData.group, locale);
     const title = `${group.title} — Azael AC`;
     const description = group.description
-      ? group.description.slice(0, 155) + (group.description.length > 155 ? '…' : '')
+      ? group.description.slice(0, 155) +
+        (group.description.length > 155 ? '…' : '')
       : `Collection: ${group.title}`;
-    const path = `/${params.locale}/projects/group/${params.groupSlug ?? ''}`;
+    const path = `/${locale}/projects/group/${params.groupSlug ?? ''}`;
     const seo = getDefaultSeoMeta({
       title,
       description,
       path,
       ogType: 'article',
-      locale: params.locale,
+      locale,
       pathnameWithoutLocale: `/projects/group/${params.groupSlug ?? ''}`,
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
@@ -41,105 +46,124 @@ export const Route = createFileRoute('/$locale/projects/group/$groupSlug')({
 function ProjectGroupDetailPage() {
   const { group: rawGroup } = Route.useLoaderData();
   const { locale } = Route.useParams();
+  const currentLocale = normalizeLocale(locale);
   const t = useMessages();
-  const group = rawGroup ? getLocalizedProjectGroup(rawGroup, locale) : null;
+  const group = rawGroup
+    ? getLocalizedProjectGroup(rawGroup, currentLocale)
+    : null;
 
   if (!group) {
     return (
-      <div className={clsx(styles.container)}>
-        <p className={clsx(styles.notFound)}>{t.projects.groupNotFound}</p>
-        <Link to="/$locale/projects" params={{ locale }} className={clsx(styles.backLink)}>
-          ← {t.projects.backToProjects}
+      <div className={cx('container')}>
+        <p className={cx('notFound')}>{t.projects.groupNotFound}</p>
+        <Link
+          to="/$locale/projects"
+          params={{ locale: currentLocale }}
+          className={cx('backLink')}
+        >
+          <ArrowIcon direction="left" className={cx('backLinkIcon')} />
+          {t.projects.backToProjects}
         </Link>
       </div>
     );
   }
 
   return (
-    <div className={clsx(styles.container)}>
+    <div className={cx('container')}>
       <Link
         to="/$locale/projects"
-        params={{ locale }}
-        className={clsx(styles.backLink)}
+        params={{ locale: currentLocale }}
+        className={cx('backLink')}
         preload="intent"
       >
-        ← {t.projects.backToProjects}
+        <ArrowIcon direction="left" className={cx('backLinkIcon')} />
+        {t.projects.backToProjects}
       </Link>
-      <article className={clsx(styles.article)}>
-        <header className={clsx(styles.header)}>
-          <span className={clsx(styles.meta)}>
+      <article className={cx('article')}>
+        <header className={cx('header')}>
+          <span className={cx('meta')}>
             {group.type === 'professional'
               ? t.projects.professional
               : t.projects.personalProject}
             {group.category && ` · ${group.category}`}
           </span>
-          <h1 className={clsx(styles.title)}>{group.title}</h1>
+          <h1 className={cx('title')}>{group.title}</h1>
         </header>
         {group.description && (
-          <p className={clsx(styles.description)}>{group.description}</p>
+          <p className={cx('description')}>{group.description}</p>
         )}
         {group.achievements && group.achievements.length > 0 && (
-          <div className={clsx(styles.achievementsSection)}>
-            <h2 className={clsx(styles.techHeading)}>{t.projects.keyAchievements}</h2>
-            <ul className={clsx(styles.achievementsList)}>
+          <div className={cx('achievementsSection')}>
+            <h2 className={cx('techHeading')}>
+              {t.projects.keyAchievements}
+            </h2>
+            <ul className={cx('achievementsList')}>
               {group.achievements.map((achievement, idx) => (
-                <li key={idx} className={clsx(styles.achievementItem)}>
+                <li key={idx} className={cx('achievementItem')}>
                   {achievement}
                 </li>
               ))}
             </ul>
           </div>
         )}
-        <div className={clsx(styles.techSection)}>
-          <h2 className={clsx(styles.techHeading)}>{t.projects.technologies}</h2>
-          <ul className={clsx(styles.techList)}>
+        <div className={cx('techSection')}>
+          <h2 className={cx('techHeading')}>
+            {t.projects.technologies}
+          </h2>
+          <ul className={cx('techList')}>
             {group.technologies.map((tech, idx) => (
-              <li key={idx} className={clsx(styles.techTag)}>
+              <li key={idx} className={cx('techTag')}>
                 {tech}
               </li>
             ))}
           </ul>
         </div>
-        <div className={clsx(styles.itemsSection)}>
-          <h2 className={clsx(styles.techHeading)}>{t.projects.projectsList}</h2>
-          <ul className={clsx(styles.itemsList)}>
+        <div className={cx('itemsSection')}>
+          <h2 className={cx('techHeading')}>
+            {t.projects.projectsList}
+          </h2>
+          <ul className={cx('itemsList')}>
             {group.items.map((item) => (
-              <li key={item.id} className={clsx(styles.item)}>
-                <div className={clsx(styles.itemMedia)}>
+              <li key={item.id} className={cx('item')}>
+                <div className={cx('itemMedia')}>
                   {item.image ? (
                     <img
                       src={item.image}
                       alt={item.imageAlt ?? item.title}
-                      className={clsx(styles.itemThumbnail)}
+                      className={cx('itemThumbnail')}
                       loading="lazy"
                     />
                   ) : (
-                    <span className={clsx(styles.itemIcon)} aria-hidden>
+                    <span className={cx('itemIcon')} aria-hidden>
                       {item.icon ?? '◆'}
                     </span>
                   )}
                 </div>
-                <div className={clsx(styles.itemContent)}>
+                <div className={cx('itemContent')}>
                   {item.link ? (
                     <a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={clsx(styles.itemLink)}
+                      className={cx('itemLink')}
                     >
-                      <span className={clsx(styles.itemTitle)}>{item.title}</span>
+                      <span className={cx('itemTitle')}>
+                        {item.title}
+                      </span>
                       {item.description && (
-                        <span className={clsx(styles.itemDescription)}>
+                        <span className={cx('itemDescription')}>
                           {item.description}
                         </span>
                       )}
-                      <span className={clsx(styles.itemArrow)}>→</span>
+                      <span className={cx('itemArrow')}>→</span>
                     </a>
                   ) : (
                     <>
-                      <span className={clsx(styles.itemTitle)}>{item.title}</span>
+                      <span className={cx('itemTitle')}>
+                        {item.title}
+                      </span>
                       {item.description && (
-                        <p className={clsx(styles.itemDescription)}>
+                        <p className={cx('itemDescription')}>
                           {item.description}
                         </p>
                       )}
@@ -154,4 +178,3 @@ function ProjectGroupDetailPage() {
     </div>
   );
 }
-

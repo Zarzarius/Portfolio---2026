@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
 import { Button } from '@/components/Button';
 import {
   ProjectCard,
@@ -21,6 +21,7 @@ import { getLocalizedProject, getLocalizedProjectGroup } from '@/data/projects.i
 import { normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 
+const cx = classNames.bind(styles);
 const ALL_CATEGORIES_KEY = 'ALL';
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -89,22 +90,22 @@ function ProjectsLayout() {
 
   if (!isListPage) {
     return (
-      <div className={clsx(styles.page)}>
+      <div className={cx('page')}>
         <Outlet />
       </div>
     );
   }
 
   return (
-    <div className={clsx(styles.page)}>
-      <header className={clsx(styles.header)}>
-        <p className={clsx(styles.eyebrow)}>{t.projects.eyebrow}</p>
-        <h1 className={clsx(styles.title)}>{t.projects.title}</h1>
-        <p className={clsx(styles.subtitle)}>
+    <div className={cx('page')}>
+      <header className={cx('header')}>
+        <p className={cx('eyebrow')}>{t.projects.eyebrow}</p>
+        <h1 className={cx('title')}>{t.projects.title}</h1>
+        <p className={cx('subtitle')}>
           {t.projects.subtitle}
         </p>
       </header>
-      <div className={clsx(styles.filters)}>
+      <div className={cx('filters')}>
         {filterOptions.map((category: string) => (
           <Button
             key={category}
@@ -119,9 +120,9 @@ function ProjectsLayout() {
         ))}
       </div>
       {(localizedProfessionalProjects.length > 0 || localizedProfessionalGroups.length > 0) && (
-        <section className={clsx(styles.projectGroup)}>
-          <h2 className={clsx(styles.groupTitle)}>{t.projects.professional}</h2>
-          <div className={clsx(styles.grid)}>
+        <section className={cx('projectGroup')}>
+          <h2 className={cx('groupTitle')}>{t.projects.professional}</h2>
+          <div className={cx('grid')}>
             {localizedProfessionalProjects.map((project: Project) => (
               <ProjectCard
                 key={project.id}
@@ -145,9 +146,9 @@ function ProjectsLayout() {
         </section>
       )}
       {(localizedPersonalProjects.length > 0 || localizedPersonalGroups.length > 0) && (
-        <section className={clsx(styles.projectGroup)}>
-          <h2 className={clsx(styles.groupTitle)}>{t.projects.personal}</h2>
-          <div className={clsx(styles.grid)}>
+        <section className={cx('projectGroup')}>
+          <h2 className={cx('groupTitle')}>{t.projects.personal}</h2>
+          <div className={cx('grid')}>
             {localizedPersonalProjects.map((project: Project) => (
               <ProjectCard
                 key={project.id}

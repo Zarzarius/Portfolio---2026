@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
 import { ProjectCard } from '@/components/ProjectCard';
 import {
   groupToCardItem,
@@ -18,10 +18,10 @@ import { getLocalizedStack } from '@/data/stack.i18n';
 import { normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 import styles from '../index.module.scss';
-
 import { getProjects, getProjectGroups, getStack } from '@/server/functions';
 import type { Project, ProjectGroup } from '@/data/projects';
 
+const cx = classNames.bind(styles);
 const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 let heroAnimationShown = false;
 
@@ -99,38 +99,38 @@ function Home() {
   return (
     <>
       <section
-        className={clsx(styles.hero, !shouldAnimate && styles.heroNoAnimation)}
+        className={cx('hero', !shouldAnimate && 'heroNoAnimation')}
         aria-label="Introduction"
       >
-        <div className={clsx(styles.heroBackground)} aria-hidden>
+        <div className={cx('heroBackground')} aria-hidden>
           <img
             src={`${cdnUrl}/Images/aza-hero.png`}
             alt=""
-            className={clsx(styles.heroImage)}
+            className={cx('heroImage')}
             width={1600}
             height={1200}
             fetchPriority="high"
           />
         </div>
-        <div className={clsx(styles.heroOverlay)} aria-hidden />
-        <div className={clsx(styles.heroContent)}>
-          <p className={clsx(styles.eyebrow)}>{profile.tagline}</p>
-          <h1 className={clsx(styles.title)}>
+        <div className={cx('heroOverlay')} aria-hidden />
+        <div className={cx('heroContent')}>
+          <p className={cx('eyebrow')}>{profile.tagline}</p>
+          <h1 className={cx('title')}>
             {mainHeadline} <span>{lastWord}</span>
           </h1>
-          <p className={clsx(styles.subtitle)}>{t.home.subtitle}</p>
-          <div className={clsx(styles.heroActions)}>
+          <p className={cx('subtitle')}>{t.home.subtitle}</p>
+          <div className={cx('heroActions')}>
             <Link
               to="/$locale/projects"
               params={{ locale }}
-              className={clsx(styles.heroBtnPrimary)}
+              className={cx('heroBtnPrimary')}
             >
               {t.home.viewWork}
             </Link>
             <Link
               to="/$locale/contact"
               params={{ locale }}
-              className={clsx(styles.heroBtnSecondary)}
+              className={cx('heroBtnSecondary')}
             >
               {t.home.getInTouch}
             </Link>
@@ -138,31 +138,31 @@ function Home() {
         </div>
       </section>
 
-      <div className={clsx(styles.page)}>
+      <div className={cx('page')}>
         <StackSection techCategories={localizedTechCategories} />
 
         <ScrollReveal
-          className={clsx(styles.revealBlock)}
-          visibleClass={styles.revealBlockVisible}
+          className={cx('revealBlock')}
+          visibleClass={cx('revealBlockVisible')}
         >
           <section aria-labelledby="work-heading">
-            <header className={clsx(styles.workHeader)}>
-              <p className={clsx(styles.workEyebrow)}>
+            <header className={cx('workHeader')}>
+              <p className={cx('workEyebrow')}>
                 {t.home.portfolioEyebrow}
               </p>
-              <h2 id="work-heading" className={clsx(styles.workTitle)}>
+              <h2 id="work-heading" className={cx('workTitle')}>
                 {t.home.selectedWork}
               </h2>
-              <p className={clsx(styles.workSubtitle)}>{t.home.workSubtitle}</p>
+              <p className={cx('workSubtitle')}>{t.home.workSubtitle}</p>
             </header>
 
             {(professionalProjects.length > 0 ||
               professionalGroups.length > 0) && (
-                <section className={clsx(styles.projectGroup)}>
-                  <h3 className={clsx(styles.groupTitle)}>
+                <section className={cx('projectGroup')}>
+                  <h3 className={cx('groupTitle')}>
                     {t.home.professional}
                   </h3>
-                  <div className={clsx(styles.grid)}>
+                  <div className={cx('grid')}>
                     {professionalProjects.map((project: Project) => (
                       <ProjectCard
                         key={project.id}
@@ -187,9 +187,9 @@ function Home() {
               )}
 
             {(personalProjects.length > 0 || personalGroups.length > 0) && (
-              <section className={clsx(styles.projectGroup)}>
-                <h3 className={clsx(styles.groupTitle)}>{t.home.personal}</h3>
-                <div className={clsx(styles.grid)}>
+              <section className={cx('projectGroup')}>
+                <h3 className={cx('groupTitle')}>{t.home.personal}</h3>
+                <div className={cx('grid')}>
                   {personalProjects.map((project: Project) => (
                     <ProjectCard
                       key={project.id}
@@ -215,25 +215,25 @@ function Home() {
           </section>
         </ScrollReveal>
 
-        <section className={clsx(styles.cta)}>
-          <div className={clsx(styles.ctaContent)}>
-            <h2 className={clsx(styles.ctaTitle)}>{t.home.ctaTitle}</h2>
-            <p className={clsx(styles.ctaText)}>
+        <section className={cx('cta')}>
+          <div className={cx('ctaContent')}>
+            <h2 className={cx('ctaTitle')}>{t.home.ctaTitle}</h2>
+            <p className={cx('ctaText')}>
               {t.common.basedIn} {profile.location}. {t.home.ctaText}
             </p>
           </div>
-          <div className={clsx(styles.ctaActions)}>
+          <div className={cx('ctaActions')}>
             <Link
               to="/$locale/contact"
               params={{ locale }}
-              className={clsx(styles.ctaPrimary)}
+              className={cx('ctaPrimary')}
             >
               {t.home.getInTouch}
             </Link>
             <Link
               to="/$locale/projects"
               params={{ locale }}
-              className={clsx(styles.ctaSecondary)}
+              className={cx('ctaSecondary')}
             >
               {t.home.viewAllProjects}
             </Link>

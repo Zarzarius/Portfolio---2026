@@ -1,7 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
+
+const cx = classNames.bind(styles);
 
 /** Hoisted static JSX: resume/download arrow icon (not recreated every render). */
 const RESUME_ICON = (
@@ -15,7 +17,7 @@ const RESUME_ICON = (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className={styles.icon}
+    className={cx('icon')}
     aria-hidden
   >
     <path d="M12 15V3" />
@@ -69,28 +71,28 @@ export interface ButtonAsLink extends ButtonBaseProps {
 
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor | ButtonAsLink;
 
-function getVariantClass(variant: ButtonVariant): string {
+function getVariantKey(variant: ButtonVariant): string {
   switch (variant) {
     case 'primary':
-      return styles.primary;
+      return 'primary';
     case 'outline':
-      return styles.outline;
+      return 'outline';
     case 'ghost':
-      return styles.ghost;
+      return 'ghost';
     default:
-      return styles.primary;
+      return 'primary';
   }
 }
 
-function getSizeClass(
+function getSizeKey(
   variant: ButtonVariant,
   size?: ButtonSize,
 ): string | null {
   if (variant === 'primary') {
-    return size === 'compact' ? styles.primaryCompact : styles.primaryDefault;
+    return size === 'compact' ? 'primaryCompact' : 'primaryDefault';
   }
   if (variant === 'ghost') {
-    return styles.ghostSquare;
+    return 'ghostSquare';
   }
   return null;
 }
@@ -110,17 +112,17 @@ export function Button(props: ButtonProps) {
   } = props;
 
   const isDisabled = disabled === true || loading === true;
-  const variantClass = getVariantClass(variant);
-  const sizeClass = getSizeClass(variant, size);
+  const variantKey = getVariantKey(variant);
+  const sizeKey = getSizeKey(variant, size);
   const resolvedIcon =
     icon ?? (variant === 'primary' && props.href ? RESUME_ICON : null);
 
-  const classNames = clsx(
-    styles.root,
-    variantClass,
-    sizeClass,
-    active === true && variant === 'outline' && styles.outlineActive,
-    loading === true && styles.loading,
+  const rootClassName = cx(
+    'root',
+    variantKey,
+    sizeKey,
+    active === true && variant === 'outline' && 'outlineActive',
+    loading === true && 'loading',
     className,
   );
 
@@ -138,7 +140,7 @@ export function Button(props: ButtonProps) {
         href={href}
         target={target}
         rel={rel}
-        className={classNames}
+        className={rootClassName}
         aria-disabled={isDisabled ? true : undefined}
         {...anchorRest}
       >
@@ -155,7 +157,7 @@ export function Button(props: ButtonProps) {
         to={to}
         params={params}
         preload={linkPreload}
-        className={classNames}
+        className={rootClassName}
         {...linkRest}
       >
         {content}
@@ -167,7 +169,7 @@ export function Button(props: ButtonProps) {
   return (
     <button
       type={type}
-      className={classNames}
+      className={rootClassName}
       disabled={isDisabled}
       {...buttonRest}
     >

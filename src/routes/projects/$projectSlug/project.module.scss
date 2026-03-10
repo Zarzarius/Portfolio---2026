@@ -11,7 +11,9 @@
 }
 
 .backLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   color: $color-text-tertiary;
@@ -21,6 +23,10 @@
   &:hover {
     color: $color-primary;
   }
+}
+
+.backLinkIcon {
+  flex-shrink: 0;
 }
 
 .notFound {
@@ -131,7 +137,9 @@
 }
 
 .externalLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
   color: $color-primary;
@@ -141,4 +149,8 @@
   &:hover {
     opacity: 0.85;
   }
+}
+
+.externalLinkIcon {
+  flex-shrink: 0;
 }

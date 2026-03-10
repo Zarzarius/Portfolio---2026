@@ -1,7 +1,9 @@
 import { useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
 import styles from './BurgerMenu.module.scss';
+
+const cx = classNames.bind(styles);
 
 type BurgerMenuProps = {
   open: boolean;
@@ -33,12 +35,12 @@ export function BurgerMenu({ open, onToggle, onClose, children }: BurgerMenuProp
   const overlay = (
     <div
       id="mobile-menu"
-      className={clsx(styles.overlay, open && styles.overlayOpen)}
+      className={cx('overlay', open && 'overlayOpen')}
       aria-hidden={!open}
       onClick={onClose}
     >
       <nav
-        className={clsx(styles.drawer, open && styles.drawerOpen)}
+        className={cx('drawer', open && 'drawerOpen')}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
@@ -50,15 +52,15 @@ export function BurgerMenu({ open, onToggle, onClose, children }: BurgerMenuProp
     <>
       <button
         type="button"
-        className={clsx(styles.burger, open && styles.burgerOpen)}
+        className={cx('burger', open && 'burgerOpen')}
         onClick={onToggle}
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? 'Close menu' : 'Open menu'}
       >
-        <span className={styles.burgerLine} />
-        <span className={styles.burgerLine} />
-        <span className={styles.burgerLine} />
+        <span className={cx('burgerLine')} />
+        <span className={cx('burgerLine')} />
+        <span className={cx('burgerLine')} />
       </button>
       {typeof document !== 'undefined' &&
         createPortal(overlay, document.body)}
