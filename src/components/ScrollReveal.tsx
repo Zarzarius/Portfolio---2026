@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
+import classNames from 'classnames';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -46,7 +46,7 @@ export function ScrollReveal({
   }, [rootMargin, threshold]);
 
   return (
-    <div ref={ref} className={clsx(className, isVisible && visibleClass)}>
+    <div ref={ref} className={classNames(className, isVisible && visibleClass)}>
       {children}
     </div>
   );

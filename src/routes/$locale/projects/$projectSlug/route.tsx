@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
+import { ArrowIcon } from '@/components/ArrowIcon';
 import { getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProject } from '@/data/projects.i18n';
-import { getMessages } from '@/i18n';
+import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 import { getProjectBySlug } from '@/server/functions';
 import styles from '../../../projects/$projectSlug/project.module.scss';
+
+const cx = classNames.bind(styles);
 
 export const Route = createFileRoute('/$locale/projects/$projectSlug')({
   loader: async ({ params }) => {
@@ -15,22 +18,23 @@ export const Route = createFileRoute('/$locale/projects/$projectSlug')({
     return { project };
   },
   head: ({ loaderData, params }) => {
+    const locale = normalizeLocale(params.locale);
     if (!loaderData?.project) {
-      const t = getMessages(params.locale);
+      const t = getMessages(locale);
       return { meta: [{ title: t.projects.projectNotFound }] };
     }
-    const project = getLocalizedProject(loaderData.project, params.locale);
+    const project = getLocalizedProject(loaderData.project, locale);
     const title = `${project.title} — Azael AC`;
     const description =
       project.description.slice(0, 155) +
       (project.description.length > 155 ? '…' : '');
-    const path = `/${params.locale}/projects/${params.projectSlug ?? ''}`;
+    const path = `/${locale}/projects/${params.projectSlug ?? ''}`;
     const seo = getDefaultSeoMeta({
       title,
       description,
       path,
       ogType: 'article',
-      locale: params.locale,
+      locale,
       pathnameWithoutLocale: `/projects/${params.projectSlug ?? ''}`,
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
@@ -41,71 +45,76 @@ export const Route = createFileRoute('/$locale/projects/$projectSlug')({
 function ProjectDetailPage() {
   const { project: rawProject } = Route.useLoaderData();
   const { locale } = Route.useParams();
+  const currentLocale = normalizeLocale(locale);
   const t = useMessages();
-  const project = rawProject ? getLocalizedProject(rawProject, locale) : null;
+  const project = rawProject
+    ? getLocalizedProject(rawProject, currentLocale)
+    : null;
 
   if (!project) {
     return (
-      <div className={clsx(styles.container)}>
-        <p className={clsx(styles.notFound)}>{t.projects.projectNotFound}</p>
+      <div className={cx('container')}>
+        <p className={cx('notFound')}>{t.projects.projectNotFound}</p>
         <Link
           to="/$locale/projects"
-          params={{ locale }}
-          className={clsx(styles.backLink)}
+          params={{ locale: currentLocale }}
+          className={cx('backLink')}
         >
-          ← {t.projects.backToProjects}
+          <ArrowIcon direction="left" className={cx('backLinkIcon')} />
+          {t.projects.backToProjects}
         </Link>
       </div>
     );
   }
 
   return (
-    <div className={clsx(styles.container)}>
+    <div className={cx('container')}>
       <Link
         to="/$locale/projects"
-        params={{ locale }}
-        className={clsx(styles.backLink)}
+        params={{ locale: currentLocale }}
+        className={cx('backLink')}
         preload="intent"
       >
-        ← {t.projects.backToProjects}
+        <ArrowIcon direction="left" className={cx('backLinkIcon')} />
+        {t.projects.backToProjects}
       </Link>
-      <article className={clsx(styles.article)}>
-        <header className={clsx(styles.header)}>
-          <span className={clsx(styles.meta)}>
+      <article className={cx('article')}>
+        <header className={cx('header')}>
+          <span className={cx('meta')}>
             {project.type === 'professional'
               ? t.projects.professional
               : t.projects.personalProject}
             {project.category && ` · ${project.category}`}
           </span>
-          <h1 className={clsx(styles.title)}>{project.title}</h1>
+          <h1 className={cx('title')}>{project.title}</h1>
         </header>
-        <p className={clsx(styles.description)}>{project.description}</p>
+        <p className={cx('description')}>{project.description}</p>
         {project.award && (
-          <p className={clsx(styles.award)}>
+          <p className={cx('award')}>
             <strong>{t.projects.award}:</strong> {project.award}
           </p>
         )}
         {project.achievements && project.achievements.length > 0 && (
-          <div className={clsx(styles.achievementsSection)}>
-            <h2 className={clsx(styles.techHeading)}>
+          <div className={cx('achievementsSection')}>
+            <h2 className={cx('techHeading')}>
               {t.projects.keyAchievements}
             </h2>
-            <ul className={clsx(styles.achievementsList)}>
+            <ul className={cx('achievementsList')}>
               {project.achievements.map((achievement, idx) => (
-                <li key={idx} className={clsx(styles.achievementItem)}>
+                <li key={idx} className={cx('achievementItem')}>
                   {achievement}
                 </li>
               ))}
             </ul>
           </div>
         )}
-        <div className={clsx(styles.techSection)}>
-          <h2 className={clsx(styles.techHeading)}>
+        <div className={cx('techSection')}>
+          <h2 className={cx('techHeading')}>
             {t.projects.technologies}
           </h2>
-          <ul className={clsx(styles.techList)}>
+          <ul className={cx('techList')}>
             {project.technologies.map((tech, idx) => (
-              <li key={idx} className={clsx(styles.techTag)}>
+              <li key={idx} className={cx('techTag')}>
                 {tech}
               </li>
             ))}
@@ -116,9 +125,14 @@ function ProjectDetailPage() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={clsx(styles.externalLink)}
+            className={cx('externalLink')}
           >
-            {t.projects.viewProject} →
+            {t.projects.viewProject}
+            <ArrowIcon
+              direction="right"
+              size={16}
+              className={cx('externalLinkIcon')}
+            />
           </a>
         )}
       </article>

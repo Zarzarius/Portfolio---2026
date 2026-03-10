@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
+import classNames from 'classnames/bind';
 import { SUPPORTED_LOCALES, getLanguageName, type Locale } from '@/i18n';
 import { useCurrentLocale, usePathWithoutLocale } from '@/i18n/useLocale';
 import { useMessages } from '@/i18n/useMessages';
 import styles from './LanguageSwitcher.module.scss';
+
+const cx = classNames.bind(styles);
 
 const LOCALE_FLAGS: Record<Locale, string> = {
   en: '🇬🇧',
@@ -41,25 +43,25 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div ref={rootRef} className={styles.switcher}>
+    <div ref={rootRef} className={cx('switcher')}>
       <button
         type="button"
-        className={styles.trigger}
+        className={cx('trigger')}
         aria-label={t.common.languageLabel}
         title={getLanguageName(locale)}
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className={styles.localeLabel} aria-hidden>
-          <span className={styles.flag}>{LOCALE_FLAGS[locale]}</span>
-          <span className={styles.code}>{getLocaleLabel(locale)}</span>
+        <span className={cx('localeLabel')} aria-hidden>
+          <span className={cx('flag')}>{LOCALE_FLAGS[locale]}</span>
+          <span className={cx('code')}>{getLocaleLabel(locale)}</span>
         </span>
       </button>
 
       <div
         role="menu"
-        className={clsx(styles.menu, open && styles.menuOpen)}
+        className={cx('menu', open && 'menuOpen')}
         aria-hidden={!open}
       >
         {SUPPORTED_LOCALES.map((nextLocale) => (
@@ -69,15 +71,12 @@ export function LanguageSwitcher() {
             role="menuitemradio"
             title={getLanguageName(nextLocale)}
             aria-checked={nextLocale === locale}
-            className={clsx(
-              styles.option,
-              nextLocale === locale && styles.optionActive,
-            )}
+            className={cx('option', nextLocale === locale && 'optionActive')}
             onClick={() => handleLocaleChange(nextLocale)}
           >
-            <span className={styles.localeLabel} aria-hidden>
-              <span className={styles.flag}>{LOCALE_FLAGS[nextLocale]}</span>
-              <span className={styles.code}>{getLocaleLabel(nextLocale)}</span>
+            <span className={cx('localeLabel')} aria-hidden>
+              <span className={cx('flag')}>{LOCALE_FLAGS[nextLocale]}</span>
+              <span className={cx('code')}>{getLocaleLabel(nextLocale)}</span>
             </span>
           </button>
         ))}
