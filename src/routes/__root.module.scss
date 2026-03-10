@@ -34,10 +34,11 @@
   z-index: $z-index-tooltip;
   isolation: isolate;
   view-transition-name: app-header;
-  background: color-mix(in srgb, $color-bg-primary 88%, transparent);
-  border-bottom: $border-width-thin solid $color-border-primary;
-  backdrop-filter: blur(16px) saturate(1.1);
-  box-shadow: 0 1px 0 0 color-mix(in srgb, $color-border-primary 0.6);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px) saturate(1.8);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: background $motion-duration-normal $motion-ease-in-out;
 }
 
 .headerInner {
@@ -53,10 +54,23 @@
 .logo {
   font-family: $font-family-heading;
   font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-bold;
   color: $color-text-primary;
   letter-spacing: $letter-spacing-tight;
-  transition: color $motion-duration-normal $motion-ease-in-out;
+  transition: $transition-all;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: $color-primary;
+    border-radius: $border-radius-full;
+    box-shadow: 0 0 12px $color-primary;
+  }
 
   &:hover {
     color: $color-primary;
@@ -74,24 +88,24 @@
   gap: $spacing-1;
   align-items: center;
   padding: $spacing-1;
-  border-radius: $border-radius-lg;
-  background: color-mix(in srgb, $color-border-primary 40%, transparent);
+  border-radius: $border-radius-xl;
+  background: color-mix(in srgb, $color-text-primary 5%, transparent);
+  border: 1px solid color-mix(in srgb, $color-text-primary 10%, transparent);
 }
 
 .navLink {
   position: relative;
   font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  color: $color-text-tertiary;
-  padding: $spacing-2 $spacing-4;
-  border-radius: $border-radius-md;
-  transition:
-    color $motion-duration-normal $motion-ease-in-out,
-    background $motion-duration-fast $motion-ease-out;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+  padding: $spacing-2 $spacing-5;
+  border-radius: $border-radius-lg;
+  transition: $transition-all;
 
   &:hover {
     color: $color-text-primary;
     background: $color-bg-hover;
+    transform: translateY(-1px);
   }
 
   &:focus-visible {
@@ -100,8 +114,9 @@
   }
 
   &.active {
-    color: $color-primary;
-    background: $color-bg-active;
+    color: #fff;
+    background: $color-primary;
+    box-shadow: $shadow-primary;
   }
 }
 
@@ -172,11 +187,9 @@
   margin-top: auto;
   view-transition-name: app-footer;
   padding: $spacing-8 $container-padding;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    color-mix(in srgb, $color-primary 3%, $color-bg-primary) 100%
-  );
+  background: linear-gradient(180deg,
+      transparent 0%,
+      color-mix(in srgb, $color-primary 3%, $color-bg-primary) 100%);
   isolation: isolate;
 }
 
@@ -187,14 +200,12 @@
   right: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in srgb, $color-primary 50%, transparent) 20%,
-    $color-primary 50%,
-    color-mix(in srgb, $color-primary 50%, transparent) 80%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      color-mix(in srgb, $color-primary 50%, transparent) 20%,
+      $color-primary 50%,
+      color-mix(in srgb, $color-primary 50%, transparent) 80%,
+      transparent 100%);
   opacity: 0.9;
   border-radius: 2px;
 }
