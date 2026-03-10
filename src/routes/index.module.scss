@@ -49,6 +49,21 @@
     animation: float 25s ease-in-out infinite reverse;
     z-index: 1;
   }
+
+  // Only animate once per session; subsequent visits get no hero/float animations
+  &.heroNoAnimation {
+    &::before,
+    &::after {
+      animation: none;
+    }
+    .heroContent,
+    .eyebrow,
+    .title,
+    .subtitle,
+    .heroActions {
+      animation: none;
+    }
+  }
 }
 
 @keyframes float {
