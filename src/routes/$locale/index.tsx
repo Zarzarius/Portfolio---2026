@@ -78,7 +78,23 @@ function Home() {
   const shouldAnimate = !heroAnimationShown;
   useEffect(() => {
     if (shouldAnimate) heroAnimationShown = true;
+
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const heroBg = document.querySelector(`.${styles.heroBackground}`) as HTMLElement;
+      if (heroBg) {
+        heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [shouldAnimate]);
+
+  // Split headline into parts for styling if needed, or just use as is
+  const headlineParts = profile.headline.split(' ');
+  const lastWord = headlineParts.pop();
+  const mainHeadline = headlineParts.join(' ');
 
   return (
     <>
@@ -99,7 +115,9 @@ function Home() {
         <div className={clsx(styles.heroOverlay)} aria-hidden />
         <div className={clsx(styles.heroContent)}>
           <p className={clsx(styles.eyebrow)}>{profile.tagline}</p>
-          <h1 className={clsx(styles.title)}>{profile.headline}</h1>
+          <h1 className={clsx(styles.title)}>
+            {mainHeadline} <span>{lastWord}</span>
+          </h1>
           <p className={clsx(styles.subtitle)}>{t.home.subtitle}</p>
           <div className={clsx(styles.heroActions)}>
             <Link
@@ -140,33 +158,33 @@ function Home() {
 
             {(professionalProjects.length > 0 ||
               professionalGroups.length > 0) && (
-              <section className={clsx(styles.projectGroup)}>
-                <h3 className={clsx(styles.groupTitle)}>
-                  {t.home.professional}
-                </h3>
-                <div className={clsx(styles.grid)}>
-                  {professionalProjects.map((project: Project) => (
-                    <ProjectCard
-                      key={project.id}
-                      item={projectToCardItem(project)}
-                      to="/$locale/projects/$projectSlug"
-                      params={{ locale, projectSlug: project.slug }}
-                    />
-                  ))}
-                  {professionalGroups.map((group: ProjectGroup) => (
-                    <ProjectCard
-                      key={`group-${group.id}`}
-                      item={groupToCardItem(group, {
-                        collectionLabel: t.projects.collection,
-                        projectsLabel: t.projects.projectsList.toLowerCase(),
-                      })}
-                      to="/$locale/projects/group/$groupSlug"
-                      params={{ locale, groupSlug: group.slug }}
-                    />
-                  ))}
-                </div>
-              </section>
-            )}
+                <section className={clsx(styles.projectGroup)}>
+                  <h3 className={clsx(styles.groupTitle)}>
+                    {t.home.professional}
+                  </h3>
+                  <div className={clsx(styles.grid)}>
+                    {professionalProjects.map((project: Project) => (
+                      <ProjectCard
+                        key={project.id}
+                        item={projectToCardItem(project)}
+                        to="/$locale/projects/$projectSlug"
+                        params={{ locale, projectSlug: project.slug }}
+                      />
+                    ))}
+                    {professionalGroups.map((group: ProjectGroup) => (
+                      <ProjectCard
+                        key={`group-${group.id}`}
+                        item={groupToCardItem(group, {
+                          collectionLabel: t.projects.collection,
+                          projectsLabel: t.projects.projectsList.toLowerCase(),
+                        })}
+                        to="/$locale/projects/group/$groupSlug"
+                        params={{ locale, groupSlug: group.slug }}
+                      />
+                    ))}
+                  </div>
+                </section>
+              )}
 
             {(personalProjects.length > 0 || personalGroups.length > 0) && (
               <section className={clsx(styles.projectGroup)}>

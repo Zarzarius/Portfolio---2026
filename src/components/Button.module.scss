@@ -6,20 +6,17 @@
   justify-content: center;
   gap: $spacing-2;
   font-family: inherit;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-bold;
   border: none;
-  border-radius: $border-radius-md;
+  border-radius: $border-radius-lg;
   cursor: pointer;
-  transition:
-    transform $motion-duration-normal $motion-ease-out,
-    box-shadow $motion-duration-normal $motion-ease-out,
-    background $motion-duration-normal $motion-ease-in-out,
-    color $motion-duration-normal $motion-ease-in-out,
-    border-color $motion-duration-normal $motion-ease-in-out;
+  transition: $transition-all;
+  position: relative;
+  overflow: hidden;
 
   &:focus-visible {
     outline: 2px solid $color-primary;
-    outline-offset: 2px;
+    outline-offset: 4px;
   }
 
   &:disabled {
@@ -32,11 +29,29 @@
 .primary {
   background: $color-primary;
   color: #fff;
+  box-shadow: 0 4px 14px 0 color-mix(in srgb, $color-primary 35%, transparent);
 
   &:hover:not(:disabled) {
     background: $color-primary-dark;
     color: #fff;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 color-mix(in srgb, $color-primary 25%, transparent);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transform: translateX(-100%);
+    transition: transform $motion-duration-slow ease-in-out;
+  }
+
+  &:hover::after {
+    transform: translateX(100%);
   }
 }
 
@@ -110,7 +125,7 @@
 
 // Download arrow: light “drop” on hover so the SVG has motion (not static)
 .primary:hover:not(:disabled) .icon {
-  transform: translateY(2px);
+  transform: translateX(4px);
 }
 
 .loading {
