@@ -22,7 +22,8 @@ export const Route = createFileRoute('/$locale/projects/$projectSlug')({
     const project = getLocalizedProject(loaderData.project, params.locale);
     const title = `${project.title} — Azael AC`;
     const description =
-      project.description.slice(0, 155) + (project.description.length > 155 ? '…' : '');
+      project.description.slice(0, 155) +
+      (project.description.length > 155 ? '…' : '');
     const path = `/${params.locale}/projects/${params.projectSlug ?? ''}`;
     const seo = getDefaultSeoMeta({
       title,
@@ -47,7 +48,11 @@ function ProjectDetailPage() {
     return (
       <div className={clsx(styles.container)}>
         <p className={clsx(styles.notFound)}>{t.projects.projectNotFound}</p>
-        <Link to="/$locale/projects" params={{ locale }} className={clsx(styles.backLink)}>
+        <Link
+          to="/$locale/projects"
+          params={{ locale }}
+          className={clsx(styles.backLink)}
+        >
           ← {t.projects.backToProjects}
         </Link>
       </div>
@@ -82,7 +87,9 @@ function ProjectDetailPage() {
         )}
         {project.achievements && project.achievements.length > 0 && (
           <div className={clsx(styles.achievementsSection)}>
-            <h2 className={clsx(styles.techHeading)}>{t.projects.keyAchievements}</h2>
+            <h2 className={clsx(styles.techHeading)}>
+              {t.projects.keyAchievements}
+            </h2>
             <ul className={clsx(styles.achievementsList)}>
               {project.achievements.map((achievement, idx) => (
                 <li key={idx} className={clsx(styles.achievementItem)}>
@@ -93,7 +100,9 @@ function ProjectDetailPage() {
           </div>
         )}
         <div className={clsx(styles.techSection)}>
-          <h2 className={clsx(styles.techHeading)}>{t.projects.technologies}</h2>
+          <h2 className={clsx(styles.techHeading)}>
+            {t.projects.technologies}
+          </h2>
           <ul className={clsx(styles.techList)}>
             {project.technologies.map((tech, idx) => (
               <li key={idx} className={clsx(styles.techTag)}>
@@ -116,4 +125,3 @@ function ProjectDetailPage() {
     </div>
   );
 }
-

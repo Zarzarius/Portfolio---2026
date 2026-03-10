@@ -22,7 +22,8 @@ export const Route = createFileRoute('/$locale/projects/group/$groupSlug')({
     const group = getLocalizedProjectGroup(loaderData.group, params.locale);
     const title = `${group.title} — Azael AC`;
     const description = group.description
-      ? group.description.slice(0, 155) + (group.description.length > 155 ? '…' : '')
+      ? group.description.slice(0, 155) +
+        (group.description.length > 155 ? '…' : '')
       : `Collection: ${group.title}`;
     const path = `/${params.locale}/projects/group/${params.groupSlug ?? ''}`;
     const seo = getDefaultSeoMeta({
@@ -48,7 +49,11 @@ function ProjectGroupDetailPage() {
     return (
       <div className={clsx(styles.container)}>
         <p className={clsx(styles.notFound)}>{t.projects.groupNotFound}</p>
-        <Link to="/$locale/projects" params={{ locale }} className={clsx(styles.backLink)}>
+        <Link
+          to="/$locale/projects"
+          params={{ locale }}
+          className={clsx(styles.backLink)}
+        >
           ← {t.projects.backToProjects}
         </Link>
       </div>
@@ -80,7 +85,9 @@ function ProjectGroupDetailPage() {
         )}
         {group.achievements && group.achievements.length > 0 && (
           <div className={clsx(styles.achievementsSection)}>
-            <h2 className={clsx(styles.techHeading)}>{t.projects.keyAchievements}</h2>
+            <h2 className={clsx(styles.techHeading)}>
+              {t.projects.keyAchievements}
+            </h2>
             <ul className={clsx(styles.achievementsList)}>
               {group.achievements.map((achievement, idx) => (
                 <li key={idx} className={clsx(styles.achievementItem)}>
@@ -91,7 +98,9 @@ function ProjectGroupDetailPage() {
           </div>
         )}
         <div className={clsx(styles.techSection)}>
-          <h2 className={clsx(styles.techHeading)}>{t.projects.technologies}</h2>
+          <h2 className={clsx(styles.techHeading)}>
+            {t.projects.technologies}
+          </h2>
           <ul className={clsx(styles.techList)}>
             {group.technologies.map((tech, idx) => (
               <li key={idx} className={clsx(styles.techTag)}>
@@ -101,7 +110,9 @@ function ProjectGroupDetailPage() {
           </ul>
         </div>
         <div className={clsx(styles.itemsSection)}>
-          <h2 className={clsx(styles.techHeading)}>{t.projects.projectsList}</h2>
+          <h2 className={clsx(styles.techHeading)}>
+            {t.projects.projectsList}
+          </h2>
           <ul className={clsx(styles.itemsList)}>
             {group.items.map((item) => (
               <li key={item.id} className={clsx(styles.item)}>
@@ -127,7 +138,9 @@ function ProjectGroupDetailPage() {
                       rel="noopener noreferrer"
                       className={clsx(styles.itemLink)}
                     >
-                      <span className={clsx(styles.itemTitle)}>{item.title}</span>
+                      <span className={clsx(styles.itemTitle)}>
+                        {item.title}
+                      </span>
                       {item.description && (
                         <span className={clsx(styles.itemDescription)}>
                           {item.description}
@@ -137,7 +150,9 @@ function ProjectGroupDetailPage() {
                     </a>
                   ) : (
                     <>
-                      <span className={clsx(styles.itemTitle)}>{item.title}</span>
+                      <span className={clsx(styles.itemTitle)}>
+                        {item.title}
+                      </span>
                       {item.description && (
                         <p className={clsx(styles.itemDescription)}>
                           {item.description}
@@ -154,4 +169,3 @@ function ProjectGroupDetailPage() {
     </div>
   );
 }
-
