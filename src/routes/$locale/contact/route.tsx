@@ -83,7 +83,6 @@ function Contact() {
     }));
   };
 
-  const mapsQuery = encodeURIComponent(profile.address);
 
   return (
     <div className={clsx(styles.container)}>
@@ -157,17 +156,6 @@ function Contact() {
               className={clsx(styles.contactLink)}
             >
               {profile.phone}
-            </a>
-          </div>
-          <div className={clsx(styles.contactItem)}>
-            <span className={clsx(styles.contactLabel)}>{t.contact.location}</span>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={clsx(styles.contactLink, styles.contactLinkMuted)}
-            >
-              {profile.address}
             </a>
           </div>
         </div>

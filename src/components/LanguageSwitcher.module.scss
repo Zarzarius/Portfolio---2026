@@ -1,3 +1,5 @@
+@use '../styles/theme' as *;
+
 .switcher {
   position: relative;
   display: flex;
@@ -28,18 +30,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 46px;
+  min-width: 48px;
   height: 40px;
-  border: none;
-  border-radius: 0.5rem;
-  background: transparent;
-  color: var(--color-text-tertiary, inherit);
-  font-size: 1.05rem;
+  border: 1px solid var(--glass-border);
+  border-radius: $border-radius-lg;
+  background: var(--glass-bg);
+  color: var(--color-text-secondary);
+  font-size: 1rem;
   padding: 0;
   cursor: pointer;
-  transition:
-    color 220ms ease-in-out,
-    background 220ms ease-in-out;
+  transition: $transition-all;
+  backdrop-filter: blur(10px);
 }
 
 .trigger:hover {
@@ -55,15 +56,16 @@
 .menu {
   position: absolute;
   right: 0;
-  top: calc(100% + 0.35rem);
-  min-width: 3rem;
-  background: var(--color-bg-primary, #111);
-  border: 1px solid color-mix(in oklab, currentColor 20%, transparent);
-  border-radius: 0.6rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  top: calc(100% + 0.5rem);
+  min-width: 4rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: $border-radius-lg;
+  box-shadow: var(--shadow-lg);
   display: none;
   z-index: 1000;
   overflow: hidden;
+  backdrop-filter: blur(20px);
 }
 
 .menuOpen {
@@ -102,4 +104,3 @@
 .optionActive {
   font-weight: 600;
 }
-

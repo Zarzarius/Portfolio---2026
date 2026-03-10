@@ -21,7 +21,6 @@ export const profile = {
   headline:
     '4+ years building web applications in React & Next.js — modern web apps, 3D experiences and clean code.',
   location: 'Köln, Germany',
-  address: 'Schützenhofstraße 22, 51063 Köln',
   email: 'job@azaelac.dev',
   phone: '+49 176 21404156',
   resumeUrl: `${cdnUrl}/Resume/Azael_AC_EN.pdf`,
