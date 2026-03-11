@@ -7,6 +7,7 @@ import {
   groupToCardItem,
   projectToCardItem,
 } from '@/components/ProjectCard';
+import { ScrollReveal } from '@/components/ScrollReveal';
 import styles from '../../projects/projects.module.scss';
 import {
   getProjects,
@@ -98,13 +99,16 @@ function ProjectsLayout() {
   }
 
   return (
-    <div className={cx('page')}>
-      <header className={cx('header')}>
+    <ScrollReveal
+      className={`${cx('page')} pageEntrance`}
+      visibleClass="pageEntranceVisible"
+    >
+      <header className={`${cx('header')} pageEntranceItem`}>
         <p className={cx('eyebrow')}>{t.projects.eyebrow}</p>
         <h1 className={cx('title')}>{t.projects.title}</h1>
         <p className={cx('subtitle')}>{t.projects.subtitle}</p>
       </header>
-      <div className={cx('filters')}>
+      <div className={`${cx('filters')} pageEntranceItem`}>
         {filterOptions.map((category: string) => (
           <Button
             key={category}
@@ -120,7 +124,7 @@ function ProjectsLayout() {
       </div>
       {(localizedProfessionalProjects.length > 0 ||
         localizedProfessionalGroups.length > 0) && (
-        <section className={cx('projectGroup')}>
+        <section className={`${cx('projectGroup')} pageEntranceItem`}>
           <h2 className={cx('groupTitle')}>{t.projects.professional}</h2>
           <div className={cx('grid')}>
             {localizedProfessionalProjects.map((project: Project) => (
@@ -147,7 +151,7 @@ function ProjectsLayout() {
       )}
       {(localizedPersonalProjects.length > 0 ||
         localizedPersonalGroups.length > 0) && (
-        <section className={cx('projectGroup')}>
+        <section className={`${cx('projectGroup')} pageEntranceItem`}>
           <h2 className={cx('groupTitle')}>{t.projects.personal}</h2>
           <div className={cx('grid')}>
             {localizedPersonalProjects.map((project: Project) => (
@@ -172,6 +176,6 @@ function ProjectsLayout() {
           </div>
         </section>
       )}
-    </div>
+    </ScrollReveal>
   );
 }
