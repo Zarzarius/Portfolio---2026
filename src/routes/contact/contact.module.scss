@@ -19,12 +19,6 @@
 
 .hero {
   margin-bottom: $spacing-8;
-
-  @media (min-width: $breakpoint-lg) {
-    margin-bottom: 0;
-    position: sticky;
-    top: calc(#{$header-height} + #{$spacing-6});
-  }
 }
 
 .title {
