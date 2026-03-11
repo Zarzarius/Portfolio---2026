@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import classNames from 'classnames/bind';
-import { ProjectCard } from '@/components/ProjectCard';
 import {
+  ProjectCard,
   groupToCardItem,
   projectToCardItem,
-} from '@/components/projectCardItems';
+} from '@/components/ProjectCard';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StackSection } from '@/components/StackSection';
 import { getProfile } from '@/data/profile';
@@ -81,7 +81,9 @@ function Home() {
 
     const handleScroll = () => {
       const scrolled = window.scrollY;
-      const heroBg = document.querySelector(`.${styles.heroBackground}`) as HTMLElement;
+      const heroBg = document.querySelector(
+        `.${styles.heroBackground}`,
+      ) as HTMLElement;
       if (heroBg) {
         heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
       }
@@ -147,9 +149,7 @@ function Home() {
         >
           <section aria-labelledby="work-heading">
             <header className={cx('workHeader')}>
-              <p className={cx('workEyebrow')}>
-                {t.home.portfolioEyebrow}
-              </p>
+              <p className={cx('workEyebrow')}>{t.home.portfolioEyebrow}</p>
               <h2 id="work-heading" className={cx('workTitle')}>
                 {t.home.selectedWork}
               </h2>
@@ -158,33 +158,31 @@ function Home() {
 
             {(professionalProjects.length > 0 ||
               professionalGroups.length > 0) && (
-                <section className={cx('projectGroup')}>
-                  <h3 className={cx('groupTitle')}>
-                    {t.home.professional}
-                  </h3>
-                  <div className={cx('grid')}>
-                    {professionalProjects.map((project: Project) => (
-                      <ProjectCard
-                        key={project.id}
-                        item={projectToCardItem(project)}
-                        to="/$locale/projects/$projectSlug"
-                        params={{ locale, projectSlug: project.slug }}
-                      />
-                    ))}
-                    {professionalGroups.map((group: ProjectGroup) => (
-                      <ProjectCard
-                        key={`group-${group.id}`}
-                        item={groupToCardItem(group, {
-                          collectionLabel: t.projects.collection,
-                          projectsLabel: t.projects.projectsList.toLowerCase(),
-                        })}
-                        to="/$locale/projects/group/$groupSlug"
-                        params={{ locale, groupSlug: group.slug }}
-                      />
-                    ))}
-                  </div>
-                </section>
-              )}
+              <section className={cx('projectGroup')}>
+                <h3 className={cx('groupTitle')}>{t.home.professional}</h3>
+                <div className={cx('grid')}>
+                  {professionalProjects.map((project: Project) => (
+                    <ProjectCard
+                      key={project.id}
+                      item={projectToCardItem(project)}
+                      to="/$locale/projects/$projectSlug"
+                      params={{ locale, projectSlug: project.slug }}
+                    />
+                  ))}
+                  {professionalGroups.map((group: ProjectGroup) => (
+                    <ProjectCard
+                      key={`group-${group.id}`}
+                      item={groupToCardItem(group, {
+                        collectionLabel: t.projects.collection,
+                        projectsLabel: t.projects.projectsList.toLowerCase(),
+                      })}
+                      to="/$locale/projects/group/$groupSlug"
+                      params={{ locale, groupSlug: group.slug }}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
 
             {(personalProjects.length > 0 || personalGroups.length > 0) && (
               <section className={cx('projectGroup')}>

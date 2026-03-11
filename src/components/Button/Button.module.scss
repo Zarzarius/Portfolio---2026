@@ -1,4 +1,4 @@
-@use '../styles/theme' as *;
+@use '../../styles/theme' as *;
 
 .root {
   display: inline-flex;
@@ -123,7 +123,7 @@
     opacity $motion-duration-fast $motion-ease-out;
 }
 
-// Download arrow: light “drop” on hover so the SVG has motion (not static)
+// Download arrow: light "drop" on hover so the SVG has motion (not static)
 .primary:hover:not(:disabled) .icon {
   transform: translateX(4px);
 }

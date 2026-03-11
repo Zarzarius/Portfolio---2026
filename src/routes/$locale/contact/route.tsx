@@ -68,11 +68,7 @@ function Contact() {
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
       setStatus('error');
-      setFormError(
-        err instanceof Error
-          ? err.message
-          : t.contact.defaultError,
-      );
+      setFormError(err instanceof Error ? err.message : t.contact.defaultError);
     }
   };
 
@@ -85,7 +81,6 @@ function Contact() {
     }));
   };
 
-
   return (
     <div className={cx('container')}>
       <div className={cx('hero')}>
@@ -97,10 +92,7 @@ function Contact() {
         <div className={cx('contactBlock')}>
           <div className={cx('contactItem')}>
             <span className={cx('contactLabel')}>{t.contact.email}</span>
-            <a
-              href={`mailto:${profile.email}`}
-              className={cx('contactLink')}
-            >
+            <a href={`mailto:${profile.email}`} className={cx('contactLink')}>
               {profile.email}
             </a>
           </div>
@@ -181,11 +173,7 @@ function Contact() {
             aria-describedby={errors.name ? 'name-error' : undefined}
           />
           {errors.name && (
-            <span
-              id="name-error"
-              className={cx('fieldError')}
-              role="alert"
-            >
+            <span id="name-error" className={cx('fieldError')} role="alert">
               {errors.name}
             </span>
           )}
@@ -206,11 +194,7 @@ function Contact() {
             aria-describedby={errors.email ? 'email-error' : undefined}
           />
           {errors.email && (
-            <span
-              id="email-error"
-              className={cx('fieldError')}
-              role="alert"
-            >
+            <span id="email-error" className={cx('fieldError')} role="alert">
               {errors.email}
             </span>
           )}
@@ -231,11 +215,7 @@ function Contact() {
             aria-describedby={errors.message ? 'message-error' : undefined}
           />
           {errors.message && (
-            <span
-              id="message-error"
-              className={cx('fieldError')}
-              role="alert"
-            >
+            <span id="message-error" className={cx('fieldError')} role="alert">
               {errors.message}
             </span>
           )}
@@ -246,10 +226,7 @@ function Contact() {
           </p>
         )}
         {status === 'error' && formError && (
-          <p
-            className={cx('formFeedback', 'formError')}
-            role="alert"
-          >
+          <p className={cx('formFeedback', 'formError')} role="alert">
             {formError}
           </p>
         )}
@@ -266,4 +243,3 @@ function Contact() {
     </div>
   );
 }
-

@@ -96,9 +96,7 @@ function ProjectDetailPage() {
         )}
         {project.achievements && project.achievements.length > 0 && (
           <div className={cx('achievementsSection')}>
-            <h2 className={cx('techHeading')}>
-              {t.projects.keyAchievements}
-            </h2>
+            <h2 className={cx('techHeading')}>{t.projects.keyAchievements}</h2>
             <ul className={cx('achievementsList')}>
               {project.achievements.map((achievement, idx) => (
                 <li key={idx} className={cx('achievementItem')}>
@@ -109,9 +107,7 @@ function ProjectDetailPage() {
           </div>
         )}
         <div className={cx('techSection')}>
-          <h2 className={cx('techHeading')}>
-            {t.projects.technologies}
-          </h2>
+          <h2 className={cx('techHeading')}>{t.projects.technologies}</h2>
           <ul className={cx('techList')}>
             {project.technologies.map((tech, idx) => (
               <li key={idx} className={cx('techTag')}>

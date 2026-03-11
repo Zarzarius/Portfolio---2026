@@ -4,11 +4,9 @@ import classNames from 'classnames/bind';
 import { Button } from '@/components/Button';
 import {
   ProjectCard,
-} from '@/components/ProjectCard';
-import {
   groupToCardItem,
   projectToCardItem,
-} from '@/components/projectCardItems';
+} from '@/components/ProjectCard';
 import styles from '../../projects/projects.module.scss';
 import {
   getProjects,
@@ -17,7 +15,10 @@ import {
 } from '@/server/functions';
 import { getDefaultSeoMeta } from '@/data/seo';
 import type { Project, ProjectGroup } from '@/data/projects';
-import { getLocalizedProject, getLocalizedProjectGroup } from '@/data/projects.i18n';
+import {
+  getLocalizedProject,
+  getLocalizedProjectGroup,
+} from '@/data/projects.i18n';
 import { normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 
@@ -101,9 +102,7 @@ function ProjectsLayout() {
       <header className={cx('header')}>
         <p className={cx('eyebrow')}>{t.projects.eyebrow}</p>
         <h1 className={cx('title')}>{t.projects.title}</h1>
-        <p className={cx('subtitle')}>
-          {t.projects.subtitle}
-        </p>
+        <p className={cx('subtitle')}>{t.projects.subtitle}</p>
       </header>
       <div className={cx('filters')}>
         {filterOptions.map((category: string) => (
@@ -115,11 +114,12 @@ function ProjectsLayout() {
           >
             {category === ALL_CATEGORIES_KEY
               ? t.projects.all
-              : CATEGORY_LABELS[category] ?? category}
+              : (CATEGORY_LABELS[category] ?? category)}
           </Button>
         ))}
       </div>
-      {(localizedProfessionalProjects.length > 0 || localizedProfessionalGroups.length > 0) && (
+      {(localizedProfessionalProjects.length > 0 ||
+        localizedProfessionalGroups.length > 0) && (
         <section className={cx('projectGroup')}>
           <h2 className={cx('groupTitle')}>{t.projects.professional}</h2>
           <div className={cx('grid')}>
@@ -145,7 +145,8 @@ function ProjectsLayout() {
           </div>
         </section>
       )}
-      {(localizedPersonalProjects.length > 0 || localizedPersonalGroups.length > 0) && (
+      {(localizedPersonalProjects.length > 0 ||
+        localizedPersonalGroups.length > 0) && (
         <section className={cx('projectGroup')}>
           <h2 className={cx('groupTitle')}>{t.projects.personal}</h2>
           <div className={cx('grid')}>
@@ -174,4 +175,3 @@ function ProjectsLayout() {
     </div>
   );
 }
-

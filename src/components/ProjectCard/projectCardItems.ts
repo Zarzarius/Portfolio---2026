@@ -40,4 +40,3 @@ export function groupToCardItem(
     imageAlt: group.imageAlt,
   };
 }
-

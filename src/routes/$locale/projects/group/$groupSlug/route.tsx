@@ -94,9 +94,7 @@ function ProjectGroupDetailPage() {
         )}
         {group.achievements && group.achievements.length > 0 && (
           <div className={cx('achievementsSection')}>
-            <h2 className={cx('techHeading')}>
-              {t.projects.keyAchievements}
-            </h2>
+            <h2 className={cx('techHeading')}>{t.projects.keyAchievements}</h2>
             <ul className={cx('achievementsList')}>
               {group.achievements.map((achievement, idx) => (
                 <li key={idx} className={cx('achievementItem')}>
@@ -107,9 +105,7 @@ function ProjectGroupDetailPage() {
           </div>
         )}
         <div className={cx('techSection')}>
-          <h2 className={cx('techHeading')}>
-            {t.projects.technologies}
-          </h2>
+          <h2 className={cx('techHeading')}>{t.projects.technologies}</h2>
           <ul className={cx('techList')}>
             {group.technologies.map((tech, idx) => (
               <li key={idx} className={cx('techTag')}>
@@ -119,9 +115,7 @@ function ProjectGroupDetailPage() {
           </ul>
         </div>
         <div className={cx('itemsSection')}>
-          <h2 className={cx('techHeading')}>
-            {t.projects.projectsList}
-          </h2>
+          <h2 className={cx('techHeading')}>{t.projects.projectsList}</h2>
           <ul className={cx('itemsList')}>
             {group.items.map((item) => (
               <li key={item.id} className={cx('item')}>
@@ -147,9 +141,7 @@ function ProjectGroupDetailPage() {
                       rel="noopener noreferrer"
                       className={cx('itemLink')}
                     >
-                      <span className={cx('itemTitle')}>
-                        {item.title}
-                      </span>
+                      <span className={cx('itemTitle')}>{item.title}</span>
                       {item.description && (
                         <span className={cx('itemDescription')}>
                           {item.description}
@@ -159,9 +151,7 @@ function ProjectGroupDetailPage() {
                     </a>
                   ) : (
                     <>
-                      <span className={cx('itemTitle')}>
-                        {item.title}
-                      </span>
+                      <span className={cx('itemTitle')}>{item.title}</span>
                       {item.description && (
                         <p className={cx('itemDescription')}>
                           {item.description}
