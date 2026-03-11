@@ -1,6 +1,7 @@
 @use 'theme' as *;
 
-// Optional class for pages that want staggered entrance (add to wrapper)
+// Optional class for pages that want staggered entrance (add to wrapper).
+// All animations respect prefers-reduced-motion below.
 .pageEntrance {
   .pageEntranceItem {
     opacity: 0;
