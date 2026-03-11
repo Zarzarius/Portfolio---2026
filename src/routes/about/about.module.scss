@@ -1,5 +1,9 @@
 @use '../../styles/theme' as *;
 
+.revealWrapper {
+  // Used by ScrollReveal; no styles required unless needed
+}
+
 .page {
   max-width: $container-max-width;
   margin: 0 auto;
