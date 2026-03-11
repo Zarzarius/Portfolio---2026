@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import classNames from 'classnames/bind';
 import { ArrowIcon } from '@/components/ArrowIcon';
+import { ScrollReveal } from '@/components/ScrollReveal';
 import { getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProjectGroup } from '@/data/projects.i18n';
 import { getMessages, normalizeLocale } from '@/i18n';
@@ -69,17 +70,20 @@ function ProjectGroupDetailPage() {
   }
 
   return (
-    <div className={cx('container')}>
+    <ScrollReveal
+      className={`${cx('container')} pageEntrance`}
+      visibleClass="pageEntranceVisible"
+    >
       <Link
         to="/$locale/projects"
         params={{ locale: currentLocale }}
-        className={cx('backLink')}
+        className={`${cx('backLink')} pageEntranceItem`}
         preload="intent"
       >
         <ArrowIcon direction="left" className={cx('backLinkIcon')} />
         {t.projects.backToProjects}
       </Link>
-      <article className={cx('article')}>
+      <article className={`${cx('article')} pageEntranceItem`}>
         <header className={cx('header')}>
           <span className={cx('meta')}>
             {group.type === 'professional'
@@ -165,6 +169,6 @@ function ProjectGroupDetailPage() {
           </ul>
         </div>
       </article>
-    </div>
+    </ScrollReveal>
   );
 }
