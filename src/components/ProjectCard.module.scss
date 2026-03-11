@@ -6,12 +6,12 @@
 // (borders + subtle shadow). No decorative motion; hover clarifies hierarchy.
 // ---------------------------------------------------------------------------
 
-// Glassy effect aligned with header/nav: semi-transparent bg + backdrop blur
+// Card surface: higher contrast than page bg (light = lighter panel, dark = glass)
 .card {
   display: flex;
   flex-direction: column;
   min-height: 400px;
-  background: var(--glass-bg);
+  background: var(--color-bg-card);
   border: 1px solid var(--glass-border);
   border-radius: $border-radius-xl;
   overflow: hidden;

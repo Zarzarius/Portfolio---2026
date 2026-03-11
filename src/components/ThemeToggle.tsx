@@ -16,8 +16,15 @@ function getTheme(): 'dark' | 'light' {
   return THEME_LIGHT;
 }
 
+const THEME_COLOR_LIGHT = '#d6d3d1';
+const THEME_COLOR_DARK = '#020617';
+
 function applyTheme(theme: 'dark' | 'light') {
   document.documentElement.setAttribute('data-theme', theme);
+  const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  if (meta) {
+    meta.setAttribute('content', theme === 'dark' ? THEME_COLOR_DARK : THEME_COLOR_LIGHT);
+  }
 }
 
 export function ThemeToggle() {
