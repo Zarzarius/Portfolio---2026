@@ -1,0 +1,38 @@
+@use 'theme' as *;
+
+// Optional class for pages that want staggered entrance (add to wrapper)
+.pageEntrance {
+  .pageEntranceItem {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  &.pageEntranceVisible .pageEntranceItem {
+    animation: pageEntranceIn $motion-duration-entrance $motion-ease-out forwards;
+  }
+
+  @for $i from 1 through 20 {
+    .pageEntranceItem:nth-child(#{$i}) {
+      animation-delay: #{0.08 + ($i - 1) * 0.05}s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pageEntranceItem {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes pageEntranceIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
