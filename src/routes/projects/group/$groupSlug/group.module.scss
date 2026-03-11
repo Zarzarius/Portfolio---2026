@@ -178,9 +178,20 @@
 }
 
 .itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   font-size: 1.125rem;
   line-height: 1;
   color: $color-text-tertiary;
+
+  svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+  }
 }
 
 .itemContent {
