@@ -1,14 +1,10 @@
 import { z } from 'zod';
+import type { Messages } from '@/i18n/types';
 import { enMessages } from '@/i18n/messages/en';
 
-export function createContactSchema(validation: {
-  nameRequired: string;
-  nameTooLong: string;
-  emailRequired: string;
-  emailInvalid: string;
-  messageMin: string;
-  messageTooLong: string;
-}) {
+export function createContactSchema(
+  validation: Messages['contact']['validation'],
+) {
   return z.object({
     name: z
       .string()

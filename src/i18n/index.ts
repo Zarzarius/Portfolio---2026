@@ -27,8 +27,10 @@ export function getLanguageName(locale: Locale): string {
       return 'Espanol';
     case 'de':
       return 'Deutsch';
-    default:
-      return 'English';
+    default: {
+      const _exhaustive: never = locale;
+      return _exhaustive;
+    }
   }
 }
 

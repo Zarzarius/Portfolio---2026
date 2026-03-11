@@ -79,8 +79,10 @@ function getVariantKey(variant: ButtonVariant): string {
       return 'outline';
     case 'ghost':
       return 'ghost';
-    default:
-      return 'primary';
+    default: {
+      const _exhaustive: never = variant;
+      return _exhaustive;
+    }
   }
 }
 
@@ -88,13 +90,17 @@ function getSizeKey(
   variant: ButtonVariant,
   size?: ButtonSize,
 ): string | null {
-  if (variant === 'primary') {
-    return size === 'compact' ? 'primaryCompact' : 'primaryDefault';
+  switch (variant) {
+    case 'primary':
+      return size === 'compact' ? 'primaryCompact' : 'primaryDefault';
+    case 'outline':
+    case 'ghost':
+      return variant === 'ghost' ? 'ghostSquare' : null;
+    default: {
+      const _exhaustive: never = variant;
+      return _exhaustive;
+    }
   }
-  if (variant === 'ghost') {
-    return 'ghostSquare';
-  }
-  return null;
 }
 
 export function Button(props: ButtonProps) {

@@ -2,7 +2,15 @@ import { createServerFn } from '@tanstack/react-start';
 import { Resend } from 'resend';
 import { projects, projectGroups, categories } from '@/data/projects';
 import { techCategories } from '@/data/stack';
-import { contactSchema } from '@/schemas/contact';
+import { contactSchema, type ContactFormData } from '@/schemas/contact';
+
+/** TanStack Start POST requests may send payload as { data: T }. */
+function getPayload(input: unknown): unknown {
+  if (input !== null && typeof input === 'object' && 'data' in input) {
+    return (input as { data: unknown }).data;
+  }
+  return input;
+}
 
 const contactTo = process.env.CONTACT_TO_EMAIL ?? 'job@azaelac.dev';
 const contactFrom =
@@ -59,11 +67,10 @@ export const getStack = createServerFn({ method: 'GET' }).handler(async () => {
 });
 
 export const sendContactEmail = createServerFn({ method: 'POST' })
-  .inputValidator((input: unknown) => {
-    const payload = input as { data?: unknown };
-    return contactSchema.parse(payload?.data ?? input);
+  .inputValidator((input: unknown): ContactFormData => {
+    return contactSchema.parse(getPayload(input));
   })
-  .handler(async ({ data }) => {
+  .handler(async ({ data }: { data: ContactFormData }) => {
     const apiKey = process.env.RESEND_API_KEY?.trim();
     if (!apiKey) {
       throw new Error(

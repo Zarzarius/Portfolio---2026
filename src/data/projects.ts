@@ -1,8 +1,7 @@
 export type ProjectType = 'professional' | 'personal';
 
-export type Category = 'Demodern' | 'Dart Design' | 'Personal';
-
-export const categories: Category[] = ['Demodern', 'Dart Design', 'Personal'];
+export const categories = ['Demodern', 'Dart Design', 'Personal'] as const;
+export type Category = (typeof categories)[number];
 
 export interface Project {
   id: number;
