@@ -371,7 +371,7 @@ export const projectGroups: ProjectGroup[] = [
     ],
     highlighted: true,
     description:
-      'Personal projects built to practice Astro, an interesting static site builder framework.',
+      'Personal projects built to practice modern web stacks including Astro, Next.js, Sanity, and Supabase.',
     achievements: [
       'Built and shipped multiple personal web projects across different domains and content needs.',
       'Applied modern front-end stacks to deliver responsive, accessible, and maintainable user experiences.',

@@ -267,8 +267,8 @@ const localizedGroupFields: Record<
       de: 'Persoenliche Projekte',
     },
     description: {
-      es: 'Proyectos personales creados para practicar Astro, un framework de sitios estáticos.',
-      de: 'Persoenliche Projekte zum Vertiefen von Astro, einem interessanten Static-Site-Framework.',
+      es: 'Proyectos personales creados para practicar stacks web modernos, incluyendo Astro, Next.js, Sanity y Supabase.',
+      de: 'Persoenliche Projekte zum Vertiefen moderner Web-Stacks, darunter Astro, Next.js, Sanity und Supabase.',
     },
     achievements: {
       es: [
