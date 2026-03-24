@@ -424,6 +424,26 @@ const localizedItemFields: Record<
       de: 'Portfolio- und Kontaktseite fur einen Handwerker; zeigt Referenzen und erleichtert Angebotsanfragen.',
     },
   },
+  'personal-4': {
+    title: {
+      es: 'Antonio F. Rando Casermeiro - Sitio web de portfolio',
+      de: 'Antonio F. Rando Casermeiro - Portfolio-Website',
+    },
+    description: {
+      es: 'Sitio portfolio personal para Antonio F. Rando Casermeiro, escritor, profesor y Doctor en Historia. Construido con Next.js y Sanity para presentar ensayos, ficcion, docencia, publicaciones de investigacion, trabajo multimedia y datos de contacto en una estructura accesible.',
+      de: 'Persoenliche Portfolio-Website fur Antonio F. Rando Casermeiro, Schriftsteller, Lehrer und promovierter Historiker. Mit Next.js und Sanity gebaut, um Essays, Fiktion, Lehre, Forschungspublikationen, Multimedia-Arbeiten und Kontaktinformationen in einer barrierearmen Struktur zu prasentieren.',
+    },
+  },
+  'personal-5': {
+    title: {
+      es: 'Beer Tab',
+      de: 'Beer Tab',
+    },
+    description: {
+      es: 'Aplicacion web para registrar bebidas y cerrar cuentas de bar, con flujo para clientes y panel de manager para clientes activos, consumos pendientes y totales diarios. Construida con Astro y Supabase, incluye catalogo de cervezas con busqueda y gestion opcional de stock en Supabase.',
+      de: 'Web-App zum Erfassen von Getranken und Abrechnen von Bar-Tabs, mit Kundenansicht und Manager-Dashboard fur aktive Kunden, offene Getranke und Tagesgesamtwerte. Gebaut mit Astro und Supabase, inklusive durchsuchbarem Bierkatalog und optionalem Supabase-basiertem Bestandsmanagement.',
+    },
+  },
   'dart-3d-1': {
     title: {
       es: 'SMA. - Experiencia 3D de energía verde',

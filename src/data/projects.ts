@@ -360,14 +360,23 @@ export const projectGroups: ProjectGroup[] = [
     id: 3,
     slug: 'personal',
     title: 'Personal projects',
-    technologies: ['ASTRO', 'TYPESCRIPT', 'ZOD', 'SASS'],
+    technologies: [
+      'ASTRO',
+      'NEXT.JS',
+      'SANITY',
+      'SUPABASE',
+      'TYPESCRIPT',
+      'ZOD',
+      'SASS',
+    ],
     highlighted: true,
     description:
       'Personal projects built to practice Astro, an interesting static site builder framework.',
     achievements: [
-      'Shipped several static sites with Astro for fast builds and minimal JS where appropriate.',
-      'Used TypeScript and Zod for type-safe content and validation across projects.',
-      'Delivered client-focused sites: food truck menu and location hub, restaurant info, and tradesperson portfolio with contact flows.',
+      'Built and shipped multiple personal web projects across different domains and content needs.',
+      'Applied modern front-end stacks to deliver responsive, accessible, and maintainable user experiences.',
+      'Worked with content-driven and data-backed architectures to support practical features and clear information structure.',
+      'Used TypeScript-based workflows for stronger validation, reliability, and long-term maintainability.',
     ],
     items: [
       {
@@ -390,6 +399,20 @@ export const projectGroups: ProjectGroup[] = [
         description:
           'Portfolio and contact site for a tradesperson—showcases past work and makes it easy for clients to request quotes.',
         link: 'https://asp-woad.vercel.app/',
+      },
+      {
+        id: 'personal-4',
+        title: 'Antonio F. Rando Casermeiro - Portfolio website',
+        description:
+          'Personal portfolio site for Antonio F. Rando Casermeiro, writer, teacher, and Doctor in History. Built with Next.js and Sanity to present essays, fiction, teaching, research publications, multimedia work, and contact information in an accessible structure.',
+        link: 'https://portfolio-antonio-rando.vercel.app/',
+      },
+      {
+        id: 'personal-5',
+        title: 'Beer Tab',
+        description:
+          'Web app to track drinks and settle bar tabs, with a customer tab flow and a manager dashboard for active customers, unpaid drinks, and daily totals. Built with Astro and Supabase, including searchable beer catalog and optional Supabase-backed beer stock management.',
+        link: 'https://beer-counter-sandy.vercel.app/',
       },
     ],
     image: 'Projects/personal.png',
