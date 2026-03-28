@@ -368,6 +368,7 @@ export const projectGroups: ProjectGroup[] = [
       'TYPESCRIPT',
       'ZOD',
       'SASS',
+      'STYLED COMPONENTS',
     ],
     highlighted: true,
     description:
@@ -413,6 +414,13 @@ export const projectGroups: ProjectGroup[] = [
         description:
           'Web app to track drinks and settle bar tabs, with a customer tab flow and a manager dashboard for active customers, unpaid drinks, and daily totals. Built with Astro and Supabase, including searchable beer catalog and optional Supabase-backed beer stock management.',
         link: 'https://beer-counter-sandy.vercel.app/',
+      },
+      {
+        id: 'personal-6',
+        title: 'Portfolio Pam',
+        description:
+          'Creative portfolio site with Next.js and Sanity CMS: copy, SEO, projects, and site settings edited in Sanity Studio, rendered as Server Components with next-view-transitions between routes. Home (hero with interactive splash, featured work, showreel), dynamic project pages, contact page, embedded CMS',
+        link: 'https://portfolio-pam-roan.vercel.app/',
       },
     ],
     image: 'Projects/personal.png',
