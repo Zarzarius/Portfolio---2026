@@ -3,6 +3,31 @@
 // ============================================
 // Theme — CSS custom properties (light default)
 // ============================================
+@mixin dark-theme-vars {
+  color-scheme: dark;
+  --color-bg-primary: #020617;
+  --color-bg-secondary: #0f172a;
+  --color-bg-tertiary: #1e293b;
+  --color-bg-hover: rgba(110, 231, 183, 0.12);
+  --color-bg-active: rgba(110, 231, 183, 0.18);
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-disabled: #475569;
+  --color-border-primary: #1e293b;
+  --color-border-secondary: #334155;
+  --color-border-tertiary: #475569;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.7);
+  --shadow-primary: 0 4px 24px rgba(110, 231, 183, 0.3);
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(30, 41, 59, 0.5);
+  --color-bg-card: var(--color-bg-secondary);
+}
+
 :root {
   color-scheme: light;
   --color-bg-primary: #eceae9;
@@ -29,27 +54,13 @@
 }
 
 [data-theme='dark'] {
-  --color-bg-primary: #020617;
-  --color-bg-secondary: #0f172a;
-  --color-bg-tertiary: #1e293b;
-  --color-bg-hover: rgba(110, 231, 183, 0.12);
-  --color-bg-active: rgba(110, 231, 183, 0.18);
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-tertiary: #94a3b8;
-  --color-text-muted: #64748b;
-  --color-text-disabled: #475569;
-  --color-border-primary: #1e293b;
-  --color-border-secondary: #334155;
-  --color-border-tertiary: #475569;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.6);
-  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.7);
-  --shadow-primary: 0 4px 24px rgba(110, 231, 183, 0.3);
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(30, 41, 59, 0.5);
-  --color-bg-card: var(--color-bg-secondary);
+  @include dark-theme-vars;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-theme-vars;
+  }
 }
 
 * {

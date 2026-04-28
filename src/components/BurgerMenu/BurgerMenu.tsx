@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames/bind';
 import styles from './BurgerMenu.module.scss';
@@ -13,6 +13,12 @@ type BurgerMenuProps = {
 };
 
 export function BurgerMenu({ open, onToggle, onClose, children }: BurgerMenuProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (open) {
       const prev = document.body.style.overflow;
@@ -62,7 +68,7 @@ export function BurgerMenu({ open, onToggle, onClose, children }: BurgerMenuProp
         <span className={cx('burgerLine')} />
         <span className={cx('burgerLine')} />
       </button>
-      {typeof document !== 'undefined' &&
+      {mounted &&
         createPortal(overlay, document.body)}
     </>
   );

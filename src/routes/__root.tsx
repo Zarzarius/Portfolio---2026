@@ -172,7 +172,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   const t = useMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -181,7 +181,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <link rel="apple-touch-icon" href="/favicon.png" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var d=document;var s=localStorage.getItem('theme');var p=typeof window!=='undefined'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;var t=s==='dark'||s==='light'?s:(p?'dark':'light');d.documentElement.setAttribute('data-theme',t);})();`,
+            __html: `(function(){try{var d=document;var s=localStorage.getItem('theme');var h=d.documentElement;var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var e=s==='dark'||s==='light';var t=e?s:(p?'dark':'light');if(e)h.setAttribute('data-theme',t);var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#020617':'#d6d3d1');}catch(_){}})();`,
           }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
