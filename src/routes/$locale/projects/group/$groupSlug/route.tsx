@@ -1,6 +1,13 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames/bind';
-import { ArrowIcon } from '@/components/ArrowIcon';
+import {
+  AchievementsList,
+  BackToProjectsLink,
+  DetailHeader,
+  TechTagList,
+  formatProjectMeta,
+  getProjectTypeLabel,
+} from '@/components/ProjectDetail';
 import { getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProjectGroup } from '@/data/projects.i18n';
 import { getMessages, normalizeLocale } from '@/i18n';
@@ -56,64 +63,57 @@ function ProjectGroupDetailPage() {
     return (
       <div className={cx('container')}>
         <p className={cx('notFound')}>{t.projects.groupNotFound}</p>
-        <Link
-          to="/$locale/projects"
-          params={{ locale: currentLocale }}
+        <BackToProjectsLink
+          locale={currentLocale}
+          label={t.projects.backToProjects}
           className={cx('backLink')}
-        >
-          <ArrowIcon direction="left" className={cx('backLinkIcon')} />
-          {t.projects.backToProjects}
-        </Link>
+          iconClassName={cx('backLinkIcon')}
+        />
       </div>
     );
   }
 
+  const typeLabel = getProjectTypeLabel(
+    group.type,
+    t.projects.professional,
+    t.projects.personalProject,
+  );
+
   return (
     <div className={cx('container')}>
-      <Link
-        to="/$locale/projects"
-        params={{ locale: currentLocale }}
+      <BackToProjectsLink
+        locale={currentLocale}
+        label={t.projects.backToProjects}
         className={cx('backLink')}
-        preload="intent"
-      >
-        <ArrowIcon direction="left" className={cx('backLinkIcon')} />
-        {t.projects.backToProjects}
-      </Link>
+        iconClassName={cx('backLinkIcon')}
+      />
       <article className={cx('article')}>
-        <header className={cx('header')}>
-          <span className={cx('meta')}>
-            {group.type === 'professional'
-              ? t.projects.professional
-              : t.projects.personalProject}
-            {group.category && ` · ${group.category}`}
-          </span>
-          <h1 className={cx('title')}>{group.title}</h1>
-        </header>
+        <DetailHeader
+          title={group.title}
+          meta={formatProjectMeta(typeLabel, group.category)}
+          headerClassName={cx('header')}
+          metaClassName={cx('meta')}
+          titleClassName={cx('title')}
+        />
         {group.description && (
           <p className={cx('description')}>{group.description}</p>
         )}
-        {group.achievements && group.achievements.length > 0 && (
-          <div className={cx('achievementsSection')}>
-            <h2 className={cx('techHeading')}>{t.projects.keyAchievements}</h2>
-            <ul className={cx('achievementsList')}>
-              {group.achievements.map((achievement, idx) => (
-                <li key={idx} className={cx('achievementItem')}>
-                  {achievement}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <div className={cx('techSection')}>
-          <h2 className={cx('techHeading')}>{t.projects.technologies}</h2>
-          <ul className={cx('techList')}>
-            {group.technologies.map((tech, idx) => (
-              <li key={idx} className={cx('techTag')}>
-                {tech}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <AchievementsList
+          achievements={group.achievements}
+          heading={t.projects.keyAchievements}
+          sectionClassName={cx('achievementsSection')}
+          headingClassName={cx('techHeading')}
+          listClassName={cx('achievementsList')}
+          itemClassName={cx('achievementItem')}
+        />
+        <TechTagList
+          technologies={group.technologies}
+          heading={t.projects.technologies}
+          sectionClassName={cx('techSection')}
+          headingClassName={cx('techHeading')}
+          listClassName={cx('techList')}
+          tagClassName={cx('techTag')}
+        />
         <div className={cx('itemsSection')}>
           <h2 className={cx('techHeading')}>{t.projects.projectsList}</h2>
           <ul className={cx('itemsList')}>

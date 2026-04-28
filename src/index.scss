@@ -157,6 +157,19 @@ main#main {
   animation: slide-in 0.3s ease both;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-old(page-content),
+  ::view-transition-new(page-content) {
+    animation: none;
+  }
+}
+
 @keyframes slide-out {
   from {
     transform: translateY(0);

@@ -1,11 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
-import {
-  ProjectCard,
-  groupToCardItem,
-  projectToCardItem,
-} from '@/components/ProjectCard';
+import { ProjectSections } from '@/components/ProjectSections';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StackSection } from '@/components/StackSection';
 import { getProfile } from '@/data/profile';
@@ -61,36 +57,34 @@ function Home() {
   const highlightedGroups = projectGroups
     .filter((g: ProjectGroup) => g.highlighted)
     .map((g: ProjectGroup) => getLocalizedProjectGroup(g, currentLocale));
-
-  const professionalProjects = highlightedProjects.filter(
-    (p: Project) => p.type === 'professional',
-  );
-  const personalProjects = highlightedProjects.filter(
-    (p: Project) => p.type === 'personal',
-  );
-  const professionalGroups = highlightedGroups.filter(
-    (g: ProjectGroup) => g.type === 'professional',
-  );
-  const personalGroups = highlightedGroups.filter(
-    (g: ProjectGroup) => g.type === 'personal',
-  );
+  const heroBackgroundRef = useRef<HTMLDivElement>(null);
 
   const shouldAnimate = !heroAnimationShown;
   useEffect(() => {
     if (shouldAnimate) heroAnimationShown = true;
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    );
+    if (prefersReducedMotion.matches) return;
+
+    let animationFrame = 0;
 
     const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const heroBg = document.querySelector(
-        `.${styles.heroBackground}`,
-      ) as HTMLElement;
-      if (heroBg) {
-        heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
-      }
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(() => {
+        const heroBg = heroBackgroundRef.current;
+        if (heroBg) {
+          heroBg.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+        }
+        animationFrame = 0;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
   }, [shouldAnimate]);
 
   // Split headline into parts for styling if needed, or just use as is
@@ -104,7 +98,7 @@ function Home() {
         className={cx('hero', !shouldAnimate && 'heroNoAnimation')}
         aria-label="Introduction"
       >
-        <div className={cx('heroBackground')} aria-hidden>
+        <div ref={heroBackgroundRef} className={cx('heroBackground')} aria-hidden>
           <img
             src={`${cdnUrl}/Images/aza-hero.png`}
             alt=""
@@ -156,60 +150,21 @@ function Home() {
               <p className={cx('workSubtitle')}>{t.home.workSubtitle}</p>
             </header>
 
-            {(professionalProjects.length > 0 ||
-              professionalGroups.length > 0) && (
-              <section className={cx('projectGroup')}>
-                <h3 className={cx('groupTitle')}>{t.home.professional}</h3>
-                <div className={cx('grid')}>
-                  {professionalProjects.map((project: Project) => (
-                    <ProjectCard
-                      key={project.id}
-                      item={projectToCardItem(project)}
-                      to="/$locale/projects/$projectSlug"
-                      params={{ locale, projectSlug: project.slug }}
-                    />
-                  ))}
-                  {professionalGroups.map((group: ProjectGroup) => (
-                    <ProjectCard
-                      key={`group-${group.id}`}
-                      item={groupToCardItem(group, {
-                        collectionLabel: t.projects.collection,
-                        projectsLabel: t.projects.projectsList.toLowerCase(),
-                      })}
-                      to="/$locale/projects/group/$groupSlug"
-                      params={{ locale, groupSlug: group.slug }}
-                    />
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {(personalProjects.length > 0 || personalGroups.length > 0) && (
-              <section className={cx('projectGroup')}>
-                <h3 className={cx('groupTitle')}>{t.home.personal}</h3>
-                <div className={cx('grid')}>
-                  {personalProjects.map((project: Project) => (
-                    <ProjectCard
-                      key={project.id}
-                      item={projectToCardItem(project)}
-                      to="/$locale/projects/$projectSlug"
-                      params={{ locale, projectSlug: project.slug }}
-                    />
-                  ))}
-                  {personalGroups.map((group: ProjectGroup) => (
-                    <ProjectCard
-                      key={`group-${group.id}`}
-                      item={groupToCardItem(group, {
-                        collectionLabel: t.projects.collection,
-                        projectsLabel: t.projects.projectsList.toLowerCase(),
-                      })}
-                      to="/$locale/projects/group/$groupSlug"
-                      params={{ locale, groupSlug: group.slug }}
-                    />
-                  ))}
-                </div>
-              </section>
-            )}
+            <ProjectSections
+              projects={highlightedProjects}
+              groups={highlightedGroups}
+              locale={locale}
+              professionalLabel={t.home.professional}
+              personalLabel={t.home.personal}
+              collectionLabel={t.projects.collection}
+              projectsLabel={t.projects.projectsList.toLowerCase()}
+              headingLevel={3}
+              classNames={{
+                projectGroup: cx('projectGroup'),
+                groupTitle: cx('groupTitle'),
+                grid: cx('grid'),
+              }}
+            />
           </section>
         </ScrollReveal>
 

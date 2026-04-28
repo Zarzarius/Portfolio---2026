@@ -1,28 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://azaelac.dev/</loc>
+    <loc>https://azaelac.dev/en</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://azaelac.dev/projects</loc>
+    <loc>https://azaelac.dev/es</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://azaelac.dev/de</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://azaelac.dev/en/projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://azaelac.dev/stack</loc>
+    <loc>https://azaelac.dev/es/projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://azaelac.dev/about</loc>
+    <loc>https://azaelac.dev/de/projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://azaelac.dev/contact</loc>
+    <loc>https://azaelac.dev/en/about</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://azaelac.dev/es/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://azaelac.dev/de/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://azaelac.dev/en/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://azaelac.dev/es/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://azaelac.dev/de/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url><loc>https://azaelac.dev/en/projects/wwf-ar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/wwf-ar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/wwf-ar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/sap-ar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/sap-ar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/sap-ar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/soundbooth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/soundbooth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/soundbooth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/miniverse</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/miniverse</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/miniverse</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/metaverse</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/metaverse</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/metaverse</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/migros-escape</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/migros-escape</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/migros-escape</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/portfolio</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/portfolio</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/portfolio</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/job-application-tracker</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/job-application-tracker</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/job-application-tracker</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/group/campaign-pages</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/group/campaign-pages</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/group/campaign-pages</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/group/dart-corporate</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/group/dart-corporate</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/group/dart-corporate</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/group/personal</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/group/personal</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/group/personal</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/en/projects/group/dart-3d</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/es/projects/group/dart-3d</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://azaelac.dev/de/projects/group/dart-3d</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

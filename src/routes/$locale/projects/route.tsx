@@ -2,11 +2,7 @@ import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { Button } from '@/components/Button';
-import {
-  ProjectCard,
-  groupToCardItem,
-  projectToCardItem,
-} from '@/components/ProjectCard';
+import { ProjectSections } from '@/components/ProjectSections';
 import styles from '../../projects/projects.module.scss';
 import {
   getProjects,
@@ -76,18 +72,6 @@ function ProjectsLayout() {
   const localizedGroups = filteredGroups.map((g: ProjectGroup) =>
     getLocalizedProjectGroup(g, currentLocale),
   );
-  const localizedProfessionalProjects = localizedProjects.filter(
-    (p: Project) => p.type === 'professional',
-  );
-  const localizedPersonalProjects = localizedProjects.filter(
-    (p: Project) => p.type === 'personal',
-  );
-  const localizedProfessionalGroups = localizedGroups.filter(
-    (g: ProjectGroup) => g.type === 'professional',
-  );
-  const localizedPersonalGroups = localizedGroups.filter(
-    (g: ProjectGroup) => g.type === 'personal',
-  );
 
   if (!isListPage) {
     return (
@@ -118,60 +102,20 @@ function ProjectsLayout() {
           </Button>
         ))}
       </div>
-      {(localizedProfessionalProjects.length > 0 ||
-        localizedProfessionalGroups.length > 0) && (
-        <section className={cx('projectGroup')}>
-          <h2 className={cx('groupTitle')}>{t.projects.professional}</h2>
-          <div className={cx('grid')}>
-            {localizedProfessionalProjects.map((project: Project) => (
-              <ProjectCard
-                key={project.id}
-                item={projectToCardItem(project)}
-                to="/$locale/projects/$projectSlug"
-                params={{ locale, projectSlug: project.slug }}
-              />
-            ))}
-            {localizedProfessionalGroups.map((group: ProjectGroup) => (
-              <ProjectCard
-                key={`group-${group.id}`}
-                item={groupToCardItem(group, {
-                  collectionLabel: t.projects.collection,
-                  projectsLabel: t.projects.projectsList.toLowerCase(),
-                })}
-                to="/$locale/projects/group/$groupSlug"
-                params={{ locale, groupSlug: group.slug }}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-      {(localizedPersonalProjects.length > 0 ||
-        localizedPersonalGroups.length > 0) && (
-        <section className={cx('projectGroup')}>
-          <h2 className={cx('groupTitle')}>{t.projects.personal}</h2>
-          <div className={cx('grid')}>
-            {localizedPersonalProjects.map((project: Project) => (
-              <ProjectCard
-                key={project.id}
-                item={projectToCardItem(project)}
-                to="/$locale/projects/$projectSlug"
-                params={{ locale, projectSlug: project.slug }}
-              />
-            ))}
-            {localizedPersonalGroups.map((group: ProjectGroup) => (
-              <ProjectCard
-                key={`group-${group.id}`}
-                item={groupToCardItem(group, {
-                  collectionLabel: t.projects.collection,
-                  projectsLabel: t.projects.projectsList.toLowerCase(),
-                })}
-                to="/$locale/projects/group/$groupSlug"
-                params={{ locale, groupSlug: group.slug }}
-              />
-            ))}
-          </div>
-        </section>
-      )}
+      <ProjectSections
+        projects={localizedProjects}
+        groups={localizedGroups}
+        locale={locale}
+        professionalLabel={t.projects.professional}
+        personalLabel={t.projects.personal}
+        collectionLabel={t.projects.collection}
+        projectsLabel={t.projects.projectsList.toLowerCase()}
+        classNames={{
+          projectGroup: cx('projectGroup'),
+          groupTitle: cx('groupTitle'),
+          grid: cx('grid'),
+        }}
+      />
     </div>
   );
 }
