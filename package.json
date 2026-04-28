@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-router": "^1.157.16",
     "@tanstack/react-start": "^1.157.16",
+    "@vercel/analytics": "^2.0.1",
     "classnames": "^2.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

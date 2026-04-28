@@ -7,6 +7,7 @@ import {
   createRootRoute,
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import classNames from 'classnames/bind';
 import { BurgerMenu } from '@/components/BurgerMenu';
 import { Button } from '@/components/Button';
@@ -241,6 +242,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           {t.common.skipToMain}
         </a>
         {children}
+        <Analytics />
         <Scripts />
       </body>
     </html>
