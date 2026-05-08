@@ -5,10 +5,13 @@
  */
 import { localizeValue, type Locale } from '@/i18n';
 
-const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
-if (import.meta.env.PROD && !cdnUrl) {
-  throw new Error(
-    'Missing VITE_CDN_URL in production. Set it in .env.production or in your hosting platform (e.g. Vercel/Netlify) so the build has the CDN URL.',
+const rawCdnUrl = import.meta.env.VITE_CDN_URL ?? '';
+const siteUrl = import.meta.env.VITE_SITE_URL ?? '';
+const cdnUrl = rawCdnUrl || siteUrl || '';
+
+if (import.meta.env.PROD && !rawCdnUrl) {
+  console.warn(
+    'Missing VITE_CDN_URL in production. Falling back to VITE_SITE_URL (or relative paths if unset). Configure VITE_CDN_URL in your hosting environment.',
   );
 }
 
