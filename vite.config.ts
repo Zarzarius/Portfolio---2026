@@ -5,6 +5,8 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
@@ -13,7 +15,11 @@ export default defineConfig({
     port: 3000,
     hmr: true,
   },
-  plugins: [tsconfigPaths(), tanstackStart(), react()],
+  plugins: [tsconfigPaths(), tanstackStart(), react(), cloudflare({
+    viteEnvironment: {
+      name: "ssr"
+    }
+  })],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
