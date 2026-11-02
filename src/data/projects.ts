@@ -247,6 +247,7 @@ export const projects: Project[] = [
     image: 'Projects/adestra.jpg',
     imageAlt: 'Adestra homepage, a training session in the studio',
     link: 'https://adestra-three.vercel.app',
+    highlighted: true,
     description:
       'Bilingual site (Spanish and Galician) for Adestra Movemento e saúde, a movement and health studio in O Rosal, Galicia. Next.js and Sanity, with seed content as fallback, locale metadata, and a studio signup flow.',
     technologies: ['NEXT.JS', 'TYPESCRIPT', 'SANITY'],
@@ -265,6 +266,7 @@ export const projects: Project[] = [
     image: 'Projects/pulsative.jpg',
     imageAlt: 'PULSATIVE homepage with the band lineup',
     link: 'https://pulsative.band',
+    highlighted: true,
     description:
       'Official site for the band PULSATIVE. Bilingual German and English Astro site with Sanity: showreel and upcoming dates, tour, videos, live photos, bio, booking, and a press kit.',
     technologies: ['ASTRO', 'TYPESCRIPT', 'SANITY', 'GSAP'],
@@ -283,6 +285,7 @@ export const projects: Project[] = [
     image: 'Projects/a-jalleira.jpg',
     imageAlt: 'A Jalleira homepage over a forest canopy',
     link: 'https://a-jalleira.vercel.app',
+    highlighted: true,
     description:
       'Official site for A Jalleira, a non-profit forest and environmental education association in the Baixo Miño, Galicia. Next.js and Sanity, in Galician, Spanish, English, and Portuguese.',
     technologies: ['NEXT.JS', 'TYPESCRIPT', 'SANITY'],
