@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
+import { cloudflare } from '@cloudflare/vite-plugin';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -13,7 +14,7 @@ export default defineConfig({
     port: 3000,
     hmr: true,
   },
-  plugins: [tsconfigPaths(), tanstackStart(), react()],
+  plugins: [cloudflare({ viteEnvironment: { name: 'ssr' } }), tsconfigPaths(), tanstackStart(), react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

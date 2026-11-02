@@ -73,6 +73,54 @@ Create `.env` / `.env.production` as needed.
 | `RESEND_API_KEY`   | [Resend](https://resend.com) API key for contact form sending              |
 | `RESEND_FROM`      | Sender address for Resend (optional)                                       |
 
+### Cloudflare Environment Setup
+
+Set the same variables in your Cloudflare project settings before deploying:
+
+- `VITE_SITE_URL`
+- `VITE_CDN_URL`
+- `RESEND_API_KEY` (required for contact form)
+- `CONTACT_TO_EMAIL` (optional)
+- `RESEND_FROM` (optional)
+
+## Deploy to Cloudflare Workers
+
+This project is configured for Cloudflare Workers using the TanStack Start server entry and Wrangler.
+
+1. Install dependencies:
+
+```bash
+pnpm install
+```
+
+2. Authenticate Wrangler (one-time):
+
+```bash
+pnpm dlx wrangler login
+```
+
+3. (Recommended) Generate Wrangler types:
+
+```bash
+pnpm cf-typegen
+```
+
+4. Build and deploy:
+
+```bash
+pnpm deploy
+```
+
+### Troubleshooting
+
+- If pnpm blocks build scripts, run:
+
+```bash
+pnpm approve-builds
+```
+
+and allow required packages like `esbuild` and `workerd`.
+
 ## Project Structure
 
 ```text

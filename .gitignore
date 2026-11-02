@@ -29,6 +29,10 @@ dist-ssr
 *.sln
 *.sw?
 .tanstack
+.wrangler
 
 # TanStack Router
 src/routeTree.gen.ts
+
+# Graft index cache
+graft/
