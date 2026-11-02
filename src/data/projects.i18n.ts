@@ -207,6 +207,72 @@ const localizedProjectFields: Record<
       ],
     },
   },
+  adestra: {
+    title: {
+      es: 'Adestra - Estudio de movimiento y salud',
+      de: 'Adestra - Studio fur Bewegung und Gesundheit',
+    },
+    description: {
+      es: 'Sitio bilingüe (español y gallego) para Adestra Movemento e saúde, un estudio de movimiento y salud en O Rosal, Galicia. Next.js y Sanity, con contenido semilla de respaldo, metadatos por idioma y un flujo de inscripción.',
+      de: 'Zweisprachige Website (Spanisch und Galicisch) fur Adestra Movemento e saúde, ein Bewegungs- und Gesundheitsstudio in O Rosal, Galicien. Next.js und Sanity, mit Seed-Content als Fallback, locale-spezifischen Metadaten und einem Anmeldeflow.',
+    },
+    achievements: {
+      es: [
+        'Sitio bilingüe en español y gallego para un estudio de movimiento y salud en O Rosal.',
+        'Sanity con contenido semilla para que el sitio siga renderizando si el dataset está vacío.',
+        'Flujo de inscripción, metadatos por idioma y revalidación bajo demanda desde el CMS.',
+      ],
+      de: [
+        'Zweisprachige Website auf Spanisch und Galicisch fur ein Bewegungs- und Gesundheitsstudio in O Rosal.',
+        'Sanity mit Seed-Content, damit die Seite auch bei leerem Dataset ausgeliefert wird.',
+        'Anmeldeflow, locale-spezifische Metadaten und On-Demand-Revalidierung aus dem CMS.',
+      ],
+    },
+  },
+  pulsative: {
+    title: {
+      es: 'PULSATIVE - Sitio oficial de la banda',
+      de: 'PULSATIVE - Offizielle Band-Website',
+    },
+    description: {
+      es: 'Sitio oficial de la banda PULSATIVE. Astro bilingüe (alemán e inglés) con Sanity: showreel y próximas fechas, gira, vídeos, fotos en directo, biografía, booking y kit de prensa.',
+      de: 'Offizielle Website der Band PULSATIVE. Zweisprachige Astro-Seite (Deutsch und Englisch) mit Sanity: Showreel und kommende Termine, Tour, Videos, Live-Fotos, Biografie, Booking und Pressekit.',
+    },
+    achievements: {
+      es: [
+        'Sitio oficial bilingüe en alemán e inglés para la banda PULSATIVE.',
+        'Fechas de gira, vídeos, fotos en directo, biografía, booking y kit de prensa.',
+        'Contenido en Sanity, con contenido de respaldo cuando el CMS no está configurado.',
+      ],
+      de: [
+        'Offizielle zweisprachige Website auf Deutsch und Englisch fur die Band PULSATIVE.',
+        'Tourdaten, Videos, Live-Fotos, Biografie, Booking-Kontakt und Pressekit.',
+        'Inhalte aus Sanity, mit Mock-Content wenn das CMS nicht konfiguriert ist.',
+      ],
+    },
+  },
+  'a-jalleira': {
+    title: {
+      es: 'A Jalleira - Asociación de educación forestal',
+      de: 'A Jalleira - Verein fur Wald- und Umweltbildung',
+    },
+    description: {
+      es: 'Sitio oficial de A Jalleira, asociación sin ánimo de lucro de educación forestal y ambiental en el Baixo Miño, Galicia. Next.js y Sanity, en gallego, español, inglés y portugués.',
+      de: 'Offizielle Website von A Jalleira, einem gemeinnutzigen Verein fur Wald- und Umweltbildung im Baixo Miño, Galicien. Next.js und Sanity, auf Galicisch, Spanisch, Englisch und Portugiesisch.',
+    },
+    achievements: {
+      es: [
+        'Sitio oficial de una asociación sin ánimo de lucro de educación forestal y ambiental en el Baixo Miño.',
+        'Cuatro idiomas — gallego, español, inglés y portugués — con gallego como respaldo.',
+        'Sanity como fuente de verdad para páginas, actividades, navegación y SEO.',
+      ],
+      de: [
+        'Offizielle Website eines gemeinnutzigen Vereins fur Wald- und Umweltbildung im Baixo Miño.',
+        'Vier Sprachen — Galicisch, Spanisch, Englisch und Portugiesisch — mit Galicisch als Fallback.',
+        'Sanity als Quelle fur Seiten, Aktivitaten, Navigation und SEO.',
+      ],
+    },
+  },
 };
 
 const localizedGroupFields: Record<

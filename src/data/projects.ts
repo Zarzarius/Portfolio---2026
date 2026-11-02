@@ -240,6 +240,60 @@ export const projects: Project[] = [
     category: 'Personal',
     type: 'personal',
   },
+  {
+    id: 9,
+    slug: 'adestra',
+    title: 'Adestra - Movement & health studio',
+    image: 'Projects/adestra.jpg',
+    imageAlt: 'Adestra homepage, a training session in the studio',
+    link: 'https://adestra-three.vercel.app',
+    description:
+      'Bilingual site (Spanish and Galician) for Adestra Movemento e saúde, a movement and health studio in O Rosal, Galicia. Next.js and Sanity, with seed content as fallback, locale metadata, and a studio signup flow.',
+    technologies: ['NEXT.JS', 'TYPESCRIPT', 'SANITY'],
+    achievements: [
+      'Shipped a bilingual Spanish and Galician site for a movement and health studio in O Rosal.',
+      'Sanity CMS with seed content so the site still renders when the dataset is empty.',
+      'Studio signup flow, locale metadata, and on-demand revalidation from the CMS.',
+    ],
+    category: 'Personal',
+    type: 'personal',
+  },
+  {
+    id: 10,
+    slug: 'pulsative',
+    title: 'PULSATIVE - Official band website',
+    image: 'Projects/pulsative.jpg',
+    imageAlt: 'PULSATIVE homepage with the band lineup',
+    link: 'https://pulsative.band',
+    description:
+      'Official site for the band PULSATIVE. Bilingual German and English Astro site with Sanity: showreel and upcoming dates, tour, videos, live photos, bio, booking, and a press kit.',
+    technologies: ['ASTRO', 'TYPESCRIPT', 'SANITY', 'GSAP'],
+    achievements: [
+      'Official bilingual German and English site for the band PULSATIVE.',
+      'Tour dates, videos, live photos, bio, booking contact, and a press kit.',
+      'Sanity-backed content, with mock content when the CMS is not configured.',
+    ],
+    category: 'Personal',
+    type: 'personal',
+  },
+  {
+    id: 11,
+    slug: 'a-jalleira',
+    title: 'A Jalleira - Forest education association',
+    image: 'Projects/a-jalleira.jpg',
+    imageAlt: 'A Jalleira homepage over a forest canopy',
+    link: 'https://a-jalleira.vercel.app',
+    description:
+      'Official site for A Jalleira, a non-profit forest and environmental education association in the Baixo Miño, Galicia. Next.js and Sanity, in Galician, Spanish, English, and Portuguese.',
+    technologies: ['NEXT.JS', 'TYPESCRIPT', 'SANITY'],
+    achievements: [
+      'Official site for a non-profit forest and environmental education association in the Baixo Miño.',
+      'Four locales — Galician, Spanish, English, and Portuguese — with Galician as the fallback.',
+      'Sanity as the source of truth for pages, activities, navigation, and SEO.',
+    ],
+    category: 'Personal',
+    type: 'personal',
+  },
 ];
 
 export const projectGroups: ProjectGroup[] = [

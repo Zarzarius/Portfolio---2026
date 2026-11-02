@@ -33,3 +33,6 @@ dist-ssr
 
 # TanStack Router
 src/routeTree.gen.ts
+
+# Graft index cache
+graft/
