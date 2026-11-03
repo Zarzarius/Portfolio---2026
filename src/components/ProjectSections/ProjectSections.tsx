@@ -45,6 +45,7 @@ export function ProjectSections({
   );
   const personalGroups = groups.filter((group) => group.type === 'personal');
   const Heading = headingLevel === 2 ? 'h2' : 'h3';
+  const cardTitleLevel = headingLevel === 2 ? 3 : 4;
 
   return (
     <>
@@ -58,6 +59,7 @@ export function ProjectSections({
                 item={projectToCardItem(project)}
                 to="/$locale/projects/$projectSlug"
                 params={{ locale, projectSlug: project.slug }}
+                titleLevel={cardTitleLevel}
               />
             ))}
             {professionalGroups.map((group) => (
@@ -69,6 +71,7 @@ export function ProjectSections({
                 })}
                 to="/$locale/projects/group/$groupSlug"
                 params={{ locale, groupSlug: group.slug }}
+                titleLevel={cardTitleLevel}
               />
             ))}
           </div>
@@ -85,6 +88,7 @@ export function ProjectSections({
                 item={projectToCardItem(project)}
                 to="/$locale/projects/$projectSlug"
                 params={{ locale, projectSlug: project.slug }}
+                titleLevel={cardTitleLevel}
               />
             ))}
             {personalGroups.map((group) => (
@@ -96,6 +100,7 @@ export function ProjectSections({
                 })}
                 to="/$locale/projects/group/$groupSlug"
                 params={{ locale, groupSlug: group.slug }}
+                titleLevel={cardTitleLevel}
               />
             ))}
           </div>

@@ -25,9 +25,14 @@ export const enMessages: Messages = {
     backToHome: 'Back to home',
   },
   home: {
+    heroLead: 'I build interactive web',
+    heroAccent: 'experiences',
     subtitle:
-      'Exploring the space between design and technology to craft engaging, intuitive digital experiences.',
-    viewWork: 'View work',
+      'Full-stack developer with 4+ years in React, TypeScript, and creative development. I build modern web apps and interactive 3D experiences.',
+    viewWork: 'View projects',
+    years: '4+ years of experience',
+    focus: '3D and WebGL',
+    factsLabel: 'Highlights',
     getInTouch: 'Get in touch',
     portfolioEyebrow: 'Portfolio',
     selectedWork: 'Selected work',
@@ -99,8 +104,18 @@ export const enMessages: Messages = {
     },
   },
   seo: {
-    defaultDescription:
-      'React, Next.js, 3D experiences, headless CMS. Portfolio — Azael Alonso Campana.',
+    homeTitle: 'Azael Alonso Campana — Full-stack web developer',
+    homeDescription:
+      'Azael Alonso Campana is a full-stack developer in Galicia, Spain. React, Next.js, WebAR, and 3D experiences for brands and studios.',
+    aboutTitle: 'About Azael Alonso Campana — Developer in Galicia',
+    aboutDescription:
+      'About Azael Alonso Campana, full-stack developer in Galicia, Spain. 4+ years with React and Next.js, languages, and background.',
+    projectsTitle: 'Projects by Azael Alonso Campana',
+    projectsDescription:
+      'Web projects by Azael Alonso Campana: WebAR, 3D showcases, Next.js sites, and headless CMS work.',
+    contactTitle: 'Contact Azael Alonso Campana',
+    contactDescription:
+      'Contact Azael Alonso Campana, full-stack developer in Galicia, Spain, for React, Next.js, and 3D work. Email job@azaelac.dev.',
     localeMeta: 'en_US',
   },
 };

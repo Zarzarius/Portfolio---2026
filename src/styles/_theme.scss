@@ -7,11 +7,11 @@
 // Colors
 // ============================================
 
-// Primary accent — Vibrant & Premium Emerald
-$color-primary: #10b981;
-$color-primary-dark: #059669;
-$color-primary-light: #34d399;
-$color-accent: #6ee7b7;
+$color-primary: #5b46d6;
+$color-primary-dark: #4a38b8;
+$color-primary-light: #8b7cf6;
+$color-accent: #c4b5fd;
+$color-brand-text: var(--color-brand-text);
 
 // Background (theme-aware via CSS custom properties)
 $color-bg-primary: var(--color-bg-primary);
@@ -31,7 +31,7 @@ $color-text-disabled: var(--color-text-disabled);
 $color-border-primary: var(--color-border-primary);
 $color-border-secondary: var(--color-border-secondary);
 $color-border-tertiary: var(--color-border-tertiary);
-$color-border-accent: #047857;
+$color-border-accent: #5b46d6;
 
 // Status / semantic (kept for compatibility, toned down)
 $color-status-online: #15803d;

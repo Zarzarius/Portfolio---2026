@@ -21,7 +21,7 @@
   transition: color $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
   }
 }
 
@@ -131,7 +131,7 @@
     content: '→';
     position: absolute;
     left: 0;
-    color: $color-primary;
+    color: $color-brand-text;
     font-weight: $font-weight-medium;
   }
 }
@@ -142,7 +142,7 @@
   gap: $spacing-2;
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
-  color: $color-primary;
+  color: $color-brand-text;
   margin-top: $spacing-6;
   transition: opacity $motion-duration-normal $motion-ease-in-out;
 

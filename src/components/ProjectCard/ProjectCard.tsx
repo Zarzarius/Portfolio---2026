@@ -18,13 +18,37 @@ function getCardImageUrl(item: { id: string | number; image?: string }): string 
   return `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
 }
 
+type TitleLevel = 2 | 3 | 4;
+
 type ProjectCardProps = {
   item: ProjectCardItem;
   to: string;
   params: Record<string, string>;
+  titleLevel?: TitleLevel;
 };
 
-export function ProjectCard({ item, to, params }: ProjectCardProps) {
+function cardTitleTag(level: TitleLevel): 'h2' | 'h3' | 'h4' {
+  switch (level) {
+    case 2:
+      return 'h2';
+    case 3:
+      return 'h3';
+    case 4:
+      return 'h4';
+    default: {
+      const exhaustive: never = level;
+      return exhaustive;
+    }
+  }
+}
+
+export function ProjectCard({
+  item,
+  to,
+  params,
+  titleLevel = 2,
+}: ProjectCardProps) {
+  const Title = cardTitleTag(titleLevel);
   return (
     <Link
       to={to}
@@ -46,7 +70,7 @@ export function ProjectCard({ item, to, params }: ProjectCardProps) {
         )}
       </div>
       <div className={cx('cardBody')}>
-        <h2 className={cx('cardTitle')}>{item.title}</h2>
+        <Title className={cx('cardTitle')}>{item.title}</Title>
         <div className={cx('cardContentSlot')}>
           <p className={cx('cardDescription')}>{item.description}</p>
           <div className={cx('tech')}>

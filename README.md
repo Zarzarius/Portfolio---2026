@@ -2,20 +2,20 @@
 
 A modern full-stack portfolio built with **TanStack Start**, React 19, TypeScript, Vite, and Sass Modules.
 
-The project includes locale-prefixed routing (`/en`, `/es`, `/de`), translated UI/content, localized SEO metadata (`hreflang` + canonical), a contact form powered by Resend, and type-safe routing/server functions.
+The project includes locale-prefixed routing (`/en`, `/es`), translated UI/content, localized SEO metadata (`hreflang` + canonical), a contact form powered by Resend, and type-safe routing/server functions.
 
 ## Features
 
 - **TanStack Start** full-stack app (SSR + server functions)
 - **TanStack Router** file-based, type-safe routing
 - **Internationalization (i18n)** with locale-prefixed URLs:
-  - `/$locale` routes: `/en`, `/es`, `/de`
+  - `/$locale` routes: `/en`, `/es`
   - localized UI dictionaries (`src/i18n/messages/*`)
   - localized profile/projects/groups data mappings
   - legacy non-prefixed routes redirect to default locale
 - **Localized SEO**:
   - locale-aware meta title/description/`og:locale`
-  - canonical URLs + alternate `hreflang` links (`en`, `es`, `de`, `x-default`)
+  - canonical URLs + alternate `hreflang` links (`en`, `es`, `x-default`)
 - **Responsive navigation** with mobile burger menu
 - **Language switcher** (flag-based dropdown)
 - **Theme toggle** (light/dark)
@@ -100,7 +100,6 @@ src/
     messages/
       en.ts
       es.ts
-      de.ts
   components/
     ProjectCard.tsx                     # Card component (component-only export)
     projectCardItems.ts                 # Card item mappers/types
@@ -132,7 +131,7 @@ src/
 
 ## Customization
 
-1. **Translations/UI copy**: `src/i18n/messages/en.ts`, `es.ts`, `de.ts`
+1. **Translations/UI copy**: `src/i18n/messages/en.ts`, `es.ts`
 2. **Profile content**: `src/data/profile.ts`
 3. **Projects and groups**:
    - source: `src/data/projects.ts`

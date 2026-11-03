@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, notFound } from '@tanstack/react-router';
 import classNames from 'classnames/bind';
 import { ArrowIcon } from '@/components/ArrowIcon';
 import {
@@ -9,7 +9,7 @@ import {
   formatProjectMeta,
   getProjectTypeLabel,
 } from '@/components/ProjectDetail';
-import { getDefaultSeoMeta } from '@/data/seo';
+import { absoluteAssetUrl, getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProject } from '@/data/projects.i18n';
 import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
@@ -21,29 +21,43 @@ const cx = classNames.bind(styles);
 export const Route = createFileRoute('/$locale/projects/$projectSlug')({
   loader: async ({ params }) => {
     const slug = params.projectSlug?.trim();
-    if (!slug) return { project: null };
+    if (!slug) throw notFound();
     const project = await getProjectBySlug({ data: { slug } });
+    if (!project) throw notFound();
     return { project };
   },
   head: ({ loaderData, params }) => {
     const locale = normalizeLocale(params.locale);
     if (!loaderData?.project) {
       const t = getMessages(locale);
-      return { meta: [{ title: t.projects.projectNotFound }] };
+      return {
+        meta: [
+          { title: t.projects.projectNotFound },
+          { name: 'robots', content: 'noindex, nofollow' },
+        ],
+      };
     }
     const project = getLocalizedProject(loaderData.project, locale);
     const title = `${project.title} — Azael AC`;
-    const description =
-      project.description.slice(0, 155) +
-      (project.description.length > 155 ? '…' : '');
     const path = `/${locale}/projects/${params.projectSlug ?? ''}`;
+    const image = absoluteAssetUrl(project.image);
     const seo = getDefaultSeoMeta({
       title,
-      description,
+      description: project.description,
       path,
       ogType: 'article',
       locale,
       pathnameWithoutLocale: `/projects/${params.projectSlug ?? ''}`,
+      image,
+      imageAlt: project.imageAlt ?? project.title,
+      kind: 'work',
+      work: {
+        name: project.title,
+        description: project.description,
+        technologies: [...project.technologies],
+        award: project.award,
+        image,
+      },
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },

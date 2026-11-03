@@ -15,9 +15,9 @@
   backdrop-filter: blur(10px);
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
     background: color-mix(in srgb, $color-primary 5%, transparent);
-    border-color: $color-primary;
+    border-color: $color-brand-text;
     transform: translateY(-1px);
   }
 

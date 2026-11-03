@@ -16,8 +16,8 @@ function getTheme(): 'dark' | 'light' {
   return THEME_LIGHT;
 }
 
-const THEME_COLOR_LIGHT = '#d6d3d1';
-const THEME_COLOR_DARK = '#020617';
+const THEME_COLOR_LIGHT = '#f6f4fb';
+const THEME_COLOR_DARK = '#070814';
 
 function applyTheme(theme: 'dark' | 'light') {
   document.documentElement.setAttribute('data-theme', theme);

@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames/bind';
 import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '@/data/seo';
-import { normalizeLocale } from '@/i18n';
+import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 import styles from '../../about/about.module.scss';
 
@@ -10,10 +10,15 @@ const cx = classNames.bind(styles);
 
 export const Route = createFileRoute('/$locale/about')({
   head: ({ params }) => {
+    const locale = normalizeLocale(params.locale);
+    const t = getMessages(locale);
     const seo = getDefaultSeoMeta({
-      locale: params.locale,
-      path: `/${params.locale}/about`,
+      locale,
+      path: `/${locale}/about`,
       pathnameWithoutLocale: '/about',
+      title: t.seo.aboutTitle,
+      description: t.seo.aboutDescription,
+      kind: 'about',
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },

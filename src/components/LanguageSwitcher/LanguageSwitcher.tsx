@@ -10,7 +10,6 @@ const cx = classNames.bind(styles);
 const LOCALE_FLAGS: Record<Locale, string> = {
   en: '🇬🇧',
   es: '🇪🇸',
-  de: '🇩🇪',
 };
 
 function getLocaleLabel(locale: Locale): string {

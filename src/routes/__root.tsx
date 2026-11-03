@@ -25,7 +25,12 @@ import '../index.scss';
 
 const cx = classNames.bind(styles);
 
-const defaultSeo = getDefaultSeoMeta({ locale: DEFAULT_LOCALE, path: '/en' });
+const fallbackSeo = getDefaultSeoMeta({
+  locale: DEFAULT_LOCALE,
+  path: `/${DEFAULT_LOCALE}`,
+  pathnameWithoutLocale: '/',
+  kind: 'home',
+});
 
 function NotFoundComponent() {
   const t = useMessages();
@@ -60,13 +65,9 @@ function RootPendingComponent() {
 
 export const Route = createRootRoute({
   head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      ...defaultSeo.meta,
-    ],
-    links: defaultSeo.links,
-    scripts: defaultSeo.scripts,
+    meta: fallbackSeo.meta.filter(
+      (entry) => !('name' in entry) || entry.name !== 'robots',
+    ),
   }),
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -176,12 +177,12 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#d6d3d1" />
+        <meta name="theme-color" content="#f6f4fb" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var d=document;var s=localStorage.getItem('theme');var h=d.documentElement;var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var e=s==='dark'||s==='light';var t=e?s:(p?'dark':'light');if(e)h.setAttribute('data-theme',t);var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#020617':'#d6d3d1');}catch(_){}})();`,
+            __html: `(function(){try{var d=document;var s=localStorage.getItem('theme');var h=d.documentElement;var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var e=s==='dark'||s==='light';var t=e?s:(p?'dark':'light');if(e)h.setAttribute('data-theme',t);var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#070814':'#f6f4fb');}catch(_){}})();`,
           }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

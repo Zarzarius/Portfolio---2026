@@ -1,4 +1,3 @@
-import { deMessages } from './messages/de';
 import { enMessages } from './messages/en';
 import { esMessages } from './messages/es';
 import {
@@ -12,7 +11,6 @@ import type { Messages } from './types';
 const MESSAGES: Record<Locale, Messages> = {
   en: enMessages,
   es: esMessages,
-  de: deMessages,
 };
 
 export function getMessages(locale: Locale): Messages {
@@ -25,8 +23,6 @@ export function getLanguageName(locale: Locale): string {
       return 'English';
     case 'es':
       return 'Espanol';
-    case 'de':
-      return 'Deutsch';
     default: {
       const _exhaustive: never = locale;
       return _exhaustive;

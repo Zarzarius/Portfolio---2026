@@ -5,7 +5,7 @@ import { Button } from '@/components/Button';
 import { SocialLinks } from '@/components/SocialLinks';
 import { getProfile } from '@/data/profile';
 import { getDefaultSeoMeta } from '@/data/seo';
-import { normalizeLocale } from '@/i18n';
+import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 import { sendContactEmail } from '@/server/functions';
 import { createContactSchema, type ContactFormData } from '@/schemas/contact';
@@ -15,10 +15,15 @@ const cx = classNames.bind(styles);
 
 export const Route = createFileRoute('/$locale/contact')({
   head: ({ params }) => {
+    const locale = normalizeLocale(params.locale);
+    const t = getMessages(locale);
     const seo = getDefaultSeoMeta({
-      locale: params.locale,
-      path: `/${params.locale}/contact`,
+      locale,
+      path: `/${locale}/contact`,
       pathnameWithoutLocale: '/contact',
+      title: t.seo.contactTitle,
+      description: t.seo.contactDescription,
+      kind: 'contact',
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },

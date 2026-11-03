@@ -21,7 +21,7 @@
   transition: color $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
   }
 }
 
@@ -92,7 +92,7 @@
     content: '→';
     position: absolute;
     left: 0;
-    color: $color-primary;
+    color: $color-brand-text;
     font-weight: $font-weight-medium;
   }
 }
@@ -206,7 +206,7 @@
   transition: color $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
 
     .itemArrow {
       opacity: 1;
@@ -233,7 +233,7 @@
 .itemArrow {
   display: inline-block;
   margin-left: $spacing-2;
-  color: $color-primary;
+  color: $color-brand-text;
   opacity: 0.7;
   transition: opacity $motion-duration-normal $motion-ease-in-out;
 }
