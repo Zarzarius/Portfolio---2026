@@ -73,7 +73,7 @@
   }
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
   }
 
   &:focus-visible {
@@ -160,7 +160,7 @@
   font-size: clamp(4rem, 12vw, 8rem);
   font-weight: $font-weight-bold;
   line-height: 1;
-  color: $color-primary;
+  color: $color-brand-text;
   margin: 0 0 $spacing-4;
   letter-spacing: $letter-spacing-tight;
 }
@@ -285,7 +285,7 @@
     transform $motion-duration-fast $motion-ease-out;
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
     transform: translateY(-1px);
   }
 
@@ -357,7 +357,7 @@
   }
 
   &.mobileNavLinkActive {
-    color: $color-primary;
+    color: $color-brand-text;
     background: $color-bg-active;
   }
 }

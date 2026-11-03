@@ -20,7 +20,7 @@
 .stackEyebrow {
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
-  color: $color-primary;
+  color: $color-brand-text;
   text-transform: uppercase;
   letter-spacing: $letter-spacing-wide;
   margin-bottom: $spacing-1;
@@ -95,19 +95,19 @@
   &:hover {
     color: #fff;
     background: $color-primary;
-    border-color: $color-primary;
+    border-color: $color-brand-text;
     transform: translateY(-2px);
     box-shadow: $shadow-primary;
   }
 }
 
 .tagHighlight {
-  color: $color-primary-dark;
+  color: $color-brand-text;
   background: rgba($color-primary, 0.08);
   border-color: rgba($color-primary, 0.12);
 
   &:hover {
-    color: $color-primary-dark;
+    color: $color-brand-text;
     background: rgba($color-primary, 0.12);
     border-color: rgba($color-primary, 0.2);
   }

@@ -105,8 +105,8 @@ function buildJsonLd(options: {
     email: `mailto:${profile.email}`,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Köln',
-      addressCountry: 'DE',
+      addressRegion: 'Galicia',
+      addressCountry: 'ES',
     },
     knowsLanguage: ['Spanish', 'English', 'German', 'Portuguese'],
     knowsAbout: [

@@ -23,7 +23,7 @@ export const profile = {
   tagline: 'Full-stack web developer',
   headline:
     '4+ years building web applications in React & Next.js — modern web apps, 3D experiences and clean code.',
-  location: 'Köln, Germany',
+  location: 'Galicia, Spain',
   email: 'job@azaelac.dev',
   phone: '+49 176 21404156',
   resumeUrl: `${cdnUrl}/Resume/Azael_AC_EN.pdf`,
@@ -48,6 +48,10 @@ const localizedProfile: Record<string, LocalizedText> = {
     en: profile.summary,
     es: 'Desarrollador web full-stack con más de 4 años de experiencia especializada en el ecosistema React y Next.js. Construyo aplicaciones web modernas, responsivas y experiencias 3D interactivas. Tengo experiencia en entornos ágiles, combinando sólida capacidad técnica con resolución creativa de problemas. Me apasiona el código limpio, la optimización de rendimiento y mantenerme al día con las tecnologías web emergentes.',
   },
+  location: {
+    en: profile.location,
+    es: 'Galicia, España',
+  },
 };
 
 export function getProfile(locale: Locale) {
@@ -57,5 +61,6 @@ export function getProfile(locale: Locale) {
     tagline: localizeValue(localizedProfile.tagline, profile.tagline, locale),
     headline: localizeValue(localizedProfile.headline, profile.headline, locale),
     summary: localizeValue(localizedProfile.summary, profile.summary, locale),
+    location: localizeValue(localizedProfile.location, profile.location, locale),
   };
 }

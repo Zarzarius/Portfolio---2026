@@ -66,13 +66,13 @@
 .contactLink {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-primary;
+  color: $color-brand-text;
   text-underline-offset: 0.2em;
   transition: color $motion-duration-normal $motion-ease-in-out,
     text-decoration-color $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
-    color: $color-primary-dark;
+    color: $color-brand-text;
     text-decoration: underline;
   }
 }
@@ -83,7 +83,7 @@
   color: $color-text-secondary;
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
   }
 }
 
@@ -127,7 +127,7 @@
 
   &:focus-visible {
     outline: none;
-    border-color: $color-primary;
+    border-color: $color-brand-text;
     box-shadow: 0 0 0 3px $color-bg-hover;
   }
 
@@ -159,7 +159,7 @@
 
   &:focus-visible {
     outline: none;
-    border-color: $color-primary;
+    border-color: $color-brand-text;
     box-shadow: 0 0 0 3px $color-bg-hover;
   }
 
@@ -208,14 +208,14 @@
 
 .socialLink {
   font-weight: $font-weight-medium;
-  color: $color-primary;
+  color: $color-brand-text;
   padding: $spacing-1;
   border-radius: $border-radius-md;
   transition: color $motion-duration-normal $motion-ease-in-out,
     transform $motion-duration-fast $motion-ease-out;
 
   &:hover {
-    color: $color-primary-dark;
+    color: $color-brand-text;
     transform: translateY(-2px);
   }
 }

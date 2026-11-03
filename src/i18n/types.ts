@@ -35,8 +35,13 @@ export interface Messages {
     backToHome: string;
   };
   home: {
+    heroLead: string;
+    heroAccent: string;
     subtitle: string;
     viewWork: string;
+    years: string;
+    focus: string;
+    factsLabel: string;
     getInTouch: string;
     portfolioEyebrow: string;
     selectedWork: string;

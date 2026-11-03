@@ -25,9 +25,14 @@ export const esMessages: Messages = {
     backToHome: 'Volver al inicio',
   },
   home: {
+    heroLead: 'Creo experiencias web',
+    heroAccent: 'interactivas',
     subtitle:
-      'Explorando el espacio entre diseño y tecnología para crear experiencias digitales atractivas e intuitivas.',
-    viewWork: 'Ver trabajos',
+      'Desarrollador full-stack con más de 4 años en React, TypeScript y desarrollo creativo. Especializado en experiencias 3D y WebGL, combinando tecnología, diseño y creatividad.',
+    viewWork: 'Ver proyectos',
+    years: '+4 años de experiencia',
+    focus: 'Desarrollo 3D / WebGL',
+    factsLabel: 'Datos',
     getInTouch: 'Contactar',
     portfolioEyebrow: 'Portfolio',
     selectedWork: 'Trabajos seleccionados',
@@ -102,16 +107,16 @@ export const esMessages: Messages = {
   seo: {
     homeTitle: 'Azael Alonso Campana — Desarrollador web full-stack',
     homeDescription:
-      'Azael Alonso Campana es desarrollador full-stack en Köln. React, Next.js, WebAR y experiencias 3D para marcas y estudios.',
-    aboutTitle: 'Sobre Azael Alonso Campana — Desarrollador en Köln',
+      'Azael Alonso Campana es desarrollador full-stack en Galicia, España. React, Next.js, WebAR y experiencias 3D para marcas y estudios.',
+    aboutTitle: 'Sobre Azael Alonso Campana — Desarrollador en Galicia',
     aboutDescription:
-      'Sobre Azael Alonso Campana, desarrollador full-stack en Köln. Más de 4 años con React y Next.js, idiomas y trayectoria.',
+      'Sobre Azael Alonso Campana, desarrollador full-stack en Galicia, España. Más de 4 años con React y Next.js, idiomas y trayectoria.',
     projectsTitle: 'Proyectos de Azael Alonso Campana',
     projectsDescription:
       'Proyectos web de Azael Alonso Campana: WebAR, piezas 3D, sitios con Next.js y CMS headless.',
     contactTitle: 'Contacto — Azael Alonso Campana',
     contactDescription:
-      'Contacta a Azael Alonso Campana, desarrollador full-stack en Köln. React, Next.js y 3D. Correo job@azaelac.dev.',
+      'Contacta a Azael Alonso Campana, desarrollador full-stack en Galicia, España. React, Next.js y 3D. Correo job@azaelac.dev.',
     localeMeta: 'es_ES',
   },
 };

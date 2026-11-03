@@ -152,9 +152,9 @@
   transition: $transition-all;
 
   &:hover {
-    color: $color-primary;
+    color: $color-brand-text;
     background: color-mix(in srgb, $color-primary 20%, transparent);
-    border-color: $color-primary;
+    border-color: $color-brand-text;
   }
 }
 

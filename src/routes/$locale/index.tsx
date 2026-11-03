@@ -20,6 +20,67 @@ import type { Project, ProjectGroup } from '@/data/projects';
 const cx = classNames.bind(styles);
 let heroAnimationShown = false;
 
+const heroStack = [
+  { name: 'React', mark: 'Re', tone: 'toneReact' },
+  { name: 'TypeScript', mark: 'TS', tone: 'toneTs' },
+  { name: 'Next.js', mark: 'N', tone: 'toneNext' },
+  { name: 'R3F', mark: 'R3F', tone: 'toneR3f' },
+  { name: 'Node.js', mark: 'JS', tone: 'toneNode' },
+  { name: 'Docker', mark: 'D', tone: 'toneDocker' },
+] as const;
+
+type FactIconName = 'pin' | 'role' | 'time' | 'layers';
+
+function FactIcon({ name }: { name: FactIconName }) {
+  const props = {
+    width: 18,
+    height: 18,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.75,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    'aria-hidden': true as const,
+  };
+
+  switch (name) {
+    case 'pin':
+      return (
+        <svg {...props}>
+          <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z" />
+          <circle cx="12" cy="10" r="2.25" />
+        </svg>
+      );
+    case 'role':
+      return (
+        <svg {...props}>
+          <rect x="3" y="7" width="18" height="13" rx="2" />
+          <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+        </svg>
+      );
+    case 'time':
+      return (
+        <svg {...props}>
+          <rect x="3" y="5" width="18" height="16" rx="2" />
+          <path d="M16 3v4M8 3v4M3 10h18" />
+        </svg>
+      );
+    case 'layers':
+      return (
+        <svg {...props}>
+          <path d="m12 3 9 5-9 5-9-5 9-5z" />
+          <path d="m3 12 9 5 9-5" />
+          <path d="m3 17 9 5 9-5" />
+        </svg>
+      );
+    default: {
+      const unreachable: never = name;
+      return unreachable;
+    }
+  }
+}
+
 export const Route = createFileRoute('/$locale/')({
   loader: async () => {
     const [projects, projectGroups, techCategories] = await Promise.all([
@@ -91,10 +152,12 @@ function Home() {
     };
   }, [shouldAnimate]);
 
-  // Split headline into parts for styling if needed, or just use as is
-  const headlineParts = profile.headline.split(' ');
-  const lastWord = headlineParts.pop();
-  const mainHeadline = headlineParts.join(' ');
+  const facts: { icon: FactIconName; text: string }[] = [
+    { icon: 'pin', text: profile.location },
+    { icon: 'role', text: profile.tagline },
+    { icon: 'time', text: t.home.years },
+    { icon: 'layers', text: t.home.focus },
+  ];
 
   return (
     <>
@@ -114,27 +177,67 @@ function Home() {
         </div>
         <div className={cx('heroOverlay')} aria-hidden />
         <div className={cx('heroContent')}>
-          <h1 className={cx('title')}>
-            <span className={cx('eyebrow')}>{profile.fullName}</span>
-            {mainHeadline} <span className={cx('accent')}>{lastWord}</span>
-          </h1>
-          <p className={cx('subtitle')}>{t.home.subtitle}</p>
-          <div className={cx('heroActions')}>
-            <Link
-              to="/$locale/projects"
-              params={{ locale }}
-              className={cx('heroBtnPrimary')}
-            >
-              {t.home.viewWork}
-            </Link>
-            <Link
-              to="/$locale/contact"
-              params={{ locale }}
-              className={cx('heroBtnSecondary')}
-            >
-              {t.home.getInTouch}
-            </Link>
+          <div className={cx('heroMain')}>
+            <div className={cx('heroCopy')}>
+              <p className={cx('eyebrow')}>
+                <span className={cx('eyebrowMark')} aria-hidden />
+                {profile.tagline}
+              </p>
+              <h1 className={cx('title')}>
+                {t.home.heroLead}{' '}
+                <span className={cx('accent')}>{t.home.heroAccent}</span>
+              </h1>
+              <p className={cx('subtitle')}>{t.home.subtitle}</p>
+              <div className={cx('heroActions')}>
+                <Link
+                  to="/$locale/projects"
+                  params={{ locale }}
+                  className={cx('heroBtnPrimary')}
+                >
+                  {t.home.viewWork}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m13 6 6 6-6 6" />
+                  </svg>
+                </Link>
+                <Link
+                  to="/$locale/about"
+                  params={{ locale }}
+                  className={cx('heroBtnSecondary')}
+                >
+                  {t.nav.about}
+                </Link>
+              </div>
+            </div>
+            <ul className={cx('heroFacts')} aria-label={t.home.factsLabel}>
+              {facts.map((fact) => (
+                <li key={fact.icon} className={cx('heroFact')}>
+                  <span className={cx('heroFactIcon')}>
+                    <FactIcon name={fact.icon} />
+                  </span>
+                  {fact.text}
+                </li>
+              ))}
+            </ul>
           </div>
+          <ul className={cx('heroStack')} aria-label={t.stack.title}>
+            {heroStack.map((item) => (
+              <li key={item.name} className={cx('heroStackItem')}>
+                <span className={cx('heroStackMark', item.tone)}>{item.mark}</span>
+                {item.name}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
