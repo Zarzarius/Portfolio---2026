@@ -54,6 +54,10 @@ $hero-cta-hover: $color-primary-dark;
   object-fit: cover;
   object-position: 68% 42%;
   display: block;
+
+  @media (max-width: $breakpoint-md) {
+    object-position: center 32%;
+  }
 }
 
 .heroOverlay {
@@ -76,6 +80,16 @@ $hero-cta-hover: $color-primary-dark;
       transparent 58%,
       rgba(7, 8, 20, 0.78) 100%
     );
+
+  @media (max-width: $breakpoint-md) {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 8, 20, 0.62) 0%,
+      rgba(7, 8, 20, 0.18) 24%,
+      rgba(7, 8, 20, 0.28) 48%,
+      rgba(7, 8, 20, 0.9) 100%
+    );
+  }
 }
 
 .heroContent {
@@ -281,10 +295,14 @@ $hero-cta-hover: $color-primary-dark;
   width: 3rem;
   height: 3rem;
   border-radius: 0.85rem;
-  font-size: 0.8rem;
-  font-weight: $font-weight-bold;
-  letter-spacing: -0.03em;
   color: #fff;
+
+  svg {
+    width: 1.45rem;
+    height: 1.45rem;
+    display: block;
+    fill: currentColor;
+  }
 }
 
 .toneReact {
@@ -311,6 +329,15 @@ $hero-cta-hover: $color-primary-dark;
 
 .toneDocker {
   background: #1d63ed;
+}
+
+.toneFigma {
+  background: #f24e1e;
+}
+
+.toneCursor {
+  background: #111111;
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 @keyframes heroContentIn {
