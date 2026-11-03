@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, notFound } from '@tanstack/react-router';
 import classNames from 'classnames/bind';
 import {
   AchievementsList,
@@ -8,7 +8,7 @@ import {
   formatProjectMeta,
   getProjectTypeLabel,
 } from '@/components/ProjectDetail';
-import { getDefaultSeoMeta } from '@/data/seo';
+import { absoluteAssetUrl, getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProjectGroup } from '@/data/projects.i18n';
 import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
@@ -20,23 +20,27 @@ const cx = classNames.bind(styles);
 export const Route = createFileRoute('/$locale/projects/group/$groupSlug')({
   loader: async ({ params }) => {
     const slug = params.groupSlug?.trim();
-    if (!slug) return { group: null };
+    if (!slug) throw notFound();
     const group = await getProjectGroupBySlug({ data: { slug } });
+    if (!group) throw notFound();
     return { group };
   },
   head: ({ loaderData, params }) => {
     const locale = normalizeLocale(params.locale);
     if (!loaderData?.group) {
       const t = getMessages(locale);
-      return { meta: [{ title: t.projects.groupNotFound }] };
+      return {
+        meta: [
+          { title: t.projects.groupNotFound },
+          { name: 'robots', content: 'noindex, nofollow' },
+        ],
+      };
     }
     const group = getLocalizedProjectGroup(loaderData.group, locale);
     const title = `${group.title} — Azael AC`;
-    const description = group.description
-      ? group.description.slice(0, 155) +
-        (group.description.length > 155 ? '…' : '')
-      : `Collection: ${group.title}`;
+    const description = group.description ?? group.title;
     const path = `/${locale}/projects/group/${params.groupSlug ?? ''}`;
+    const image = absoluteAssetUrl(group.image);
     const seo = getDefaultSeoMeta({
       title,
       description,
@@ -44,6 +48,15 @@ export const Route = createFileRoute('/$locale/projects/group/$groupSlug')({
       ogType: 'article',
       locale,
       pathnameWithoutLocale: `/projects/group/${params.groupSlug ?? ''}`,
+      image,
+      imageAlt: group.imageAlt ?? group.title,
+      kind: 'work',
+      work: {
+        name: group.title,
+        description,
+        technologies: [...group.technologies],
+        image,
+      },
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },

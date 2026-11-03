@@ -151,8 +151,11 @@
 }
 
 .eyebrow {
+  display: block;
   font-size: $font-size-sm;
+  text-shadow: none;
   font-weight: $font-weight-bold;
+  line-height: 1.4;
   color: $color-primary;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -171,7 +174,7 @@
   animation: heroItemIn 0.8s $motion-ease-out 0.3s backwards;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 
-  span {
+  .accent {
     background: linear-gradient(135deg, $color-primary 0%, $color-accent 100%);
     -webkit-background-clip: text;
     background-clip: text;

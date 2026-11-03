@@ -100,8 +100,18 @@ export const esMessages: Messages = {
     },
   },
   seo: {
-    defaultDescription:
-      'React, Next.js, experiencias 3D y CMS headless. Portfolio — Azael Alonso Campana.',
+    homeTitle: 'Azael Alonso Campana — Desarrollador web full-stack',
+    homeDescription:
+      'Azael Alonso Campana es desarrollador full-stack en Köln. React, Next.js, WebAR y experiencias 3D para marcas y estudios.',
+    aboutTitle: 'Sobre Azael Alonso Campana — Desarrollador en Köln',
+    aboutDescription:
+      'Sobre Azael Alonso Campana, desarrollador full-stack en Köln. Más de 4 años con React y Next.js, idiomas y trayectoria.',
+    projectsTitle: 'Proyectos de Azael Alonso Campana',
+    projectsDescription:
+      'Proyectos web de Azael Alonso Campana: WebAR, piezas 3D, sitios con Next.js y CMS headless.',
+    contactTitle: 'Contacto — Azael Alonso Campana',
+    contactDescription:
+      'Contacta a Azael Alonso Campana, desarrollador full-stack en Köln. React, Next.js y 3D. Correo job@azaelac.dev.',
     localeMeta: 'es_ES',
   },
 };

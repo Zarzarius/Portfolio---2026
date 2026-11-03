@@ -25,7 +25,12 @@ import '../index.scss';
 
 const cx = classNames.bind(styles);
 
-const defaultSeo = getDefaultSeoMeta({ locale: DEFAULT_LOCALE, path: '/en' });
+const fallbackSeo = getDefaultSeoMeta({
+  locale: DEFAULT_LOCALE,
+  path: `/${DEFAULT_LOCALE}`,
+  pathnameWithoutLocale: '/',
+  kind: 'home',
+});
 
 function NotFoundComponent() {
   const t = useMessages();
@@ -60,13 +65,9 @@ function RootPendingComponent() {
 
 export const Route = createRootRoute({
   head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      ...defaultSeo.meta,
-    ],
-    links: defaultSeo.links,
-    scripts: defaultSeo.scripts,
+    meta: fallbackSeo.meta.filter(
+      (entry) => !('name' in entry) || entry.name !== 'robots',
+    ),
   }),
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

@@ -1,5 +1,12 @@
 export interface SeoMessages {
-  defaultDescription: string;
+  homeTitle: string;
+  homeDescription: string;
+  aboutTitle: string;
+  aboutDescription: string;
+  projectsTitle: string;
+  projectsDescription: string;
+  contactTitle: string;
+  contactDescription: string;
   localeMeta: string;
 }
 

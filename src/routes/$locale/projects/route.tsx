@@ -15,7 +15,7 @@ import {
   getLocalizedProject,
   getLocalizedProjectGroup,
 } from '@/data/projects.i18n';
-import { normalizeLocale } from '@/i18n';
+import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 
 const cx = classNames.bind(styles);
@@ -37,11 +37,29 @@ export const Route = createFileRoute('/$locale/projects')({
     ]);
     return { projects, projectGroups, categories };
   },
-  head: ({ params }) => {
+  head: ({ params, loaderData, matches }) => {
+    const leaf = matches[matches.length - 1];
+    if (leaf?.routeId !== '/$locale/projects') return {};
+    const locale = normalizeLocale(params.locale);
+    const t = getMessages(locale);
+    const listItems = [
+      ...(loaderData?.projects ?? []).map((project: Project) => ({
+        name: getLocalizedProject(project, locale).title,
+        path: `/${locale}/projects/${project.slug}`,
+      })),
+      ...(loaderData?.projectGroups ?? []).map((group: ProjectGroup) => ({
+        name: getLocalizedProjectGroup(group, locale).title,
+        path: `/${locale}/projects/group/${group.slug}`,
+      })),
+    ];
     const seo = getDefaultSeoMeta({
-      locale: params.locale,
-      path: `/${params.locale}/projects`,
+      locale,
+      path: `/${locale}/projects`,
       pathnameWithoutLocale: '/projects',
+      title: t.seo.projectsTitle,
+      description: t.seo.projectsDescription,
+      kind: 'projects',
+      listItems,
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },

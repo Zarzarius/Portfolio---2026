@@ -24,7 +24,7 @@ export function SocialLinks({
       <a
         href={normalizeExternalUrl(githubUrl)}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="me noopener noreferrer"
         className={linkClassName}
         aria-label="GitHub"
       >
@@ -43,7 +43,7 @@ export function SocialLinks({
       <a
         href={normalizeExternalUrl(linkedinUrl)}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="me noopener noreferrer"
         className={linkClassName}
         aria-label="LinkedIn"
       >

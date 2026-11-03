@@ -11,14 +11,13 @@ import {
   getLocalizedProjectGroup,
 } from '@/data/projects.i18n';
 import { getLocalizedStack } from '@/data/stack.i18n';
-import { normalizeLocale } from '@/i18n';
+import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
 import styles from '../index.module.scss';
 import { getProjects, getProjectGroups, getStack } from '@/server/functions';
 import type { Project, ProjectGroup } from '@/data/projects';
 
 const cx = classNames.bind(styles);
-const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
 let heroAnimationShown = false;
 
 export const Route = createFileRoute('/$locale/')({
@@ -31,10 +30,15 @@ export const Route = createFileRoute('/$locale/')({
     return { projects, projectGroups, techCategories };
   },
   head: ({ params }) => {
+    const locale = normalizeLocale(params.locale);
+    const t = getMessages(locale);
     const seo = getDefaultSeoMeta({
-      locale: params.locale,
-      path: `/${params.locale}`,
+      locale,
+      path: `/${locale}`,
       pathnameWithoutLocale: '/',
+      title: t.seo.homeTitle,
+      description: t.seo.homeDescription,
+      kind: 'home',
     });
     return { meta: seo.meta, links: seo.links, scripts: seo.scripts };
   },
@@ -100,19 +104,19 @@ function Home() {
       >
         <div ref={heroBackgroundRef} className={cx('heroBackground')} aria-hidden>
           <img
-            src={`${cdnUrl}/Images/aza-hero.png`}
+            src="/aza-hero.jpg"
             alt=""
             className={cx('heroImage')}
-            width={1600}
-            height={1200}
+            width={1024}
+            height={576}
             fetchPriority="high"
           />
         </div>
         <div className={cx('heroOverlay')} aria-hidden />
         <div className={cx('heroContent')}>
-          <p className={cx('eyebrow')}>{profile.tagline}</p>
           <h1 className={cx('title')}>
-            {mainHeadline} <span>{lastWord}</span>
+            <span className={cx('eyebrow')}>{profile.fullName}</span>
+            {mainHeadline} <span className={cx('accent')}>{lastWord}</span>
           </h1>
           <p className={cx('subtitle')}>{t.home.subtitle}</p>
           <div className={cx('heroActions')}>
