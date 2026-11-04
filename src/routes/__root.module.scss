@@ -62,6 +62,8 @@
   display: flex;
   align-items: center;
   gap: $spacing-2;
+  flex-shrink: 0;
+  white-space: nowrap;
 
   &::before {
     content: '';
@@ -309,6 +311,20 @@
 
   .footerConnect {
     align-items: flex-start;
+  }
+}
+
+@media (min-width: #{$breakpoint-md + 1px}) and (max-width: $breakpoint-lg) {
+  .headerInner {
+    gap: $spacing-3;
+  }
+
+  .navLink {
+    padding: $spacing-2 $spacing-3;
+  }
+
+  .headerActions {
+    gap: $spacing-2;
   }
 }
 

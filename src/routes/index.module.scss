@@ -20,12 +20,17 @@ $hero-cta-hover: $color-primary-dark;
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: calc(100vh - #{$header-height});
+  min-height: calc(100svh - #{$header-height});
   display: flex;
   align-items: stretch;
   overflow: hidden;
   background: #070814;
+
+  @media (min-width: #{$breakpoint-lg + 1px}) {
+    height: calc(100vh - #{$header-height});
+    height: calc(100svh - #{$header-height});
+  }
 
   &.heroNoAnimation .heroContent {
     animation: none;
@@ -81,6 +86,23 @@ $hero-cta-hover: $color-primary-dark;
       rgba(7, 8, 20, 0.78) 100%
     );
 
+  @media (max-width: $breakpoint-lg) {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(7, 8, 20, 0.85) 0%,
+        rgba(7, 8, 20, 0.55) 60%,
+        rgba(7, 8, 20, 0.15) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(7, 8, 20, 0.35) 0%,
+        transparent 35%,
+        transparent 60%,
+        rgba(7, 8, 20, 0.8) 100%
+      );
+  }
+
   @media (max-width: $breakpoint-md) {
     background: linear-gradient(
       180deg,
@@ -101,13 +123,16 @@ $hero-cta-hover: $color-primary-dark;
   box-sizing: border-box;
   width: 100%;
   max-width: $container-max-width;
-  min-height: 100svh;
+  min-height: calc(100vh - #{$header-height});
+  min-height: calc(100svh - #{$header-height});
   margin: 0 auto;
-  padding: calc(#{$header-height} + #{$spacing-5}) $container-padding $spacing-5;
+  padding: $spacing-6 $container-padding $spacing-5;
   animation: heroContentIn $motion-duration-slow $motion-ease-out backwards;
 
-  @media (min-width: $breakpoint-lg) {
-    height: 100svh;
+  @media (min-width: #{$breakpoint-lg + 1px}) {
+    height: 100%;
+    min-height: 0;
+    padding-bottom: calc(6.5rem + #{$spacing-5});
   }
 }
 
@@ -121,13 +146,18 @@ $hero-cta-hover: $color-primary-dark;
 
   @media (max-width: $breakpoint-lg) {
     grid-template-columns: 1fr;
-    gap: $spacing-6;
+    align-content: center;
+    gap: $spacing-8;
     align-items: start;
   }
 }
 
 .heroCopy {
   max-width: 38rem;
+
+  @media (min-width: #{$breakpoint-md + 1px}) and (max-width: $breakpoint-lg) {
+    max-width: 44rem;
+  }
 }
 
 .eyebrow {
@@ -158,6 +188,10 @@ $hero-cta-hover: $color-primary-dark;
   letter-spacing: -0.04em;
   line-height: 0.98;
   text-wrap: balance;
+
+  @media (min-width: #{$breakpoint-md + 1px}) and (max-width: $breakpoint-lg) {
+    font-size: clamp(3rem, 6.4vw, 4rem);
+  }
 
   .accent {
     background: linear-gradient(100deg, $hero-accent 0%, $hero-accent-deep 100%);
@@ -275,6 +309,26 @@ $hero-cta-hover: $color-primary-dark;
   padding: $spacing-5 0 0;
   list-style: none;
   border-top: 1px solid rgba(247, 245, 255, 0.16);
+
+  @media (min-width: #{$breakpoint-md + 1px}) and (max-width: $breakpoint-lg) {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: $spacing-2;
+
+    .heroStackItem {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  @media (min-width: #{$breakpoint-lg + 1px}) {
+    position: absolute;
+    right: $container-padding;
+    bottom: $spacing-5;
+    left: $container-padding;
+    width: auto;
+    margin: 0;
+  }
 }
 
 .heroStackItem {
