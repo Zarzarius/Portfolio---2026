@@ -31,7 +31,7 @@ function About() {
   const profile = getProfile(normalizeLocale(locale));
 
   return (
-    <div className={cx('page')}>
+    <div className={cx('page')} data-stagger>
       <header className={cx('header')}>
         <p className={cx('eyebrow')}>{t.about.eyebrow}</p>
         <h1 className={cx('title')}>{t.about.title}</h1>

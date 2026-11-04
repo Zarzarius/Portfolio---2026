@@ -1,4 +1,4 @@
-import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
+import { createFileRoute, Outlet, useRouterState } from '@tanstack/react-router';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { Button } from '@/components/Button';
@@ -70,8 +70,10 @@ function ProjectsLayout() {
   const { projects, projectGroups, categories } = Route.useLoaderData();
   const { locale } = Route.useParams();
   const t = useMessages();
-  const location = useLocation();
-  const isListPage = location.pathname === `/${locale}/projects`;
+  const pathname = useRouterState({
+    select: (state) => state.matches[state.matches.length - 1]?.pathname,
+  });
+  const isListPage = pathname === `/${locale}/projects`;
   const [activeFilter, setActiveFilter] = useState(ALL_CATEGORIES_KEY);
 
   const filterOptions = [ALL_CATEGORIES_KEY, ...categories];
@@ -100,7 +102,7 @@ function ProjectsLayout() {
   }
 
   return (
-    <div className={cx('page')}>
+    <div className={cx('page')} data-stagger>
       <header className={cx('header')}>
         <p className={cx('eyebrow')}>{t.projects.eyebrow}</p>
         <h1 className={cx('title')}>{t.projects.title}</h1>

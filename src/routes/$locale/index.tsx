@@ -210,7 +210,7 @@ function Home() {
         <div className={cx('heroOverlay')} aria-hidden />
         <div className={cx('heroContent')}>
           <div className={cx('heroMain')}>
-            <div className={cx('heroCopy')}>
+            <div className={cx('heroCopy')} data-stagger>
               <p className={cx('eyebrow')}>
                 <span className={cx('eyebrowMark')} aria-hidden />
                 {profile.tagline}
@@ -251,7 +251,11 @@ function Home() {
                 </Link>
               </div>
             </div>
-            <ul className={cx('heroFacts')} aria-label={t.home.factsLabel}>
+            <ul
+              className={cx('heroFacts')}
+              aria-label={t.home.factsLabel}
+              data-stagger
+            >
               {facts.map((fact) => (
                 <li key={fact.icon} className={cx('heroFact')}>
                   <span className={cx('heroFactIcon')}>
@@ -262,7 +266,11 @@ function Home() {
               ))}
             </ul>
           </div>
-          <ul className={cx('heroStack')} aria-label={t.stack.title}>
+          <ul
+            className={cx('heroStack')}
+            aria-label={t.stack.title}
+            data-stagger
+          >
             {heroStack.map((item) => (
               <li key={item.name} className={cx('heroStackItem')}>
                 <span className={cx('heroStackMark', item.tone)}>
@@ -309,7 +317,7 @@ function Home() {
           </section>
         </ScrollReveal>
 
-        <section className={cx('cta')}>
+        <section className={cx('cta')} data-reveal>
           <div className={cx('ctaContent')}>
             <h2 className={cx('ctaTitle')}>{t.home.ctaTitle}</h2>
             <p className={cx('ctaText')}>

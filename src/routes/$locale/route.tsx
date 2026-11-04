@@ -2,7 +2,7 @@ import {
   Outlet,
   createFileRoute,
   redirect,
-  useLocation,
+  useRouterState,
 } from '@tanstack/react-router';
 import { DEFAULT_LOCALE, isLocale, type Locale } from '@/i18n/locales';
 
@@ -26,7 +26,8 @@ export const Route = createFileRoute('/$locale')({
 });
 
 function LocaleLayout() {
-  const location = useLocation();
-  return <Outlet key={location.pathname} />;
+  const pathname = useRouterState({
+    select: (state) => state.matches[state.matches.length - 1]?.pathname,
+  });
+  return <Outlet key={pathname} />;
 }
-

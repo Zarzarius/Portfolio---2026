@@ -1,21 +1,16 @@
+import { useRef, type MouseEvent, type PointerEvent } from 'react';
 import { Link } from '@tanstack/react-router';
 import classNames from 'classnames/bind';
-import type { ProjectCardItem } from './projectCardItems';
+import { getCardImageUrl, type ProjectCardItem } from './projectCardItems';
 import styles from './ProjectCard.module.scss';
 
 const cx = classNames.bind(styles);
 
-/** Placeholder image service: stable image per id when no project image is set */
-const PLACEHOLDER_IMAGE_BASE = 'https://picsum.photos/seed';
-
-const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
-
-function getCardImageUrl(item: { id: string | number; image?: string }): string {
-  if (item.image) {
-    if (item.image.startsWith('http')) return item.image;
-    return cdnUrl ? `${cdnUrl}/${item.image}` : `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
-  }
-  return `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
+function trackSpotlight(event: PointerEvent<HTMLAnchorElement>) {
+  const card = event.currentTarget;
+  const rect = card.getBoundingClientRect();
+  card.style.setProperty('--spot-x', `${event.clientX - rect.left}px`);
+  card.style.setProperty('--spot-y', `${event.clientY - rect.top}px`);
 }
 
 type TitleLevel = 2 | 3 | 4;
@@ -49,6 +44,21 @@ export function ProjectCard({
   titleLevel = 2,
 }: ProjectCardProps) {
   const Title = cardTitleTag(titleLevel);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  const markSharedElements = (event: MouseEvent<HTMLAnchorElement>) => {
+    const opensElsewhere =
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey;
+    if (opensElsewhere) return;
+    titleRef.current?.style.setProperty('view-transition-name', 'project-title');
+    imageRef.current?.style.setProperty('view-transition-name', 'project-image');
+  };
+
   return (
     <Link
       to={to}
@@ -56,9 +66,12 @@ export function ProjectCard({
       className={cx('card')}
       data-project-card
       preload="intent"
+      onPointerMove={trackSpotlight}
+      onClick={markSharedElements}
     >
       <div className={cx('cardMedia')}>
         <img
+          ref={imageRef}
           className={cx('cardMediaImage')}
           src={getCardImageUrl(item)}
           alt={item.imageAlt ?? item.title}
@@ -70,7 +83,9 @@ export function ProjectCard({
         )}
       </div>
       <div className={cx('cardBody')}>
-        <Title className={cx('cardTitle')}>{item.title}</Title>
+        <Title ref={titleRef} className={cx('cardTitle')}>
+          {item.title}
+        </Title>
         <div className={cx('cardContentSlot')}>
           <p className={cx('cardDescription')}>{item.description}</p>
           <div className={cx('tech')}>

@@ -24,7 +24,7 @@ $hero-cta-hover: $color-primary-dark;
   min-height: calc(100svh - #{$header-height});
   display: flex;
   align-items: stretch;
-  overflow: hidden;
+  overflow: clip;
   background: #070814;
 
   @media (min-width: #{$breakpoint-lg + 1px}) {
@@ -32,14 +32,9 @@ $hero-cta-hover: $color-primary-dark;
     height: calc(100svh - #{$header-height});
   }
 
-  &.heroNoAnimation .heroContent {
+  &.heroNoAnimation [data-stagger] > *,
+  &.heroNoAnimation .heroImage {
     animation: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .heroContent {
-      animation: none;
-    }
   }
 }
 
@@ -59,6 +54,10 @@ $hero-cta-hover: $color-primary-dark;
   object-fit: cover;
   object-position: 68% 42%;
   display: block;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: heroImageIn 1.8s $motion-ease-out backwards;
+  }
 
   @media (max-width: $breakpoint-md) {
     object-position: center 32%;
@@ -127,7 +126,6 @@ $hero-cta-hover: $color-primary-dark;
   min-height: calc(100svh - #{$header-height});
   margin: 0 auto;
   padding: $spacing-6 $container-padding $spacing-5;
-  animation: heroContentIn $motion-duration-slow $motion-ease-out backwards;
 
   @media (min-width: #{$breakpoint-lg + 1px}) {
     height: 100%;
@@ -177,6 +175,7 @@ $hero-cta-hover: $color-primary-dark;
   border-radius: 2px;
   background: $hero-accent-deep;
   flex-shrink: 0;
+  transform-origin: 0 50%;
 }
 
 .title {
@@ -194,7 +193,15 @@ $hero-cta-hover: $color-primary-dark;
   }
 
   .accent {
-    background: linear-gradient(100deg, $hero-accent 0%, $hero-accent-deep 100%);
+    background:
+      linear-gradient(
+          100deg,
+          transparent 40%,
+          rgba(255, 255, 255, 0.9) 50%,
+          transparent 60%
+        )
+        200% 0 / 200% 100% no-repeat,
+      linear-gradient(100deg, $hero-accent 0%, $hero-accent-deep 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -229,6 +236,10 @@ $hero-cta-hover: $color-primary-dark;
   cursor: pointer;
   transition: $transition-interactive;
 
+  &:active {
+    transform: scale(0.97);
+  }
+
   &:focus-visible {
     outline: 2px solid $hero-accent;
     outline-offset: 3px;
@@ -236,13 +247,44 @@ $hero-cta-hover: $color-primary-dark;
 }
 
 .heroBtnPrimary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   color: #fff;
   background: $hero-cta;
   box-shadow: 0 8px 24px rgba(91, 70, 214, 0.35);
 
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+
+  svg {
+    transition: $transition-transform;
+  }
+
   &:hover {
     color: #fff;
     background: $hero-cta-hover;
+
+    &::after {
+      transform: translateX(120%);
+      transition: transform 0.8s $motion-ease-expo;
+    }
+
+    svg {
+      transform: translateX(3px);
+    }
   }
 
   &:active {
@@ -263,6 +305,7 @@ $hero-cta-hover: $color-primary-dark;
 }
 
 .heroFacts {
+  --stagger-base: 0.3s;
   display: flex;
   flex-direction: column;
   gap: $spacing-4;
@@ -302,6 +345,8 @@ $hero-cta-hover: $color-primary-dark;
 }
 
 .heroStack {
+  --stagger-base: 0.5s;
+  --stagger-step: 0.04s;
   display: flex;
   flex-wrap: wrap;
   gap: $spacing-4 $spacing-5;
@@ -350,6 +395,16 @@ $hero-cta-hover: $color-primary-dark;
   height: 3rem;
   border-radius: 0.85rem;
   color: #fff;
+  transition:
+    transform $motion-duration-slow $motion-ease-expo,
+    box-shadow $motion-duration-slow $motion-ease-out;
+
+  @media (hover: hover) {
+    .heroStackItem:hover & {
+      transform: translateY(-4px) rotate(-4deg);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
 
   svg {
     width: 1.45rem;
@@ -509,13 +564,67 @@ $hero-cta-hover: $color-primary-dark;
   }
 }
 
-@keyframes heroContentIn {
+@keyframes heroImageIn {
   from {
     opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero:not(.heroNoAnimation) {
+    .heroCopy > .title {
+      animation-name: titleIn;
+      animation-duration: 1s;
+      animation-timing-function: $motion-ease-expo;
+    }
+
+    .accent {
+      animation: accentSweep 1.6s $motion-ease-in-out 0.9s;
+    }
+
+    .eyebrowMark {
+      animation: markIn 0.8s $motion-ease-expo 0.25s backwards;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .heroContent {
+      animation: heroOut linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 80%;
+    }
+  }
+}
+
+@keyframes titleIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+    clip-path: inset(0 0 100% 0);
   }
 
   to {
-    opacity: 1;
+    clip-path: inset(-10% -10% -20% -10%);
+  }
+}
+
+@keyframes accentSweep {
+  to {
+    background-position: -100% 0, 0 0;
+  }
+}
+
+@keyframes markIn {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes heroOut {
+  to {
+    opacity: 0;
+    transform: translateY(-48px);
   }
 }
 
@@ -701,6 +810,10 @@ $hero-cta-hover: $color-primary-dark;
     color: #fff;
     transform: translateY(-2px);
     box-shadow: $shadow-primary;
+  }
+
+  &:active {
+    transform: scale(0.97);
   }
 
   &:focus-visible {

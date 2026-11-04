@@ -134,6 +134,35 @@ textarea {
   color: inherit;
 }
 
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-stagger] > * {
+    animation: rise-in $motion-duration-entrance $motion-ease-out backwards;
+  }
+
+  @for $i from 1 through 12 {
+    [data-stagger] > :nth-child(#{$i}) {
+      animation-delay: calc(
+        var(--stagger-base, 0s) + #{$i - 1} * var(--stagger-step, 0.07s)
+      );
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    [data-reveal] {
+      animation: rise-in $motion-ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 10rem;
+    }
+  }
+}
+
 main#main {
   view-transition-name: page-content;
   background-color: var(--color-bg-primary);
@@ -163,11 +192,34 @@ main#main {
 }
 
 ::view-transition-old(page-content) {
-  animation: slide-out 0.3s ease both;
+  animation: slide-out 0.2s ease-in both;
 }
 
 ::view-transition-new(page-content) {
-  animation: slide-in 0.3s ease both;
+  animation: slide-in 0.45s $motion-ease-expo 0.05s both;
+}
+
+::view-transition-group(project-title),
+::view-transition-group(project-image) {
+  z-index: 3;
+  animation-duration: 0.55s;
+  animation-timing-function: $motion-ease-expo;
+}
+
+::view-transition-group(project-image) {
+  overflow: clip;
+  border-radius: $border-radius-xl;
+}
+
+::view-transition-old(project-image),
+::view-transition-new(project-image) {
+  height: 100%;
+  object-fit: cover;
+}
+
+::view-transition-old(project-title),
+::view-transition-new(project-title) {
+  animation-duration: 0.3s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -178,27 +230,27 @@ main#main {
   }
 
   ::view-transition-old(page-content),
-  ::view-transition-new(page-content) {
+  ::view-transition-new(page-content),
+  ::view-transition-group(project-title),
+  ::view-transition-old(project-title),
+  ::view-transition-new(project-title),
+  ::view-transition-group(project-image),
+  ::view-transition-old(project-image),
+  ::view-transition-new(project-image) {
     animation: none;
   }
 }
 
 @keyframes slide-out {
-  from {
-    transform: translateY(0);
-  }
-
   to {
-    transform: translateY(-10px);
+    opacity: 0;
+    transform: translateY(-8px);
   }
 }
 
 @keyframes slide-in {
   from {
-    transform: translateY(10px);
-  }
-
-  to {
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(14px);
   }
 }

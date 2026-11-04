@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { ArrowIcon } from '@/components/ArrowIcon';
+import { getCardImageUrl } from '@/components/ProjectCard';
 
 type BackToProjectsLinkProps = {
   locale: string;
@@ -14,6 +15,11 @@ type DetailHeaderProps = {
   headerClassName: string;
   metaClassName: string;
   titleClassName: string;
+};
+
+type DetailHeroProps = {
+  item: { id: string | number; title: string; image?: string; imageAlt?: string };
+  className: string;
 };
 
 type AchievementsListProps = {
@@ -63,8 +69,28 @@ export function DetailHeader({
   return (
     <header className={headerClassName}>
       <span className={metaClassName}>{meta}</span>
-      <h1 className={titleClassName}>{title}</h1>
+      <h1
+        className={titleClassName}
+        style={{ viewTransitionName: 'project-title' }}
+      >
+        {title}
+      </h1>
     </header>
+  );
+}
+
+export function DetailHero({ item, className }: DetailHeroProps) {
+  return (
+    <img
+      className={className}
+      src={getCardImageUrl(item)}
+      alt={item.imageAlt ?? item.title}
+      width={1600}
+      height={800}
+      fetchPriority="high"
+      decoding="async"
+      style={{ viewTransitionName: 'project-image' }}
+    />
   );
 }
 

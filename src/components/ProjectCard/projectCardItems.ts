@@ -1,5 +1,18 @@
 import type { Project, ProjectGroup } from '@/data/projects';
 
+/** Placeholder image service: stable image per id when no project image is set */
+const PLACEHOLDER_IMAGE_BASE = 'https://picsum.photos/seed';
+
+const cdnUrl = import.meta.env.VITE_CDN_URL ?? '';
+
+export function getCardImageUrl(item: { id: string | number; image?: string }): string {
+  if (item.image) {
+    if (item.image.startsWith('http')) return item.image;
+    return cdnUrl ? `${cdnUrl}/${item.image}` : `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
+  }
+  return `${PLACEHOLDER_IMAGE_BASE}/${item.id}/800/440`;
+}
+
 /** Unified item shape for a single project or a project group (collection). */
 export interface ProjectCardItem {
   id: string | number;

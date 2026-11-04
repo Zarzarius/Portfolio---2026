@@ -13,7 +13,11 @@ export function StackSection({ techCategories }: StackSectionProps) {
   const t = useMessages();
 
   return (
-    <section className={cx('stackSection')} aria-labelledby="stack-heading">
+    <section
+      className={cx('stackSection')}
+      aria-labelledby="stack-heading"
+      data-reveal
+    >
       <header className={cx('stackHeader')}>
         <p className={cx('stackEyebrow')}>{t.stack.eyebrow}</p>
         <h2 id="stack-heading" className={cx('stackTitle')}>

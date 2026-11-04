@@ -88,7 +88,7 @@ function Contact() {
   };
 
   return (
-    <div className={cx('container')}>
+    <div className={cx('container')} data-stagger>
       <div className={cx('hero')}>
         <h1 className={cx('title')}>{t.contact.title}</h1>
         <p className={cx('intro')}>

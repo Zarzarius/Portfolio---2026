@@ -5,6 +5,7 @@ import {
   AchievementsList,
   BackToProjectsLink,
   DetailHeader,
+  DetailHero,
   TechTagList,
   formatProjectMeta,
   getProjectTypeLabel,
@@ -101,7 +102,8 @@ function ProjectDetailPage() {
         className={cx('backLink')}
         iconClassName={cx('backLinkIcon')}
       />
-      <article className={cx('article')}>
+      <DetailHero item={project} className={cx('hero')} />
+      <article className={cx('article')} data-stagger>
         <DetailHeader
           title={project.title}
           meta={formatProjectMeta(typeLabel, project.category)}

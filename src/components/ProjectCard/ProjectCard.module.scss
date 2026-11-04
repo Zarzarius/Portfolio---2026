@@ -20,8 +20,30 @@
   backdrop-filter: blur(20px) saturate(1.8);
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
   box-shadow: var(--shadow-md);
-  transition: $transition-all;
+  transition: $transition-all, transform $motion-duration-slow $motion-ease-expo;
   position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    background: radial-gradient(
+      26rem circle at var(--spot-x, 50%) var(--spot-y, 0%),
+      color-mix(in srgb, $color-primary-light 16%, transparent),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity $motion-duration-slow $motion-ease-out;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    &:hover::after {
+      opacity: 1;
+    }
+  }
 
   &:hover {
     border-color: color-mix(in srgb, $color-primary 40%, transparent);
@@ -49,7 +71,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform $motion-duration-slow $motion-ease-out;
+  transition: transform 0.7s $motion-ease-expo;
 }
 
 .card:hover .cardMediaImage {

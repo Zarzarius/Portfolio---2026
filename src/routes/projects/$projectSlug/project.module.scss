@@ -35,6 +35,17 @@
   margin-bottom: $spacing-4;
 }
 
+.hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: $border-radius-xl;
+  background: $color-bg-secondary;
+  box-shadow: var(--shadow-lg);
+}
+
 .article {
   padding: $spacing-6 0;
 }
