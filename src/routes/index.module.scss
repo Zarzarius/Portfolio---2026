@@ -20,16 +20,16 @@ $hero-cta-hover: $color-primary-dark;
 .hero {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - #{$header-height});
-  min-height: calc(100svh - #{$header-height});
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: stretch;
   overflow: clip;
   background: #070814;
 
   @media (min-width: #{$breakpoint-lg + 1px}) {
-    height: calc(100vh - #{$header-height});
-    height: calc(100svh - #{$header-height});
+    height: 100vh;
+    height: 100svh;
   }
 
   &.heroNoAnimation [data-stagger] > *,
@@ -122,8 +122,8 @@ $hero-cta-hover: $color-primary-dark;
   box-sizing: border-box;
   width: 100%;
   max-width: $container-max-width;
-  min-height: calc(100vh - #{$header-height});
-  min-height: calc(100svh - #{$header-height});
+  min-height: 100vh;
+  min-height: 100svh;
   margin: 0 auto;
   padding: $spacing-6 $container-padding $spacing-5;
 
@@ -451,7 +451,7 @@ $hero-cta-hover: $color-primary-dark;
 
 @media (max-width: $breakpoint-md) {
   .hero {
-    min-height: calc(100svh - #{$header-height});
+    min-height: 100svh;
   }
 
   .heroImage {
@@ -472,7 +472,7 @@ $hero-cta-hover: $color-primary-dark;
   .heroContent {
     justify-content: flex-end;
     gap: $spacing-5;
-    min-height: calc(100svh - #{$header-height});
+    min-height: 100svh;
     padding: $spacing-4 $spacing-4 $spacing-5;
   }
 

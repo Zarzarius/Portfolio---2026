@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   HeadContent,
   Link,
   Outlet,
   Scripts,
   createRootRoute,
+  useMatch,
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
@@ -80,10 +81,26 @@ function RootComponent() {
   const locale = useCurrentLocale();
   const t = useMessages();
   const profile = getProfile(locale);
+  const isHome = !!useMatch({ from: '/$locale/', shouldThrow: false });
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!isHome) return;
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [isHome]);
 
   return (
     <RootDocument>
-      <header className={cx('header')}>
+      <header
+        className={cx(
+          'header',
+          isHome && 'headerOverlay',
+          isHome && !scrolled && !menuOpen && 'headerHidden',
+        )}
+      >
         <div className={cx('headerInner')}>
           <Link
             to="/$locale"

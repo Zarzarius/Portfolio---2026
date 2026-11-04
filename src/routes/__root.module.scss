@@ -63,6 +63,25 @@
   }
 }
 
+.headerOverlay {
+  position: fixed;
+  right: 0;
+  left: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background $motion-duration-normal $motion-ease-in-out,
+      transform $motion-duration-slow $motion-ease-in-out,
+      opacity $motion-duration-slow $motion-ease-in-out;
+  }
+}
+
+.headerHidden:not(:focus-within) {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
 @keyframes scrollProgress {
   to {
     transform: scaleX(1);
