@@ -340,6 +340,121 @@ $hero-cta-hover: $color-primary-dark;
   border-color: rgba(255, 255, 255, 0.16);
 }
 
+@media (max-width: $breakpoint-md) {
+  .hero {
+    min-height: calc(100svh - #{$header-height});
+  }
+
+  .heroImage {
+    object-position: 42% 18%;
+  }
+
+  .heroOverlay {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 8, 20, 0.28) 0%,
+      rgba(7, 8, 20, 0.05) 18%,
+      rgba(7, 8, 20, 0.2) 46%,
+      rgba(7, 8, 20, 0.88) 72%,
+      rgba(7, 8, 20, 0.96) 100%
+    );
+  }
+
+  .heroContent {
+    justify-content: flex-end;
+    gap: $spacing-5;
+    min-height: calc(100svh - #{$header-height});
+    padding: $spacing-4 $spacing-4 $spacing-5;
+  }
+
+  .heroMain {
+    flex: none;
+    gap: $spacing-5;
+  }
+
+  .eyebrow {
+    margin-bottom: $spacing-2;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .title {
+    margin-bottom: $spacing-3;
+    font-size: clamp(1.75rem, 8vw, 2.15rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .subtitle {
+    margin-bottom: $spacing-4;
+    font-size: $font-size-sm;
+    line-height: 1.5;
+  }
+
+  .heroBtnPrimary,
+  .heroBtnSecondary {
+    padding: 0.65rem 1.1rem;
+    font-size: $font-size-sm;
+  }
+
+  .heroFacts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-2 $spacing-4;
+  }
+
+  .heroFact {
+    align-items: flex-start;
+    gap: $spacing-2;
+    font-size: $font-size-xs;
+  }
+
+  .heroFactIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.05rem;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .heroStack {
+    flex-wrap: nowrap;
+    gap: $spacing-3;
+    margin: 0;
+    padding: $spacing-4 $spacing-2 0 0;
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 1.5rem), transparent);
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .heroStackItem {
+    flex: 0 0 auto;
+    min-width: 3.25rem;
+    gap: $spacing-1;
+  }
+
+  .heroStackMark {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.65rem;
+
+    svg {
+      width: 1.05rem;
+      height: 1.05rem;
+    }
+  }
+}
+
 @keyframes heroContentIn {
   from {
     opacity: 0;
