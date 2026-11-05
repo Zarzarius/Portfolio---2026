@@ -47,9 +47,6 @@ function About() {
       </header>
 
       <div className={cx('content')}>
-        <h2 className={cx('sectionTitle')}>{t.about.languagesTitle}</h2>
-        <p className={cx('paragraph')}>{t.about.languagesText}</p>
-
         <h2 className={cx('sectionTitle')}>{t.about.beyondWorkTitle}</h2>
         <p className={cx('paragraph')}>{t.about.beyondWorkText}</p>
       </div>

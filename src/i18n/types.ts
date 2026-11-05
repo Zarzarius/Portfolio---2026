@@ -62,8 +62,6 @@ export interface Messages {
   about: {
     eyebrow: string;
     title: string;
-    languagesTitle: string;
-    languagesText: string;
     beyondWorkTitle: string;
     beyondWorkText: string;
     galleryLabel: string;

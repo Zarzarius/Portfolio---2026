@@ -54,12 +54,9 @@ export const esMessages: Messages = {
   about: {
     eyebrow: 'Sobre mí',
     title: 'Quién soy',
-    languagesTitle: 'Idiomas',
-    languagesText:
-      'Español (nativo) · Inglés (B2+) · Alemán (B2) · Portugués (B2)',
     beyondWorkTitle: 'Más allá del trabajo',
     beyondWorkText:
-      'Entusiasta del ciclismo de montaña y del fitness. Apasionado por la cocina y por explorar gastronomías internacionales. Viajero curioso interesado en culturas y perspectivas diversas.',
+      'Entusiasta del ciclismo de montaña, los deportes acuáticos y el fitness. Apasionado por la cocina y por explorar gastronomías internacionales. Viajero curioso interesado en culturas y perspectivas diversas.',
     galleryLabel: 'Collage de fotos',
     photos: [
       'La catedral de Colonia y el puente Hohenzollern al atardecer',
@@ -131,7 +128,7 @@ export const esMessages: Messages = {
       'Azael Alonso Campana es desarrollador full-stack en Galicia, España. React, Next.js, WebAR y experiencias 3D para marcas y estudios.',
     aboutTitle: 'Sobre Azael Alonso Campana — Desarrollador en Galicia',
     aboutDescription:
-      'Sobre Azael Alonso Campana, desarrollador full-stack en Galicia, España. Más de 4 años con React y Next.js, idiomas y trayectoria.',
+      'Sobre Azael Alonso Campana, desarrollador full-stack en Galicia, España. Más de 4 años con React y Next.js, trayectoria e intereses.',
     projectsTitle: 'Proyectos de Azael Alonso Campana',
     projectsDescription:
       'Proyectos web de Azael Alonso Campana: WebAR, piezas 3D, sitios con Next.js y CMS headless.',
