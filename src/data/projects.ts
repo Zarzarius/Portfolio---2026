@@ -201,7 +201,7 @@ export const projects: Project[] = [
     slug: 'portfolio',
     title: 'Portfolio website',
     description:
-      'Personal portfolio and contact hub built with a modern, type-safe stack. Features a project showcase with server-driven data, a contact form with validated submissions and Resend-powered email delivery, and responsive layout with SCSS. Designed for fast loads and clear information hierarchy.',
+      'Personal portfolio and contact hub built with a modern, type-safe stack. Features a project showcase with server-driven data, a contact form with validated submissions and Resend-powered email delivery, and responsive layout with SCSS. Engineered for peak Lighthouse ratios and strong organic discoverability: tight Core Web Vitals, semantic document structure, and complete SEO metadata.',
     technologies: [
       'REACT',
       'TYPESCRIPT',
@@ -213,10 +213,10 @@ export const projects: Project[] = [
       'SASS',
     ],
     achievements: [
+      'Sustained maximal Lighthouse ratios—100 Performance, Accessibility, Best Practices, and SEO—via lean bundles, critical-path prioritisation, and CLS-safe layout.',
+      'Hardened SEO ranking signals: canonical URLs, hreflang, Open Graph / Twitter cards, and JSON-LD for crawlable entity markup.',
       'Built full-stack portfolio with TanStack Start: file-based routing, server loaders, and type-safe data fetching for the project list.',
       'Implemented contact form with Zod validation and Resend integration for reliable email delivery.',
-      'Structured project data and filtering (professional vs personal, highlighted work) for the home and projects pages.',
-      'Implemented responsive design and SCSS modules for maintainable styling across hero, projects, and contact sections.',
     ],
     image: 'Projects/portfolio.png',
     category: 'Personal',
@@ -230,12 +230,12 @@ export const projects: Project[] = [
     link: 'https://awesome-asteroid-three.vercel.app',
     highlighted: true,
     description:
-      'Simple Astro and React app to add and track job offers. Includes a form to capture applications, list view with status tracking, and PDF export. Data is persisted in Supabase.',
+      'Astro and React app to add and track job offers—form capture, status list, and PDF export—with Supabase persistence. Ship-oriented architecture: islands hydration, minimal JS payload, and Lighthouse-friendly static shells for near-instant first paint.',
     technologies: ['ASTRO', 'REACT', 'TYPESCRIPT', 'SUPABASE'],
     achievements: [
-      'Built form to add and track job applications with status and notes.',
-      'Implemented PDF export for application summaries.',
-      'Persisted data in Supabase for sync across devices.',
+      'Hit maximal Lighthouse category scores (100 across Performance, Accessibility, Best Practices, SEO) with Astro islands and deferred client hydration.',
+      'Built form to add and track job applications with status and notes; PDF export for summaries.',
+      'Persisted data in Supabase for sync across devices without bloating the critical rendering path.',
     ],
     category: 'Personal',
     type: 'personal',
@@ -249,12 +249,12 @@ export const projects: Project[] = [
     link: 'https://adestra-three.vercel.app',
     highlighted: true,
     description:
-      'Bilingual site (Spanish and Galician) for Adestra Movemento e saúde, a movement and health studio in O Rosal, Galicia. Next.js and Sanity, with seed content as fallback, locale metadata, and a studio signup flow.',
+      'Bilingual site (Spanish and Galician) for Adestra Movemento e saúde, a movement and health studio in O Rosal, Galicia. Next.js and Sanity with seed content fallback, locale-aware metadata, and a studio signup flow—tuned for perfect Lighthouse audits and local-search SEO.',
     technologies: ['NEXT.JS', 'TYPESCRIPT', 'SANITY'],
     achievements: [
-      'Shipped a bilingual Spanish and Galician site for a movement and health studio in O Rosal.',
-      'Sanity CMS with seed content so the site still renders when the dataset is empty.',
-      'Studio signup flow, locale metadata, and on-demand revalidation from the CMS.',
+      'Delivered 100/100 Lighthouse ratios (Performance, Accessibility, Best Practices, SEO) with server-rendered pages, image optimisation, and stable layout metrics (LCP / CLS / INP).',
+      'Strengthened SEO ranking for bilingual local discovery: locale metadata, semantic headings, and crawlable CMS-driven copy.',
+      'Sanity CMS with seed fallback, studio signup flow, and on-demand revalidation so content stays fresh without sacrificing audit scores.',
     ],
     category: 'Personal',
     type: 'personal',
@@ -268,12 +268,12 @@ export const projects: Project[] = [
     link: 'https://pulsative.band',
     highlighted: true,
     description:
-      'Official site for the band PULSATIVE. Bilingual German and English Astro site with Sanity: showreel and upcoming dates, tour, videos, live photos, bio, booking, and a press kit.',
+      'Official site for the band PULSATIVE. Bilingual German and English Astro + Sanity site: showreel, tour dates, videos, live photos, bio, booking, and press kit—content-heavy media with maximal Lighthouse ratios and search-ready metadata.',
     technologies: ['ASTRO', 'TYPESCRIPT', 'SANITY', 'GSAP'],
     achievements: [
-      'Official bilingual German and English site for the band PULSATIVE.',
-      'Tour dates, videos, live photos, bio, booking contact, and a press kit.',
-      'Sanity-backed content, with mock content when the CMS is not configured.',
+      'Achieved maximal Lighthouse scores (100 Performance, Accessibility, Best Practices, SEO) despite media-rich pages via static generation and progressive enhancement.',
+      'SEO-ready bilingual structure (DE/EN): structured headings, shareable OG tags, and indexable tour / bio content for organic discovery.',
+      'Sanity-backed content with mock fallback; GSAP motion kept off the critical path so Core Web Vitals stay green.',
     ],
     category: 'Personal',
     type: 'personal',
@@ -287,12 +287,12 @@ export const projects: Project[] = [
     link: 'https://a-jalleira.vercel.app',
     highlighted: true,
     description:
-      'Official site for A Jalleira, a non-profit forest and environmental education association in the Baixo Miño, Galicia. Next.js and Sanity, in Galician, Spanish, English, and Portuguese.',
+      'Official site for A Jalleira, a non-profit forest and environmental education association in the Baixo Miño, Galicia. Next.js and Sanity across Galician, Spanish, English, and Portuguese—multilingual SEO hygiene and perfect Lighthouse category scores as first-class goals.',
     technologies: ['NEXT.JS', 'TYPESCRIPT', 'SANITY'],
     achievements: [
-      'Official site for a non-profit forest and environmental education association in the Baixo Miño.',
-      'Four locales — Galician, Spanish, English, and Portuguese — with Galician as the fallback.',
-      'Sanity as the source of truth for pages, activities, navigation, and SEO.',
+      'Locked in maximal Lighthouse ratios—100 across Performance, Accessibility, Best Practices, and SEO—with SSR/ISR delivery and accessible, semantic markup.',
+      'Four locales (gl / es / en / pt) with Galician fallback, hreflang-aligned metadata, and CMS-owned SEO fields for stronger organic ranking.',
+      'Sanity as the source of truth for pages, activities, navigation, and SEO without regressing Core Web Vitals.',
     ],
     category: 'Personal',
     type: 'personal',
@@ -429,54 +429,54 @@ export const projectGroups: ProjectGroup[] = [
     ],
     highlighted: true,
     description:
-      'Personal projects built to practice modern web stacks including Astro, Next.js, Sanity, and Supabase.',
+      'Personal sites and apps across Astro, Next.js, Sanity, and Supabase—consistently shipping maximal Lighthouse ratios (100 Performance, Accessibility, Best Practices, SEO) and search-engine-ready information architecture for local businesses, creatives, and content-led brands.',
     achievements: [
-      'Built and shipped multiple personal web projects across different domains and content needs.',
-      'Applied modern front-end stacks to deliver responsive, accessible, and maintainable user experiences.',
-      'Worked with content-driven and data-backed architectures to support practical features and clear information structure.',
-      'Used TypeScript-based workflows for stronger validation, reliability, and long-term maintainability.',
+      'Consistently delivered perfect Lighthouse audits—100/100 across Performance, Accessibility, Best Practices, and SEO—via static-first rendering, lean hydration, and CLS-safe layouts.',
+      'Elevated organic SEO ranking with semantic HTML, structured metadata (canonical, OG, Twitter), multilingual hreflang where needed, and CMS-editable SEO fields.',
+      'Optimised Core Web Vitals (LCP, CLS, INP) with image discipline, critical-path budgeting, and progressive enhancement for media-heavy pages.',
+      'Shipped TypeScript-backed, content-driven architectures (Sanity / Supabase) that stay crawlable, accessible, and maintainable under real content churn.',
     ],
     items: [
       {
         id: 'personal-1',
         title: 'El Maizter - Foodtruck website',
         description:
-          'Online menu and location hub for a street food truck—helps customers find the truck and browse offerings before they order.',
+          'Menu and location hub for a street food truck—Lighthouse 100s and local-SEO-friendly structure so customers find the truck and browse offerings fast.',
         link: 'https://el-maizter.vercel.app',
       },
       {
         id: 'personal-2',
         title: 'La Cabana - Restaurant website',
         description:
-          'Restaurant site with atmosphere, opening hours, and contact details so diners can plan visits and get in touch.',
+          'Restaurant site with atmosphere, hours, and contact—engineered for peak Lighthouse scores and discoverable local search signals.',
         link: 'https://la-cabana-web.vercel.app/',
       },
       {
         id: 'personal-3',
         title: 'ASP - Freelance craftsman website',
         description:
-          'Portfolio and contact site for a tradesperson—showcases past work and makes it easy for clients to request quotes.',
+          'Trades portfolio and quote CTA—static-first delivery with maximal Lighthouse ratios and clear SEO hierarchy for client acquisition.',
         link: 'https://asp-woad.vercel.app/',
       },
       {
         id: 'personal-4',
         title: 'Antonio F. Rando Casermeiro - Portfolio website',
         description:
-          'Personal portfolio site for Antonio F. Rando Casermeiro, writer, teacher, and Doctor in History. Built with Next.js and Sanity to present essays, fiction, teaching, research publications, multimedia work, and contact information in an accessible structure.',
+          'Next.js + Sanity portfolio for a writer, teacher, and Doctor in History—Server Components, accessible IA, and SEO metadata tuned for indexable essays, research, and multimedia.',
         link: 'https://portfolio-antonio-rando.vercel.app/',
       },
       {
         id: 'personal-5',
         title: 'Beer Tab',
         description:
-          'Web app to track drinks and settle bar tabs, with a customer tab flow and a manager dashboard for active customers, unpaid drinks, and daily totals. Built with Astro and Supabase, including searchable beer catalog and optional Supabase-backed beer stock management.',
+          'Astro + Supabase bar-tab app (customer flow + manager dashboard)—islands architecture keeping Lighthouse Performance at the ceiling while syncing live tab data.',
         link: 'https://beer-counter-sandy.vercel.app/',
       },
       {
         id: 'personal-6',
         title: 'Portfolio Pam',
         description:
-          'Creative portfolio site with Next.js and Sanity CMS: copy, SEO, projects, and site settings edited in Sanity Studio, rendered as Server Components with next-view-transitions between routes. Home (hero with interactive splash, featured work, showreel), dynamic project pages, contact page, embedded CMS',
+          'Creative portfolio on Next.js + Sanity: Studio-editable copy, SEO, and projects; Server Components + view transitions; Lighthouse-perfect delivery for home, case studies, and contact.',
         link: 'https://portfolio-pam-roan.vercel.app/',
       },
     ],

@@ -196,6 +196,12 @@ function Home() {
       >
         <div ref={heroBackgroundRef} className={cx('heroBackground')} aria-hidden>
           <picture>
+            <source
+              media="(max-width: 768px)"
+              type="image/avif"
+              srcSet="/aza-hero-mobile.avif"
+            />
+            <source type="image/avif" srcSet="/aza-hero.avif" />
             <source media="(max-width: 768px)" srcSet="/aza-hero-mobile.jpg" />
             <img
               src="/aza-hero.jpg"
