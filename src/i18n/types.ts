@@ -66,6 +66,8 @@ export interface Messages {
     languagesText: string;
     beyondWorkTitle: string;
     beyondWorkText: string;
+    galleryLabel: string;
+    photos: string[];
   };
   projects: {
     eyebrow: string;
