@@ -48,6 +48,8 @@ export const enMessages: Messages = {
     eyebrow: 'Tools & technologies',
     title: 'Tech stack',
     subtitle: 'Languages, frameworks, and tools I ship with.',
+    core: 'Daily drivers',
+    more: 'Also in rotation',
   },
   about: {
     eyebrow: 'About',

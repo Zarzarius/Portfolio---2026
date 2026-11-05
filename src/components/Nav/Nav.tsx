@@ -40,6 +40,7 @@ export function Nav({ linkClassName, activeClassName, onNavigate }: NavProps) {
           }}
           preload="intent"
           onClick={onNavigate}
+          data-label={label}
         >
           {label}
         </Link>

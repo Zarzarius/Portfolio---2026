@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import type { StackCategory, StackTech } from '@/data/stack';
+import type { StackCategory } from '@/data/stack';
 import { useMessages } from '@/i18n/useMessages';
 import styles from './StackSection.module.scss';
 
@@ -9,8 +9,11 @@ interface StackSectionProps {
   techCategories: StackCategory[];
 }
 
+const pad = (n: number) => String(n).padStart(2, '0');
+
 export function StackSection({ techCategories }: StackSectionProps) {
   const t = useMessages();
+  const total = pad(techCategories.length);
 
   return (
     <section
@@ -23,30 +26,61 @@ export function StackSection({ techCategories }: StackSectionProps) {
         <h2 id="stack-heading" className={cx('stackTitle')}>
           {t.stack.title}
         </h2>
-        <p className={cx('stackSubtitle')}>
-          {t.stack.subtitle}
-        </p>
+        <p className={cx('stackSubtitle')}>{t.stack.subtitle}</p>
       </header>
 
-      <div className={cx('categoryList')}>
-        {techCategories.map((cat) => (
-          <div key={cat.category} className={cx('categoryRow')}>
-            <span className={cx('categoryLabel')}>{cat.category}</span>
-            <ul className={cx('tagList')} aria-label={cat.category}>
-              {cat.technologies.map((tech: StackTech) => (
-                <li key={tech.name}>
-                  <span
-                    className={cx('tag', tech.highlight && 'tagHighlight')}
-                    title={tech.description ?? tech.name}
-                  >
-                    {tech.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      <ul className={cx('grid')}>
+        {techCategories.map((cat, i) => {
+          const core = cat.technologies.filter((tech) => tech.highlight);
+          const rest = cat.technologies.filter((tech) => !tech.highlight);
+
+          return (
+            <li key={cat.category} className={cx('card')}>
+              <header className={cx('cardHeader')}>
+                <h3 className={cx('cardTitle')}>{cat.category}</h3>
+                <span className={cx('cardIndex')} aria-hidden>
+                  {pad(i + 1)} / {total}
+                </span>
+              </header>
+
+              {core.length > 0 && (
+                <div className={cx('group')}>
+                  <p className={cx('groupLabel')}>{t.stack.core}</p>
+                  <ul className={cx('coreList')}>
+                    {core.map((tech) => (
+                      <li key={tech.name} className={cx('coreItem')}>
+                        <span className={cx('coreName')}>{tech.name}</span>
+                        {tech.description && (
+                          <span className={cx('coreDesc')}>
+                            {tech.description}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {rest.length > 0 && (
+                <div className={cx('group')}>
+                  <p className={cx('groupLabel')}>{t.stack.more}</p>
+                  <ul className={cx('tagList')}>
+                    {rest.map((tech) => (
+                      <li
+                        key={tech.name}
+                        className={cx('tag')}
+                        title={tech.description}
+                      >
+                        {tech.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

@@ -48,6 +48,8 @@ export const esMessages: Messages = {
     eyebrow: 'Herramientas y tecnologías',
     title: 'Stack tecnológico',
     subtitle: 'Lenguajes, frameworks y herramientas con los que trabajo.',
+    core: 'Uso diario',
+    more: 'También en uso',
   },
   about: {
     eyebrow: 'Sobre mí',

@@ -56,6 +56,8 @@ export interface Messages {
     eyebrow: string;
     title: string;
     subtitle: string;
+    core: string;
+    more: string;
   };
   about: {
     eyebrow: string;

@@ -134,38 +134,66 @@
 
 .nav {
   display: flex;
-  gap: $spacing-1;
+  gap: $spacing-6;
   align-items: center;
-  padding: $spacing-1;
-  border-radius: $border-radius-xl;
-  background: color-mix(in srgb, $color-text-primary 5%, transparent);
-  border: 1px solid color-mix(in srgb, $color-text-primary 10%, transparent);
 }
 
 .navLink {
   position: relative;
   font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  color: $color-text-secondary;
-  padding: $spacing-2 $spacing-5;
-  border-radius: $border-radius-lg;
-  transition: $transition-all;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-wide;
+  color: $color-text-tertiary;
+  padding: $spacing-2 0;
+  transition: color $motion-duration-normal $motion-ease-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, $color-primary, $color-accent);
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+    transition: transform $motion-duration-slow $motion-ease-expo;
+  }
 
   &:hover {
     color: $color-text-primary;
-    background: $color-bg-hover;
-    transform: translateY(-1px);
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: 0 50%;
+    }
   }
 
   &:focus-visible {
     outline: 2px solid $color-primary;
-    outline-offset: 2px;
+    outline-offset: 4px;
+    border-radius: $border-radius-sm;
+  }
+
+  &::before {
+    content: attr(data-label);
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-weight: $font-weight-bold;
   }
 
   &.active {
-    color: #fff;
-    background: $color-primary;
-    box-shadow: $shadow-primary;
+    font-weight: $font-weight-bold;
+    color: $color-brand-text;
+    background: linear-gradient(90deg, $color-brand-text, $color-primary-light);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &::after {
+      display: none;
+    }
   }
 }
 
@@ -366,8 +394,8 @@
     gap: $spacing-3;
   }
 
-  .navLink {
-    padding: $spacing-2 $spacing-3;
+  .nav {
+    gap: $spacing-4;
   }
 
   .headerActions {
