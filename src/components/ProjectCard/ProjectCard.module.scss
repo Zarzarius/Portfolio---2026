@@ -48,7 +48,12 @@
   &:hover {
     border-color: color-mix(in srgb, $color-primary 40%, transparent);
     box-shadow: var(--shadow-xl), 0 0 20px color-mix(in srgb, $color-primary 10%, transparent);
-    transform: translateY(-8px);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-8px);
+    }
   }
 
   &:focus-visible {
@@ -66,6 +71,12 @@
   overflow: hidden;
 }
 
+.cardMediaFrame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .cardMediaImage {
   width: 100%;
   height: 100%;
@@ -74,8 +85,10 @@
   transition: transform 0.7s $motion-ease-expo;
 }
 
-.card:hover .cardMediaImage {
-  transform: scale(1.06);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .cardMediaImage {
+    transform: scale(1.06);
+  }
 }
 
 // Badge: middle ground — frosted so the image shows through, but blur + contrast keep it readable (frontend-design: intentional layering, not a solid brick)

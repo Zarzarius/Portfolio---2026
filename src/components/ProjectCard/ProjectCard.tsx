@@ -45,7 +45,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const Title = cardTitleTag(titleLevel);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
 
   const markSharedElements = (event: MouseEvent<HTMLAnchorElement>) => {
     const opensElsewhere =
@@ -56,7 +56,7 @@ export function ProjectCard({
       event.altKey;
     if (opensElsewhere) return;
     titleRef.current?.style.setProperty('view-transition-name', 'project-title');
-    imageRef.current?.style.setProperty('view-transition-name', 'project-image');
+    frameRef.current?.style.setProperty('view-transition-name', 'project-image');
   };
 
   return (
@@ -66,18 +66,20 @@ export function ProjectCard({
       className={cx('card')}
       data-project-card
       preload="intent"
+      viewTransition={{ types: ['project-morph'] }}
       onPointerMove={trackSpotlight}
       onClick={markSharedElements}
     >
       <div className={cx('cardMedia')}>
-        <img
-          ref={imageRef}
-          className={cx('cardMediaImage')}
-          src={getCardImageUrl(item)}
-          alt={item.imageAlt ?? item.title}
-          loading="lazy"
-          decoding="async"
-        />
+        <div ref={frameRef} className={cx('cardMediaFrame')}>
+          <img
+            className={cx('cardMediaImage')}
+            src={getCardImageUrl(item)}
+            alt={item.imageAlt ?? item.title}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         {item.badge && (
           <span className={cx('badge')}>{item.badge}</span>
         )}

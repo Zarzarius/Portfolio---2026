@@ -246,7 +246,6 @@ export function getDefaultSeoMeta(options?: {
   noindex?: boolean;
 }) {
   const origin = getSiteOrigin();
-  const cdnUrl = (import.meta.env.VITE_CDN_URL ?? '').replace(/\/$/, '');
   const locale = normalizeLocale(options?.locale);
   const t = getMessages(locale);
   const profile = getProfile(locale);
@@ -257,9 +256,7 @@ export function getDefaultSeoMeta(options?: {
     options?.description ?? t.seo.homeDescription,
     DESCRIPTION_MAX,
   );
-  const defaultOgImage = cdnUrl
-    ? `${cdnUrl}/og-image.png`
-    : absoluteAssetUrl('aza-hero.png') ?? `${origin}/aza-hero.png`;
+  const defaultOgImage = `${origin}/og-image.png`;
   const image = options?.image ?? defaultOgImage;
   const imageAlt = options?.imageAlt ?? `${profile.fullName}, ${profile.tagline}`;
   const path = options?.path ?? `/${locale}`;

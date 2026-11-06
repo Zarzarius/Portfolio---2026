@@ -206,15 +206,29 @@ main#main {
   animation-timing-function: $motion-ease-expo;
 }
 
-::view-transition-group(project-image) {
-  overflow: clip;
-  border-radius: $border-radius-xl;
+::view-transition-image-pair(project-image) {
+  width: 100%;
+  height: 100%;
 }
 
 ::view-transition-old(project-image),
 ::view-transition-new(project-image) {
+  inset: 0;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  mix-blend-mode: normal;
+  overflow: clip;
+  border-radius: $border-radius-xl;
+}
+
+html:active-view-transition-type(project-morph)::view-transition-old(page-content) {
+  animation: project-fade-out 0.28s ease-in both;
+}
+
+html:active-view-transition-type(project-morph)::view-transition-new(page-content) {
+  animation: project-fade-in 0.55s $motion-ease-expo both;
 }
 
 ::view-transition-old(project-title),
@@ -231,6 +245,8 @@ main#main {
 
   ::view-transition-old(page-content),
   ::view-transition-new(page-content),
+  html:active-view-transition-type(project-morph)::view-transition-old(page-content),
+  html:active-view-transition-type(project-morph)::view-transition-new(page-content),
   ::view-transition-group(project-title),
   ::view-transition-old(project-title),
   ::view-transition-new(project-title),
@@ -252,5 +268,17 @@ main#main {
   from {
     opacity: 0;
     transform: translateY(14px);
+  }
+}
+
+@keyframes project-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes project-fade-in {
+  from {
+    opacity: 0;
   }
 }
