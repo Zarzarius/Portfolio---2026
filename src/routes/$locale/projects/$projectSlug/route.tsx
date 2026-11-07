@@ -14,16 +14,16 @@ import { absoluteAssetUrl, getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProject } from '@/data/projects.i18n';
 import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
-import { getProjectBySlug } from '@/server/functions';
+import { projects } from '@/data/projects';
 import styles from '../../../projects/$projectSlug/project.module.scss';
 
 const cx = classNames.bind(styles);
 
 export const Route = createFileRoute('/$locale/projects/$projectSlug')({
-  loader: async ({ params }) => {
+  loader: ({ params }) => {
     const slug = params.projectSlug?.trim();
     if (!slug) throw notFound();
-    const project = await getProjectBySlug({ data: { slug } });
+    const project = projects.find((p) => p.slug === slug);
     if (!project) throw notFound();
     return { project };
   },

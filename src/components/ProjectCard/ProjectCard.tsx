@@ -65,7 +65,7 @@ export function ProjectCard({
       params={params}
       className={cx('card')}
       data-project-card
-      preload="intent"
+      preload="viewport"
       viewTransition={{ types: ['project-morph'] }}
       onPointerMove={trackSpotlight}
       onClick={markSharedElements}

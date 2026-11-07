@@ -1,6 +1,6 @@
 import { createServerFn } from '@tanstack/react-start';
 import { Resend } from 'resend';
-import { projects, projectGroups, categories } from '@/data/projects';
+import { projects, projectGroups } from '@/data/projects';
 import { techCategories } from '@/data/stack';
 import { contactSchema, type ContactFormData } from '@/schemas/contact';
 
@@ -22,23 +22,10 @@ export const getProjects = createServerFn({ method: 'GET' }).handler(
   },
 );
 
-export const getCategories = createServerFn({ method: 'GET' }).handler(
-  async () => {
-    return categories;
-  },
-);
-
 export const getProjectById = createServerFn({ method: 'GET' })
   .inputValidator((data: { id: number }) => data)
   .handler(async ({ data }) => {
     const project = projects.find((p) => p.id === data.id) ?? null;
-    return project;
-  });
-
-export const getProjectBySlug = createServerFn({ method: 'GET' })
-  .inputValidator((data: { slug: string }) => data)
-  .handler(async ({ data }) => {
-    const project = projects.find((p) => p.slug === data.slug) ?? null;
     return project;
   });
 
@@ -52,13 +39,6 @@ export const getProjectGroupById = createServerFn({ method: 'GET' })
   .inputValidator((data: { id: number }) => data)
   .handler(async ({ data }) => {
     const group = projectGroups.find((g) => g.id === data.id) ?? null;
-    return group;
-  });
-
-export const getProjectGroupBySlug = createServerFn({ method: 'GET' })
-  .inputValidator((data: { slug: string }) => data)
-  .handler(async ({ data }) => {
-    const group = projectGroups.find((g) => g.slug === data.slug) ?? null;
     return group;
   });
 

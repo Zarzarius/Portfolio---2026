@@ -13,16 +13,16 @@ import { absoluteAssetUrl, getDefaultSeoMeta } from '@/data/seo';
 import { getLocalizedProjectGroup } from '@/data/projects.i18n';
 import { getMessages, normalizeLocale } from '@/i18n';
 import { useMessages } from '@/i18n/useMessages';
-import { getProjectGroupBySlug } from '@/server/functions';
+import { projectGroups } from '@/data/projects';
 import styles from '../../../../projects/group/$groupSlug/group.module.scss';
 
 const cx = classNames.bind(styles);
 
 export const Route = createFileRoute('/$locale/projects/group/$groupSlug')({
-  loader: async ({ params }) => {
+  loader: ({ params }) => {
     const slug = params.groupSlug?.trim();
     if (!slug) throw notFound();
-    const group = await getProjectGroupBySlug({ data: { slug } });
+    const group = projectGroups.find((g) => g.slug === slug);
     if (!group) throw notFound();
     return { group };
   },

@@ -4,13 +4,14 @@ import classNames from 'classnames/bind';
 import { Button } from '@/components/Button';
 import { ProjectSections } from '@/components/ProjectSections';
 import styles from '../../projects/projects.module.scss';
-import {
-  getProjects,
-  getProjectGroups,
-  getCategories,
-} from '@/server/functions';
 import { getDefaultSeoMeta } from '@/data/seo';
-import type { Project, ProjectGroup } from '@/data/projects';
+import {
+  categories,
+  projectGroups,
+  projects,
+  type Project,
+  type ProjectGroup,
+} from '@/data/projects';
 import {
   getLocalizedProject,
   getLocalizedProjectGroup,
@@ -29,14 +30,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export const Route = createFileRoute('/$locale/projects')({
-  loader: async () => {
-    const [projects, projectGroups, categories] = await Promise.all([
-      getProjects(),
-      getProjectGroups(),
-      getCategories(),
-    ]);
-    return { projects, projectGroups, categories };
-  },
+  loader: () => ({ projects, projectGroups, categories }),
   head: ({ params, loaderData, matches }) => {
     const leaf = matches[matches.length - 1];
     if (leaf?.routeId !== '/$locale/projects') return {};
