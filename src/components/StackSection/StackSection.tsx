@@ -11,6 +11,12 @@ interface StackSectionProps {
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
+function handleCardPointerMove(e: React.PointerEvent<HTMLLIElement>) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+  e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+}
+
 export function StackSection({ techCategories }: StackSectionProps) {
   const t = useMessages();
   const total = pad(techCategories.length);
@@ -35,7 +41,11 @@ export function StackSection({ techCategories }: StackSectionProps) {
           const rest = cat.technologies.filter((tech) => !tech.highlight);
 
           return (
-            <li key={cat.category} className={cx('card')}>
+            <li
+              key={cat.category}
+              className={cx('card')}
+              onPointerMove={handleCardPointerMove}
+            >
               <header className={cx('cardHeader')}>
                 <h3 className={cx('cardTitle')}>{cat.category}</h3>
                 <span className={cx('cardIndex')} aria-hidden>

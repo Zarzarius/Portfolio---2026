@@ -1,17 +1,11 @@
-import { useRef, type MouseEvent, type PointerEvent } from 'react';
+import { useRef, type MouseEvent } from 'react';
 import { Link } from '@tanstack/react-router';
 import classNames from 'classnames/bind';
+import { useTilt } from '@/hooks/useTilt';
 import { getCardImageUrl, type ProjectCardItem } from './projectCardItems';
 import styles from './ProjectCard.module.scss';
 
 const cx = classNames.bind(styles);
-
-function trackSpotlight(event: PointerEvent<HTMLAnchorElement>) {
-  const card = event.currentTarget;
-  const rect = card.getBoundingClientRect();
-  card.style.setProperty('--spot-x', `${event.clientX - rect.left}px`);
-  card.style.setProperty('--spot-y', `${event.clientY - rect.top}px`);
-}
 
 type TitleLevel = 2 | 3 | 4;
 
@@ -44,6 +38,7 @@ export function ProjectCard({
   titleLevel = 2,
 }: ProjectCardProps) {
   const Title = cardTitleTag(titleLevel);
+  const cardRef = useTilt<HTMLAnchorElement>({ maxRotation: 5, perspective: 1200, scale: 1.015 });
   const titleRef = useRef<HTMLHeadingElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
 
@@ -61,13 +56,13 @@ export function ProjectCard({
 
   return (
     <Link
+      ref={cardRef}
       to={to}
       params={params}
       className={cx('card')}
       data-project-card
       preload="viewport"
       viewTransition={{ types: ['project-morph'] }}
-      onPointerMove={trackSpotlight}
       onClick={markSharedElements}
     >
       <div className={cx('cardMedia')}>

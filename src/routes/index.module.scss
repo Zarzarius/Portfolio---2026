@@ -193,18 +193,28 @@ $hero-cta-hover: $color-primary-dark;
   }
 
   .accent {
-    background:
-      linear-gradient(
-          100deg,
-          transparent 40%,
-          rgba(255, 255, 255, 0.9) 50%,
-          transparent 60%
-        )
-        200% 0 / 200% 100% no-repeat,
-      linear-gradient(100deg, $hero-accent 0%, $hero-accent-deep 100%);
+    background: linear-gradient(
+      120deg,
+      #c4b5fd 0%,
+      #a78bfa 25%,
+      #818cf8 50%,
+      #c084fc 75%,
+      #c4b5fd 100%
+    );
+    background-size: 250% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: accentAurora 6s linear infinite;
+  }
+}
+
+@keyframes accentAurora {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 250% center;
   }
 }
 
@@ -234,15 +244,25 @@ $hero-cta-hover: $color-primary-dark;
   font-weight: $font-weight-semibold;
   border-radius: 999px;
   cursor: pointer;
-  transition: $transition-interactive;
+  will-change: transform;
+  transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0);
+  transition:
+    background-color $motion-duration-fast $motion-ease-out,
+    border-color $motion-duration-fast $motion-ease-out,
+    box-shadow $motion-duration-fast $motion-ease-out,
+    transform 0.12s $motion-ease-out;
 
   &:active {
-    transform: scale(0.97);
+    transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0) scale(0.96) !important;
   }
 
   &:focus-visible {
     outline: 2px solid $hero-accent;
     outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
   }
 }
 
@@ -579,10 +599,6 @@ $hero-cta-hover: $color-primary-dark;
       animation-timing-function: $motion-ease-expo;
     }
 
-    .accent {
-      animation: accentSweep 1.6s $motion-ease-in-out 0.9s;
-    }
-
     .eyebrowMark {
       animation: markIn 0.8s $motion-ease-expo 0.25s backwards;
     }
@@ -713,12 +729,12 @@ $hero-cta-hover: $color-primary-dark;
 @keyframes revealIn {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(22px) scale(0.98);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -800,25 +816,30 @@ $hero-cta-hover: $color-primary-dark;
   color: #fff;
   background: $color-primary;
   border-radius: $border-radius-md;
+  will-change: transform;
+  transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0);
   transition:
-    transform $motion-duration-normal $motion-ease-out,
+    transform 0.12s $motion-ease-out,
     box-shadow $motion-duration-normal $motion-ease-out,
     background $motion-duration-normal $motion-ease-in-out;
 
   &:hover {
     background: $color-primary-dark;
     color: #fff;
-    transform: translateY(-2px);
     box-shadow: $shadow-primary;
   }
 
   &:active {
-    transform: scale(0.97);
+    transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0) scale(0.96) !important;
   }
 
   &:focus-visible {
     outline: 2px solid $color-primary;
     outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
   }
 }
 
@@ -831,19 +852,30 @@ $hero-cta-hover: $color-primary-dark;
   color: $color-text-primary;
   border: $border-width-thin solid $color-border-secondary;
   border-radius: $border-radius-md;
+  will-change: transform;
+  transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0);
   transition:
     border-color $motion-duration-normal $motion-ease-in-out,
     color $motion-duration-normal $motion-ease-in-out,
-    transform $motion-duration-normal $motion-ease-out;
+    transform 0.12s $motion-ease-out,
+    background-color $motion-duration-normal $motion-ease-out;
 
   &:hover {
     border-color: $color-brand-text;
     color: $color-brand-text;
-    transform: translateY(-1px);
+    background: color-mix(in srgb, $color-primary 8%, transparent);
+  }
+
+  &:active {
+    transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0) scale(0.96) !important;
   }
 
   &:focus-visible {
     outline: 2px solid $color-primary;
     outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
   }
 }

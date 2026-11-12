@@ -20,9 +20,42 @@
   backdrop-filter: blur(20px) saturate(1.8);
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
   box-shadow: var(--shadow-md);
-  transition: $transition-all, transform $motion-duration-slow $motion-ease-expo;
   position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transform: perspective(var(--tilt-perspective, 1200px))
+    rotateX(var(--tilt-rx, 0deg))
+    rotateY(var(--tilt-ry, 0deg))
+    scale3d(var(--tilt-scale, 1), var(--tilt-scale, 1), 1);
+  transition:
+    box-shadow $motion-duration-slow $motion-ease-out,
+    border-color $motion-duration-slow $motion-ease-out,
+    background-color $motion-duration-normal $motion-ease-out;
 
+  // Glowing border highlight tracking the cursor
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+      22rem circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in srgb, $color-primary-light 70%, transparent),
+      transparent 70%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity $motion-duration-normal $motion-ease-out;
+    pointer-events: none;
+  }
+
+  // Soft spotlight glow over card surface
   &::after {
     content: '';
     position: absolute;
@@ -30,35 +63,36 @@
     z-index: 3;
     border-radius: inherit;
     background: radial-gradient(
-      26rem circle at var(--spot-x, 50%) var(--spot-y, 0%),
-      color-mix(in srgb, $color-primary-light 16%, transparent),
-      transparent 60%
+      28rem circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in srgb, $color-primary-light 14%, transparent),
+      transparent 65%
     );
     opacity: 0;
-    transition: opacity $motion-duration-slow $motion-ease-out;
+    transition: opacity $motion-duration-normal $motion-ease-out;
     pointer-events: none;
   }
 
   @media (hover: hover) {
+    &:hover::before,
     &:hover::after {
       opacity: 1;
     }
-  }
 
-  &:hover {
-    border-color: color-mix(in srgb, $color-primary 40%, transparent);
-    box-shadow: var(--shadow-xl), 0 0 20px color-mix(in srgb, $color-primary 10%, transparent);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
     &:hover {
-      transform: translateY(-8px);
+      border-color: color-mix(in srgb, $color-primary 45%, transparent);
+      box-shadow:
+        0 18px 40px -12px rgba(0, 0, 0, 0.45),
+        0 0 25px -4px color-mix(in srgb, $color-primary 20%, transparent);
     }
   }
 
   &:focus-visible {
     outline: 2px solid $color-primary;
     outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
   }
 }
 
@@ -82,12 +116,12 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.7s $motion-ease-expo;
+  transition: transform 0.6s $motion-ease-expo;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .card:hover .cardMediaImage {
-    transform: scale(1.06);
+    transform: scale(1.05) translateZ(12px);
   }
 }
 
@@ -96,17 +130,24 @@
   position: absolute;
   top: $spacing-4;
   left: $spacing-4;
-  z-index: 2;
+  z-index: 4;
   padding: $spacing-1 $spacing-3;
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
   letter-spacing: 0.03em;
   color: #fff;
   background: rgba(0, 0, 0, 0.48);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: $border-radius-sm;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.4s $motion-ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .badge {
+    transform: translateZ(16px);
+  }
 }
 
 .cardBody {

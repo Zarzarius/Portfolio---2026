@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode, type MouseEvent } from 'react';
 import classNames from 'classnames/bind';
+import { useMagnetic } from '@/hooks/useMagnetic';
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
@@ -36,6 +37,7 @@ export interface ButtonBaseProps {
   disabled?: boolean;
   loading?: boolean;
   loadingText?: string;
+  magnetic?: boolean;
   children: ReactNode;
   icon?: ReactNode;
   className?: string;
@@ -111,11 +113,29 @@ export function Button(props: ButtonProps) {
     disabled,
     loading,
     loadingText,
+    magnetic = true,
     children,
     icon,
     className,
     ...rest
   } = props;
+
+  const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
+  const magneticRef = useMagnetic<HTMLAnchorElement & HTMLButtonElement>({
+    strength: 0.3,
+    maxDistance: 8,
+  });
+
+  const triggerRipple = (e: MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const id = Date.now();
+    setRipples((prev) => [...prev.slice(-3), { id, x, y }]);
+    setTimeout(() => {
+      setRipples((prev) => prev.filter((r) => r.id !== id));
+    }, 600);
+  };
 
   const isDisabled = disabled === true || loading === true;
   const variantKey = getVariantKey(variant);
@@ -136,18 +156,31 @@ export function Button(props: ButtonProps) {
     <>
       {loading === true ? (loadingText ?? 'Sending…') : children}
       {loading === true ? null : resolvedIcon}
+      {ripples.map((ripple) => (
+        <span
+          key={ripple.id}
+          className={cx('ripple')}
+          style={{ left: ripple.x, top: ripple.y }}
+          aria-hidden
+        />
+      ))}
     </>
   );
 
   if (props.href != null) {
-    const { href, target, rel, ...anchorRest } = rest as ButtonAsAnchor;
+    const { href, target, rel, onClick, ...anchorRest } = rest as ButtonAsAnchor;
     return (
       <a
+        ref={magnetic ? magneticRef : undefined}
         href={href}
         target={target}
         rel={rel}
         className={rootClassName}
         aria-disabled={isDisabled ? true : undefined}
+        onClick={(e) => {
+          triggerRipple(e);
+          onClick?.(e);
+        }}
         {...anchorRest}
       >
         {content}
@@ -156,14 +189,19 @@ export function Button(props: ButtonProps) {
   }
 
   if (props.to != null) {
-    const { to, preload, params, ...linkRest } = rest as ButtonAsLink;
+    const { to, preload, params, onClick, ...linkRest } = rest as ButtonAsLink;
     const linkPreload = preload === 'none' ? false : preload;
     return (
       <Link
+        ref={magnetic ? magneticRef : undefined}
         to={to}
         params={params}
         preload={linkPreload}
         className={rootClassName}
+        onClick={(e) => {
+          triggerRipple(e);
+          onClick?.(e);
+        }}
         {...linkRest}
       >
         {content}
@@ -171,12 +209,17 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const { type = 'button', ...buttonRest } = rest as ButtonAsButton;
+  const { type = 'button', onClick, ...buttonRest } = rest as ButtonAsButton;
   return (
     <button
+      ref={magnetic ? magneticRef : undefined}
       type={type}
       className={rootClassName}
       disabled={isDisabled}
+      onClick={(e) => {
+        triggerRipple(e);
+        onClick?.(e);
+      }}
       {...buttonRest}
     >
       {content}

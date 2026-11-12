@@ -110,7 +110,13 @@ function RootComponent() {
           >
             {profile.shortName}
           </Link>
-          <nav className={cx('nav')} aria-label={t.nav.mainAriaLabel}>
+          <nav
+            className={cx('nav')}
+            aria-label={t.nav.mainAriaLabel}
+            onPointerLeave={(e) => {
+              e.currentTarget.style.setProperty('--nav-pill-opacity', '0');
+            }}
+          >
             <Nav linkClassName={cx('navLink')} activeClassName={cx('active')} />
           </nav>
           <div className={cx('headerActions')}>

@@ -133,46 +133,55 @@
 }
 
 .nav {
+  position: relative;
   display: flex;
-  gap: $spacing-6;
+  gap: $spacing-1;
   align-items: center;
+  padding: 4px;
+  background: color-mix(in srgb, var(--color-bg-secondary) 55%, transparent);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+
+  // Floating sliding frosted pill
+  &::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: var(--nav-pill-left, 0);
+    width: var(--nav-pill-width, 0);
+    border-radius: 999px;
+    background: var(--color-bg-hover);
+    border: 1px solid color-mix(in srgb, $color-primary-light 30%, transparent);
+    opacity: var(--nav-pill-opacity, 0);
+    pointer-events: none;
+    z-index: 0;
+    transition:
+      left 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.2s ease;
+  }
 }
 
 .navLink {
   position: relative;
+  z-index: 1;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   letter-spacing: $letter-spacing-wide;
   color: $color-text-tertiary;
-  padding: $spacing-2 0;
+  padding: 6px 14px;
+  border-radius: 999px;
   transition: color $motion-duration-normal $motion-ease-out;
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    background: linear-gradient(90deg, $color-primary, $color-accent);
-    transform: scaleX(0);
-    transform-origin: 100% 50%;
-    transition: transform $motion-duration-slow $motion-ease-expo;
-  }
 
   &:hover {
     color: $color-text-primary;
-
-    &::after {
-      transform: scaleX(1);
-      transform-origin: 0 50%;
-    }
   }
 
   &:focus-visible {
     outline: 2px solid $color-primary;
-    outline-offset: 4px;
-    border-radius: $border-radius-sm;
+    outline-offset: 2px;
+    border-radius: 999px;
   }
 
   &::before {
@@ -190,10 +199,6 @@
     background: linear-gradient(90deg, $color-brand-text, $color-primary-light);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    &::after {
-      display: none;
-    }
   }
 }
 

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
+import { useMagnetic } from '@/hooks/useMagnetic';
 import { ProjectSections } from '@/components/ProjectSections';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StackSection } from '@/components/StackSection';
@@ -152,6 +153,10 @@ function Home() {
     .filter((g: ProjectGroup) => g.highlighted)
     .map((g: ProjectGroup) => getLocalizedProjectGroup(g, currentLocale));
   const heroBackgroundRef = useRef<HTMLDivElement>(null);
+  const heroPrimaryRef = useMagnetic<HTMLAnchorElement>({ strength: 0.32, maxDistance: 10 });
+  const heroSecondaryRef = useMagnetic<HTMLAnchorElement>({ strength: 0.25, maxDistance: 8 });
+  const ctaPrimaryRef = useMagnetic<HTMLAnchorElement>({ strength: 0.32, maxDistance: 10 });
+  const ctaSecondaryRef = useMagnetic<HTMLAnchorElement>({ strength: 0.25, maxDistance: 8 });
 
   const shouldAnimate = !heroAnimationShown;
   useEffect(() => {
@@ -228,6 +233,7 @@ function Home() {
               <p className={cx('subtitle')}>{t.home.subtitle}</p>
               <div className={cx('heroActions')}>
                 <Link
+                  ref={heroPrimaryRef}
                   to="/$locale/projects"
                   params={{ locale }}
                   className={cx('heroBtnPrimary')}
@@ -249,6 +255,7 @@ function Home() {
                   </svg>
                 </Link>
                 <Link
+                  ref={heroSecondaryRef}
                   to="/$locale/about"
                   params={{ locale }}
                   className={cx('heroBtnSecondary')}
@@ -332,6 +339,7 @@ function Home() {
           </div>
           <div className={cx('ctaActions')}>
             <Link
+              ref={ctaPrimaryRef}
               to="/$locale/contact"
               params={{ locale }}
               className={cx('ctaPrimary')}
@@ -339,6 +347,7 @@ function Home() {
               {t.home.getInTouch}
             </Link>
             <Link
+              ref={ctaSecondaryRef}
               to="/$locale/projects"
               params={{ locale }}
               className={cx('ctaSecondary')}
