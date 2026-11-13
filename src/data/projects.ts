@@ -524,6 +524,7 @@ export const projectGroups: ProjectGroup[] = [
         description:
           '3D experience with a simplified 3D model of the airport for Düsseldorf Airport to show their services and a hub for users to explore the airport and its offerings. Used in trade shows and events.',
         icon: '✈️',
+        link: 'https://d-art-digital.de/de/projekte/flughafen-duesseldorf-content-hub',
       },
       {
         id: 'dart-3d-3',
