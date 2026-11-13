@@ -25,7 +25,7 @@ export const profile = {
     '5 years building web applications in React & Next.js — modern web apps, 3D experiences and clean code.',
   location: 'Galicia, Spain',
   email: 'job@azaelac.dev',
-  phone: '+49 176 21404156',
+  phone: '+34 614 662 553',
   resumeUrl: `${cdnUrl}/Resume/Azael_AC_EN.pdf`,
   summary:
     'Full-stack web developer with 5 years of specialized experience in React and Next.js ecosystems. Skilled in building modern, responsive web applications and interactive 3D experiences. Proven track record in agile development environments, combining strong technical expertise with creative problem-solving. Passionate about clean code, performance optimization, and staying current with emerging web technologies.',
