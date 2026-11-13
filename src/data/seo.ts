@@ -100,7 +100,7 @@ function buildJsonLd(options: {
     alternateName: profile.shortName,
     jobTitle: profile.tagline,
     description: profile.summary,
-    url: absolutePageUrl(options.origin, `/${DEFAULT_LOCALE}`),
+    url: absolutePageUrl(options.origin, `/${options.locale}`),
     image: options.image,
     email: `mailto:${profile.email}`,
     address: {
@@ -174,13 +174,16 @@ function buildJsonLd(options: {
     work: options.url,
   } satisfies Record<SeoKind, string>;
 
-  const crumbs = [
-    { name: t.nav.home, item: homeUrl },
-    ...(options.kind === 'work'
-      ? [{ name: t.nav.projects, item: projectsUrl }]
-      : []),
-    { name: crumbName[options.kind], item: crumbUrl[options.kind] },
-  ];
+  const crumbs =
+    options.kind === 'home'
+      ? [{ name: t.nav.home, item: homeUrl }]
+      : [
+          { name: t.nav.home, item: homeUrl },
+          ...(options.kind === 'work'
+            ? [{ name: t.nav.projects, item: projectsUrl }]
+            : []),
+          { name: crumbName[options.kind], item: crumbUrl[options.kind] },
+        ];
 
   const graph: unknown[] = [
     website,

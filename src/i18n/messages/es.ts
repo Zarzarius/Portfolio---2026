@@ -20,6 +20,8 @@ export const esMessages: Messages = {
     switchToDarkTheme: 'Cambiar a tema oscuro',
     lightMode: 'Modo claro',
     darkMode: 'Modo oscuro',
+    openMenu: 'Abrir menú',
+    closeMenu: 'Cerrar menú',
     notFoundTitle: 'Página no encontrada',
     notFoundText: 'La página que buscas no existe o ha sido movida.',
     backToHome: 'Volver al inicio',
@@ -27,10 +29,11 @@ export const esMessages: Messages = {
   home: {
     heroLead: 'Creo experiencias web',
     heroAccent: 'interactivas',
+    heroImageAlt: 'Azael trabajando en código en su escritorio',
     subtitle:
-      'Desarrollador full-stack con más de 4 años en React, TypeScript y desarrollo creativo. Especializado en experiencias 3D y WebGL, combinando tecnología, diseño y creatividad.',
+      'Desarrollador full-stack con 5 años en React, TypeScript y desarrollo creativo. Especializado en experiencias 3D y WebGL, combinando tecnología, diseño y creatividad.',
     viewWork: 'Ver proyectos',
-    years: '+4 años de experiencia',
+    years: '5 años de experiencia',
     focus: 'Desarrollo 3D / WebGL',
     factsLabel: 'Datos',
     getInTouch: 'Contactar',
@@ -107,6 +110,7 @@ export const esMessages: Messages = {
     name: 'Nombre',
     yourName: 'Tu nombre',
     emailField: 'Correo',
+    emailPlaceholder: 'tu@ejemplo.com',
     message: 'Mensaje',
     yourMessage: 'Tu mensaje…',
     sendButton: 'Enviar mensaje',
@@ -128,7 +132,7 @@ export const esMessages: Messages = {
       'Azael Alonso Campana es desarrollador full-stack en Galicia, España. React, Next.js, WebAR y experiencias 3D para marcas y estudios.',
     aboutTitle: 'Sobre Azael Alonso Campana — Desarrollador en Galicia',
     aboutDescription:
-      'Sobre Azael Alonso Campana, desarrollador full-stack en Galicia, España. Más de 4 años con React y Next.js, trayectoria e intereses.',
+      'Sobre Azael Alonso Campana, desarrollador full-stack en Galicia, España. 5 años con React y Next.js, trayectoria e intereses.',
     projectsTitle: 'Proyectos de Azael Alonso Campana',
     projectsDescription:
       'Proyectos web de Azael Alonso Campana: WebAR, piezas 3D, sitios con Next.js y CMS headless.',

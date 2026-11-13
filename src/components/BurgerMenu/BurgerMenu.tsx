@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames/bind';
+import { useMessages } from '@/i18n/useMessages';
 import styles from './BurgerMenu.module.scss';
 
 const cx = classNames.bind(styles);
@@ -13,6 +14,7 @@ type BurgerMenuProps = {
 };
 
 export function BurgerMenu({ open, onToggle, onClose, children }: BurgerMenuProps) {
+  const t = useMessages();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -62,7 +64,7 @@ export function BurgerMenu({ open, onToggle, onClose, children }: BurgerMenuProp
         onClick={onToggle}
         aria-expanded={open}
         aria-controls="mobile-menu"
-        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-label={open ? t.common.closeMenu : t.common.openMenu}
       >
         <span className={cx('burgerLine')} />
         <span className={cx('burgerLine')} />

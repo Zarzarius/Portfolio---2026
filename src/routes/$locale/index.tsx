@@ -210,7 +210,7 @@ function Home() {
             <source media="(max-width: 768px)" srcSet="/aza-hero-mobile.jpg" />
             <img
               src="/aza-hero.jpg"
-              alt=""
+              alt={t.home.heroImageAlt}
               className={cx('heroImage')}
               width={1024}
               height={576}

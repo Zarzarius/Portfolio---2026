@@ -486,7 +486,7 @@ export const projectGroups: ProjectGroup[] = [
   {
     id: 4,
     slug: 'dart-3d',
-    title: 'Dart Design – 3D product showcase & concept cases',
+    title: "D'Art Design – 3D product showcase & concept cases",
     description:
       "3D applications for D'Art Design clients: 3D worlds that visualise a company’s products and flows, interactive 3D hubs for exploring services, photorealistic product showcases for pitches, and internal tools such as a model configurator for artists to test shaders and assets in the browser. Used in trade shows, events, and as concept presentations.",
     technologies: [
@@ -524,7 +524,6 @@ export const projectGroups: ProjectGroup[] = [
         description:
           '3D experience with a simplified 3D model of the airport for Düsseldorf Airport to show their services and a hub for users to explore the airport and its offerings. Used in trade shows and events.',
         icon: '✈️',
-        link: 'https://d-art-digital.de/de/projekte/flughafen-duesseldorf-content-hub',
       },
       {
         id: 'dart-3d-3',

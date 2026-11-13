@@ -22,13 +22,13 @@ export const profile = {
   shortName: 'Azael AC',
   tagline: 'Full-stack web developer',
   headline:
-    '4+ years building web applications in React & Next.js — modern web apps, 3D experiences and clean code.',
+    '5 years building web applications in React & Next.js — modern web apps, 3D experiences and clean code.',
   location: 'Galicia, Spain',
   email: 'job@azaelac.dev',
   phone: '+34 614 662 553',
   resumeUrl: `${cdnUrl}/Resume/Azael_AC_EN.pdf`,
   summary:
-    'Full-stack web developer with 4+ years of specialized experience in React and Next.js ecosystems. Skilled in building modern, responsive web applications and interactive 3D experiences. Proven track record in agile development environments, combining strong technical expertise with creative problem-solving. Passionate about clean code, performance optimization, and staying current with emerging web technologies.',
+    'Full-stack web developer with 5 years of specialized experience in React and Next.js ecosystems. Skilled in building modern, responsive web applications and interactive 3D experiences. Proven track record in agile development environments, combining strong technical expertise with creative problem-solving. Passionate about clean code, performance optimization, and staying current with emerging web technologies.',
   social: {
     github: 'https://github.com/Zarzarius',
     linkedin: 'https://www.linkedin.com/in/azael-alonso-campana-5b1a49207',
@@ -42,11 +42,11 @@ const localizedProfile: Record<string, LocalizedText> = {
   },
   headline: {
     en: profile.headline,
-    es: 'Más de 4 años creando aplicaciones web con React y Next.js: apps modernas, experiencias 3D y código limpio.',
+    es: '5 años creando aplicaciones web con React y Next.js: apps modernas, experiencias 3D y código limpio.',
   },
   summary: {
     en: profile.summary,
-    es: 'Desarrollador web full-stack con más de 4 años de experiencia especializada en el ecosistema React y Next.js. Construyo aplicaciones web modernas, responsivas y experiencias 3D interactivas. Tengo experiencia en entornos ágiles, combinando sólida capacidad técnica con resolución creativa de problemas. Me apasiona el código limpio, la optimización de rendimiento y mantenerme al día con las tecnologías web emergentes.',
+    es: 'Desarrollador web full-stack con 5 años de experiencia especializada en el ecosistema React y Next.js. Construyo aplicaciones web modernas, responsivas y experiencias 3D interactivas. Tengo experiencia en entornos ágiles, combinando sólida capacidad técnica con resolución creativa de problemas. Me apasiona el código limpio, la optimización de rendimiento y mantenerme al día con las tecnologías web emergentes.',
   },
   location: {
     en: profile.location,
