@@ -152,7 +152,7 @@ export const projects: Project[] = [
       'Implemented a responsive design for the platform.',
       'Shipped ongoing features and improvements for the platform.',
     ],
-    link: 'https://demodern.com/projects/miniverse',
+    link: 'https://www.demodern.de/en/projects/mini-miniverse-metaverse',
     image: 'Projects/miniverse.png',
     category: 'Demodern',
   },
@@ -176,7 +176,6 @@ export const projects: Project[] = [
       'Implemented WebSocket networking for real-time experience.',
       'Shipped new features including sound effects and platform improvements.',
     ],
-    link: 'https://demodern.de/services/corporate-metaverse-cases-ve',
     image: 'Projects/metaverse.png',
     category: 'Demodern',
   },
@@ -337,7 +336,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Snipes 25th Anniversary',
         description:
           'Landing page for Snipes 25th Anniversary campaign with exclusive 3D models and showcase of the products.',
-        link: 'https://demodern.de/projekte/snipes-25th-anniversary',
+        link: 'https://snipes25years.dmdr.io/',
       },
       {
         id: 'lp-3',
@@ -407,7 +406,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Düsseldorf Airport Quiz game',
         description:
           'Quiz game for Düsseldorf Airport to show their services and the city of Düsseldorf in a gamified way.',
-        link: 'https://d-art-digital.de/de/projects/dus-quiz',
+        link: 'https://d-art-digital.de/de/projekte/flughafen-duesseldorf-content-hub',
       },
     ],
     category: 'Dart Design',
@@ -525,7 +524,7 @@ export const projectGroups: ProjectGroup[] = [
         description:
           '3D experience with a simplified 3D model of the airport for Düsseldorf Airport to show their services and a hub for users to explore the airport and its offerings. Used in trade shows and events.',
         icon: '✈️',
-        link: 'https://d-art-digital.de/de/projects/düsseldorf-airport-3d-experience',
+        link: 'https://d-art-digital.de/de/projekte/flughafen-duesseldorf-content-hub',
       },
       {
         id: 'dart-3d-3',
