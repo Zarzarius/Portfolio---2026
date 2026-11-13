@@ -406,7 +406,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Düsseldorf Airport Quiz game',
         description:
           'Quiz game for Düsseldorf Airport to show their services and the city of Düsseldorf in a gamified way.',
-        link: 'https://d-art-digital.de/de/projekte/flughafen-duesseldorf-content-hub',
+        link: 'https://d-art-digital.de/de/projekte/dus-quiz',
       },
     ],
     category: 'Dart Design',
