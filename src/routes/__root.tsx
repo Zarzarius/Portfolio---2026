@@ -38,19 +38,25 @@ function NotFoundComponent() {
   const locale = useCurrentLocale();
 
   return (
-    <div className={cx('notFound')}>
-      <p className={cx('notFoundCode')}>404</p>
-      <h1 className={cx('notFoundTitle')}>{t.common.notFoundTitle}</h1>
-      <p className={cx('notFoundText')}>{t.common.notFoundText}</p>
-      <Button
-        to="/$locale"
-        params={{ locale }}
-        variant="primary"
-        preload="intent"
-      >
-        {t.common.backToHome}
-      </Button>
-    </div>
+    <>
+      <HeadContent>
+        <title>{t.common.notFoundTitle} — Azael AC</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </HeadContent>
+      <div className={cx('notFound')}>
+        <p className={cx('notFoundCode')}>404</p>
+        <h1 className={cx('notFoundTitle')}>{t.common.notFoundTitle}</h1>
+        <p className={cx('notFoundText')}>{t.common.notFoundText}</p>
+        <Button
+          to="/$locale"
+          params={{ locale }}
+          variant="primary"
+          preload="intent"
+        >
+          {t.common.backToHome}
+        </Button>
+      </div>
+    </>
   );
 }
 

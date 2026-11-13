@@ -11,6 +11,7 @@ const localizedProjectFields: Record<
     description?: LocalizedText;
     award?: LocalizedText;
     achievements?: LocalizedList;
+    imageAlt?: LocalizedText;
   }
 > = {
   'wwf-ar': {
@@ -18,7 +19,7 @@ const localizedProjectFields: Record<
       es: 'WWF Alemania - Realidad aumentada y visualización de datos GIS',
     },
     description: {
-      es: 'Experiencia WebAR para WWF Alemania: sin app nativa; los usuarios acceden al AR directamente desde el navegador móvil, maximizando alcance y accesibilidad. Construido con model-viewer de Google para 3D y AR de alta calidad en web, y React para una interfaz fluida e intuitiva. Incluye un módulo de visualización de datos basado en GIS con habitats reales, animales 3D animados y optimizados para móvil (lince, lobo, bisonte europeo y alce), y hotspots interactivos con contenido educativo.',
+      es: 'Experiencia WebAR para WWF Alemania: sin app nativa; los usuarios acceden al AR directamente desde el navegador móvil, maximizando alcance y accesibilidad. Construido con model-viewer de Google para 3D y AR de alta calidad en web, y React para una interfaz fluida e intuitiva. Incluye un módulo de visualización de datos basado en GIS con hábitats reales, animales 3D animados y optimizados para móvil (lince, lobo, bisonte europeo y alce), y hotspots interactivos con contenido educativo.',
     },
     award: {
       es: 'Lovie Awards Bronze por "Best use of Augmented Reality"',
@@ -27,7 +28,7 @@ const localizedProjectFields: Record<
       es: [
         'Se lanzó una experiencia WebAR sin app nativa; los usuarios acceden al AR desde el navegador móvil, aumentando el alcance y evitando fricción de tiendas.',
         'Se entregó una experiencia multiplataforma: AR en móvil y visor 3D en desktop con una sola base de código.',
-        'Se integró visualización de datos basada en GIS para mostrar habitats reales dentro de la experiencia.',
+        'Se integró visualización de datos basada en GIS para mostrar hábitats reales dentro de la experiencia.',
         'Se publicaron animales 3D animados de alta fidelidad (lince, lobo, bisonte europeo y alce) optimizados para navegadores móviles.',
         'Se implementaron hotspots interactivos sobre modelos 3D para mostrar contenido educativo y datos científicos a escala 1:1.',
       ],
@@ -151,6 +152,9 @@ const localizedProjectFields: Record<
     description: {
       es: 'Sitio bilingüe (español y gallego) para Adestra Movemento e saúde, un estudio de movimiento y salud en O Rosal, Galicia. Next.js y Sanity, con contenido semilla de respaldo, metadatos por idioma y un flujo de inscripción.',
     },
+    imageAlt: {
+      es: 'Página principal de Adestra, una sesión de entrenamiento en el estudio',
+    },
     achievements: {
       es: [
         'Sitio bilingüe en español y gallego para un estudio de movimiento y salud en O Rosal.',
@@ -166,6 +170,9 @@ const localizedProjectFields: Record<
     description: {
       es: 'Sitio oficial de la banda PULSATIVE. Astro bilingüe (alemán e inglés) con Sanity: showreel y próximas fechas, gira, vídeos, fotos en directo, biografía, booking y kit de prensa.',
     },
+    imageAlt: {
+      es: 'Página principal de PULSATIVE con la formación de la banda',
+    },
     achievements: {
       es: [
         'Sitio oficial bilingüe en alemán e inglés para la banda PULSATIVE.',
@@ -180,6 +187,9 @@ const localizedProjectFields: Record<
     },
     description: {
       es: 'Sitio oficial de A Jalleira, asociación sin ánimo de lucro de educación forestal y ambiental en el Baixo Miño, Galicia. Next.js y Sanity, en gallego, español, inglés y portugués.',
+    },
+    imageAlt: {
+      es: 'Página principal de A Jalleira sobre un dosel forestal',
     },
     achievements: {
       es: [
@@ -246,7 +256,7 @@ const localizedGroupFields: Record<
   },
   'dart-3d': {
     title: {
-      es: 'Dart Design - Showcase de producto 3D y casos conceptuales',
+      es: "D'Art Design - Showcase de producto 3D y casos conceptuales",
     },
     description: {
       es: "Aplicaciones 3D para clientes de D'Art Design: mundos 3D para visualizar productos y flujos de empresa, hubs 3D interactivos para explorar servicios, showcases de producto fotorrealistas para pitches y herramientas internas como configurador de modelos para que artistas prueben shaders y assets en navegador. Usado en ferias, eventos y presentaciones de concepto.",
@@ -422,6 +432,9 @@ export function getLocalizedProject(project: Project, locale: Locale): Project {
     achievements: project.achievements
       ? localizeValue(translations?.achievements, project.achievements, locale)
       : project.achievements,
+    imageAlt: project.imageAlt
+      ? localizeValue(translations?.imageAlt, project.imageAlt, locale)
+      : project.imageAlt,
   };
 }
 

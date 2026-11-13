@@ -20,6 +20,8 @@ export const enMessages: Messages = {
     switchToDarkTheme: 'Switch to dark theme',
     lightMode: 'Light mode',
     darkMode: 'Dark mode',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
     notFoundTitle: 'Page not found',
     notFoundText: 'The page you’re looking for doesn’t exist or has been moved.',
     backToHome: 'Back to home',
@@ -27,10 +29,11 @@ export const enMessages: Messages = {
   home: {
     heroLead: 'I build interactive web',
     heroAccent: 'experiences',
+    heroImageAlt: 'Azael working on code at his desk',
     subtitle:
-      'Full-stack developer with 4+ years in React, TypeScript, and creative development. I build modern web apps and interactive 3D experiences.',
+      'Full-stack developer with 5 years in React, TypeScript, and creative development. I build modern web apps and interactive 3D experiences.',
     viewWork: 'View projects',
-    years: '4+ years of experience',
+    years: '5 years of experience',
     focus: '3D and WebGL',
     factsLabel: 'Highlights',
     getInTouch: 'Get in touch',
@@ -107,6 +110,7 @@ export const enMessages: Messages = {
     name: 'Name',
     yourName: 'Your name',
     emailField: 'Email',
+    emailPlaceholder: 'you@example.com',
     message: 'Message',
     yourMessage: 'Your message…',
     sendButton: 'Send message',
@@ -127,7 +131,7 @@ export const enMessages: Messages = {
       'Azael Alonso Campana is a full-stack developer in Galicia, Spain. React, Next.js, WebAR, and 3D experiences for brands and studios.',
     aboutTitle: 'About Azael Alonso Campana — Developer in Galicia',
     aboutDescription:
-      'About Azael Alonso Campana, full-stack developer in Galicia, Spain. 4+ years with React and Next.js, background, and interests.',
+      'About Azael Alonso Campana, full-stack developer in Galicia, Spain. 5 years with React and Next.js, background, and interests.',
     projectsTitle: 'Projects by Azael Alonso Campana',
     projectsDescription:
       'Web projects by Azael Alonso Campana: WebAR, 3D showcases, Next.js sites, and headless CMS work.',

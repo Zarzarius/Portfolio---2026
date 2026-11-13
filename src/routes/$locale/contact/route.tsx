@@ -156,7 +156,7 @@ function Contact() {
             id="email"
             name="email"
             className={cx('input', errors.email && 'inputError')}
-            placeholder="you@example.com"
+            placeholder={t.contact.emailPlaceholder}
             value={formData.email}
             onChange={handleChange}
             aria-invalid={!!errors.email}
